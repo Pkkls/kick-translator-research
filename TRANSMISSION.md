@@ -46,10 +46,11 @@ agreeing about the same file, when the claim is about a chain of five, is not
 replication: they share a blind spot and confirm each other inside it. Declare
 the population before replicating.
 
-**The direction of a probe's error follows what it was looking for.** Hunting a
-guard, a blind spot becomes a false accusation, so discount findings. Enumerating
-instances, a blind spot becomes a plausible short list, so discount the short
-list. Getting this backwards means trusting exactly the wrong result.
+**The direction of a probe's error follows what it was looking for.** Hunting
+a guard, a blind spot becomes a false accusation, so discount findings.
+Enumerating instances, a blind spot becomes a plausible short list, so
+discount the short list. Getting this backwards means trusting exactly the
+wrong result.
 
 **Validate the witness.** A witness is an action meant to make an assertion
 fail, and nothing guarantees it reached the artefact the assertion reads. A
@@ -57,6 +58,12 @@ constant folded by a bundler, a patch whose pattern never matched: each produces
 a break that never arrived and a green that means nothing. The corpus's
 sentence: *a witness that does not break the thing it claims to break proves
 nothing.*
+
+**Read why a witness went red, not merely that it did.** A witness can produce
+the expected failure through an unintended path: a layout fix removed, the panel
+widens, a click target moves out of reach, and the harness throws on a timeout
+before its assertion is ever read. The red is real and proves nothing. In that
+case the evidence was the direct measurement, not the harness.
 
 **Assert the property that matters, not the one that is visible.** A gate for
 the outgoing path does not assert that a preview appears; it asserts which

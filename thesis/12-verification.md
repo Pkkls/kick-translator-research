@@ -142,6 +142,39 @@ and the disposition is worth noting because it is the opposite of silencing:
 the exceptions added were narrow, one selector and two properties, and were
 validated against six cases including three that must still be caught.
 
+## 12.4a A red for the wrong reason, and a finding nothing could have asserted
+
+**[reported]** A defect was found by looking at an image. Staging store
+screenshots on a fabricated page rather than a live channel put a picture of the
+language panel on screen, and reading it showed the third column cut mid-word
+and a horizontal scrollbar. **No gate looks at text clipping**, so nothing in
+the suite could have raised it.
+
+Measured: 416 pixels of content inside a 398 pixel frame. Eighteen pixels,
+exactly twice the row's horizontal padding.
+
+**The cause is worth more than the defect.** The stylesheet contains exactly one
+box-sizing declaration, on a fixed-position element; everything else inherited
+from the host page, which ships a CSS reset. So the border-box model applied and
+**the geometry came out right by luck rather than by construction**. Adding the
+reset to the test page made the overflow vanish, which both confirmed the
+diagnosis and established that no reader sees it today. It was still removed: an
+extension asserting pixel geometry should not depend on the host continuing to
+reset the box model on its behalf.
+
+**And the witness is not a clean one, which the project says plainly.** Removing
+the fix does make the harness exit 1, but on a timeout: the panel widens, a
+click target moves out of reach, and the script throws before the assertion is
+ever read.
+
+> So the evidence for the fix is the direct measurement, 416 against 398 before
+> and 390 against 390 after, and not a red line from that harness.
+
+That completes the witness rule from the other side. A witness can fail to reach
+the artefact, which [chapter 3](03-method.md) covers. It can also **produce the
+expected red through an unintended path**, and a red obtained by a crash is not
+a red from an assertion. Read *why* a witness went red, not merely that it did.
+
 ## 12.4b Flakiness filed as weather
 
 **[reported]** The work queue once carried the item "the live gates are not
