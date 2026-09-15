@@ -104,17 +104,84 @@ locality ([ch. 10](10-latency-weight.md#105-cache-a-number-that-cannot-be-read-f
 The project's disposition, keep it because its read cost is zero, is correct
 and is not evidence that it works.
 
-### This study's own replications
+### This study's own measurements
 
 The measurements tagged **[new]** and **[replicated]** were taken against one
-checkout at one moment, by reading source rather than by observing a running
-build in a browser. For the direction-handling finding in
-[ch. 11](11-privacy-surface.md#replication-bidirectional-text), this means the
-count of surfaces is a count of call sites in the content script sources: a
-surface rendered by a path this study did not identify would be missed, and the
-rendered consequence was not observed in a browser. The finding is that a
-guard covers one call site of three, which is weaker than a finding about what
-a reader sees.
+checkout at one moment, mostly by reading source rather than by observing a
+running build in a browser. For the direction-handling finding in
+[ch. 11](11-privacy-surface.md#replication-bidirectional-text), the count is a
+count of call sites: a surface rendered by a path this study did not identify
+would be missed, and the rendered consequence was never observed. A statement
+about call sites is weaker than a statement about what a reader sees, and this
+study only has the former.
+
+That limitation is what 14.2b measures rather than asserts. The first version
+of that same direction finding reported one guarded surface of three; two
+further instruments took it to two of two. The text above was itself written
+around the withdrawn figure and is corrected here, which is a small instance of
+the same point: **a document carries its own stale numbers forward until
+something re-reads it against the source.**
+
+## 14.2b The measured revision rate, and what it does to every other chapter
+
+This study put nine of its own published measurements through a replication
+bar: each re-measured with an instrument of a different shape, with the
+population declared before the second attempt **[new]**.
+
+**Five of the nine changed.** Two of them substantially: a locale coverage
+figure that accused complete work of being 22 percent done, retracted in full,
+and an enumeration of page-observable signals that under-counted by a factor of
+two and a half. Four held. One turned out to have been published without the
+parameter it depended on.
+
+Three of the five over-stated and two under-stated, so the errors do not share
+a direction. What decides the sign is whether the probe was looking for a guard,
+where a blind spot produces a false accusation, or enumerating instances, where
+a blind spot produces a short list that looks like a finding.
+
+### What this does to the numbers tagged [new] and [replicated]
+
+Those are this study's own, and five in nine of them moved under scrutiny that
+most of them had not received at the time of writing. **The ones now in
+[chapter 13](13-results.md) have been through the bar; the rate says what to
+expect of any that had not.** Where a measurement here rests on a single
+instrument, it is now marked as such.
+
+### What it does to the numbers tagged [reported], which is the harder question
+
+The corpus's measurements were never put through this bar either. It would be
+easy, and wrong, to transfer the rate: five in nine came from an account
+reading a codebase it did not write, without the authors' knowledge of where
+the joins are, and that is the condition under which measurement is hardest.
+The development account measured its own code, with witnesses, under a method
+that required a number before an explanation.
+
+But the corpus is not silent on its own revision rate, and what it records is
+the same phenomenon at a lower intensity. At least four published measurements
+were corrected there by their own authors:
+
+- an arabizi evaluation that scored the wrong quantity entirely;
+- a keyboard-smash claim of eleven of fifteen filtered, measured directly at
+  zero of eleven;
+- a framing of Malay and Hebrew as two broken languages, corrected by a probe
+  to a badge-and-source problem;
+- an identifier comparison whose first published verdict reversed when four
+  messages were added to the corpus.
+
+**So both accounts revised published measurements, and both found the revision
+worth recording.** The honest statement is not a rate for the corpus, which
+nobody has measured. It is this:
+
+> Measurement of a running system is routinely revisable, by the people who
+> wrote it and by outside readers alike. A measurement that has not been
+> re-taken with a different instrument is a first draft, whoever took it.
+
+That reframes the provenance scheme used throughout this study. **[reported]**,
+**[replicated]** and **[new]** certify that a measurement happened and by whom.
+None of them certifies that it was competent, and the tags were silently read
+as though they did until this rate was measured. The fourth tag added earlier,
+**[outside]**, closed a different gap; this one has no tag that closes it, only
+the bar.
 
 ## 14.3 Threats to the method itself
 

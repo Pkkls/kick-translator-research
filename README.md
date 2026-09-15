@@ -110,6 +110,25 @@ Everything in it is re-derivable in one command:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 ```
 
+## The result that reframes the others
+
+**Nine of this study's own published measurements were re-taken with a second
+instrument. Five changed.** Two substantially: an accusation that complete
+localisation work was 22 percent done, retracted in full, and an enumeration
+that under-counted by a factor of two and a half.
+
+Three over-stated and two under-stated, so there is no single direction to
+correct for. What decides the sign is whether the probe hunts a guard, where a
+blind spot becomes a false accusation, or enumerates instances, where a blind
+spot becomes a plausible short list.
+
+The corpus under study records at least four of its own published measurements
+being corrected by their authors. Both accounts revised, and both thought it
+worth writing down. The transferable statement is in
+[14.2b](thesis/14-limits.md#142b-the-measured-revision-rate-and-what-it-does-to-every-other-chapter):
+a measurement not re-taken with a different instrument is a first draft,
+whoever took it.
+
 ## Three results worth reading first
 
 **A marker list scored 20 out of 20 on the bench that produced it, and 4 out of
