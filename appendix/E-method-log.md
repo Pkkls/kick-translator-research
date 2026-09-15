@@ -3046,6 +3046,81 @@ technique with its subject*, arriving in the mildest possible form: not a
 verifier reusing its subject's code, but one reusing its subject's idea of what
 matters.
 
+### 4.80 The table moved, the sentence under it did not, and three documents had copied the sentence
+
+**What happened.** The session opened on the seven commands `START-PROMPT.md`
+names, which exist so that a fresh account can tell a stale repository from a
+current one before changing anything. One of them disagreed with the documents.
+`axis-ledger.mjs` printed *8 rows present, 3 carrying a number*; appendix G's
+own summary line said **Two of seven axes set**, and `RESUME-HERE.md` said it
+twice and `START-PROMPT.md` once. The script had been printing the right figure
+directly above the wrong sentences for a full session. Nobody read the two
+together, which is the entire value of running a gate and reading its output
+rather than its exit code.
+
+**The cause is dated and takes two commits.** `54ad020` built the budget with
+two rows carrying a value and wrote the summary under the table. `24c8cf7`, two
+commits later, measured A21 and filled its row in. The table moved and the
+sentence did not, and the three documents that had copied the sentence could not
+have moved, because **nothing carries a correction between documents** (4.45,
+4.70). That rule has now cost something three times. Its new form is narrower
+and worse: this instance is a summary and its own table, nine lines apart in one
+file, so proximity does not help either.
+
+**The sentence was also counting two populations.** *Two of seven* put a count
+of rows over a count of bars. Seven bars name the budget file; the table has
+eight rows, because A6 states two thresholds, a weight ceiling and a per-row
+main-thread cost, and only the first is set. So even before A21 moved the
+numerator, the fraction compared a numerator drawn from one population against a
+denominator drawn from another, which is the reason the replacement sentence
+counts rows on both sides.
+
+**What was built, because the rule is not the fix.** `axis-ledger.mjs` now reads
+appendix G's summary back and compares it against the table it summarises,
+exiting 1 when they disagree and when the sentence is absent altogether. The
+form is fixed and stated in the comment: `N of the M rows carry a number`, in
+digits, in appendix G and nowhere else. Three witnesses were planted in a copy
+and restored from it, never with `git checkout`:
+
+| Planted | Exit | What it printed |
+|---|---|---|
+| Summary says 2, table says 3 | 1 | `appendix G says 2 of the 8 rows carry a number; the table says 3 of 8` |
+| Summary deleted | 1 | `appendix G states no set count in the form "N of the M rows carry a number"` |
+| A13's row given a value, summary untouched | 1 | `appendix G says 3 of the 8 rows carry a number; the table says 4 of 8` |
+
+The third is the one that matters, because it is the direction this defect
+actually arrived from: the next session to fill a row in is now stopped by a
+gate rather than trusted to remember a sentence nine lines below it.
+
+That table is also a false positive in `probe-consistency`, named here in the
+pass that created it so nobody spends a pass on it: its ratio half now reports
+*denominator 8, "number table says"* with numerators 3 and 4, which are the
+planted value and the true one sitting in adjacent rows of a witness record. Two
+numerators under one denominator is what that half is built to surface, and this
+is the shape of it that is correct.
+
+**The other three documents state no count at all now.** They cite the script.
+This is 4.30's convention, *counts that a script reads are not restated*, applied
+in the one place it had been written down and not followed. A check comparing
+four copies would have been the larger build and the worse answer: there is one
+owner of this number and three readers, and readers should read.
+
+**One aggregate was deleted rather than recounted.** The prose also claimed
+*five of the six need an instrument that is already in the repository*. It was
+written in the same pass as the rows it summarises, and two of those rows say in
+their own text that no harness measures the quantity they ask for, so the
+aggregate contradicts its own table. Recounting it here would publish a first
+count (4.55), and the honest move is to delete it and read the rows. What each
+empty row actually needs is the next pass.
+
+**A fourth document was corrupted by the same class of edit**, found while
+reading the region. `daea424` replaced a sentence in `RESUME-HERE.md` and its
+search string ended one character inside the number of a following citation,
+leaving `(4.64).47 named,` where `(4.64), and none is` was meant. It survived a
+push and a session because it sits mid-paragraph in a file that is read for its
+lists. An edit helper that refuses to write when its search string is absent
+cannot catch this: the search string was present, and it was the wrong one.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

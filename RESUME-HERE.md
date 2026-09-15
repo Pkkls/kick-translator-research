@@ -32,9 +32,9 @@ nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
 The specification's own first stop condition is countable now rather than an
-impression: **all 22 axes carry a verdict, so the first stop condition is met** (4.64).47 named, and none is
-closed outright, though A15's reproducibility half is: both published archives
-rebuild byte-identical from the tag (4.52).
+impression: **all 22 axes carry a verdict, so the first stop condition is met**
+(4.64), and none is closed outright, though A15's reproducibility half is: both
+published archives rebuild byte-identical from the tag (4.52).
 [Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that
 makes it readable (4.51), and `axis-ledger.mjs` prints the count and fails if
 the ledger and the specification stop agreeing about which axes exist.
@@ -158,8 +158,10 @@ The specification asks for two files by name, under a heading about the first
 pass, and says neither will exist the first time it is read. **One is built
 now**: [appendix F](appendix/F-axis-ledger.md), the axis ledger, with the verdict
 per axis and the instrument each one needs. **The other is built now too**: [appendix G](appendix/G-budget.md), in its first
-honest state, two of seven axes carrying a number and five naming the
-measurement that would set them (4.58). Before this pass there was no budget
+honest state, with a row per bar and the measurement that would set the empty
+ones (4.58). How many carry a number is printed by `axis-ledger.mjs` and
+checked against appendix G's own summary line, because the figure copied into
+this paragraph was wrong for a pass (4.80). Before this pass there was no budget
 file, and **7 of the 22 bars**, A3, A5, A6, A11, A13, A18 and A21,
 state their threshold as a ceiling, a floor, a count or a rate in it. Those
 seven cannot be read until it exists, and it is a page of numbers (4.57).
@@ -174,8 +176,9 @@ every pass produced a measurement.
 **Two artefacts the specification asked for by name now exist**, and it asked
 for both in one sentence nobody had read: [appendix F](appendix/F-axis-ledger.md),
 the axis ledger with a verdict and an instrument per axis, and
-[appendix G](appendix/G-budget.md), the budget file, **2 of 7 thresholds set**
-and the other five naming the measurement that would set them.
+[appendix G](appendix/G-budget.md), the budget file, each empty row naming the
+measurement that would set it. Run `axis-ledger.mjs` for the set count rather
+than reading it here (4.30, 4.80).
 
 **Ten scripts**, three written here. Two gates were added, `axis-ledger.mjs`
 and the checking halves of `probe-consistency.mjs`, and both exit non-zero.

@@ -92,7 +92,27 @@ const setRows = existsSync(budgetPath)
   : 0;
 console.log(`budget file: ${needsBudget.length} bars name it, ${budgetRows.length} rows present, ${setRows} carrying a number`);
 
+// Appendix G states its own set count in prose, and that sentence went stale the
+// pass after A21's row was filled in: the table said three and four documents
+// said two, for a whole session, with this script printing the right number
+// beside them (4.80). The count is cheap to recompute and the sentence is not,
+// so the sentence is now read back and compared. The form is fixed:
+// "N of the M rows carry a number", digits, in appendix G and nowhere else. The
+// other three documents cite this script instead of copying the figure, which
+// is the convention 4.30 set for counts a script already reads.
+let claimed = null;
+if (existsSync(budgetPath)) {
+  const m = readFileSync(budgetPath, 'utf8')
+    .match(/(\d+)\s+of\s+the\s+(\d+)\s+rows\s+carry\s+a\s+number/i);
+  if (m) claimed = { set: Number(m[1]), rows: Number(m[2]) };
+}
+
 const problems = [];
+if (existsSync(budgetPath) && !claimed) {
+  problems.push('appendix G states no set count in the form "N of the M rows carry a number"');
+} else if (claimed && (claimed.set !== setRows || claimed.rows !== budgetRows.length)) {
+  problems.push(`appendix G says ${claimed.set} of the ${claimed.rows} rows carry a number; the table says ${setRows} of ${budgetRows.length}`);
+}
 if (missing.length) problems.push('in the specification, absent from the ledger: ' + missing.join(', '));
 if (extra.length) problems.push('in the ledger, absent from the specification: ' + extra.join(', '));
 if (dupes.length) problems.push('listed twice in the ledger: ' + [...new Set(dupes)].join(', '));

@@ -85,7 +85,8 @@ behind them. When you catch yourself writing a rule down, ask what would run.
 All 22 axes carry a verdict and **none is closed**, so the specification's first
 stop condition is met and the other two are not. The two artefacts it asks for
 by name exist: [appendix F](appendix/F-axis-ledger.md), the ledger, and
-[appendix G](appendix/G-budget.md), the budget, 2 of 7 thresholds set. Ten
+[appendix G](appendix/G-budget.md), the budget, whose set count `axis-ledger.mjs`
+prints and checks rather than this file restating it (4.80). Ten
 scripts, five of which exit non-zero on a failure. `RESUME-HERE.md` carries the
 three findings that reach a reader and the two one-line items that are kil's.
 

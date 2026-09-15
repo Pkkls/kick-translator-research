@@ -35,10 +35,20 @@ in [appendix F](F-axis-ledger.md) rather than being guessed again here.
 | A18 | Time to first visible translation, cold profile | *not set* | Still not set, and now for a narrower reason. `metrics-offline.mjs` was run and gives the per-message figure, `e2e.cloud` p50 44 ms offline with the engine answered locally, of which 40 is the deliberate coalescing window. That is not cold-start to first paint, which is what this row asks for, and measuring it means timing from extension load rather than from message arrival (4.61) |
 | A21 | Requests per unit of time under refusal, and the escalation | **6 a minute per provider, 24 a minute across four** | **Derived, not measured**, and labelled so. The `rate_limit` ladder in `translator/index.ts` is `min(10_000, 1500 * 2 ** (cf - 1))`, which settles at one attempt per 10 s per provider, and the candidate list skips providers still cooling, so four providers bound the total at 24 a minute. This is what the code permits, not what was observed; the counters that would observe it were read for the first time in 4.61 and were empty because the fixture engine never refuses |
 
-**Two of seven axes set.** That is the result, not a placeholder: six bars remain
-unreadable and each one now names the measurement that would close it and
-whether the instrument exists. Five of the six need an instrument that is
-already in the repository.
+**3 of the 8 rows carry a number.** That sentence is read by
+`axis-ledger.mjs`, which recounts the table and exits 1 if the two disagree,
+because this line said *two of seven* for one pass after A21's row was filled in
+and four documents copied it (4.80). The rows are eight for seven bars: A6
+states two thresholds, a weight ceiling and a per-row main-thread cost, and only
+the first of them is set.
+
+That is the result, not a placeholder: five rows remain unreadable and each one
+names the measurement that would close it and whether the instrument for that
+measurement exists. The aggregate that used to stand here, *five of the six need
+an instrument that is already in the repository*, is removed rather than
+re-counted: it was written in the same pass as the rows it summarised, and two
+of those rows say in their own text that no harness measures the quantity they
+ask for. Read the rows.
 
 ## What this file is not
 
