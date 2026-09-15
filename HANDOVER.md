@@ -288,11 +288,19 @@ every one of the other 16 carries a comment saying why the silence is correct,
 in your own words: *invalid selector, ignore*; *storage unavailable, non-fatal*;
 *invalid regex char in user input, skip silently*. The question is closed.
 
-**Declared traffic matches the code: nothing to report.** **[read]** All ten
-host permissions are named in `PRIVACY.md`. Every `https` host reachable from
-the sources is either one of them or a link rendered in the options page: the
-repository, the privacy document, the issue tracker, the provider's developer
-page. No undeclared network destination. The question is closed.
+**Declared traffic matches the code: nothing to report.** **[read]** The built
+manifest declares **8** host permissions, and every one is named in
+`PRIVACY.md`. Every `https` host reachable from the sources is either one of
+them or a link rendered in the options page: the repository, the privacy
+document, the issue tracker, the provider's developer page. No undeclared
+network destination. The question is closed.
+
+An earlier version of this paragraph said ten. That number came from a regular
+expression over the manifest source, which also matched the two entries of the
+content script's `matches` block. The correct way to count a manifest is to
+read the built `manifest.json`, which is structured data, rather than to
+pattern-match the TypeScript that generates it. Same mistake as the gate count
+in section 6, two hours apart.
 
 **Marked debt: none.** **[re-run]** Zero `TODO`, `FIXME`, `HACK` or `XXX`
 across 89 source files. Your deferrals live in `PLAN.md` with their
@@ -310,6 +318,28 @@ marker. The 24 are where another one can still be hiding, and the list is a
 cheap way to prioritise the bench work in section 5: a language with no marker
 and a script it shares with a bigger neighbour is the exact shape that produced
 Persian, Mongolian and Bulgarian.
+
+### 3.5b Two axes measured from a build, both clean
+
+**[re-run]** Cloned, installed and built both targets from scratch.
+
+| | |
+|---|---|
+| Injected script, gzipped | **90 425 bytes** (88.3 KB) |
+| Injected script, raw | 228.1 KB |
+| `content.js` from the Chromium build and the Firefox build | **byte-identical**, same sha256 |
+| Divergence between the two builds | confined to the manifest: background as service worker against scripts array, plus the gecko block |
+| Built manifest host permissions | 8, matching the source exactly |
+| Web-accessible resources | none |
+
+The identical content script is the result worth keeping. It means anything
+verified about the injected code on one engine holds on the other, so the
+cross-browser axis reduces to the manifest and to the runtime APIs, which is a
+much smaller surface than it looks from outside.
+
+The gzipped figure is offered as a datum rather than as a regression: this
+account does not know the periphery your own weight gate measures, so it is a
+number to compare against your gate, not a verdict from mine.
 
 ### 3.6 Your frame tells every new session something false
 

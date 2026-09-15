@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Eleven. Listed in full because a method log that omits them is an
+Twelve. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -275,6 +275,29 @@ The generalisation, which applies to every self-check in this repository:
 > Repeating a measurement with the same instrument confirms the instrument is
 > deterministic. It says nothing about whether the instrument is correct. Only
 > a second instrument of a different kind can do that.
+
+### 4.12 Counted a manifest with a regex instead of reading the built JSON
+
+**What happened.** Reported ten host permissions, from a regular expression
+over `manifest.config.ts`. The expression also matched the two entries of the
+content script's `matches` block. Building the extension and reading
+`dist/manifest.json` gives **8**, and the source agrees once it is read
+structurally.
+
+**Cost.** One wrong number published in the handover for about two hours.
+
+**Why it is the same mistake as 4.11 and not a new one.** Both counted a
+structure by matching text that happens to sit near it, instead of parsing the
+structure. In both cases the correct instrument existed and was cheaper: bracket
+depth for the gate array, and the generated JSON for the manifest. A build
+produces structured artefacts precisely so that nobody has to guess from the
+source.
+
+The rule this pair yields, which is narrower and more useful than "be careful":
+
+> If the thing you are counting has a built or generated form, count that. A
+> pattern over the source is a guess about how the source will be interpreted,
+> and you are not the interpreter.
 
 ### The pattern across the first three
 

@@ -139,6 +139,27 @@ if (!existsSync(harness)) {
   claim('3.3 runner entries', 40, gateEntries, 'counted structurally, not by line');
 }
 
+// 3.5b Manifest, counted structurally ---------------------------------------
+// Prefer the built manifest, which is structured data. Fall back to slicing the
+// source's host_permissions array rather than matching https across the whole
+// file: that regex also caught the content script's matches block and reported
+// ten where there are eight.
+
+let hostCount;
+let hostSource;
+if (existsSync(join(root, 'dist', 'manifest.json'))) {
+  hostCount = JSON.parse(read('dist/manifest.json')).host_permissions.length;
+  hostSource = 'built manifest';
+} else {
+  const cfg = read('manifest.config.ts');
+  const from = cfg.indexOf('host_permissions');
+  const arr = cfg.slice(from, cfg.indexOf(']', from));
+  hostCount = (arr.match(/'https:/g) || []).length;
+  hostSource = 'source, host_permissions array only';
+}
+claim('3.5b host permissions', 8, hostCount, hostSource);
+claim('3.5b no web-accessible resources', true, !/web_accessible_resources\s*:/.test(read('manifest.config.ts')));
+
 // 3.6 What a clone gets -----------------------------------------------------
 // Checkable without cloning: what git tracks is what a clone receives.
 
