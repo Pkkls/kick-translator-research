@@ -630,6 +630,14 @@ weakening it, which had not happened before in this series.
 > because the cheapest explanation for two identical things is that they are
 > one thing.
 
+**A third missing parameter, found much later, in the same table.** The hashes
+and sizes were taken without recording the Node version they were built under.
+It surfaced only when the older journal's fourth pass, never listed for
+reading, turned out to record the corpus's own releases built on Node 22
+against a pin of 20. The rule above was written about this very table and did
+not reach its third parameter, because the parameter nobody names is the one
+nobody thinks to state.
+
 ### The replication rate, complete
 
 Nine published measurements were put through A22's replication bar, each with a

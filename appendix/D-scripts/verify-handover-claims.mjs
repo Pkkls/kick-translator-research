@@ -276,6 +276,10 @@ const infra = ['scratchpad/harness/playwright.mjs', 'scratchpad/harness/run-gate
 // "0 of 3", not 0: with the files missing, a bare zero would hold over nothing.
 claim('3.6 no gate infrastructure records the browser version', '0 of 3', infra.filter((p) => /\.version\(\)|browserVersion/.test(read(p))).length + ' of ' + infra.length);
 
+// 3.5b: the toolchain the builds above were never tagged with.
+claim('3.5b .nvmrc pins Node 20', '20', existsSync(join(root, '.nvmrc')) ? read('.nvmrc').trim() : 'absent');
+claim('3.5b the packer prints the running Node version', true, existsSync(join(root, 'scripts/pack.ts')) && /process\.version/.test(read('scripts/pack.ts')));
+
 // 3.5b: the weight gate compares upward only.
 const poidsPath = 'scratchpad/audit_poids.py';
 if (existsSync(join(root, poidsPath))) {

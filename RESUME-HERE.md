@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **56/56 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **58/58 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -56,8 +56,8 @@ built on them (4.29).
 added by the rule in 4.36 because pass six is quoted in the handover; reading
 it led back to pass twelve and a unit this study had supplied (4.31).
 
-Never listed and not recorded as read either: L219, L233, L241, L269. (L3 to
-L45 and L103 to L166 were read after the list closed.) They are the opening of the journal and the first passes;
+Every section of this journal is now read. The never-listed ones, L3 to L45,
+L103 to L166 and L219 to L297, were read after the list closed. They are the opening of the journal and the first passes;
 entry 4.27 drew on at least one of them without saying which.
 
 ### Journal of 2026-08-31 (61 sections)

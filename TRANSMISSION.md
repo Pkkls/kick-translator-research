@@ -216,7 +216,10 @@ to count in the units the consumer counts in: the corpus's listing auditor
 measures UTF-16 code units because that is what a web form counts.
 
 **Look for the instrument before building one. An instrument that exists and is
-in no runner is worse than none**, because its presence reads as coverage.
+in no runner is worse than none**, because its presence reads as coverage. So is
+one that refuses correctly on every run: a latency gate that needed a metrics
+build exited 2 with the right reason on every pass, and had therefore never run
+once in its life.
 
 **Read a chronological corpus by position, not by topic.** A theme query returns
 statements ranked by relevance; the best-matching passage is often the one a

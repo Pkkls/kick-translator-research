@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 56 of 56 holding at the commit this was last checked against, and 4
+It reports 58 of 58 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -527,6 +527,18 @@ eleven minutes after that comment: the stake measured at 93703 bytes rather
 than thirty kilobytes, and the swap refused **[yours]**. The comment is the frame's
 problem in section 3.6 on a smaller file: a state written as a fact, true for
 eleven minutes, telling the next reader that a refuted route is still open.
+
+**The build measurements above never recorded the toolchain.** Neither the
+Node version nor the package manager's was written down when the hashes were
+taken, and the machine this account uses runs Node 22 today **[re-run]**, where
+your `.nvmrc` pins 20 and CI builds on 20 **[re-run]**. Your fourth pass on
+2026-08-30 found exactly that drift in your own releases: the 2.9.x packages
+went out built on 22, nothing objected because `engines` allows both, and your
+packer now prints the running version beside every hash **[yours]**. So
+"reproducible across clones" above is reproducible on one machine's Node, and
+it says nothing about a build on the pinned version. Same class as the gzip
+figure, a number without its parameter, and it went unnoticed for the same
+reason: the figure held, so nobody asked what it held under.
 
 **The identical hash was first taken without deleting `dist` between builds**,
 which leaves open that the second build reused output rather than rebuilding.
