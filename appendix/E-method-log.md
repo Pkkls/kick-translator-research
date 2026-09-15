@@ -1512,6 +1512,49 @@ wanted it is rarely the place that owns it. The check that follows is cheap and
 was not being run: for any fact used as an example, open the chapter that owns
 the object and confirm it says the same thing.
 
+### 4.46 The rule about stale numbers had nothing behind it
+
+**What happened.** Chapter 14 states the rule plainly: *a document carries its
+own stale numbers forward until something re-reads it against the source*.
+Nothing re-read it. `verify-handover-claims.mjs` re-derives HANDOVER.md against
+the clone and opens no chapter, which is why its headline is 63 of 63 handover
+claims and not a figure about the thesis at all. Three scripts do open
+`thesis/`: one checks quotations, two are instruments built for a single
+section. So none of the 153 **[reported]**, 12 **[outside]** and 2 **[read]**
+markers in the chapters is read by anything that runs, and
+[4.45](#445-a-chapter-published-a-constant-that-another-chapter-of-the-same-study-had-already-recorded-as-reverted)
+went undetected for exactly as long as that was true. The study's own closing
+lesson, build the check rather than the rule, had been applied to the corpus
+and not to itself.
+
+**What was built.** `probe-consistency.mjs`, in two halves of unequal strength.
+The ratio half keys every "N of M" by denominator and the three content words
+around it: 104 keyed ratios, one key carrying two numerators, and that one is a
+false positive, Turkish against a denominator of four, where the method log
+counts lines identified and chapter 14.1 counts losses after a repair. The
+constant half checks every value written as `NAME = n` against the clone: three
+asserted, two of them environment variables quoted in shell examples and so not
+checkable, one checked and agreeing. It was proved by planting thirty where the
+source says twenty and watching it report the difference.
+
+**What it does not do, stated because the motive invites the opposite reading.**
+The ratio half would not have caught 4.45, which was a constant and not a
+ratio. The constant half sees only values written in one form, and this study
+uses that form once, in the sentence 4.45 itself produced. The check is
+therefore exactly as wide as the convention, and its worth is the second drift
+rather than the first.
+
+**Two defects in the instrument, both found by running it.** The regular
+expression built to find the constant in the source lost its escapes in transit
+and matched nothing, so every constant was reported as absent from the clone,
+which is the alarming direction [the pattern across the first three](#the-pattern-across-the-first-three)
+predicts. And environment variables quoted in shell examples were counted as
+product constants that disagreed. Both were visible in one reading because the
+output prints the source value beside the asserted one rather than a verdict.
+An instrument that prints what it compared can be debugged by its reader; one
+that prints only its conclusion has to be trusted, and this study has no reason
+left to trust one.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

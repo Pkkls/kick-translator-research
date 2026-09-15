@@ -26,12 +26,18 @@ link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
-One report to read rather than to keep green, because it lists false positives
-beside real ones (4.42):
+Two reports to read rather than to keep green, because they list false
+positives beside real ones (4.42, 4.46):
 
 ```bash
 node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
+node appendix/D-scripts/probe-consistency.mjs . /path/to/kick-chat-translator
 ```
+
+The second one's constant half is not a report but a check, and it is the
+narrowest thing in this repository: it compares every value the study writes as
+`NAME = n` against the clone. Today that is one value. Its worth is that it
+fails the moment a second one drifts, which is what 4.45 did undetected.
 
 ## What is done
 
@@ -39,7 +45,7 @@ node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
 - **The method log**, `appendix/E-method-log.md`, every recorded mistake
-- **Six runnable scripts**, `appendix/D-scripts/`
+- **Seven runnable scripts**, `appendix/D-scripts/`
 
 ## The reading, by position
 
