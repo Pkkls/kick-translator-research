@@ -12,9 +12,9 @@
  *   node verify-handover-claims.mjs <path-to-extension-repo>
  *
  * Exit code 0 if every checkable claim holds, 1 otherwise.
- * Claims that need a browser, real traffic, or the ignored harness directory
- * are reported as UNCHECKABLE rather than silently skipped: a verifier that
- * quietly drops what it cannot test reports a clean run over a subset.
+ * Claims that need a browser, real traffic, or a machine this account did not
+ * have are reported as UNCHECKABLE rather than silently skipped: a verifier
+ * that quietly drops what it cannot test reports a clean run over a subset.
  */
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -127,6 +127,27 @@ if (!existsSync(harness)) {
   const runner = readFileSync(join(harness, 'run-gates.mjs'), 'utf8');
   claim('3.3 runner entries', 40, (runner.match(/^ {2}\['/gm) || []).length);
 }
+
+// 3.6 What a clone gets -----------------------------------------------------
+// Checkable without cloning: what git tracks is what a clone receives.
+
+const trackedHarness = git('ls-files scratchpad/harness').split('\n').filter((l) => l.endsWith('.mjs')).length;
+claim('3.6 harness files tracked, so present in a clone', 56, trackedHarness);
+
+const trackedAudits = git('ls-files scratchpad').split('\n').filter((l) => l.endsWith('.py')).length;
+claim('3.6 audit scripts tracked', 8, trackedAudits);
+
+// The frame asserts the opposite of what .gitignore does. Both are checked so
+// the contradiction is visible rather than argued.
+const frame = read('.agent/PROMPT.md');
+claim('3.6 the frame still claims a clone has no harnesses', true, /a fresh clone has no gates, no\s+harnesses and no audits/.test(frame));
+const ignore = read('.gitignore');
+claim('3.6 .gitignore tracks them by exception', true, /!scratchpad\/harness\/\*\.mjs/.test(ignore));
+
+// The README states a test count. It is a fact in a reader-facing document
+// with nothing watching it, which is the profile of a number that drifts.
+const readmeCount = (read('README.md').match(/(\d{3,5}) unit tests/) || [])[1];
+claim('3.6 README states a unit-test count that is now stale', '1032', readmeCount, 'the suite runs 1034');
 
 // Claims that need what this account did not have ---------------------------
 

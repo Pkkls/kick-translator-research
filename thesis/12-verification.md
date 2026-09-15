@@ -107,14 +107,57 @@ The pattern across all of them is that the probe measured a superset of its
 subject. A gate's extraction step is as much a part of its correctness as its
 assertion, and it is the part that is never tested.
 
-## 12.6 The fresh clone
+## 12.6 The fresh clone, and a claim that had rotted
 
-**[reported]** The harness directory is ignored by version control. A fresh
-clone therefore has no probes, no gates and no audits; only the type check,
-the linter, the unit tests and the build survive.
+This section said something false in an earlier version of this study, taken
+from the project's standing frame without being checked. The correction is
+kept because the defect it exposes belongs to the project, not only to this
+study.
 
-The project's own instruction on this is the right one: say so plainly rather
-than reporting green on a suite that was never present.
+**What the frame says.** Its gates section states that the harness directory is
+ignored by version control, so *"a fresh clone has no gates, no harnesses and
+no audits at all"*, and directs the reader to the first open item in the plan,
+*"which is this problem"*.
+
+**What is true [replicated].** Cloned from the public repository at the same
+commit the frame ships at:
+
+| | |
+|---|---|
+| Harness files in the clone | 56 |
+| Audit scripts in the clone | 8 |
+| `.gitignore` lines 26 to 29 | explicit exceptions that track exactly those files |
+| `npm ci` | succeeds |
+| Type check | no errors |
+| Lint | no issues |
+| Unit tests | 1034 passed, 0 failed |
+
+The directory was tracked deliberately, the plan records the decision as done,
+and the frame was never updated. So the frame carries **a fact about the
+repository, and it has rotted**, in a file whose own opening paragraph says it
+contains no fact about the repository because every such claim rots.
+
+That is not a small irony. It is the strongest available demonstration of the
+rule the file states about itself, and it argues that the rule needs a
+mechanism rather than a resolution: a generated file cannot rot, and a prose
+file will, including one written by someone who knows it will.
+
+**What a fresh clone genuinely cannot do**, and the project handles it well.
+The gates need a browser driver, which is deliberately not a dependency: the
+continuous integration runs the four npm commands and never the gates, so
+adding it would pull browser binaries into two jobs for nothing. Run a gate
+without it and the runner **exits non-zero**, prints why, and offers three ways
+to supply it **[replicated]**.
+
+That is the correct behaviour and it is worth stating as the positive result it
+is: the one failure mode this axis exists to catch, a newcomer seeing a green
+that is empty, does not occur here. The suite refuses rather than pretending.
+
+The general statement survives the correction, in a sharper form:
+
+> The verification a project offers is what a clone can run, and the only way
+> to know what that is, is to clone it. A statement in a document about what a
+> clone can do is a claim with an expiry date, and this one had expired.
 
 The general statement:
 

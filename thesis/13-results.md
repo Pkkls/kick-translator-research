@@ -159,6 +159,22 @@ the useful count is an open item.
 | Internal interface locale coverage | 34 keys of 155 declared, per language | [replicated] |
 | Tagged releases in the study period | 16, over three months | [replicated] |
 
+## 13.6b What a fresh clone can actually run
+
+Cloned from the public repository, at the commit the study measured against.
+
+| Step | Result | Tag |
+|---|---|---|
+| `npm ci` | succeeds | [replicated] |
+| Type check | no errors | [replicated] |
+| Lint | no issues | [replicated] |
+| Unit tests | **1034 passed, 0 failed** | [replicated] |
+| Harness files present in the clone | **56** | [replicated] |
+| Audit scripts present | **8** | [replicated] |
+| Gate runner without a browser driver | **exits non-zero**, names the cause, offers three fixes | [replicated] |
+| The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
+| Unit-test count stated in the README | 1032, against 1034 actual | [replicated] |
+
 ## 13.7 Observable surface
 
 | Measurement | Result | Tag |

@@ -305,6 +305,53 @@ cheap way to prioritise the bench work in section 5: a language with no marker
 and a script it shares with a bigger neighbour is the exact shape that produced
 Persian, Mongolian and Bulgarian.
 
+### 3.6 Your frame tells every new session something false
+
+This is the most actionable item in this file and the cheapest to fix.
+
+**[re-run]** Cloned your public repository, at the commit your frame ships at,
+into an empty directory:
+
+| | |
+|---|---|
+| `npm ci` | succeeds |
+| `npm run typecheck` | no errors |
+| `npm run lint` | no issues |
+| `npm run test` | **1034 passed, 0 failed** |
+| Harness files present | **56** |
+| Audit scripts present | **8** |
+
+Your frame's gates section says the opposite: that the directory is gitignored,
+that *"a fresh clone has no gates, no harnesses and no audits at all"*, and that
+the reader should go and read the first open item in `PLAN.md`, *"which is
+this problem"*. Your `.gitignore` lines 26 to 29 are the exceptions that track
+those files. Your plan records the decision as done. The frame was not updated.
+
+**What it costs.** Every session that reads the frame starts believing it has
+no gates, and the frame explicitly tells it to go read a resolved item as if it
+were open. That is a wrong belief injected at the top of every pass, in the one
+file designed to be the only thing a session is given.
+
+**Why it is worth more than the ten minutes it takes to fix.** That file opens
+by saying it contains no fact about the repository, because every such claim
+rots, and gives a list of four claims from an old handoff that were all wrong.
+It then carries a fact about the repository, and that fact has rotted. The rule
+is right and stating it was not enough to enforce it. The mechanism that would
+have caught it is the one you already built: `state.mjs` generates what is
+true, so *"the harness directory is tracked, N files"* belongs in `ETAT.json`
+and the frame should point at it rather than assert it.
+
+**The rest of that axis is a clean pass, and it deserves saying.** The gates
+need a browser driver, which is deliberately not a dependency because CI never
+runs them. Run one without it and the runner **exits non-zero**, names the
+cause and offers three ways to supply it **[re-run]**. The failure this axis
+exists to catch, a newcomer seeing a green that is empty, does not happen here.
+The suite refuses rather than pretending, which is rarer than it sounds.
+
+**One smaller thing from the same run.** Your README states 1032 unit tests.
+The clone runs 1034 **[re-run]**. A number in a reader-facing document with
+nothing watching it.
+
 ---
 
 ## 4. Six rules, each with the measurement that produced it
@@ -435,6 +482,11 @@ Stated so the boundary is visible rather than implied.
 
 Ordered by value over cost, with the cost stated. Nothing here needs a
 decision from anyone else.
+
+**Ten minutes, and it stops a wrong belief at the top of every pass.** Delete
+the claim in your frame's gates section that a fresh clone has no harnesses,
+and replace it with a pointer to the generated state file. Add the tracked
+harness count to `state.mjs` so the claim cannot rot again. Section 3.6.
 
 **One line, ten minutes.** Give `showError` a direction attribute. Your
 interface ships an Arabic locale and that surface renders localised strings

@@ -166,8 +166,11 @@ decides what you can do today rather than what you would like to do:
 
 - **unit** the test runner alone. A fresh clone can run these.
 - **build** a built artifact. A fresh clone can run these.
-- **probe** a browser driven offline, which lives in the ignored harness
-  directory. A fresh clone cannot run these and must say so.
+- **probe** a browser driven offline. Whether a clone can run these is a
+  question to answer by cloning, not by reading a document: check what the
+  clone actually contains and what the runner does when a dependency is
+  missing. A runner that exits non-zero and names the cause is doing its job;
+  one that returns success is the defect this tag exists for.
 - **live** a real session on the host site, launched by hand.
 - **account** a store or dashboard login, which is not yours to hold.
 
@@ -195,10 +198,17 @@ decides what you can do today rather than what you would like to do:
 | A20 | Hostile input | What happens when the message is an attack | unit, probe |
 | A21 | Platform limits | What happens when something fills up or refuses | probe |
 
-**When the probe instrument is absent**, which is what a fresh clone looks
-like, the unit and build axes are still fully open and are most of this file.
-Work them. Name the blocked ones in the report by their tag, as blocked, and
-never as passing. A suite that could not run is not a suite that ran clean.
+**When the probe instrument is absent**, the unit and build axes are still
+fully open and are most of this file. Work them. Name the blocked ones in the
+report by their tag, as blocked, and never as passing. A suite that could not
+run is not a suite that ran clean.
+
+**Establish that absence by cloning, not by believing a file.** A statement
+about what a clone can do has an expiry date, and this specification carried
+one that had expired: it said the probes were unavailable to a stranger, and a
+clone turned out to contain all of them. What was genuinely missing was one
+dependency, which the runner reports by failing. Two different situations, and
+only the second is a limitation.
 
 ### Look for the instrument before building one
 

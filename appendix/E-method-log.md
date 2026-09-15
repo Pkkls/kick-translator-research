@@ -67,7 +67,7 @@ reader.
 | Artefact | Answers | Read it if |
 |---|---|---|
 | [thesis/](../thesis/) | What is hard about translating live chat, linguistically and architecturally | You want the analysis |
-| [HANDOVER.md](../../HANDOVER.md) | What an outside reading found, what to do first, how wrong this account was | You develop the system |
+| [HANDOVER.md](../HANDOVER.md) | What an outside reading found, what to do first, how wrong this account was | You develop the system |
 | [appendix A](A-audit-prompt.md) | What to audit, with a bar and a witness per axis | You want the specification |
 | [appendix B](B-prompt-construction.md) | How the specification was built and where it was wrong | You want the method behind the specification |
 | [appendix C](C-replication.md) | How to re-derive every number | You do not trust a number here |
@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Eight. Listed in full because a method log that omits them is an advertisement.
+Ten. Listed in full because a method log that omits them is an advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
 
@@ -206,6 +206,44 @@ already computes it.
 **Cost.** Minutes, and it produced the more useful corollary: an instrument
 that exists and is in no runner is worse than one that does not exist, because
 its presence reads as coverage.
+
+### 4.9 A pipe swallowed an exit code, in the session that wrote about it
+
+**What happened.** Measured a gate runner's exit code as `cmd | tail; echo $?`,
+which reports the exit code of `tail` and not of the command. Read 0, which
+would have made the runner look like it reports a false green when a
+dependency is missing. Re-run without the pipe: the real code is 1, and the
+runner behaves correctly.
+
+**Cost.** None, caught within a minute, because the number was surprising
+enough to re-check.
+
+**Why it is the worst one in this list.** The project's own frame carries the
+rule *"never pipe a gate into tail"* as one of its named traps, this study
+quotes that rule in [chapter 12](../thesis/12-verification.md#123-the-rules-that-make-a-green-meaningful),
+and the mistake was made anyway, in the pass that was measuring that exact
+axis. Knowing a trap and holding it are different skills, and only the second
+one is worth anything at the moment it matters.
+
+### 4.10 Repeated a claim from the frame without checking it
+
+**What happened.** The frame says a fresh clone has no gates, harnesses or
+audits. The study repeated it in a chapter, in the audit specification's index,
+and in the specification's own degradation rules. A later pass cloned the
+repository and found 56 harnesses and 8 audits present, at the same commit.
+
+**Cost.** One chapter rewritten, one table in the results, the specification's
+instrument tags, and the handover gaining a section. Perhaps ninety minutes.
+
+**What would have prevented it.** The study's own tagging scheme, applied
+honestly. The claim was tagged as coming from the notebooks, which was true,
+and then used as though it had been verified, which it had not. A tag that
+records provenance does nothing if the text then reasons from the claim as
+settled.
+
+**What it produced.** The best finding in the study's verification chapter, and
+the most actionable item in the handover. A rotted claim in a file that opens
+by explaining why claims rot is worth more than the ninety minutes it cost.
 
 ### The pattern across the first three
 
