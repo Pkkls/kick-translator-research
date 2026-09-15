@@ -262,6 +262,9 @@ Cloned from the public repository, at the commit the study measured against.
 | The same, **measured from the page's own world** with the extension loaded and default settings | **6 ids, 1 document attribute, 0 document classes, 24 class names, 0 globals** | [new] |
 | Why the two differ | source counts the catalogue, the page counts one state: `kt-hide-original` needs *keep original* off, and 24 of 99 class names are rendered | [new] |
 | Cheapest detection available to a page script | **one `getElementById`** on a fixed id, at mount | [new] |
+| **Messages scheduled across the startup window, none in the markup** | **19**, weighted under the attach | [new] |
+| When the extension first marked the page | **41 ms** on that timeline | [new] |
+| Messages that arrived before that mark, and how many were lost | **8 arrived, 0 lost** | [new] |
 
 ## 13.8 The three bars execution falsified
 

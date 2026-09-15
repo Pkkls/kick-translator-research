@@ -41,11 +41,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-detection.mjs` | What a script on the host page can query by name to find the extension, enumerated from the page's own main world as A11's witness requires, with a witness identifier added from the page and re-surveyed | [appendix E 4.103](../E-method-log.md#4103-the-detection-surface-measured-in-the-world-the-axis-says-to-measure-it-in) |
 
-**Twenty scripts.** That count is here because two documents stated it from
+| `probe-startup-race.mjs` | Whether a chat message arriving between the container existing and the content script attaching is ever lost. Schedules messages from the page's own world with nothing in the markup, and records when the extension first marks the page so the run can say whether the window was exercised at all | [appendix E 4.104](../E-method-log.md#4104-the-startup-window-exists-eight-messages-were-put-in-it-and-none-was-lost) |
+
+**Twenty-one scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-one take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

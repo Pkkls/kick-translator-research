@@ -4660,6 +4660,76 @@ the page and the survey re-run; all three were named. Without that, every zero
 in the table would have been a statement about the probe. The zero that mattered
 most, no globals, is the one a broken probe would also have produced.
 
+### 4.104 The startup window exists, eight messages were put in it, and none was lost
+
+**What happened.** A5's last unmeasured clause is *the startup race has no
+window in which a message is lost*. The window is real by construction rather
+than by suspicion: the manifest declares `"run_at": "document_idle"`, so the
+content script attaches after the document is parsed. A message in the markup is
+found by the observer's initial scan, which `cold-start.mjs` already showed. A
+message arriving **after the chat container exists and before the script
+attaches** belongs to neither population.
+
+The fixture carries **no message at all**, so nothing is delivered by the
+initial scan and every result is about the gap. Messages are scheduled from a
+script running in the page's main world before any page script, timed from the
+moment the container first exists.
+
+**19 of 19 translated**, at delays from 0 to 800 ms.
+
+**That sentence was nearly published off a sample of one.** The first run used
+0, 5, 10, 25, 50, 100, 200, 400, 800 ms and reported nine of nine, which reads
+as a cleared clause. It is not, and the thing that said so was a control added
+before the result was believed: **when did the extension first mark the page?**
+It marked at 29 ms, and exactly **one** row had arrived before that. Eight of the
+nine greens were about the observer, which was never in question.
+
+Densified below the attach, the run answers the question it was built for:
+
+| | |
+|---|---|
+| messages scheduled | 19, weighted under the attach |
+| the extension first marked the page | **41 ms** |
+| messages that arrived **before** that mark | **8** (0, 1, 2, 3, 4, 6, 8, 11 ms) |
+| lost | **0** |
+
+The clause holds, and the mechanism is why: everything present when the script
+attaches is swept by the initial scan, and everything after is the observer's.
+There is no third case for a message to fall into.
+
+**Scope, stated because a green is the easiest result to overstate.** This
+fixture parses faster than a real Kick page, so the gap here is the narrowest
+the product will ever face. A message lost at these delays would be lost at
+wider ones; the converse does not follow. And A5's *measure* names a second
+race, between the content script and the worker's settings, which this does not
+time.
+
+**Two of this probe's own defects, both caught by guards rather than by
+reading.** The first version put a `MutationObserver` on `document.documentElement`
+from an init script, where it can still be null, so the observer threw, the
+whole timeline died, and **no rows were appended at all**. The run reported *0 of
+9 rows reached the DOM, so the timeline did not run and this measured nothing* —
+which is the rule *a probe that measured nothing must fail* doing exactly its
+job, on the probe that was written to apply it. The second is the sample of one
+above, caught by the attach control.
+
+**The pattern in both is the same and it is the pass's real lesson.** A probe
+that reports greens is the hardest kind to check, because the output looks like
+the answer you wanted. Both guards here were written before the first run, and
+both fired. **The guard you add after seeing a green is a guard you will write
+to agree with it.**
+
+**A third guard fired in the same pass, from 4.93.** Adding this probe took the
+script count to twenty-one, and `scripts-index.mjs` refused its own README:
+*the bold count is missing or in a form this gate cannot read*. Its word map
+stopped at twenty and its pattern was `[A-Za-z]+`, which a hyphenated compound
+does not match. The README was correct and the gate could not read it. **It
+failed closed**, which is the difference 4.76 draws between a check whose bug
+makes it throw and one whose bug makes it pass, and only the second is worse
+than no check. Both the map and the two patterns now take a compound, and the
+wrong-count witness was re-run to confirm the widening did not turn the gate
+into a formality.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -53,13 +53,24 @@ const WORDS = {
   eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17,
   eighteen: 18, nineteen: 19, twenty: 20,
 };
-const wordToNumber = (w) => WORDS[w.toLowerCase()] ?? Number(w);
+// Compounds past twenty are written with a hyphen, and the first count to cross
+// that line made this gate refuse to read its own README rather than pass it
+// silently (4.104). Refusing was the right failure; the map was simply short.
+const wordToNumber = (w) => {
+  const k = w.toLowerCase();
+  if (k in WORDS) return WORDS[k];
+  if (k.includes('-')) {
+    const parts = k.split('-').map((x) => WORDS[x]);
+    if (parts.every((n) => typeof n === 'number')) return parts.reduce((a, b) => a + b, 0);
+  }
+  return Number(w);
+};
 
 // Both places the count is written, so that fixing one and not the other is
 // caught. That is exactly how nine and ten came to stand in one file (4.81).
 const stated = [
-  [/\*\*([A-Za-z]+|\d+) scripts\.\*\*/, 'the bold count'],
-  [/All ([A-Za-z]+|\d+) take a path argument/, 'the "All N take a path argument" line'],
+  [/\*\*([A-Za-z-]+|\d+) scripts\.\*\*/, 'the bold count'],
+  [/All ([A-Za-z-]+|\d+) take a path argument/, 'the "All N take a path argument" line'],
 ].map(([re, what]) => {
   const m = readme.match(re);
   return { what, raw: m && m[1], value: m ? wordToNumber(m[1]) : null };
