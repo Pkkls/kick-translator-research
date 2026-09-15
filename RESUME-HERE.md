@@ -34,11 +34,15 @@ entries in the method log, are deliberately not restated here (4.30).
 - **The method log**, `appendix/E-method-log.md`, every recorded mistake
 - **Five runnable scripts**, `appendix/D-scripts/`
 
-## The reading that is still unfinished, and it is the productive one
+## The reading, by position
 
-The last eight passes all came from reading the project's journals **by
-position**, not by topic search. Every one of them produced either a correction
-to something published here or a rule worth keeping. That is where to continue.
+Every listed section of both journals is now read. Each pass of the session
+that finished the list produced a correction to something published here, a
+rule, or both, including the handover's most visible item (3.7), which sat in
+the last stretch of the newer journal. What remains unread is named under each
+journal below as never listed; the rule in 4.36 says to open the section after
+anything quoted before trusting the quotation, and that is the cheapest place
+to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
@@ -120,6 +124,16 @@ Nine published measurements went through the replication bar: **five changed,
 four held, one was published without its parameter**. The full table is in
 [appendix E](appendix/E-method-log.md) under "the replication rate, complete".
 
+That rate is left as it was, deliberately. The session that finished the
+reading list re-checked many more published statements, entries 4.29 to 4.40,
+and most of them were transcriptions or restatements rather than measurements:
+a count restated in nine places, a certainty raised in copying, a unit
+supplied, a quotation translated. Merging them into the nine would mix two
+populations into one rate. Of the measurements among them, the orphan count
+changed from 35 to 29, the identifier stake from thirty kilobytes to 93703
+bytes, and the internal links from "all resolve" to nine broken; the project's
+stripper figures, the one-declaration box model and the 22 axes held.
+
 **Never measured here, and each needs something this account did not have:**
 
 - Anything observed in a browser. Every source-derived claim is about call
@@ -133,13 +147,15 @@ four held, one was published without its parameter**. The full table is in
 
 ## Open items handed to the developing account
 
-In [HANDOVER.md](HANDOVER.md) section 8, ordered by value over cost. The two
-cheapest with real value:
+In [HANDOVER.md](HANDOVER.md) section 8, ordered by value over cost. The
+three to read first:
 
 1. The frame tells every new session that a fresh clone has no harnesses. It
    has 56. Ten minutes, and it removes a false belief injected at the top of
    every pass.
-2. `scripts/i18n-check.mjs` reports 150 missing keys per locale on files that
+2. The pause in the released build is a global, synced off switch, and the
+   per-channel fix sits on an unmerged branch with one failing case (3.7).
+3. `scripts/i18n-check.mjs` reports 150 missing keys per locale on files that
    are complete. Twenty minutes, and it repairs an instrument rather than a
    product.
 
