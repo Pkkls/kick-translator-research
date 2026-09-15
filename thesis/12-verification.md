@@ -188,6 +188,15 @@ the artefact, which [chapter 3](03-method.md) covers. It can also **produce the
 expected red through an unintended path**, and a red obtained by a crash is not
 a red from an assertion. Read *why* a witness went red, not merely that it did.
 
+**[reported]** And the corpus had met it fourteen passes earlier, in the same
+journal. In pass ten a witness exited 1 on a Playwright timeout, because
+removing the step under test also hid the tile the harness clicked next, and the
+author wrote the rule down then: neither attempt *was a witness until it failed
+for the stated reason*. Pass twenty-four recognised the mechanism when it came
+back, and took the direct measurement as its evidence instead. A rule held correctly, by
+the person who wrote it, did not stop the second instance; it made the second
+one legible.
+
 ## 12.4b Flakiness filed as weather
 
 **[reported]** The work queue once carried the item "the live gates are not

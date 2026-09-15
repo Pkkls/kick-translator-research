@@ -428,7 +428,10 @@ keyboard with focus visible. No animation when reduced motion is set. No
 surface that breaks at 200 percent zoom or in right-to-left.
 
 **Witness** shrink one control below the floor and drop one contrast pair below
-the ratio; both gates name the element.
+the ratio; both gates name the element. Then audit the surface in a state that
+renders fewer controls than it should, such as a filtered list: a gate that
+measures the targets it finds passes on two as readily as on ninety-six, so the
+number of controls audited is asserted against the number expected.
 
 ### A8. Internationalisation of the product's own interface
 

@@ -42,7 +42,8 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 8, 9, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
+Read so far: passes 3, 6, 8, 9, 10, 12, 14, 15, 16, 20, 22 to 28 and "Left
+behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -52,7 +53,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L418 | Pass ten: the bar panel gets the same treatment |
 | L486 | Pass eleven: the gates stop depending on a browser this machine happens to have |
 | L569 | Pass thirteen: the thing the product is for |
 | L719 | Pass seventeen: the number the listing sells |
@@ -91,7 +91,10 @@ promoted to the handover before something differently shaped has run.
   by `querySelector` presence. Read together, a gear hidden by a stylesheet
   would pass both. The witness: in a copy of a Chrome build, never the working
   `dist/` (the journal's pass twenty-seven is why), hide `.kt-float-opts` and
-  run both gates. If this reading is right, both stay green.
+  run both gates. If this reading is right, both stay green. The corpus named
+  this exact trap in its tenth pass, for another gate: *it measures the targets
+  it finds, it does not count them*. That was repaired there with a row count;
+  `bar-widths` asserts no count of its targets. Still one instrument.
 
 ## What is measured and what is not
 

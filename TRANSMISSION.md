@@ -158,7 +158,12 @@ the count reaching zero on unchanged product code.
 
 **A probe that measured nothing must fail.** A pass over an English chat
 translated to English reports zero translations and zero errors, which is
-indistinguishable from success.
+indistinguishable from success. **And one that measured a fraction must know
+the whole.** A target-size gate passed on a dump taken while a filter left 2
+rows of 39 visible: it measures the targets it finds and never counts them. The
+repair asserts the number of rows present against the number that should be.
+Its first version counted rows in the dump's text and passed in both states,
+because the inlined stylesheet's selectors matched too.
 
 **Never file variance as an environmental property.** "The live gates are
 non-deterministic" is terminal: it explains the observation, requires no work,
@@ -208,6 +213,11 @@ here". It was executed. It was wrong.
   **`ls` is rewritten too**, into a display with sizes, and a pipeline reading
   it as a list of names returned 91 lines for 56 files. Call `/usr/bin/ls` and
   `/usr/bin/grep` when the output feeds another command.
+- **`git checkout -- .` is not a way to ask a question about history.** The
+  corpus ran it after applying a stash, then dropped the stash, and lost two
+  modified harnesses. To look at the last commit without touching the tree,
+  export it: `git archive HEAD | tar -x -C <empty dir>`. A session that finds
+  uncommitted work it did not write (4.29) reads it before anything else.
 - **An edit helper that refuses to write when its search string is absent** is
   what kept silent no-op edits out of this work. Keep that property.
 
