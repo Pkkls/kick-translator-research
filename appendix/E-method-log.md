@@ -3015,6 +3015,37 @@ methodological, and it is written here because this log is where the
 environment traps go: **build no pattern by concatenation inside `node -e`;
 write the script to a file.**
 
+### 4.79 The cache key holds two of six dimensions, and its test is thorough about the two
+
+**What happened.** A1's last clause asks that every dimension changing the
+answer be in the cache key, proven by a collision test. The key is
+`` `${targetLang}::${normalizeForKey(text)}` ``. Two dimensions.
+
+At least four more change the answer and are absent: the **provider**, four of
+which are configurable and give different translations; the **source-language
+hint**, sent as `sl=` and, by the changelog's own account, capable of turning a
+translation into something the text is not; DeepL's **formality**; and DeepL's
+**channel context**, built from recent lines.
+
+**The provider is stored in the entry and unused in the key.** A cache entry
+carries `translatedText`, `detectedLang`, `provider`, `storedAtMs`. So the
+system knows which engine produced each answer and does not consult that when
+deciding whether the answer fits the current question. Switching provider
+returns the previous one's output, labelled with the previous one's name, which
+is at least honest. Nothing invalidates on a settings change: the only clear is
+a button on the options page.
+
+**And the collision test is good, which is the part worth keeping.**
+`cache.test.ts` proves cosmetic variants collapse, `WWWW` with `wwww`, `lol!!`
+with `LOL`, that three-or-more repeats fold to two in Latin and in Han, and that
+target languages stay apart. Every assertion is about a dimension the key has.
+**A test written against a key can only test the dimensions the key has**, so a
+narrow key and its thorough test agree perfectly and the agreement proves
+nothing about what was left out. That is A22's *zero verifier sharing its
+technique with its subject*, arriving in the mildest possible form: not a
+verifier reusing its subject's code, but one reusing its subject's idea of what
+matters.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
