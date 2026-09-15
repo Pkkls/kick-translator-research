@@ -1595,6 +1595,55 @@ entry rather than the first.
 registration is a change to system settings, which this account does not make,
 so the finding is reported to the person whose machine it is and stops there.
 
+### 4.48 The witness could not be run as written, and running half of it beat the prediction
+
+**What happened.** The first candidate in the resume file carried a fully
+specified experiment: hide `.kt-float-opts` in a copy of a Chrome build, never
+in the working `dist/`, run `bar-widths.mjs` and `bar-live.mjs`, and if the
+reading is right both stay green. It had sat there as one instrument, a
+reading, waiting for something differently shaped.
+
+It cannot be run as one gesture. `bar-widths.mjs` loads a built extension
+through `KT_EXT`, and `bar-live.mjs` bundles `src/content/injector` with
+esbuild when it starts and takes no build at all. A stylesheet edited inside a
+copied build is invisible to the second gate, so the sentence "hide it and run
+both gates" names one action that reaches one gate. Reaching the other means
+editing the working tree, which is what the witness forbids.
+
+The half that runs was run. Baseline on the intact build is green, and prints
+what the reading predicted: `kt-float-lang` 41 by 24, `kt-float-power` 26 by
+24, `kt-float-opts` 25 by 24, and the on-device chip already at 0 by 0, skipped
+by the guard `(c.l > 0 || c.h > 0)`. On a copy with the controls hidden by
+their own stylesheet, the gate is **green at all ten widths and exits 0**, and
+both controls report 0 by 0, which is indistinguishable from the chip that is
+absent by design.
+
+**What beat the prediction.** Two things, and neither was in the candidate. The
+declaration is a grouped selector, `.kt-float-power,.kt-float-opts`, so a single
+`display:none` takes the gear and the pause button together: the experiment
+that was meant to remove one route to the options page removed every control on
+the bar, and the gate still reported that no width breaks it. And the 24 pixel
+minimum that the gate exists to enforce, `min-inline-size:24px;min-block-size:24px`,
+is a declaration in that same rule. The guarantee and the change that voids it
+are one property apart, and the instrument watching the guarantee is silent.
+
+**A mistake caught before it produced a result.** The first copy edited the
+first `.kt-float-opts{` in the bundle. A later rule in the same stylesheet sets
+`display:inline-flex` on the grouped selector and would have overridden it, so
+the run would have come back green with the gear fully visible, and green is
+the predicted answer. It would have read as confirmation. What caught it was
+printing the two occurrences before running rather than after, and the habit
+comes from [4.19](#419-an-enumeration-that-under-counted-which-inverts-the-bias-rule):
+an instrument that can only fail toward the expected answer has to be checked
+against something other than its own output.
+
+**Why the specification was wrong.** The witness was written while reading both
+gates for what they assert, and never for what they consume. Two gates that
+check the same object look interchangeable in a note about the object. They are
+not interchangeable in a command line, and the difference does not appear until
+someone tries to type it. **An experiment is not specified until its inputs
+are, and a witness nobody has run is a plan, not a witness.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

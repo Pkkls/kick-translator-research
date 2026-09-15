@@ -130,21 +130,40 @@ Before publishing anything from a section, open the section after it. A
 correction lands in the next entry at the earliest, and
 [4.36](appendix/E-method-log.md) is what skipping that cost.
 
-## Candidates with one instrument, waiting for a second
+## Candidates with one instrument, and the one that got its second
 
-Not findings. Each is recorded so it is not rediscovered, and so it is not
-promoted to the handover before something differently shaped has run.
+Recorded so they are not rediscovered, and so nothing reaches the handover
+before something differently shaped has run. The first entry is no longer a
+candidate: the differently shaped thing ran. The second is still waiting.
 
-- **The width gate may not see a hidden button** **[read]**. `bar-widths.mjs`
-  skips every target whose rounded size is 0 by 0, not only the on-device chip
-  its comment names, and `bar-live.mjs` asserts the gear and the pause button
-  by `querySelector` presence. Read together, a gear hidden by a stylesheet
-  would pass both. The witness: in a copy of a Chrome build, never the working
-  `dist/` (the journal's pass twenty-seven is why), hide `.kt-float-opts` and
-  run both gates. If this reading is right, both stay green. The corpus named
-  this exact trap in its tenth pass, for another gate: *it measures the targets
-  it finds, it does not count them*. That was repaired there with a row count;
-  `bar-widths` asserts no count of its targets. Still one instrument.
+- **The width gate does not see a hidden button. Run, not read** (4.48). This
+  was the candidate above this line and it is a finding now, for the half of it
+  that could be executed. The witness as written could not: it said to hide
+  `.kt-float-opts` in a copy of a build and run both gates, and the two gates do
+  not read the same artefact. `bar-widths.mjs` loads a built extension through
+  `KT_EXT`; `bar-live.mjs` bundles `src/` with esbuild when it starts and has no
+  build hook at all, so a stylesheet edited in a copied build is invisible to it.
+  What was executed, on a copy and never on `dist/`: baseline green, with
+  `kt-float-lang` at 41 by 24, `kt-float-power` at 26 by 24, `kt-float-opts` at
+  25 by 24 and the on-device chip already at 0 by 0. Then the same build with
+  the controls hidden by their own stylesheet: **green at all ten widths, exit
+  0**, both controls reporting 0 by 0, indistinguishable from the chip the skip
+  was written for. Stronger than the prediction in two ways. The rule is a
+  grouped selector, `.kt-float-power,.kt-float-opts`, so one `display:none`
+  removes the gear **and** the pause button together; and the 24 pixel minimum
+  the gate exists to enforce is a declaration in that same rule, one property
+  away from the change that voids it. The corpus named this trap in its tenth
+  pass for another gate, *it measures the targets it finds, it does not count
+  them*, and repaired it there with a row count. `bar-widths` still asserts no
+  count of its targets.
+  **The `bar-live.mjs` half is still one instrument**, now for a stated reason
+  rather than for want of trying: reaching it means editing `src/`, which is the
+  working tree the witness forbids touching.
+- **The weight gate passes without measuring on an instrumented build**
+  **[read]**. `audit_poids.py` exits 0 with a message when `dist/` holds the
+  metrics build, so a run of the gates with `--no-build` after that build
+  counts it green. Whether the runner's default build makes this unreachable
+  in practice was not read.
 - **The weight gate passes without measuring on an instrumented build**
   **[read]**. `audit_poids.py` exits 0 with a message when `dist/` holds the
   metrics build, so a run of the gates with `--no-build` after that build
