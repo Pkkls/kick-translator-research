@@ -56,8 +56,8 @@ built on them (4.29).
 added by the rule in 4.36 because pass six is quoted in the handover; reading
 it led back to pass twelve and a unit this study had supplied (4.31).
 
-Never listed and not recorded as read either: L3 to L45, L103 to L126, L219,
-L233, L241, L269. They are the opening of the journal and the first passes;
+Never listed and not recorded as read either: L219, L233, L241, L269. (L3 to
+L45 and L103 to L166 were read after the list closed.) They are the opening of the journal and the first passes;
 entry 4.27 drew on at least one of them without saying which.
 
 ### Journal of 2026-08-31 (61 sections)

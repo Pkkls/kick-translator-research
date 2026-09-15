@@ -665,7 +665,12 @@ lockfile in the repository's history, and the resolver's own message says it is
 not a dependency: it loads whichever `node_modules/playwright` an environment
 variable, a local kit path or a local install supplies **[re-run]**. Nothing
 records which version a run used, not the runner, not the resolver, not
-`ETAT.json` **[re-run]**.
+`ETAT.json` **[re-run]**. Your second pass that same morning had decided it on
+purpose, and written why: CI never runs these gates, so a devDependency would
+pull browser binaries into both installs for nothing **[yours]**. The sentence
+in the eleventh pass contradicts a decision nine passes older, which is why it
+reads as a slip rather than a design, and why the missing record matters more
+than the missing pin.
 
 **The replay rule, from the day after your weather sentence.** A pooled run
 failed one gate on an aborted navigation, passed replayed alone, and the entry

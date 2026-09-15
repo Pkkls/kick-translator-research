@@ -949,6 +949,12 @@ thesis's, and tagged a fact about French grammar **[new]**, which is
 [4.13](#413-the-provenance-scheme-had-no-slot-for-borrowed-facts) committed
 again by an account that had the entry in its repository.
 
+The first false claim was the corpus's own founding one. The older journal
+opens on a handoff whose four statements about the repository were all wrong,
+the first of them that the tree was clean, and on the rule it drew: a frame and
+a state cannot live in the same file. This study's resume file was a frame
+carrying a state, and it repeated the first of the four.
+
 Nothing in it had been published, so it went through the replication bar before
 anything else. The second instrument,
 [`probe-emote-stripper.mjs`](D-scripts/probe-emote-stripper.mjs), differs from
