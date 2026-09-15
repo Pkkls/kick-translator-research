@@ -2219,6 +2219,56 @@ changed, so nothing has ever added a second entry to it. A fallback list is a
 scar record, and the selector with no scars is the one with no protection,
 which inverts the intuition that the stable thing is the safe one.
 
+### 4.61 Deleting the dependency tree of the repository under study, through a junction
+
+**What happened, and it is the worst thing this session did.** Measuring A15
+([4.52](#452-the-reproducibility-claim-nobody-had-run-and-it-holds-exactly))
+needed a build of the tagged commit, so `v2.10.0` went into a detached worktree
+under the system temp directory and its `node_modules` was supplied as a
+**directory junction** pointing at the corpus's own, because the lockfile was
+unchanged between the tag and `master` and copying 280 packages was avoidable.
+
+When the worktree was removed, the cleanup was `git worktree remove --force`
+followed by `rm -rf` on the same path. `rm -rf` walked through the junction and
+deleted what it pointed at. The corpus's `node_modules` went from 280 entries to
+zero.
+
+Nothing noticed for two passes. `node_modules/` is gitignored, so
+`git status --short` stayed empty and the sentence this study repeats after every
+pass, *working tree clean*, stayed true and stopped meaning anything. It
+surfaced only when `npm run build:metrics` could not find `cross-env`, four
+commands into an unrelated measurement.
+
+**Cost.** None permanent. `npm ci` restored 280 entries from the lockfile, the
+release build produced a byte-identical `content.js` at 228.1 KB, and the weight
+gate read `+0.16 %` exactly as it had before. But for two passes this study held
+a broken checkout of the repository it exists to describe, and reported clean
+trees the whole time.
+
+**The third of its family, and the family now has a name.**
+[4.50](#450-an-edit-that-duplicated-the-paragraph-after-it-pushed-found-by-reading-the-file-for-something-else)
+reverted a planted test value with `git checkout --` on a file that also held
+uncommitted work, and lost the work. [4.51](#451-a-stop-condition-with-a-term-nobody-could-evaluate)
+did the same on a file that was untracked, so git restored nothing and the
+planted deletion stayed. This one reached through a junction. Three different
+operations, three different mechanisms, **one shape: a cleanup whose reach was
+read as the thing it was aimed at.** A junction is the sharpest of the three
+because the whole point of a junction is that it is not a copy, and the whole
+point of `rm -rf` on a scratch directory is that nothing inside it matters.
+
+**What the check would have been.** Not vigilance. `git status` cannot see an
+ignored directory emptying, and that is correct behaviour, so the check has to
+be somewhere else: a harness that needs `node_modules` should say so when it is
+absent instead of failing four commands later on a missing binary. The corpus
+already does this in two places, `playwright.mjs` exits 2 with instructions when
+Playwright is missing and `metrics-offline.mjs` exits 2 when `dist/` carries no
+metrics, and both of those distinctions are the reason this was diagnosed in one
+command once it did surface. **The repository had the pattern; the thing that
+broke was outside everything that uses it.**
+
+**And do not link a live tree into a scratch directory.** Copy, or point the
+tool at the original. The four minutes saved bought a two-pass silent breakage.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

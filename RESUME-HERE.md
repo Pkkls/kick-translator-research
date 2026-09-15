@@ -8,7 +8,10 @@ anything.
 
 ## State
 
-Everything in this repository is pushed. Working tree clean. That sentence was
+Everything in this repository is pushed. Working tree clean. **That sentence is
+weaker than it reads**: `node_modules/` is gitignored, so a clean tree said
+nothing while the clone under study had no dependency tree at all for two
+passes (4.61). Check the clone builds, not only that git is quiet. That sentence was
 false once, and the uncommitted draft behind it is
 [entry 4.29](appendix/E-method-log.md), so check it rather than read it. The
 first command must print nothing, and the four after it are the gates that must
@@ -29,7 +32,7 @@ nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
 The specification's own first stop condition is countable now rather than an
-impression: **18 of the 22 axes carry a verdict and 4 do not**, and none is
+impression: **19 of the 22 axes carry a verdict and 3 do not**, and none is
 closed outright, though A15's reproducibility half is: both published archives
 rebuild byte-identical from the tag (4.52).
 [Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that
