@@ -2458,6 +2458,40 @@ accept that every measurement taken mid-read is a coin flip between a discovery
 and a rediscovery. This study has now spent one pass on the wrong side of that
 flip, and the flip was avoidable by reading fifty-six more lines.
 
+### 4.66 A store figure that moved, found by reading the entry that already held it
+
+**What happened.** [4.52](#452-the-reproducibility-claim-nobody-had-run-and-it-holds-exactly)
+read both store pages, as A15's bar requires in those words, and recorded Chrome
+at 2.9.2, updated 30 August, **112 users**, and AMO at 2.7.0, **4 daily users**.
+Continuing the reading of the queue, the open item on the install rate records
+the same two pages: *Chrome carries 2.9.2, updated 2026-08-30, **75 users**, and
+its description opens on "NEW IN 2.9.2"* and *AMO carries 2.7.0, reviewed
+2026-08-16, 4 daily users*.
+
+Version, date and the AMO figure agree exactly. The Chrome user count does not:
+75 there, 112 here, **up 49 percent**, and both readings describe the same
+version updated on the same day. Re-read a second time in this session to be
+sure it reproduces: 112.
+
+**What it is worth.** The queue's item is blocked on kil because the analytics
+behind the 40.5 percent install rate need an account. The user count does not:
+it is on the public page, which is why both readings exist. And the growth
+happened on a listing that did not change, which speaks to that item's own
+proposed experiment. The item says *the experiment is a rewrite rather than a
+resubmission*; the baseline moved 49 percent without either, so a rewrite
+measured against the old number would credit itself with movement that was
+already happening.
+
+**And it is [4.65](#465-measured-a-thing-whose-answer-was-fifty-six-lines-further-down-the-file-i-had-stopped-reading)
+again, with the sign reversed.** Both were measurements taken while the file
+that discusses them was still unread. The first turned out to be a rediscovery
+of something the queue already had, at the same value. This one turned out to be
+an update, because the value had moved. **The same mistake produced a waste once
+and a finding once**, and nothing about how it was made distinguishes the two
+cases in advance. That is the argument for finishing the read: not that
+measuring mid-read is always wasteful, but that it makes the outcome a matter of
+luck rather than of method.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
