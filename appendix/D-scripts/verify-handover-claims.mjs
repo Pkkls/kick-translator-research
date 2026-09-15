@@ -296,6 +296,7 @@ if (existsSync(join(root, poidsPath))) {
 const gitAnswer = (cmd) => { try { return git(cmd); } catch { return ''; } };
 const BRANCH = 'origin/feat/nav-monde-isole';
 claim('3.7 the released pause writes the global switch', true, /onToggle:\s*\(enabled\)\s*=>\s*void patchSettings\(\{\s*enabled\s*\}\)/.test(gitAnswer('show v2.10.0:src/content/index.ts')));
+claim('3.7 the store versions 2.9.2 and 2.7.0 write the same switch', '2 of 2', ['v2.9.2', 'v2.7.0'].filter((t) => /onToggle:\s*\(enabled\)\s*=>\s*void patchSettings\(\{\s*enabled\s*\}\)/.test(gitAnswer(`show ${t}:src/content/index.ts`))).length + ' of 2');
 claim('3.7 settings are written to synced storage', true, /chrome\.storage\.sync\.set\(\{\s*\[STORAGE_KEY_SETTINGS\]/.test(read('src/shared/settings.ts')));
 claim('3.7 per-channel pause on master / on the branch', 'no / yes', (gitAnswer('grep -l pausedChannels master -- src') ? 'yes' : 'no') + ' / ' + (gitAnswer(`grep -l pausedChannels ${BRANCH} -- src`) ? 'yes' : 'no'));
 claim('3.7 the branch is not merged', true, gitAnswer('branch -r --no-merged master').includes('feat/nav-monde-isole'));

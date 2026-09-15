@@ -129,6 +129,13 @@ that four unit tests also caught. Look for a break only that gate can see, as
 the corpus's next gate did: short-circuiting hover arming left 621 of 621 unit
 tests green and turned that gate red.
 
+**A witness the device under test can modify witnesses nothing.** A probe
+comparing headed and headless browser modes routed all of them through the
+shim that sets headless, so the headed control came out windowless too and
+all four lines agreed. The control has to reach the subject by a path the
+thing being tested does not touch; the repair also asserted the browser's own
+user agent instead of trusting the flag just passed.
+
 **Read why a witness went red, not merely that it did.** A witness can produce
 the expected failure through an unintended path: a layout fix removed, the panel
 widens, a click target moves out of reach, and the harness throws on a timeout
@@ -280,6 +287,10 @@ here". It was executed. It was wrong.
   `/usr/bin/grep` when the output feeds another command. The corpus hit the
   same hook with `diff`, which answered "Files are identical" on two files six
   lines apart, and it rewrites `npx` to `npm`. Compare with a second tool.
+- **`git log` output is rewritten for display too.** After a merge made with
+  `--no-ff`, a condensed `git log --oneline` showed what looked like a
+  fast-forward, while `git rev-parse HEAD` named another object. Read the graph
+  with `git cat-file -p HEAD`, which prints the parents.
 - **Paths here contain spaces.** The corpus's `for g in $(find ...)` split on
   one and reported a single repository forty-four times. Quote, or read with
   `while IFS= read -r`.
@@ -316,11 +327,13 @@ here". It was executed. It was wrong.
   lists decisions blocked on a single chat capture that has never been taken.
   Read its later entries before counting them: one was closed in detection,
   and one depends on reader settings a capture does not record (thesis 14.1).
-- **No store figures taken here**, which need accounts. The corpus holds one
-  reading: 85 installs to 210 first visits over eight months, and listing views
-  by localised page. Both measure the listing, not the product in use. This
-  line used to say only that the figures need accounts, which is true of this
-  study and false of the corpus.
+- **No store figures taken here.** The analytics need accounts, and the corpus
+  holds one reading: 85 installs to 210 first visits over eight months, and
+  listing views by localised page, both measuring the listing rather than the
+  product in use. The store pages themselves need nothing: they show the
+  published version and a user count, and the corpus's state generator reads
+  them without an account. This line used to say only that the figures need
+  accounts, which was true of part of them and false of the corpus.
 - **The on-device engine's availability across real installs**, which is the
   single measurement that would convert a known seventy-fold mechanism
   advantage into a statement about users.

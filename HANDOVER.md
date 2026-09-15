@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 58 of 58 holding at the commit this was last checked against, and 4
+It reports 59 of 59 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -534,7 +534,10 @@ taken, and the machine this account uses runs Node 22 today **[re-run]**, where
 your `.nvmrc` pins 20 and CI builds on 20 **[re-run]**. Your fourth pass on
 2026-08-30 found exactly that drift in your own releases: the 2.9.x packages
 went out built on 22, nothing objected because `engines` allows both, and your
-packer now prints the running version beside every hash **[yours]**. So
+packer now prints the running version beside every hash **[yours]**. Your
+release entry for 2.10.0 records the packer's warning and draws the conclusion:
+every archive built on that machine, the published ones included, is not
+bit-for-bit reproducible with CI **[yours]**. So
 "reproducible across clones" above is reproducible on one machine's Node, and
 it says nothing about a build on the pinned version. Same class as the gzip
 figure, a number without its parameter, and it went unnoticed for the same
@@ -722,7 +725,10 @@ the cause was not located.
 master the handler is `onToggle: (enabled) => void patchSettings({ enabled })`,
 and settings are written to `chrome.storage.sync`. A pause on one stream is a
 pause on every stream, in every tab, on every browser the reader syncs.
-`pausedChannels` exists only on the branch, which is unmerged.
+`pausedChannels` exists only on the branch, which is unmerged. And no store
+reader has 2.10.0: your newer journal read the stores at 2.9.2 on Chrome and
+2.7.0 on Firefox **[yours]**, and both tags carry the same handler **[re-run]**.
+Every version any reader can have writes the global switch.
 
 **[mine]** Holding a fix that fails one case of four is a defensible call, and
 it is yours to make. What this file can add is the comparison: the branch's

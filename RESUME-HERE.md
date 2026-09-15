@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **58/58 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **59/59 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -83,7 +83,7 @@ read beside L263 for the same reason.
 live-debugging sequence, is read; it produced handover section 3.7 (4.40).
 
 Never listed and not recorded as read either (L3 to L136, L284 to L517 and
-L598 to L886 read after the list closed): L970 to L1204.
+L598 to L886 and L970 to L1102 read after the list closed): L1103 to L1204.
 The earlier sessions' reading list names topics rather than line numbers for
 some of these, so part of that range may have been read without being
 recorded.
@@ -147,10 +147,11 @@ stripper figures, the one-declaration box model and the 22 axes held.
   sites, not about what renders.
 - Any frequency in real chat traffic.
 - The on-device engine's availability across real installs.
-- Store figures, which need an account. **Not the same as absent**: the
+- Store analytics, which need an account. **Not the same as absent**: the
   corpus holds one reading, an install ratio and listing views by language
   (the older journal's eighth pass, now cited in HANDOVER.md 3.5). They
-  measure the listing, not the product in use.
+  measure the listing, not the product in use. Published versions and user
+  counts are on the public store pages and need no account at all.
 
 ## Open items handed to the developing account
 
