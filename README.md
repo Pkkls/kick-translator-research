@@ -99,6 +99,8 @@ claims authorship of the engineering.
 
 ## Start here if you are continuing this work
 
+[TRANSMISSION.md](TRANSMISSION.md) carries everything transmissible: the rules
+learned, the environment traps, the dead ends, and what was never measured.
 [RESUME-HERE.md](RESUME-HERE.md) carries the exact state: what is verified, what
 the two scripts must report, and the journal sections still unread with their
 line numbers. The unfinished reading is the productive part.
