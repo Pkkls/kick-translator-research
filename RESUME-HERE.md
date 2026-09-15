@@ -93,6 +93,19 @@ The four sections added by the rule in 4.36, each the one after a section
 already quoted, are read: L518, L589, L928, L962. L962 carried the replay rule
 now in chapter 12.4b.
 
+### The rest of the corpus, never read by position
+
+Both journals are read end to end. The corpus has four more files this study
+has only ever searched or quoted by topic, which is the failure 4.22 names.
+Next, in the order most likely to correct something published here:
+
+| File | Lines | Why first |
+|---|---|---|
+| `.agent/PROMPT.md` | 219 | the frame; handover 3.6 makes claims about it |
+| `HANDOFF.md` | 388 | chapter 8 and others cite its sections 6 and 8 |
+| `.agent/PLAN.md` | 1287 | Open L46, Waiting L676, Done from L760; the work queue many [reported] tags cite |
+| `CHANGELOG.md` | 900 | what each version told readers it changed |
+
 ### How to read them
 
 Open by line number and read forward. **Do not search by topic**: a theme query
