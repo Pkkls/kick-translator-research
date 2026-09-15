@@ -316,6 +316,9 @@ claim('5 the queue closes the allowlist question in detection', true, /Reopening
 const collector = existsSync(join(root, 'scripts/kick-chat-collector.js')) ? read('scripts/kick-chat-collector.js') : '';
 claim('5 the collector exports channel and messages, nothing about the reader', 'channel+messages, no setting', (/channel:/.test(collector) && /messages:/.test(collector) ? 'channel+messages' : 'fields not found') + (/targetLang|settings|chrome\.storage/.test(collector) ? ', reads a setting' : ', no setting'));
 
+// 5: the capture that was taken, and the queue that forgot it.
+claim('5 the handoff reports a live capture of 804 messages', true, existsSync(join(root, 'HANDOFF.md')) && /804 unique messages from a live Spanish channel/.test(read('HANDOFF.md')));
+
 // 5: the frequency the listing already publishes.
 claim('5 the listing sells a hover usage ratio', true, /point at a message, which cuts usage by roughly 10x/.test(read('store-listing.md')));
 

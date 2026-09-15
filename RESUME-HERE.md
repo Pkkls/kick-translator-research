@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **62/62 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **63/63 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -101,7 +101,6 @@ Next, in the order most likely to correct something published here:
 
 | File | Lines | Why first |
 |---|---|---|
-| `HANDOFF.md` | 388 | chapter 8 and others cite its sections 6 and 8 |
 | `.agent/PLAN.md` | 1287 | Open L46, Waiting L676, Done from L760; the work queue many [reported] tags cite |
 | `CHANGELOG.md` | 900 | what each version told readers it changed |
 
@@ -158,7 +157,9 @@ stripper figures, the one-declaration box model and the 22 axes held.
 
 - Anything observed in a browser. Every source-derived claim is about call
   sites, not about what renders.
-- Any frequency in real chat traffic.
+- Any frequency in multilingual chat traffic. One single-channel Spanish
+  capture's summary figures exist in the corpus's handoff of 2026-08-16
+  (thesis 14.1); nothing about which languages appear.
 - The on-device engine's availability across real installs.
 - Store analytics, which need an account. **Not the same as absent**: the
   corpus holds one reading, an install ratio and listing views by language

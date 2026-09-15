@@ -325,7 +325,11 @@ here". It was executed. It was wrong.
 
 - **Nothing was observed in a browser.** Every source-derived claim is about
   call sites, not about what a reader sees.
-- **No real chat traffic.** Every frequency claim in the thesis is unsupported,
+- **No multilingual chat traffic.** One single-channel capture exists: the
+  corpus's handoff of 2026-08-16 reports 804 messages from a live Spanish
+  channel, with their length distribution, and its lines are not in the
+  repository. This line used to say no real chat traffic existed at all.
+  Every frequency claim about languages in the thesis is unsupported,
   which the corpus itself records as its own binding limitation: its queue
   lists decisions blocked on a single chat capture that has never been taken.
   Read its later entries before counting them: one was closed in detection,

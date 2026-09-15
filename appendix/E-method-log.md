@@ -1404,6 +1404,31 @@ attribution is a word list and it lists this study's own rules beside real
 cases, so it reports and a person reads it. That is weaker than a gate and much
 stronger than the sentence in 4.39 that nothing would have caught them.
 
+### 4.43 The study's central limit, stated about a document it cited and never read
+
+**What happened.** TRANSMISSION.md, chapter 14, the handover and the resume
+file all said there was no real chat traffic in the corpus, and chapter 14
+built its first section on the queue's line that every corpus is hand-written.
+The corpus's handoff of 2026-08-16, which chapter 8 cites by section number,
+reports a live capture: 804 unique messages from one Spanish channel over
+eight and a half hours, with their length distribution, and a live session's
+skip reasons. Nothing from that section had been carried into anything this
+study published.
+
+**Cost.** The limit this study leans on hardest, repeated in four documents,
+was wrong in its strong form. It survives in a weaker and more useful one: one
+channel, one language, figures without the lines, so nothing about which
+languages appear. The handover's case for a capture now asks for a
+multilingual one, and its section on hand-written benches carries the numbers
+that show the distributional gap.
+
+**Why it happened.** [4.34](#434-listed-as-out-of-reach-while-the-corpus-held-a-reading-of-it)
+again, one level up. There it was store figures; here it is the one thing the
+study said the corpus most lacked. The queue had forgotten its own capture,
+and a study that took the queue's summary of the corpus for the corpus
+inherited the forgetting. A document cited by section is not a document read
+to the end.
+
 ### 4.36 The pass after the one quoted corrected it
 
 **What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth

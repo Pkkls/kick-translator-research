@@ -26,6 +26,23 @@ The four decisions named there:
 
 A collector exists and has not been run against live traffic.
 
+**A correction to this chapter's premise: one capture was taken, in August, and
+the queue lost track of it.** **[reported]** The handoff of 2026-08-16, which
+chapter 8 cites for other findings, reports 804 unique messages from one
+live Spanish channel over eight and a half hours, collected from the page's
+DOM: median length 15 characters, 61 percent under the statistical
+identifier's own 20-character floor, 67 percent in capitals, 28 percent a
+single word. The same handoff reads one live session's skip reasons, 234 of
+them, 213 of which were the same user repeating a line. **[replicated]** The
+lines themselves are not among the repository's tracked files; only those
+figures survive, in that document. **[new]** So "every corpus here is
+hand-written" is true of the benches and false of the corpus, and this study
+repeated it as a statement about the corpus. The capture is one channel in one
+language. It measures how short and how shouted real chat is, which is the
+distributional point below; it says nothing about which languages appear, how
+often a line switches language, or anything about the other channels a reader
+watches.
+
 **One of the four is not the capture's to settle.** **[reported]** The same
 queue records the trimming experiment run twice and corrected once: reducing
 the identifier to the languages the product maps frees zero bytes, because the

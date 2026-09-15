@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 62 of 62 holding at the commit this was last checked against, and 4
+It reports 63 of 63 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -412,7 +412,9 @@ by hand and dates from 08:39 on 2026-08-30; `kick-actions` arrived at 15:46 and
 `a11y` at 16:22 the same day, and neither was added **[re-run]**. The three
 counts reconcile to the same 29, item by item **[re-run]**. Ten minutes: compare
 the scripts each entry launches, and derive helper modules from imports rather
-than from a list.
+than from a list. Your handoff of 2026-08-16 had already written the rule after
+five bites from hand-kept lists: *Derive lists, never hand-keep them* **[yours]**.
+The exclusion list was hand-kept two weeks later.
 
 ### 3.4 Two questions this account opened and closed with nothing
 
@@ -833,6 +835,18 @@ are hand-written, so they are **distributionally** wrong (well-formed sentences
 where real chat has fragments and pastes), **selectionally** wrong (written by
 someone who knew which phenomenon they targeted), and **adversarially** thin
 (they contain what their author thought of). A capture fixes all three at once.
+
+**And you have taken one, in August, which this file had not credited.** Your
+handoff of 2026-08-16 reports 804 unique messages from a live Spanish channel
+over eight and a half hours: median 15 characters, 61 percent under franc's
+20-character floor, 67 percent in capitals, 28 percent a single word, and a
+live session in which 213 of 234 skips were one user repeating a line
+**[yours]**. That is the distributional gap above, measured. Your later queue
+item says every corpus is hand-written, which is true of the benches; the
+capture's lines are not in the repository, only those figures in that
+document **[re-run]**. **[mine]** What is still missing is not a capture but a
+multilingual one: the Spanish channel cannot say which of the seventeen
+unmarked languages appear, or how often a line changes language.
 
 **Your listing already publishes one of these frequencies.** The Chrome text
 says hover mode *fetches nothing until you point at a message, which cuts usage
