@@ -104,6 +104,69 @@ witness was valid as an action and void as evidence.
 That is the negative control applied to the control: the paired assertion for a
 witness is a check that the break is visible in the built output.
 
+## 12.4b Flakiness filed as weather
+
+**[reported]** The work queue once carried the item "the live gates are not
+deterministic", with the channel, the chat volume and the network named as
+suspects. The project's later verdict on its own framing is worth quoting
+because of how it is phrased:
+
+> That framing was mine and it was wrong in the most useful way: it turned
+> three separate defects into one property nobody can fix.
+
+The three: one probe setting a value and dispatching a change event on a
+control that had stopped being a `<select>` when a shared panel replaced it, so
+both lines did nothing and the translation count that followed was counting
+whatever the default target produced; one null crash in another of the author's
+own probes; and one genuinely unexplained run.
+
+**The mechanism of the first is the general hazard.** A probe that cannot
+perform the action it tests will still run, still produce a number, and that
+number will vary with whatever the default happens to do. Here it came out
+above zero when the browsing endpoint served a channel in a language differing
+from the browser default, and zero when it did not, which reads exactly like
+environmental noise.
+
+The repair is a read-back: drive the real control, then read the control's own
+label before counting anything. **Zero after a target that never moved and zero
+after a broken pipeline are the same number, and only the label separates
+them.**
+
+The disposition is the part worth transferring:
+
+> Filing weather is easier than reading three stack traces, and it costs the
+> next reader the chance to fix anything.
+
+An environmental attribution is a terminal diagnosis: it explains the
+observation, requires no further work, and forecloses the investigation. It
+should therefore be the most expensive conclusion to reach, not the cheapest,
+and reaching it honestly means accounting for each varying run individually.
+
+## 12.4c The probe that must act from the site's own world
+
+**[reported]** Changing channel on this platform is an app navigation: the URL
+moves, the chat is remounted, the page never reloads. If the extension fails to
+rebind, every message after that is left alone, with no error and no reason on
+any line, which is this product's worst failure shape.
+
+One detail decided how to simulate it, and it generalises past this case. The
+content script patches the history API to notice the change. But a content
+script runs in an **isolated world**, and the site's router calls the **main
+world's** function, where that patch does not exist. A probe that navigated
+from the isolated world would be triggering the one path the patch can see.
+
+So the harness navigates from the main world, as the site does.
+
+> A probe must trigger an event from the world the event really comes from, not
+> from wherever the code under test is best able to observe it. The second
+> choice produces a green that describes the probe rather than the product.
+
+The outcome was negative and the project records it as worth the same as a
+positive: the container watcher notices its container left the document,
+rescans, and the message posted after the remount is translated. The gate then
+earns its place on what it alone can see, since disabling the rescan leaves 621
+of 621 unit tests green and turns only this gate red.
+
 ## 12.5 The gate that accused a healthy field
 
 **[reported]** The store-listing gate counts 44 fields against their limits in

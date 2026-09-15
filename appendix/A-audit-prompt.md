@@ -838,6 +838,24 @@ anywhere:
   an expiry date. Check the thing.
 - **Does the verifier share a technique with what it verifies?** If it does, it
   measures stability, not truth, and it will confirm the error it inherited.
+- **Can the probe actually perform the action it tests?** A probe that sets a
+  value on a control that stopped being an input, or dispatches an event nothing
+  listens for, runs clean and measures the default. Read back the state the
+  action was supposed to change, from the product's own surface, before
+  counting anything downstream. **Zero after an action that never happened and
+  zero after a broken pipeline are the same number, and only the read-back
+  separates them.**
+- **Is the probe acting from the world the real event comes from?** A page's
+  own router calls its own functions; an extension's patch of those functions
+  lives in an isolated world and never sees them. A probe that triggers the
+  event from wherever the patch can observe it flatters the product. Trigger it
+  where the site does.
+- **Has any flakiness been filed as an environmental property?** "The live
+  gates are non-deterministic" is a diagnosis that closes an investigation and
+  cannot be acted on. In the one case this specification is drawn from, that
+  framing covered three separate defects, two of them the author's own probes,
+  and cost every later reader the chance to fix any of them. **Before
+  attributing variance to the environment, account for each varying run.**
 - **Does the probe's own pattern collide with the product's languages?** A
   textual probe over a codebase that contains forty-two languages will match
   words in some of them. A debt-marker search for `TODO` matches the Spanish

@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-six. Listed in full because a method log that omits them is an
+Twenty-seven. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -221,7 +221,8 @@ enough to re-check.
 
 **Why it is the worst one in this list.** The project's own frame carries the
 rule *"never pipe a gate into tail"* as one of its named traps, this study
-quotes that rule in [chapter 12](../thesis/12-verification.md#123-the-rules-that-make-a-green-meaningful),
+quotes that rule in [chapter
+12](../thesis/12-verification.md#123-the-rules-that-make-a-green-meaningful),
 and the mistake was made anyway, in the pass that was measuring that exact
 axis. Knowing a trap and holding it are different skills, and only the second
 one is worth anything at the moment it matters.
@@ -361,8 +362,8 @@ sentence, published it, and then did it twice more in the same session.
 
 **Why this belongs in the study rather than only in this log.** The central
 finding about the project under study is that a correct general diagnosis
-written in prose does not propagate to the other places it applies
-([thesis 4.5](../thesis/04-script-vs-language.md#45-the-finding-about-findings)),
+written in prose does not propagate to the other places it applies ([thesis
+4.5](../thesis/04-script-vs-language.md#45-the-finding-about-findings)),
 demonstrated there across six instances over three months. That finding was
 open to a comfortable reading: that the developers were moving fast and a more
 careful reader would have caught it.
@@ -578,12 +579,13 @@ prose explaining a workaround that had been removed, and a French idiom.
 `'Translate everything to': 'Traducir todo a'`. The Spanish word *todo*, "all",
 matched the debt-marker pattern `TODO`.
 
-That is exactly the failure [chapter 8](../thesis/08-noise.md#a-suffix-rule-against-turkish-morphology)
-documents in the product, where an English gaming interjection in a suffix list
-deleted a Turkish grammatical morpheme. **The same defect, one level up: an
-audit probe is a substring rule, and it over-generates into the same languages
-the product handles.** In a codebase carrying forty-two languages, every
-textual probe collides with some of them.
+That is exactly the failure [chapter
+8](../thesis/08-noise.md#a-suffix-rule-against-turkish-morphology) documents
+in the product, where an English gaming interjection in a suffix list deleted
+a Turkish grammatical morpheme. **The same defect, one level up: an audit
+probe is a substring rule, and it over-generates into the same languages the
+product handles.** In a codebase carrying forty-two languages, every textual
+probe collides with some of them.
 
 **Unit tests: 1034, confirmed.** The runner reports 1034 with exit code zero.
 A static count of `it()` and `test()` calls gives 600, plus 44 parameterised
@@ -801,12 +803,13 @@ transcribed from earlier entries, which average a near-perfect population with a
 lossy one. The chapter now says so, but the honest fix would be to re-derive
 each figure per language, which the corpus supports and this study did not do.
 
-**And it is the same error as [4.18](#418-measured-one-file-and-concluded-about-a-chain)
-at one level up.** There, a count over one file of five became a claim about a
-chain. Here, a measurement over one script family became a claim about a
-detector. In both cases the instrument was sound and the population was not the
-one the claim was about. The corpus caught its version; this study caught its
-own only after reading theirs.
+**And it is the same error as
+[4.18](#418-measured-one-file-and-concluded-about-a-chain) at one level up.**
+There, a count over one file of five became a claim about a chain. Here, a
+measurement over one script family became a claim about a detector. In both
+cases the instrument was sound and the population was not the one the claim
+was about. The corpus caught its version; this study caught its own only after
+reading theirs.
 
 **Also recovered, and it matters more than the correction**: the silent-drop
 rate the whole thesis rests on had a measured value in the corpus all along.
@@ -855,6 +858,44 @@ It was a character count against a byte reference; the file holds multi-byte
 UTF-8 and was 228406 bytes. Same class as this study's gzip figure published
 without its compression level: **a number whose unit or parameter is unstated
 is not a measurement**, and both accounts produced one.
+
+### 4.27 Two failure modes this log did not have, both from the unread journal
+
+**What happened.** Two more passes of the older journal, and each names a probe
+failure absent from these twenty-six entries.
+
+**Flakiness filed as an environmental property.** The work queue carried "the
+live gates are not deterministic", blaming channel, chat volume and network.
+The author's own later verdict: *that framing was mine and it was wrong in the
+most useful way: it turned three separate defects into one property nobody can
+fix.* Two of the three were their own probes, including one that set a value and
+dispatched an event on a control that had stopped being an input, so it measured
+the default and varied with what the default happened to do.
+
+This is the most expensive failure in either record, because it is **terminal**:
+an environmental attribution explains the observation, requires no further work,
+and closes the investigation. Every other error here was eventually caught by
+somebody looking again. This one is designed not to be looked at again. Their
+sentence: *filing weather is easier than reading three stack traces, and it
+costs the next reader the chance to fix anything.*
+
+**A probe acting from the wrong world.** The site's router calls the main
+world's history function; the content script's patch of it lives in an isolated
+world and never sees it. A probe navigating from the isolated world would
+trigger the one path the patch can observe, and pass by flattering the product.
+Theirs navigates from the main world, as the site does.
+
+This study wrote the same rule for detectability, that the probe must run in the
+page's own world, and did not generalise it to events. **A22 now carries both,
+plus the read-back requirement and the question about weather.**
+
+**What this says about the reading order.** Twenty-six entries of this log were
+written before either journal was read by position. The oldest one, never
+opened at all until two passes ago, has now produced the gate that corrected the
+detectability finding, a better typology of probe failures, the base-rate
+sentence, a unit error matching one of this study's, and these two failure
+modes. **The corpus was answering questions this study was deriving from
+scratch, in a file the search had never surfaced.**
 
 ### The pattern across the first three
 
