@@ -4602,6 +4602,64 @@ too high**, for the seventh time in this study, and this instance is the
 cheapest of the seven: the correct number was one command away and the wrong one
 was already written into a draft of this entry.
 
+### 4.103 The detection surface, measured in the world the axis says to measure it in
+
+**What happened.** Three passes in a row had corrected nothing, which is the
+regime TRANSMISSION records as a dead end: seven review passes producing nothing
+that one execution pass then found in minutes. So this one stopped reading and
+took the clause A11 is really about.
+
+A11's own framing is unusually good and worth quoting, because it decides what
+counts as a finding: *perfect concealment is not available, so anything that
+renders is observable; the quantity that is yours to control is the **cost** of
+that detection, and the failure is a dedicated signal that collapses it to a
+single call.* Its witness then names the one place the measurement is valid:
+*the probe runs in the page's own world and not the extension's ... A probe
+running anywhere else is measuring a world the page does not have.*
+
+The ledger's instrument column for A11 read **nothing for the detection
+surface**. Chapter 13.7's figure of **11** signals is derived from source.
+
+**Measured from the page's main world**, which is the world a script on kick.com
+has and not the isolated world the content script runs in, with the real
+extension loaded, default settings, and one translated message on screen:
+
+| kind | page world | source catalogue (13.7) |
+|---|---|---|
+| fixed element ids | **6** | 7 |
+| attributes on the document element | **1**, `data-kt-scheme` | 1 |
+| classes on the document element | **0** | 1 |
+| `data-kt` attributes anywhere | **2**, including the per-row `data-kt-id` | 1 |
+| prefixed class names | **24** | 98 |
+| **globals on `window`** | **0** | not counted |
+
+**Neither column is wrong and they answer different questions.** The source
+count is a catalogue of what the product can emit; the page count is what is
+emitted in one state. The documentElement class is the clearest case:
+`injector.ts:189` toggles `kt-hide-original`, so it exists only for a reader who
+has turned *keep original* off, and a default profile never shows it. Of the 99
+`kt-` class names in the stylesheet, 24 are on the page with one message
+rendered; the other 75 belong to menus, panels and states not open.
+
+**The bar is not met, and now it is measured rather than inferred.** It asks
+that finding the extension cost *a read of rendered content, never a query by
+name*. Six fixed ids are queryable by name, the cheapest being one
+`getElementById`, available the moment the extension mounts, with default
+settings, on a page holding a single chat message. That is precisely the
+*dedicated signal that collapses it to a single call* the axis names as the
+failure.
+
+**And one real positive, which the catalogue count could not have given.** There
+are **no `kt`-prefixed globals on `window`**, and no object naming the product.
+A global would be the cheapest signal that exists, a single property read with
+no DOM query at all, and the extension does not have one. That is worth saying
+plainly to an account whose axis is about cost.
+
+**The witness landed.** An id, a class and a `data-kt` attribute were added from
+the page and the survey re-run; all three were named. Without that, every zero
+in the table would have been a statement about the probe. The zero that mattered
+most, no globals, is the one a broken probe would also have produced.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

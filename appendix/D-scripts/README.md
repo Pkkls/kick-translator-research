@@ -39,11 +39,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-key-storage.mjs` | Whether the DeepL key stays out of synced storage, by recording every value it takes there rather than sampling the end state. Drives the real extension through its own service worker | [appendix E 4.99](../E-method-log.md#499-the-key-is-taken-out-of-synced-storage-by-a-guard-written-for-another-problem) |
 
-**Nineteen scripts.** That count is here because two documents stated it from
+| `probe-detection.mjs` | What a script on the host page can query by name to find the extension, enumerated from the page's own main world as A11's witness requires, with a witness identifier added from the page and re-surveyed | [appendix E 4.103](../E-method-log.md#4103-the-detection-surface-measured-in-the-world-the-axis-says-to-measure-it-in) |
+
+**Twenty scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All nineteen take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only
