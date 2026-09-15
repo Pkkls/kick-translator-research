@@ -21,13 +21,15 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `stop-conditions.mjs` | All three of the specification's stop conditions, counted in one command: the axis verdicts through `axis-ledger.mjs`, the clone's queue by its own `[ ]` `[k]` `[x]` markers, and whether the last two commits here declared no measurement. A gate on the third only, which is the one about this account's conduct | [appendix E 4.81](../E-method-log.md#481-the-goal-said-to-count-the-three-stop-conditions-and-two-of-them-had-no-instrument) |
 
-**Ten scripts.** That count is here because two documents stated it from memory
-and disagreed with each other on the same day, one saying nine and one ten while
-there were nine (4.81). Everything else cites this table.
+| `version-agreement.mjs` | Whether the extension's version is one answer across the package, the derived manifest, the built manifest, the newest tag, the tag reachable from HEAD and, with `--with-network`, the published release and its assets. The gate A15's bar asks for and nothing in the clone provides | [appendix E 4.83](../E-method-log.md#483-the-clause-a15-could-not-close-was-an-afternoons-instrument) |
 
-All ten take a path argument and print to standard output; `probe-quotes.mjs`,
+**Eleven scripts.** That count is here because two documents stated it from
+memory and disagreed with each other on the same day, one saying nine and one
+ten while there were nine (4.81). Everything else cites this table.
+
+All eleven take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
-the extension's. Only
+the extension's, and `version-agreement.mjs` takes only the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs
 Node 22.18 or later.

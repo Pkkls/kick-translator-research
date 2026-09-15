@@ -3293,6 +3293,70 @@ What is different about this one is that it is pinned: the clone at `226a176`,
 both runners read, the arithmetic closing at 56 on four disjoint buckets, and a
 verifier that now fails if any of the four moves.
 
+### 4.83 The clause A15 could not close was an afternoon's instrument
+
+**What happened.** None of the 22 axes is closed and A15 is the one that came
+nearest: its reproducibility half closed in 4.52, both published archives
+rebuilding byte-identical to the digests the forge publishes. Reading the
+specification's section 1 for what closing actually costs, and then A15's bar
+beside its ledger row, the gap turned out to be one clause, *one version
+everywhere, checked by a gate rather than by eye*, and the ledger's own evidence
+said why it was open: **no gate checks any of it**. Not a hard measurement, not
+a blocked one. A missing instrument, in an axis whose other two clauses were
+measured a week ago.
+
+**The measurement.** Six places, one answer, `2.10.0`: the package, the built
+manifest, the newest tag by version sort, the tag reachable from HEAD, the
+published release tag and both release asset names. The fifth and sixth need the
+network and sit behind `--with-network`, which is the difference between a gate a
+clone can run and a report about a forge.
+
+**One of the six places is not a place.** `manifest.config.ts` sets
+`version: pkg.version`, so the manifest cannot disagree with the package by
+construction, and counting the two as independent would have made the agreement
+read better than it is. Six places are **five answers and one derivation**. The
+gate asserts the derivation instead, because the day someone types a literal
+there is the day the sixth place becomes real, and that is the only moment at
+which this row has anything to say.
+
+**Four witnesses, each red on a row only it can see**, planted in a fixture
+built from copies rather than in the clone, which this study does not modify:
+
+| Planted | What went red |
+|---|---|
+| `dist/manifest.json` at 2.9.9 | the built manifest row, alone |
+| `version: '2.10.0'` typed as a literal in `manifest.config.ts` | the derivation row, alone |
+| the newest tag deleted so v2.9.3 leads | the newest-tag row, and the reachability row with it |
+| the release tagged on an unmerged branch | **the reachability row, alone**, with the other three green |
+
+The fourth is the one that took two attempts. Its first version deleted the
+v2.10.0 tag, which turned the newest-tag row red as well, so it produced the
+same two failures as the third witness and demonstrated nothing about the row it
+was written for. **A probe must make the things it distinguishes differ**, and a
+witness that fires the same two assertions as the previous witness has not shown
+that the second assertion exists. The repaired one leaves v2.10.0 as the newest
+tag and puts it on a branch HEAD cannot reach, which is the real failure this
+row is for: the tag is right, the release is right, and the working branch is
+not the release. Three green, one red.
+
+**The axis still does not close, and the reason is this study's own rule.** The
+bar says *checked by a gate*. The gate is in this repository, because the
+standing constraint is not to modify the extension. A gate that is not in the
+runner of the thing it guards is the exact object 4.8 names, *an instrument that
+exists and is in no runner is worse than one that does not exist, because its
+presence reads as coverage*. Writing the instrument moved A15 from *no gate
+checks any of it* to *a gate checks it and it is in the wrong repository*, which
+is a smaller gap and an honest one. What closes A15 is a hundred lines moving
+into the clone's `run-gates.mjs`, and that is the developing account's to do.
+
+**The pattern worth carrying.** Two axes have now been examined closely in two
+passes, A13 in 4.82 and A15 here, and in both the blocking term was an
+instrument nobody had written rather than a measurement nobody could take. The
+specification's stop condition asks that every axis be closed or open with a
+number and a named reason; *the reason* has been the interesting field both
+times. An axis open for want of an afternoon and an axis open for want of a
+browser are the same word in the ledger and not the same state at all.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
