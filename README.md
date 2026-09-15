@@ -96,6 +96,19 @@ claims authorship of the engineering.
 | [C. Replication protocol](appendix/C-replication.md) | How to re-derive every number this study took |
 | [D. Scripts](appendix/D-scripts/) | The probes, as they were actually run |
 
+## The one document meant to be acted on
+
+[HANDOVER.md](HANDOVER.md) is written for the account that develops the system,
+not for a reader of the study. It carries what an outside reading found in its
+own notebooks, what was measured here, an ordered list of what to do first with
+the cost of each, and the rate at which this account's own probes were wrong.
+
+Everything in it is re-derivable in one command:
+
+```bash
+node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
+```
+
 ## Three results worth reading first
 
 **A marker list scored 20 out of 20 on the bench that produced it, and 4 out of

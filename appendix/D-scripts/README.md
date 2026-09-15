@@ -6,6 +6,7 @@ The probes as they were actually run, not cleaned-up versions of them.
 |---|---|---|
 | `probe-render-sinks.mjs` | Markup sinks, text-node writes, direction-attribute assignments, and whether any source handles direction-control characters | [11.3](../../thesis/11-privacy-surface.md#replication-bidirectional-text), [13.7](../../thesis/13-results.md#137-observable-surface) |
 | `audit-spec.mjs` | The audit specification against the conditions it was written under | [appendix B](../B-prompt-construction.md), pass 16 |
+| `verify-handover-claims.mjs` | Every measurable claim in the handover, expected against actual, with the unverifiable ones listed rather than skipped | [HANDOVER.md](../../HANDOVER.md) |
 
 Both take a path argument and print to standard output. Neither writes
 anything.
