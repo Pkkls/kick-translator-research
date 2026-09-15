@@ -204,6 +204,24 @@ in [12. Verification](12-verification.md) and states here in its general form:
 > "handled in one place of several" to a count, and the difference between
 > those two readings is where this class of defect lives.
 
+**This study reproduced the pattern while documenting it, which settles what
+it is a property of [new].** The comfortable reading of the six instances above
+is that a project moving quickly missed connections a more careful reader would
+catch. This account was that reader, and produced three instances of a single
+diagnosis of its own in one sitting: a gate array counted by line shape, a
+manifest counted by text pattern, and a coherence check comparing numbers
+without modelling their referents, all three being *count the structure, not
+the text near it*, a rule this account had written out and published after the
+first one.
+
+Held in working memory, recently written down, and actively hunting for
+violations of itself in someone else's work: the rule still failed to
+propagate. **Writing a general diagnosis down is a weak mechanism for applying
+it.** What propagates a diagnosis is a check that runs, which is the argument
+for the audit specification in [appendix A](../appendix/A-audit-prompt.md)
+being a set of executable bars rather than a set of principles. The full
+account is in [appendix E](../appendix/E-method-log.md#414-the-same-diagnosis-applied-locally-three-times-by-this-account).
+
 An independent application of that rule, conducted for this study on a
 different guard entirely, produced the same shape on the first pass and then
 produced something more useful on the second: the coarse probe reported one

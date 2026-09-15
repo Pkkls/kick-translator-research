@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Thirteen. Listed in full because a method log that omits them is an
+Fourteen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -334,6 +334,48 @@ The general form, which applies to any classification used for quality control:
 > Before trusting a tagging scheme, ask what it has no name for. Whatever that
 > is will not appear as missing. It will appear as a member of the nearest
 > category that does have a name.
+
+### 4.14 The same diagnosis, applied locally, three times, by this account
+
+**What happened.** A coherence probe compared every measured number across the
+thesis and the handover, looking for a figure that had drifted between two
+documents written hours apart. It raised five discrepancies. **All five were
+false**: two compared different subjects that share a word, three compared a
+project's stated number against the measured one, which is the discrepancy the
+study exists to report.
+
+No real divergence between the two documents. That negative result is worth
+having and took two minutes.
+
+**The finding is what produced the false alarms.** The probe compared numbers
+by matching text near them, without modelling what each number referred to.
+That is the same defect as 4.11, which counted an array by line shape instead
+of by structure, and as 4.12, which counted a manifest by pattern instead of
+reading the generated JSON.
+
+Three instances, one diagnosis, and the diagnosis was **already written down**
+after the first: *if the thing being counted has a built or generated form,
+count that one; a pattern over the source is a guess about how the source will
+be interpreted, and you are not the interpreter.* This account wrote that
+sentence, published it, and then did it twice more in the same session.
+
+**Why this belongs in the study rather than only in this log.** The central
+finding about the project under study is that a correct general diagnosis
+written in prose does not propagate to the other places it applies
+([thesis 4.5](../thesis/04-script-vs-language.md#45-the-finding-about-findings)),
+demonstrated there across six instances over three months. That finding was
+open to a comfortable reading: that the developers were moving fast and a more
+careful reader would have caught it.
+
+This account was that reader. It held the diagnosis in working memory, had
+written it out, was actively looking for instances of exactly this pattern in
+someone else's work, and reproduced it three times in one sitting.
+
+The pattern is therefore not a property of that project, of fatigue, or of
+insufficient care. **Writing a general rule down is a weak mechanism for
+applying it**, including for the person who wrote it, including immediately
+afterwards, including while looking for violations of it. What propagates a
+diagnosis is a check that runs, not a sentence that exists.
 
 ### The pattern across the first three
 

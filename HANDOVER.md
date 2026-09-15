@@ -139,6 +139,20 @@ stops being a series of oversights and becomes a property of the workflow: the
 diagnosis is written in prose, the remedy is written in a diff, and nothing
 holds the two together afterwards.
 
+**Before you read that as criticism, here is the control.** This account
+produced three instances of one diagnosis of its own inside a single session,
+while writing the section you are reading: counting a structure by matching
+text near it, done three times after writing down the rule against it and
+publishing that rule. Same shape, faster, by someone actively hunting for the
+pattern in your work.
+
+So the recommendation is not "be more careful", which demonstrably does not
+work even under ideal conditions. It is that a diagnosis propagates only when
+something runs. Yours already has the machinery: `state.mjs` generates rather
+than asserts, and your gates fail rather than remind. The class of defect in
+this section is the class that has no gate, and the cheap move is to give each
+one a check rather than a sentence.
+
 ### 2.2 You have made the same reasoning error three times, and measurement
 caught it every time
 
