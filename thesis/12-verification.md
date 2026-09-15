@@ -154,13 +154,26 @@ Measured: 416 pixels of content inside a 398 pixel frame. Eighteen pixels,
 exactly twice the row's horizontal padding.
 
 **The cause is worth more than the defect.** The stylesheet contains exactly one
-box-sizing declaration, on a fixed-position element; everything else inherited
-from the host page, which ships a CSS reset. So the border-box model applied and
-**the geometry came out right by luck rather than by construction**. Adding the
-reset to the test page made the overflow vanish, which both confirmed the
-diagnosis and established that no reader sees it today. It was still removed: an
-extension asserting pixel geometry should not depend on the host continuing to
-reset the box model on its behalf.
+box-sizing declaration, on a fixed-position element **[replicated]**, one line
+in the stylesheet at the parent of the repair commit `0ad3b40`. Everything else
+took its box model from the host page, which ships a CSS reset. So the
+border-box model applied and **the geometry came out right by luck rather than
+by construction**. Adding the reset to the test page made the overflow vanish,
+which confirmed the diagnosis and indicated that no reader on the site sees it
+today, since the site ships that reset; the site itself was not measured. It was
+still removed: an extension asserting pixel geometry should not depend on the
+host continuing to reset the box model on its behalf.
+
+**A correction to this paragraph as first published.** It said everything else
+*inherited* the box model from the host. `box-sizing` is not an inherited
+property **[outside]**: a reset reaches an element by matching it, through a
+universal selector, not by passing down from a parent. The distinction decides
+what a repair has to look like, and the project's repair has the right shape, a
+rule matching `[class^='kt-']` and `[class*=' kt-']` directly **[new]**. It also
+sets that repair's population: elements carrying a prefixed class. An unclassed
+element inside the extension's own markup still takes its box model from
+whatever else matches it. Whether any such element sets both a width and a
+padding was not enumerated here, so that is a scope, not a finding.
 
 **And the witness is not a clean one, which the project says plainly.** Removing
 the fix does make the harness exit 1, but on a timeout: the panel widens, a

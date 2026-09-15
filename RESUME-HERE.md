@@ -21,8 +21,8 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **33/33 checkable claims, 12/12 spec conditions, 220 internal
-links and 0 broken**, 30 entries in the method log. The link count used to be a
+Last known: **33/33 checkable claims, 12/12 spec conditions, no broken internal
+link**, 31 entries in the method log. The link count used to be a
 sentence, "all internal links resolve", and nine of them did not.
 
 ## What is done
@@ -30,7 +30,7 @@ sentence, "all internal links resolve", and nine of them did not.
 - **15 thesis chapters**, `thesis/`
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
-- **The method log**, `appendix/E-method-log.md`, 30 recorded mistakes
+- **The method log**, `appendix/E-method-log.md`, 31 recorded mistakes
 - **Five runnable scripts**, `appendix/D-scripts/`
 
 ## The reading that is still unfinished, and it is the productive one
@@ -41,7 +41,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 12, 14, 15, 16, 20, 22, 23, 25 to 28 and "Left behind",
+Read so far: passes 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -51,7 +51,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L902 | Pass twenty-four: found by looking at a picture |
 | L298 | Sixth pass: three more mute probes, and a question the data cannot answer |
 | L167 | Third pass: a harness nobody ran was reporting a real bug |
 | L356 | Eighth pass: a fifth analytics file, and two things I had asserted wrongly |

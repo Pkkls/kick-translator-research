@@ -1064,6 +1064,31 @@ witness: a copy of the handover stating 32 turns it red.
 > State a number once and point at it. Where it must be restated, make the
 > restatement something a script reads.
 
+### 4.31 A transcription that raised the certainty of what it copied
+
+**What happened.** Pass twenty-four of the older journal had been used in a
+commit before the resume file was updated, so it was still listed as unread.
+Read by position against what chapter 12 had made of it, the numbers held and
+one was re-derived: one `box-sizing` declaration in the stylesheet before the
+repair. Two sentences had drifted. The journal says adding the host's reset to
+a test page *said* no reader on the site sees the overflow; the chapter said it
+*established* it, about a site nobody measured. And the chapter said the
+extension's elements *inherited* their box model from the host, which is the
+journal's loose word copied into a mechanism that does not exist:
+`box-sizing` is not inherited, and a reset reaches an element by matching it.
+
+**Cost.** Small in each case, and both in the direction of confidence. The
+second one mattered more than it looked, because the mechanism decides the
+shape of the repair and the population it covers.
+
+**Why it happened.** Transcription is paraphrase, and paraphrase drifts toward
+the stronger verb. [4.5](#45-a-translation-presented-as-a-quotation) was a
+translation passed off as a quotation; this is the same drift inside a single
+language, and a **[reported]** tag certifies the source, not the fidelity.
+
+> When repeating a finding, keep its verb. "Said", "suggested", "indicated" and
+> "established" are four different claims about the same measurement.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
