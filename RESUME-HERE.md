@@ -42,17 +42,23 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 8 to 20, 22 to 28 and "Left behind",
-the gate-suite section at L63, and the probe typology at L202. Each one
-produced either a correction to something published here or a rule now in
-TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
-most of an uncommitted draft built on them (4.29).
+Read so far: passes 3, 6, 8 to 28 and "Left behind", the gate-suite section at
+L63, and the probe typology at L202. Each one produced either a correction to
+something published here or a rule now in TRANSMISSION.md. Passes 25 to 28
+produced both: they corrected chapter 8.3 and most of an uncommitted draft
+built on them (4.29).
 
-**Still unopened**, with the ones most likely to pay first:
+**Still unopened.** The list that stood here is done. This row was added after
+it, by the rule in 4.36: pass six is quoted in the handover, and the section
+after it had never been opened.
 
 | Line | Section |
 |---|---|
-| L830 | Pass twenty-one: the version nobody would hear about |
+| L329 | Seventh pass: measuring the only thing that could be measured |
+
+Never listed and not recorded as read either: L3 to L126, L219, L233, L241,
+L269. They are the opening of the journal and the first passes; entry 4.27
+drew on at least one of them without saying which.
 
 ### Journal of 2026-08-31 (61 sections)
 
@@ -65,6 +71,12 @@ except the one thing", L237 "the trimming experiment, run at last", L263 "what
 a source allowlist costs without saying so", L207 "a change that shipped on one
 bench and was reverted on the next", L1205 onward, the whole live-debugging
 sequence.
+
+Added by the rule in 4.36, each being the section after one already quoted:
+L518 "Le persan restera theorique", after the weight field; L589 "Piege
+d'environnement, un de plus", after the Latin-only bench; L928 "Le plancher de
+cinq lettres", after the Latin-script Bulgarian; L962 "Piege d'environnement",
+after the false probes.
 
 ### How to read them
 

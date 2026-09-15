@@ -651,6 +651,13 @@ artefact people download is the one the tag describes, which is the claim that
 actually matters. Then read the store pages themselves rather than any note
 about them.
 
+Then the path that tells an installed reader a release exists. If the product
+checks for one, serve a release newer than the build and read the notice back
+from the product's own surface, through every process the check crosses. A
+broken path leaves every reader on an old version with nothing on screen, and
+no reader will ever report the absence of a notice. Witness: force the answer
+to say no update; unit tests over the decision stay green, the gate goes red.
+
 **Bar** one version everywhere, checked by a gate rather than by eye. A rebuild
 of the tagged commit matches the digest the forge publishes for that release,
 or the difference is named, explained, and attributed to a specific
