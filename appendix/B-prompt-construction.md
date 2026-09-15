@@ -1,6 +1,6 @@
 # Appendix B. How the specification was built
 
-Thirty passes over [appendix A](A-audit-prompt.md). Recorded here because
+Thirty-one passes over [appendix A](A-audit-prompt.md). Recorded here because
 the distribution of what the passes found is itself a result: sixteen passes of
 reading and rewriting produced a document that passed every mechanical check
 written for it, and the first pass that executed an axis against real code
@@ -82,6 +82,7 @@ produced three times on unrelated subjects
 | 26 | | | **Bar falsified.** "Every counter declares its denominator" is unenforceable against a free-form key map. Moved to a naming convention a gate can check |
 | 27-28 | Gates, language detection | 56 harness files, 40 runner entries, 35 launched by nothing; 81 detection tests green in 723 ms | — |
 | 29 | | The raw orphan count indicts a project that documented its exclusions | **Added:** a population with documented exceptions reports both the adjusted count and the raw count |
+| 31 | Testing the specification against this session's own fourteen recorded mistakes | 19 of 21 axes watch the product, 2 watch the tooling, none watch the auditor; the session's own lessons were sitting in preamble prose | **Added A22, the auditor**: replication by a differently-shaped instrument, counts over structure, exit codes without pipes, quotations against source, verifiers not sharing their subject's technique, borrowed facts tagged |
 | 30 | Publishing the pass-9 probe as a runnable script | Running it falsified pass 9's own measurement: 1 of 3 guarded became 2 of 3, then 2 of 2 after tracing callers | **Added:** a guard is located on the element, not near the write; and a coarse probe's errors are biased toward accusation |
 
 ---

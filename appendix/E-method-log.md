@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Fourteen. Listed in full because a method log that omits them is an
+Fifteen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -376,6 +376,44 @@ insufficient care. **Writing a general rule down is a weak mechanism for
 applying it**, including for the person who wrote it, including immediately
 afterwards, including while looking for violations of it. What propagates a
 diagnosis is a check that runs, not a sentence that exists.
+
+### 4.15 The specification had no axis for the thing producing its findings
+
+**What happened.** The session's fourteen recorded mistakes were used as a test
+corpus against the specification's own twenty-one axes. Seven classes matched
+something in the document, and that number flatters itself: several matched
+only because the lesson had been poured into the specification earlier in the
+same session, *after* the mistake. The figure before the session started
+feeding itself back is much lower.
+
+The structural count is the one that matters and does not move: **19 axes watch
+the product, 2 watch the tooling, 0 watch the auditor.**
+
+**Why that is not a small gap.** This session measured its own error rate on a
+real corpus and found three probes of five accusing working code on their first
+run, all three erring toward accusation. An audit specification with no axis for
+its own reliability is a specification that models everything except the largest
+measured source of false findings in the pass that wrote it.
+
+**Why it happened is the worse part.** The lessons were not missing. They were
+in the preamble, as prose: measure at the decision, count the structure,
+replicate with a different instrument. Prose with no bar, no witness and no
+ledger entry, in a document whose entire thesis is that a bar and a witness are
+what make a rule hold. The previous entry in this log,
+[4.14](#414-the-same-diagnosis-applied-locally-three-times-by-this-account),
+had just concluded that writing a diagnosis down is a weak mechanism for
+applying it. The response to that conclusion was to write it down.
+
+**The fix.** A22, the auditor, in the same four-field shape as every other
+axis, with bars that fail and a witness that can be run. Its distinctive bar is
+the asymmetry: an unreplicated finding is discounted, an unreplicated negative
+result is comparatively safe, because probe errors are not symmetric.
+
+**One honest note about the fix.** A22's witness failed the specification's own
+mechanical audit, because its first word was not in the checker's verb list.
+Widening a gate so it admits your own case is how gates stop guarding, so the
+widening is recorded in a comment inside the checker, with the rule that a
+second entry in that comment means the check has become a formality.
 
 ### The pattern across the first three
 

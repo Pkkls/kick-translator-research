@@ -145,7 +145,7 @@ because naming a cheat is what makes it visible when you are tired:
 
 ## 2. The audit surface
 
-Twenty-one axes. They are not a checklist to tick once; they are the coordinate
+Twenty-two axes. They are not a checklist to tick once; they are the coordinate
 system. Every pass names which axes it touched and what the number moved to.
 
 Each axis is written the same way on purpose, so a missing number is visible at
@@ -197,6 +197,7 @@ decides what you can do today rather than what you would like to do:
 | A19 | Instrumentation | Are the numbers decisions rest on honest | build |
 | A20 | Hostile input | What happens when the message is an attack | unit, probe |
 | A21 | Platform limits | What happens when something fills up or refuses | probe |
+| A22 | The auditor | Is this audit's own output trustworthy | unit |
 
 **When the probe instrument is absent**, the unit and build axes are still
 fully open and are most of this file. Work them. Name the blocked ones in the
@@ -804,6 +805,59 @@ or skips a day in any zone.
 **Witness** shrink the quota to a value the cache exceeds immediately; the
 settings survive and the gate names which area gave way.
 
+### A22. The auditor
+
+**Breaks as** the audit reports a defect that is not there, and someone spends
+a diff, a review and a durable false belief on working code. Every other axis
+watches the product. This one watches the instrument holding the other
+twenty-one, and it exists because a session that wrote those axes measured its
+own error rate and found it high.
+
+**Measure** for each finding produced in a pass, before it is written down
+anywhere:
+
+- **Was it replicated by a second instrument of a different kind?** Not the
+  same probe run twice, which only shows the probe is deterministic. A count by
+  pattern is replicated by a count over structure; a source reading is
+  replicated by the built artefact; a line search is replicated by tracing the
+  callers.
+- **Was every count taken over the structure, or over text near it?** Anything
+  with a built, generated or parseable form is counted in that form.
+- **Was every exit code read without a pipe?** A pipeline reports its last
+  stage's code, so a gate's verdict is destroyed on the way to the reader.
+- **Was every quotation checked against its source, in the language it was
+  written in?** A translation inside quotation marks is a paraphrase wearing a
+  citation's clothes.
+- **Does any claim rest on a document rather than on the thing?** A statement
+  about what a clone contains, what a suite runs, or what ships is a claim with
+  an expiry date. Check the thing.
+- **Does the verifier share a technique with what it verifies?** If it does, it
+  measures stability, not truth, and it will confirm the error it inherited.
+- **Is every borrowed fact tagged as borrowed?** An etymology, a claim about
+  how a class of system behaves, a linguistic universal: none of these are
+  measurements, and a provenance scheme with no slot for them will file them
+  under whichever neighbouring category is nearest.
+
+**Bar** every finding published carries a second, differently-shaped
+confirmation, or is published as unreplicated and explicitly discounted. Zero
+counts taken over text where a structured form exists. Zero exit codes read
+through a pipe. Zero quotations that are translations. Zero verifier sharing
+its technique with its subject. The pass reports its own false-positive count
+beside its findings, and that number is expected to be non-zero: a pass
+claiming none did not look.
+
+**Witness** re-run a finding's probe with one deliberate flaw of the kind this
+axis lists, and confirm the replication step catches it rather than agreeing
+with it. The cheapest version: change the pattern a count depends on and check
+that the structural count disagrees.
+
+**Why the bars lean this way.** Probe errors are not symmetric. A probe reports
+a guard missing wherever it fails to look properly, so its mistakes surface as
+findings and almost never as clean bills of health. **An unreplicated finding
+should be discounted; an unreplicated negative result is comparatively safe.**
+That asymmetry is why the expensive confirmation is required on accusations and
+not on absences.
+
 ---
 
 ## 3. The loop
@@ -860,7 +914,7 @@ the reading as work. Two of those in a row is a stop condition, not a habit.
 
 Stop when **all** of these hold, and not before:
 
-- Every axis A1 to A21 is closed, or open with a number and a named reason.
+- Every axis A1 to A22 is closed, or open with a number and a named reason.
 - `PLAN.md` holds nothing but items blocked on kil.
 - Two consecutive passes produced no new measurement.
 
@@ -984,6 +1038,6 @@ Re-read this section at the end of every pass and fix what it catches.
 - No absolute path from a private machine, no personal data, no third party's
   name. This file is written as if a stranger will read it.
 
-If a pass finds an axis that none of A1 to A21 covers, that is a defect in this
+If a pass finds an axis that none of A1 to A22 covers, that is a defect in this
 file and not in the pass. Add the axis, with its four lines, before doing the
 work.

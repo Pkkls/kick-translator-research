@@ -53,7 +53,15 @@ check('no emoji', !lines.some((l) => /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.t
 //      witness. A witness in the conditional tense is the most reliable sign
 //      that no failure was ever observed.
 const axes = [...text.matchAll(/^### (A\d+)\.[^\n]*\n([\s\S]*?)(?=\n### A\d+\.|\n---\n\n## 3\.)/gm)];
-const ACTION = /^\*\*Witness\*\*\s+(break|truncate|remove|shrink|replace|load|add|force|render|delete|bump|expose|widen|feed|disable|kill|clone|run|make|push|corrupt|fill|change|inject|set|build)/i;
+// The verb list is a proxy for "the witness is an action you perform", and it
+// is incomplete by construction. It was widened once, for "re-run", when A22
+// was added and failed this check. Widening a gate to admit your own case is
+// exactly how a gate stops guarding, so the rule applied was: widen only when
+// the rejected witness is genuinely an action a person can carry out and
+// observe, and record the change here. If this comment grows a second entry,
+// the check has become a formality and should be replaced by something that
+// reads the sentence rather than its first word.
+const ACTION = /^\*\*Witness\*\*\s+(break|truncate|remove|shrink|replace|load|add|force|render|delete|bump|expose|widen|feed|disable|kill|clone|run|re-run|rerun|make|push|corrupt|fill|change|inject|set|build)/i;
 const problems = [];
 for (const m of axes) {
   const id = m[1];
