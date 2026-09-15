@@ -416,6 +416,12 @@ boundary, composited with the element's real opacity, against the real
 background. Full keyboard path with visible focus. Reduced motion. Roles and
 names on injected content. Zoom to 200 percent. Both writing directions.
 
+Measure each property on an artefact that can carry it. A saved or dumped DOM
+keeps markup, roles and colours and drops every listener, so a keyboard audit
+run on one reports that focus never moves on a menu whose arrows work. Audit a
+dump for structure and contrast; drive the mounted component for behaviour.
+And count which surfaces the dumps contain: a surface in no dump has no audit.
+
 **Bar** no interactive control under 24 by 24. Text at 4.5:1, control
 boundaries at 3:1, measured composited. Every control reachable and operable by
 keyboard with focus visible. No animation when reduced motion is set. No

@@ -42,7 +42,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 8, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
+Read so far: passes 3, 6, 8, 9, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -52,7 +52,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L386 | Ninth pass: the kit's own gate accused working code |
 | L418 | Pass ten: the bar panel gets the same treatment |
 | L486 | Pass eleven: the gates stop depending on a browser this machine happens to have |
 | L569 | Pass thirteen: the thing the product is for |

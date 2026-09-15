@@ -93,6 +93,13 @@ the width question, and answering it properly found three touch targets below
 the accessibility floor. A negative result from a subject that could not have
 produced a positive one is not a negative result.
 
+**Ask whether the artefact under audit can carry the property.** An
+accessibility kit's keyboard gate read a saved HTML dump of a menu, which keeps
+the markup and none of the listeners, and reported that the arrows never move
+focus. Measured on the mounted component, they moved it correctly in all three
+renders. A copy of the subject keeps what copying keeps: a dump answers
+structure, roles and contrast, and it cannot answer behaviour.
+
 **A user report names one instance. The population is yours to enumerate.** The
 same accessibility defect was reported once, fixed once, and the rest of the
 class went on sitting there because the audits ran on dumps of two components
