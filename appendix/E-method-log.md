@@ -1157,6 +1157,27 @@ correction goes red when the project fixes its generator. Adding those claims
 also turned the handover's stated total wrong, and the claim added in 4.30
 caught it on its first real use.
 
+### 4.34 Listed as out of reach, while the corpus held a reading of it
+
+**What happened.** TRANSMISSION.md, the resume file and axis A18 all said store
+figures were unavailable because they need an account, and A18 said the ratio
+of listing visits to installs was blocked. The older journal's eighth pass
+records one: 85 installs to 210 first visits over eight months, with listing
+views broken down by localised page. Earlier in this session, reading pass six,
+this account had left the question open in the resume file rather than settle
+it, because pass six said the opposite and pass eight had not yet been read.
+
+**Cost.** The only population figure in the corpus went unused for the whole
+study, in the section of the handover that asks how to rank seventeen languages
+before a capture exists. Czech is on that list and drew the fourth most listing
+views.
+
+**Why it happened.** "This account cannot read the dashboards" was written as
+"the figures are out of reach". The corpus's author made the same error one
+pass earlier and corrected it in a sentence this study now carries as a rule:
+*a claim about four files stated as a claim about the subject.* An absence is a
+statement about what was opened.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

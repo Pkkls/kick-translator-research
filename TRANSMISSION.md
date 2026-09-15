@@ -42,6 +42,13 @@ pattern, a locale file by indentation, and orphan harnesses by the gate's name
 instead of the file the gate runs. A label beside the structure is still text
 near it.
 
+**An absence is a claim about what you opened.** The corpus stated flatly that
+its analytics held no install figure. The next export had one, and its author's
+correction is exact: *a claim about four files stated as a claim about the
+subject.* The same pass replaced a language gap inferred from countries with one
+read from page titles, and the answer changed from Polish to Czech. Say which
+files a negative covers, and prefer the direct reading to the mapped one.
+
 **Two speculations, then an instrument.** The corpus's rule, from a panel
 rendering 489 pixels below where its inline style put it: *I speculated twice
 about why before instrumenting, and stopped on the second.* Asking the DOM
@@ -216,7 +223,11 @@ here". It was executed. It was wrong.
 - **No real chat traffic.** Every frequency claim in the thesis is unsupported,
   which the corpus itself records as its own binding limitation: four of its
   decisions are blocked on a single chat capture that has never been taken.
-- **No store dashboard figures**, which need accounts.
+- **No store figures taken here**, which need accounts. The corpus holds one
+  reading: 85 installs to 210 first visits over eight months, and listing views
+  by localised page. Both measure the listing, not the product in use. This
+  line used to say only that the figures need accounts, which is true of this
+  study and false of the corpus.
 - **The on-device engine's availability across real installs**, which is the
   single measurement that would convert a known seventy-fold mechanism
   advantage into a statement about users.

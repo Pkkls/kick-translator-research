@@ -470,6 +470,20 @@ It is also the cheapest way to prioritise the capture in section 5: the capture
 says which of the seventeen actually appear in your chat, and a list becomes a
 queue.
 
+**Your own listing export already orders part of it**, and this file had not
+used it. Your eighth pass on 2026-08-30 counts views by localised store page:
+English 227, Turkish 30, Arabic 18, Czech 14, Russian 6, Japanese 5, Chinese 3,
+Korean 2 **[yours]**. Czech is on the list of seventeen and drew the fourth most
+views before it had any listing text. Polish is on the list too, and was the
+largest gap your earlier pass inferred from countries; it drew none.
+
+**[mine]** How much that ranks the list is limited, and the limit is specific.
+A listing view says which interface language a prospective reader browses in,
+not which language the chat they read is written in, and only the second one
+reaches the detector. It is still the only population figure in the corpus, it
+cost nothing, and it points at `cs` against `sk`, which is one of the shapes
+this section already names.
+
 ### 3.5b Two axes measured from a build, both clean
 
 **[re-run]** Cloned, installed and built both targets from scratch.

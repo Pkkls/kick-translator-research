@@ -42,7 +42,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
+Read so far: passes 3, 6, 8, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -52,7 +52,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L356 | Eighth pass: a fifth analytics file, and two things I had asserted wrongly |
 | L386 | Ninth pass: the kit's own gate accused working code |
 | L418 | Pass ten: the bar panel gets the same treatment |
 | L486 | Pass eleven: the gates stop depending on a browser this machine happens to have |
@@ -94,12 +93,6 @@ promoted to the handover before something differently shaped has run.
   would pass both. The witness: in a copy of a Chrome build, never the working
   `dist/` (the journal's pass twenty-seven is why), hide `.kt-float-opts` and
   run both gates. If this reading is right, both stay green.
-- **Which store data exists, open until L356 is read.** Pass six declined
-  "store analytics" as a basis for optimisation because they hold no install or
-  usage figure. Axis A18 of the specification says the store dashboards are
-  the only place the ratio of views to installs exists. Those may be two
-  different datasets or one of the two statements is wrong; pass eight is
-  titled "a fifth analytics file" and should say which.
 
 ## What is measured and what is not
 
@@ -113,7 +106,10 @@ four held, one was published without its parameter**. The full table is in
   sites, not about what renders.
 - Any frequency in real chat traffic.
 - The on-device engine's availability across real installs.
-- Store dashboard figures.
+- Store figures, which need an account. **Not the same as absent**: the
+  corpus holds one reading, an install ratio and listing views by language
+  (the older journal's eighth pass, now cited in HANDOVER.md 3.5). They
+  measure the listing, not the product in use.
 
 ## Open items handed to the developing account
 

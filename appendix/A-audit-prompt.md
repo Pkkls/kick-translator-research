@@ -694,10 +694,12 @@ is offline, when the reader's browser language has no provider coverage. Then
 the update path: an existing reader with old settings after a version bump.
 
 One step earlier than first run is the listing, which is where most readers
-stop. The two store dashboards are the only place the ratio of views to
+stop. The store's analytics are the only place the ratio of listing visits to
 installs exists. Reading them needs an account and is therefore blocked here,
-so it is asked for once, as a number, rather than guessed at from the listing
-text.
+so the current figure is asked for once, as a number, rather than guessed at
+from the listing text. Read the journals first: an earlier reading may
+already be recorded there, and a figure being blocked for you does not mean
+nobody has read it. Say which exports a missing figure was looked for in.
 
 **Bar** zero required decisions before the first translation appears. Every
 empty and failure state shows a sentence a non-technical reader can act on.
