@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-two. Listed in full because a method log that omits them is an
+Twenty-three. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -696,6 +696,49 @@ harnesses ([4.10](#410-repeated-a-claim-from-the-frame-without-checking-it)): a
 statement that was true when written, read later as though it still were. There
 it was the project's own file that had rotted; here it was this study reading
 a correct file at the wrong point in its history.
+
+### 4.23 The corpus had already counted its own false probes, and said the same
+thing first
+
+**What happened.** Reading the most recent journal by position rather than by
+relevance turned up a section titled "the probes that were wrong, four more",
+opening with "twelfth and following". **The project has been counting its own
+false probe findings all along**, at least fifteen of them, and its first line
+is the conclusion this log spent a session arriving at:
+
+> All of them caught by a witness, none by a re-reading.
+
+**Cost.** None to any published claim, and considerable to this study's sense
+of originality. The calibration section in the handover, written as though an
+outside account measuring its own error rate were a novel contribution, was
+describing something the corpus already does explicitly.
+
+**The part that stings is the fourth probe in their list.** A Bulgarian probe
+had read one bench file of two, because the two have different shapes, so it
+covered 63 lines where there are 187. **It refused to continue rather than
+report zero false positives over an amputated control.**
+
+That is precisely the failure this study committed twice, in
+[4.18](#418-measured-one-file-and-concluded-about-a-chain) and
+[4.19](#419-an-enumeration-that-under-counted-which-inverts-the-bias-rule), and
+in both cases the number was published rather than withheld. The difference is
+not care and not attention. **They had built the guard and this study had only
+written the rule.** Their probe carried an assertion that fires when its own
+denominator looks wrong; the probes here carried a sentence in a preamble
+saying denominators matter.
+
+Which is, once more and now from the other side, the conclusion of
+[4.14](#414-the-same-diagnosis-applied-locally-three-times-by-this-account): a
+diagnosis propagates when something runs. The corpus is the control group, and
+it won this comparison.
+
+**And a second thing the same read turned up**, which is worth recording for
+what it says about the corpus rather than about this study: a section titled
+"two numbers quoted from memory, two wrong", where the project records having
+published a store-version claim in the plan, in a pushed commit and in a report,
+all three wrong, and then finds that a third item rested on the same false
+premise. Their revision rate is not an inference from this study. It is written
+down by them, with the same candour this log aims for.
 
 ### The pattern across the first three
 

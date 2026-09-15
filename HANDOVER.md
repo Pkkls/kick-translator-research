@@ -464,6 +464,18 @@ and it is done.
 
 ### 3.5c The worker's startup race, on its third consumer
 
+**Before anything else: this is not the startup race you already eliminated.**
+Your journal has a section called "La course au demarrage, hypothese eliminee",
+which measured six arrivals on real channel pages in Brave, used `data-kt-id`
+as the witness, and found the observer attached first time on 3 of 3 pages that
+had a chat. That is the content script attaching to a route, and it is closed.
+
+The one below is a different object: the **service worker's** initialisation
+against its own message listener, and the consumer is the usage-statistics
+tracker. Nothing in that measurement touches it. If this section reads as
+something you already settled, that is this account's fault for the collision
+of names, not a reason to discard it.
+
 **[read]** Read rather than observed, and the window is narrow. Stated anyway,
 because it is the fifth instance of the pattern in section 2.1 and the first
 one this account found in running code rather than in your notebooks.
@@ -639,6 +651,19 @@ second, better probe rather than by rereading:
 | Direction handling | 1 guarded surface of 3 | 2 of 3, then 2 of 2 | Looked for the attribute near the write instead of on the element, then failed to trace what the third surface receives |
 | Silent failure paths | 31 silent `catch` of 42 | 18, then 2, then none | The signal pattern did not match `log.debug(`, so every logged catch counted as silent |
 | Selector fallbacks | 2 lists, neither with a fallback | withdrawn | Parsed the file with a regex that split the arrays wrongly; the chains are there |
+
+**And you were counting these before this account was.** Your journal's "the
+probes that were wrong, four more" opens at "twelfth and following" and states
+the conclusion outright: *all of them caught by a witness, none by a
+re-reading.* Nothing in this section is a discovery; it is the same phenomenon
+measured from outside, by someone who had the advantage of your notes and
+reproduced the failures anyway.
+
+One difference is worth your attention, because it favours you. Your Bulgarian
+probe, having read one bench file of two, **refused to continue rather than
+report zero false positives over an amputated control.** Two probes here did
+the opposite, and published. You had built the guard; this account had written
+the rule down. That is the entire distance between the two records.
 
 Since then the same bar has been applied to nine published measurements, and
 the series is complete: **five changed, four held, one was published without

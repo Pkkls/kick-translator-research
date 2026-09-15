@@ -70,6 +70,37 @@ looked exactly like the product being wrong.** A pipeline of probes is itself a
 system under test, and the corpus suggests its defect rate is not obviously
 lower than the product's.
 
+**The project counted them.** A journal section titled "the probes that were
+wrong, four more" opens with "twelfth and following", so at least fifteen false
+probe findings are recorded there **[reported]**. Its first line is the
+conclusion this study reached independently and several months later:
+
+> All of them caught by a witness, none by a re-reading.
+
+The four it then describes are worth the space, because each is a different
+mechanism:
+
+- **A form body.** Three assertions of a provider test went red against correct
+  code: `URLSearchParams` encodes a space as `+`, so searching the raw string
+  for a phrase finds nothing. Re-read through the parser instead.
+- **A probe reading its own keys.** A weight probe took every string in a block,
+  including the keys, which are the patterns being executed and therefore
+  legitimately in the bundle. Five leaks reported, five times the product was
+  right.
+- **A witness that broke nothing.** A constant key, folded by the bundler, gate
+  green, nothing proven.
+- **A probe that had read one bench of two.** The two bench files have different
+  shapes, tuples against lists, so it saw 63 lines where there are 187. **It
+  refused to continue rather than report zero false positives over an amputated
+  control.**
+
+That last one is the rule *a probe that measured nothing must fail* doing real
+work, and the notebooks say it is the first time it genuinely paid. It is also
+the exact failure this study committed twice without the same protection: two
+of its own probes reported numbers over populations they had only partly read
+(see [appendix E](../appendix/E-method-log.md)). **The project built the guard;
+this study wrote the rule down and did not build it.**
+
 ### A probe that saw nothing must fail, not pass
 
 The project's example is exact: a pass over an English chat translated to
