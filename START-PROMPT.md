@@ -44,11 +44,20 @@ node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
 node appendix/D-scripts/probe-consistency.mjs . /path/to/kick-chat-translator
 ```
 
-The first five must be green. The last two are reports that list false
-positives beside real ones, so they are read, not kept green, except `probe-consistency`, which exits 1 on its constant and duplication
-halves and is therefore a gate on those two (4.76). If any
-of them disagrees with what `RESUME-HERE.md` records, the repository is stale
-and reconciling it is the first task.
+**Five of the seven must exit 0**: `git status` printing nothing, then
+`check-links`, `verify-handover-claims`, `audit-spec` and `axis-ledger`.
+
+`probe-quotes` never fails on a finding and is a report: it lists quotations it
+could not match, and some of those are unmatchable by construction, from the
+untracked specification, from commit messages, or because they quote this study
+rather than the corpus. Read it and judge.
+
+`probe-consistency` is both. Its ratio half is a report, for the same reason.
+Its constant and duplication halves cannot produce a false positive, so it
+exits 1 on either (4.76).
+
+If any of the seven disagrees with what `RESUME-HERE.md` records, the
+repository is stale and reconciling it is the first task.
 
 ## Where the work is, now that the journals are read
 
