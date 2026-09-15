@@ -1771,6 +1771,59 @@ that a diagnosis propagates when something runs and not when it is written
 down, and this is the third time this study has proved it on itself. **Plant
 the control in a copy, or write the restore before the plant.**
 
+### 4.52 The reproducibility claim nobody had run, and it holds exactly
+
+**What happened.** A15's bar asks three things and the middle one is the
+expensive one: a rebuild of the tagged commit must match the digest the forge
+publishes for that release, or the difference must be named and attributed to a
+specific non-deterministic input. Nothing in this study had ever rebuilt
+anything.
+
+It was run. `v2.10.0` was checked out into a detached worktree so the working
+tree was never touched, the lockfile was confirmed unchanged between the tag and
+`master` so the installed dependencies were the tag's, and both archives were
+built and packed:
+
+| archive | rebuilt | published |
+|---|---|---|
+| chromium | `8c8d7eca262b1942cf5736bbe4b47e7b6d907d836b88d17d6503422d56c0c8a6` | identical |
+| firefox | `4f8450494d7e30f051295a4572209a3280479184b579a55e14f42ef642a14d24` | identical |
+
+**Two of two, byte for byte**, and on Node 22 while `.nvmrc` pins 20 and CI
+builds on it, so the result is stronger than the bar asks: reproducible across a
+Node major, not merely on the machine that made it.
+
+**Why it held, which is the part worth transferring.** `scripts/pack.ts` does
+not use a zip library. It emits the format by hand, sorts every directory entry,
+and writes a fixed DOS date of 1980-01-01 with the comment *so the output is
+reproducible*, then prints the archive's own sha256 next to a note that the
+build used a different Node than CI pins. Someone built this expecting exactly
+this comparison to be made, and then nobody made it for two releases. The
+instrument was waiting.
+
+**What is not closed.** Six places carry a version and there are three answers:
+2.10.0 in `package.json`, the built manifest, the tag and both release assets;
+**2.9.2 on the Chrome Web Store**, 112 users, updated 30 August; **2.7.0 on
+AMO**, 4 users, updated 16 August. Both store figures were read from the stores,
+which the bar requires in those words. The lag is a pending submission that the
+queue already records as blocked on kil, so it is a waiting state rather than a
+disagreement, and it is recorded as a number rather than excused.
+
+And the bar's first clause is unmet outright: *checked by a gate rather than by
+eye*. None of the 40 gates in the runner matches version, release, manifest or
+tag. `state.mjs` computes the comparison into `ETAT.json`, but that file's own
+header says it is generated and that the committed copy describes the state
+before the commit that generated it, which is a report about the past, not a
+gate on the present.
+
+**Why the entry.** The measurement cost one worktree and four minutes, and the
+claim it settles is the one a reader of a release actually depends on: that the
+archive they download is the one the tag describes. It sat unmade while this
+study wrote fifteen chapters, because it was filed under an axis nobody had a
+row for, which is [4.51](#451-a-stop-condition-with-a-term-nobody-could-evaluate)
+in its practical form. **The ledger's first act was to point at a four-minute
+measurement that had been waiting for two releases.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

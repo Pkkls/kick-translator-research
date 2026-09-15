@@ -49,7 +49,7 @@ work rather than an index of it.
 | A12 | The end-to-end path passes on every engine claimed | no verdict recorded | Brave was measured identical to Chromium on one path (the corpus), and the signed-in case is unreachable from this account. The reason is now named to the value ([4.47](E-method-log.md)) |
 | A13 | Every gate is in a runner or has a written reason it is launched by hand | open, with a number | 40 gates in the runner. **Three harnesses that build metrics are outside it**, `metrics-offline.mjs`, `latency.mjs` and `run-live.mjs`, and no written reason accompanies their absence ([4.49](E-method-log.md)) |
 | A14 | A fresh clone can run the full public verification and get a truthful answer | open, with a number | [13.6b](../thesis/13-results.md). The frame tells every session a fresh clone has no harnesses; it has 56 ([HANDOVER.md](../HANDOVER.md)) |
-| A15 | One version everywhere, checked by a gate rather than by eye | no verdict recorded | |
+| A15 | One version everywhere, checked by a gate rather than by eye; a rebuild of the tagged commit matches the digest the forge publishes; store state read from the store | open, with a number, and **its reproducibility half closed** | Rebuilt `v2.10.0` in a detached worktree and packed both archives: sha256 `8c8d7eca262b…` and `4f8450494d7e…`, **2 of 2 byte-identical to the digests GitHub publishes**, on Node 22 where CI builds on the 20 that `.nvmrc` pins ([4.52](E-method-log.md)). Version agreement is not closed: six places, **three answers**, 2.10.0 in `package.json`, the built manifest, the tag and the release assets, 2.9.2 on the Chrome Web Store, 2.7.0 on AMO, both read from the stores. The store lag is a pending submission blocked on kil rather than a disagreement. **No gate checks any of it**: none of the 40 in the runner matches version, release, manifest or tag, and `state.mjs` is a generated report, not a gate |
 | A16 | No screenshot older than the feature it shows | no verdict recorded | |
 | A17 | Every remote branch is live or has a named reason | open, with a number | Branches counted, and the unmerged two never opened ([4.40](E-method-log.md)) |
 | A18 | Zero required decisions before the first translation appears | no verdict recorded | |
@@ -60,16 +60,19 @@ work rather than an index of it.
 
 ## What this table says about the stop condition
 
-Eleven axes carry a verdict and eleven do not. The first stop condition is
+Twelve axes carry a verdict and ten do not. The first stop condition is
 therefore **not met**, and now it is not met by a count rather than by an
-impression. Nothing here is closed outright, which is worth saying plainly: the
-most that any axis reached is *open with a number*, which the specification
-accepts as a resting state and which is the honest description of an audit that
-measured a great deal and finished nothing.
+impression. No axis is closed outright. A15 came closest and is the shape to
+aim at: its reproducibility half is closed by an exact match against a
+published digest, and the two halves that are not closed each carry a number
+instead of a silence. That is what *open with a number* is supposed to look
+like, and the specification accepts it as a resting state.
 
-The eleven unrecorded are not eleven pieces of missing work. Some of them, A15
-and A16 among them, are probably answerable in one pass each from material
-already in the repository. The point of the row is that until someone writes the
+The ten unrecorded are not ten pieces of missing work. A15 was one of them one
+pass ago and took four minutes of measurement that had been available for two
+releases, which is the argument for writing the rows before doing the work:
+the table is what told anyone the measurement was missing. A16 is likely the
+same shape. The point of the row is that until someone writes the
 number down beside the Bar, nobody can tell an unmeasured axis from a measured
 one, and the stop condition cannot be read at all.
 

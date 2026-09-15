@@ -29,8 +29,10 @@ nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
 The specification's own first stop condition is countable now rather than an
-impression: **11 of the 22 axes carry a verdict and 11 do not**, and none is
-closed. [Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that
+impression: **12 of the 22 axes carry a verdict and 10 do not**, and none is
+closed outright, though A15's reproducibility half is: both published archives
+rebuild byte-identical from the tag (4.52).
+[Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that
 makes it readable (4.51), and `axis-ledger.mjs` prints the count and fails if
 the ledger and the specification stop agreeing about which axes exist.
 
