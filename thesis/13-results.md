@@ -317,6 +317,13 @@ Cloned from the public repository, at the commit the study measured against.
 | What rescues a word | any punctuation or a second word; the rule needs pure `a-z` | [new] |
 | Candidate fix, adjacent keys not just one row | false positives **0**, but mashes caught **10 of 10 → 0 of 10** | [new] |
 | Candidate fix, a vowel-ratio floor | false positives **27**, but walks caught **10 of 10 → 7 of 10** | [new] |
+| **Non-Bulgarian lines the two-marker rule declares Bulgarian** | **14 of 14**: Slovak 5, Polish 2, Serbo-Croatian 2, Czech 1, English 4 | [new] |
+| The markers responsible | `dobre` 11, `sme` 5, `sam` 4, `az` 3, `mnogo` 3, `sega` 3 | [new] |
+| The control, real shlyokavitsa | **9 of 10 found**, the miss carrying one marker | [replicated] |
+| The source's claim that a strong marker always wins | holds: `ochen mnogo ludey` stays Russian | [replicated] |
+| Candidate fix, three distinct markers | false positives **14 → 2**, real shlyokavitsa **10 → 4** | [new] |
+| Candidate fix, drop `sam` and `sega` | false positives **14 → 10**, and costs a real Bulgarian line | [new] |
+| Why it costs one | `sam` is *съм* and `sega` is *сега*; they collide because they are frequent | [new] |
 
 ## 13.8 The three bars execution falsified
 

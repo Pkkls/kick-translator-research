@@ -51,11 +51,17 @@ const missingFile = inTable.filter((f) => !onDisk.includes(f));
 const WORDS = {
   one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
   eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17,
-  eighteen: 18, nineteen: 19, twenty: 20,
+  eighteen: 18, nineteen: 19, twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60,
+  seventy: 70, eighty: 80, ninety: 90, hundred: 100,
 };
 // Compounds past twenty are written with a hyphen, and the first count to cross
 // that line made this gate refuse to read its own README rather than pass it
 // silently (4.104). Refusing was the right failure; the map was simply short.
+//
+// It was short a second time at **thirty** (4.114), because 4.104 added the
+// compound path and stopped at the word that had just broken. The tens are all
+// here now: the next crossing is at a hundred, and fixing only the number in
+// front of you is how a gate gets to fail twice for one reason.
 const wordToNumber = (w) => {
   const k = w.toLowerCase();
   if (k in WORDS) return WORDS[k];

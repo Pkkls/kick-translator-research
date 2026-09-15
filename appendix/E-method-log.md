@@ -5469,6 +5469,88 @@ nine locales, 3438 distinct. How often a bare one-word message is sent is not
 measured and cannot be here: this study has no chat capture. What is measured is
 which words are lost when one is.
 
+### 4.114 Slovak for "we are fine" is declared Bulgarian, and the marker that does it is a real Bulgarian word
+
+**The claim under attack.** The corpus reports the shlyokavitsa two-marker rule
+at **3 of 4 held-out and 0 false positives on 187 lines in 19 languages**. It is
+the most carefully built rule in the detector: the list was assembled **by
+paradigm rather than from the misses**, nine entries were demoted by a
+five-letter floor, and held-out recall was checked before and after the demotion.
+Nineteen languages is a lot. It is still a choice.
+
+**The rule asks for two distinct weak markers from one language**, and the
+Bulgarian weak list is largely pan-Slavic function words: `sme`, `dobre`, `az`,
+`mnogo`, `tova`, `taka`, `stava`, `tuk`. Those are not Bulgarian-only words.
+They are Slavic words, and Bulgarian's neighbours write them in Latin letters
+for exactly the reason Bulgarians do.
+
+**Fourteen of fourteen lines that are not Bulgarian are declared Bulgarian.**
+
+| | |
+|---|---|
+| Slovak | **5 of 5** — `sme dobre` is "we are fine" |
+| Polish | 2 of 2 |
+| Serbian or Croatian | 2 of 2 |
+| Czech | 1 of 1 |
+| English, on a platform for watching games | **4 of 4** — `sam and sega` |
+
+The markers responsible, counted rather than guessed: `dobre` in 11 lines, `sme`
+in 5, `sam` in 4, `az` in 3, `mnogo` in 3, `sega` in 3.
+
+**The control holds and so does the source's own claim.** Real shlyokavitsa:
+**9 of 10 found**, the miss being a line carrying only one marker, which is the
+rule working as designed. And the comment claiming *a strong marker always wins*
+is true: `ochen mnogo ludey` stays Russian rather than being dragged to Bulgarian
+by `mnogo`. That is a replication of a documented behaviour, taken on a line
+written here.
+
+**Two fixes planted and measured, and the second one is the point.**
+
+| | false positives | real shlyokavitsa found |
+|---|---|---|
+| shipped | 14 of 14 | 9 of 10 |
+| require **three** distinct markers | **2 of 14** | **4 of 10** |
+| drop `sam` and `sega` | 10 of 14 | 8 of 10 |
+
+Requiring three markers guts the recall the rule was built for. Dropping the two
+English collisions fixes only the English quarter, because the Slavic ones come
+from `dobre`, `sme`, `az` and `mnogo`, **and it still costs a real Bulgarian
+line**.
+
+**It costs a line because `sam` and `sega` are Bulgarian words.** `sam` is
+*съм*, "am". `sega` is *сега*, "now". They are in the list because they are among
+the most frequent words the language has, which is the same reason they collide
+with an English given name and a games company. **The markers that collide are
+the markers that work**, and no list built from Bulgarian function words can
+avoid Slovak, because the function words are shared.
+
+**Three passes, one shape, and one exception worth keeping straight.** Arabizi
+(4.112), keyboard smash (4.113) and shlyokavitsa all report zero false positives
+and all fail on the register the product actually runs in. In two of the three
+the looseness turned out to be load-bearing: every tightening measured here costs
+more than it saves. **Arabizi is the exception** — the word-final-digit rule took
+10 of 16 to 1 of 16 with the control untouched — and the difference is that
+arabizi's rule tests a *shape*, where a genuine discriminator existed and had not
+been used, while these two test *membership* in a set whose members are shared
+with the neighbours. A shape can be sharpened. A shared word cannot be unshared.
+
+**The same gate failed twice for the same reason, and that is the smaller
+finding of this pass.** Adding the thirtieth script took the README's count to
+*Thirty*, and `scripts-index.mjs` refused the file: its word map stopped at
+twenty. 4.104 had already hit this at *Twenty-one*, and the fix then was the
+**compound** path, `twenty-one` summing to 21, without adding any word past
+twenty itself. So the gate was repaired exactly as far as the number that had
+broken it. The map now carries every ten to a hundred. **Fixing the number in
+front of you is how a gate comes to fail twice for one reason**, and the failure
+was still the right one: it refused rather than passing a count it could not
+read.
+
+**Scope.** Fourteen non-Bulgarian lines and ten Bulgarian ones, written for this
+pass and printed by the probe. Whether the corpus's 19 languages included Slovak
+is not knowable from here and is not claimed: what is claimed is that these
+sentences collide. How much Slovak or Polish traffic a Kick channel carries is
+not measured and cannot be without a capture this study does not have.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
