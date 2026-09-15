@@ -4214,6 +4214,75 @@ case the work was writing the instrument, not taking the measurement**, which is
 the same sentence as 4.83 and 4.90 and 4.95, four axes apart. The specification
 asked for numbers and what was missing was never the numbers.
 
+### 4.97 The budget file was a prerequisite and never the bottleneck
+
+**What happened.** [4.57](#457-the-specification-asked-for-this-file-by-name-and-for-one-more-nobody-made)
+established that **seven of the 22 bars state their threshold as a ceiling in
+the budget file**, so those seven *cannot be read at all until it exists*. It
+exists now, eight rows of eight, after six passes that were mostly instrument
+building. This pass reads those seven bars against it and asks the obvious
+question: **how many axes close?**
+
+**None.** And the reason is structural rather than lazy, which is why it is
+worth a pass.
+
+**Every one of the seven bars is a conjunction, and the budget ceiling is one
+clause of it.** Extracted from the specification and checked against the ledger:
+
+| axis | clauses | the ceiling clause | what still blocks closure |
+|---|---|---|---|
+| A3 | 4 | met, 0.889 against 1.000 | the preview never occluding the composer is unmeasured, and **the character-identical clause is now in doubt** |
+| A5 | 4 | met, +35 ms against 250 | *no state lives only in worker memory* is **violated**: six of seven pieces do |
+| A6 | 4 | both met | *no unbounded growth in a long session* is unmeasured; per-engine latency is not reported |
+| A11 | 6 | met | five clauses unmeasured, including the detection-cost question the axis is really about |
+| A13 | 4 | **violated**, 4 of 40 at N=2 | and 12 orphans carry no written reason |
+| A18 | 5 | met, 278 ms against a second | three clauses unmeasured; its witness, an older settings shape, is unrun |
+| A21 | 4 | derived, not measured | three clauses unmeasured |
+
+Of 31 clauses across the seven, **the budget unblocked eight and left 23 where
+they were**. Filling the file was necessary and it moved no axis to closed,
+because a conjunction is only as closed as its weakest term and the ceiling was
+never the weakest term in any of the seven. 4.57 was right that the bars could
+not be read; reading them shows the ceiling was the part nobody was stuck on.
+
+**A5 and A13 are worth separating from the rest.** Their remaining blockers are
+not *unmeasured*, they are **measured and failing**: six of seven pieces of
+worker state live only in memory, and the flake rate is 4 of 40 where the bar
+says zero. Those two axes are further from closing after this work than they
+looked before it, which is the honest direction for a measurement to move an
+axis.
+
+**The closing condition nobody can satisfy from here.** The specification's
+section 1 requires, second of three, that *the measurement is inside a bar that
+was written down **before** the measurement, as a number*. Of the eight rows in
+the budget file, **exactly one ceiling pre-existed its measurement**: A6's byte
+reference, which already lived in `audit_poids.py` as `REFERENCE_OCTETS` and
+`MARGE`, written by the developing account before this study opened. A21's is
+derived from the code and labelled so. A11's is a measurement standing in for a
+tolerance. The other five were written by the pass that took the measurement,
+which is this account writing a bar and then reporting that it cleared it.
+
+Labelling them as judgements, which two rows now do, is honest and does not
+repair it. **A bar written after the measurement cannot close an axis, whatever
+it says**, and this is the third structural limit of this account's position,
+after [4.81](#481-the-goal-said-to-count-the-three-stop-conditions-and-two-of-them-had-no-instrument)'s
+stop condition living in the clone and
+[4.83](#483-the-clause-a15-could-not-close-was-an-afternoons-instrument)'s gate
+living in the wrong repository. The pattern across all three: **this study can
+measure anything and authorise nothing.**
+
+**One clause moved the wrong way, and it is 4.91 arriving somewhere new.** A3's
+bar says *handles, emote codes and URLs come out the other side
+character-identical*. That guarantee rests entirely on `maskProtected`, which
+replaces a URL with an inert placeholder and restores it afterwards. 4.91
+measured that `maskProtected` recognises a URL only with a scheme, and returns
+`tokens: []` for `kick.com/somechannel` and every other scheme-less shape. So
+for those, nothing is protected, nothing is restored, and whatever the engine
+returns is what the reader sends. **The bar's guarantee is not provided for
+them; it is delegated to the translation provider.** No new measurement was
+needed for this, only asking which clause of which bar the earlier finding
+lands on, and the answer was two axes away from where it was recorded.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -69,6 +69,28 @@ narrowest thing in this repository: it compares every value the study writes as
 `NAME = n` against the clone. Today that is one value. Its worth is that it
 fails the moment a second one drifts, which is what 4.45 did undetected.
 
+## Why no axis is closed, counted rather than assumed
+
+The budget file is full, eight rows of eight, and **that closed no axis** (4.97).
+Every one of the seven bars that names it is a conjunction and the ceiling is one
+clause of it: across the seven, the budget unblocked **8 clauses of 31** and left
+23 where they were. A conjunction is only as closed as its weakest term, and the
+ceiling was never the weakest term in any of them.
+
+Two of the seven are further from closing than they looked, because their
+remaining blockers are measured and failing rather than unmeasured: **A5**, where
+six of seven pieces of worker state live only in memory, and **A13**, where the
+flake rate is 4 of 40 against a bar of zero.
+
+And one closing condition cannot be satisfied from this account at all. Section 1
+requires the bar to have been *written down before the measurement, as a number*.
+**Exactly one of the eight ceilings pre-existed its measurement**, A6's byte
+reference, which the developing account had already written into
+`audit_poids.py`. Five were written by the pass that took the measurement. That
+is the third structural limit of this position, after the stop condition living
+in the clone (4.81) and the version gate living in the wrong repository (4.83):
+**this study can measure anything and authorise nothing.**
+
 ## What is done
 
 - **15 thesis chapters**, `thesis/`
