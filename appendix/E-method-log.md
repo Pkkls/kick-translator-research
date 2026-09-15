@@ -3793,7 +3793,13 @@ a guard looks like when it fires on prefixes.
 timer on every keystroke, so a typist faster than 320ms a character settles once
 at the end. That is a good design and it is not a guard: it is a timing
 coincidence between a constant and a human, and it degrades exactly for the
-readers who type slowly. The axis's own *breaks as* sentence names this, *the
+readers who type slowly.
+
+> **That paragraph is wrong and [4.92](#492-the-sentence-that-contradicted-its-own-entry-three-paragraphs-later) corrects it.** A sliding rate limiter is consulted at
+> `compose.ts:320`, immediately before the request, and it caps the outgoing
+> path at 30 calls a minute. The entry says so itself four paragraphs below,
+> under *direction of the error*, which makes this the shortest distance any
+> contradiction in this log has travelled. The axis's own *breaks as* sentence names this, *the
 preview shows a translation of a half-typed word and thrashes*, and the
 measurement says it is reachable rather than hypothetical.
 
@@ -3874,6 +3880,77 @@ the product's decision. Not anything about which provider receives it, which is
 the outgoing path sends what one reader types, the incoming path sends what a
 whole channel says, and this probe does not weigh them. What is claimed is the
 gap between two sentences the product publishes and what its code does.
+
+### 4.92 The sentence that contradicted its own entry three paragraphs later
+
+**What happened.** 4.90 published, in bold, *What actually holds the number down
+is the debounce, and nothing else*. Four paragraphs below, in the section headed
+*direction of the error*, the same entry says *a rolling rate limiter caps
+network calls independently of all of it*. Both sentences were written in the
+same pass, by the same account, an hour apart at most, and they cannot both be
+true.
+
+**The limiter is real and it is on the request path.** `compose.ts:320`:
+
+```
+if (!this.limiter.tryAcquire()) {
+  setComposeThrottle(true);
+  return; // keep last preview; next pause will retry as the window slides
+}
+```
+
+It sits after the in-tab cache check and before `maskProtected` and `send`, so
+nothing reaches an engine past it. It is `new RateLimiter(COMPOSE_MAX_PER_MIN,
+60_000)` with `COMPOSE_MAX_PER_MIN = 30`, a sliding window over the real clock.
+
+**Measured at the composition, which is what the claim was about.** A claim
+about a pipeline is a claim about a composition and must be measured at the
+composition, which is this study's own rule from chapter 3 and which 4.90 broke
+by reasoning about one stage. `compose-calls.mjs --rate` drives all three
+stages together, the debounce, the gate chain and the product's own
+`RateLimiter`, over a simulated minute of typing one 28-character message
+repeatedly with a two-second pause between messages:
+
+| chars/s | wpm | settled | decided | sent | refused | what binds |
+|---|---|---|---|---|---|---|
+| 0.5 | 6 | 29 | 23 | 23 | 0 | the gate chain |
+| 1 | 12 | 56 | 49 | **30** | 19 | **the limiter** |
+| 2 | 24 | 108 | 99 | **30** | 69 | **the limiter** |
+| 3 | 36 | 150 | 139 | **30** | 109 | **the limiter** |
+| 3.5 | 42 | 6 | 6 | 6 | 0 | the debounce |
+| 5 | 60 | 8 | 8 | 8 | 0 | the debounce |
+| 8 | 96 | 11 | 11 | 11 | 0 | the debounce |
+
+**There is a band, and the answer depends on which side of it a reader is.**
+Below about 10 words a minute the gate chain is the only thing doing anything
+and the volume is small. Between roughly 10 and 40, **the limiter is what binds**,
+flatly, at 30 a minute, refusing up to 109 decisions in that minute. Above 40
+the inter-keystroke gap drops under 320 ms and the debounce collapses a whole
+message into the one prefix that settles at the end. So the debounce protects
+fast typists, the limiter protects the middle, and the middle is where most
+people are. 4.90 named the stage that protects the readers it was not talking
+about.
+
+**The model's own defect, caught by reading its output.** The first version
+typed continuously with no pause between messages, so at every rate above 3.1
+characters a second *nothing settled at all* and the table printed three rows of
+zeros. That is a property of a typist who never stops, not of the product. A
+reader finishes a message, reads the preview and sends, so the last prefix of
+every message always settles; the repaired model gives it a two-second pause and
+the fast rows became 6, 8 and 11. **A probe that measured nothing must fail**,
+and this one printed three confident zeros instead. It was caught because the
+zeros were surprising, which is the same reason 4.9 was caught, and that is
+luck wearing the clothes of method.
+
+**Why the contradiction survived the pass that wrote it.** Both sentences are
+true of the stage each was looking at. The bold one was written while reasoning
+about a single message, where there is no limiter because thirty is never
+reached. The other was written while listing what the probe could not see, where
+the limiter is exactly the kind of thing that belongs on the list. **A document
+does not notice that two of its paragraphs disagree; only a reader does, and the
+author is the worst-placed reader there is.** `probe-consistency.mjs` exists to
+catch this class and cannot see it: its constant half compares `NAME = n` against
+the clone, and neither sentence states a number.
 
 ### The pattern across the first three
 

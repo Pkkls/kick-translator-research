@@ -70,6 +70,23 @@ await esbuild.build({
 const m = await import(pathToFileURL(out).href);
 const { decideComposeAction, COMPOSE_MIN_LEN, COMPOSE_MAX_LEN, COMPOSE_DEBOUNCE_MS } = m;
 
+// The limiter and its cap come from the same module and are bundled separately
+// so that --rate can drive the product's own class rather than a model of it.
+const out2 = join(tmp, 'limiter.mjs');
+await esbuild.build({
+  stdin: {
+    contents: "export { RateLimiter, COMPOSE_MAX_PER_MIN } from './src/content/composeLogic';\n",
+    resolveDir: root,
+    sourcefile: 'compose-limiter-entry.ts',
+    loader: 'ts',
+  },
+  bundle: true,
+  format: 'esm',
+  platform: 'neutral',
+  outfile: out2,
+  logLevel: 'silent',
+});
+
 /**
  * Type a message one character at a time and count what reaches an engine.
  *
@@ -137,6 +154,64 @@ if (process.argv.includes('--prefixes')) {
       }
     }
   }
+}
+
+// ── The composition, which is the only thing a reader actually meets ────────
+//
+// The count above is the gate chain's answer for one message. It is not the
+// number of requests a reader causes, because two more things sit in the path:
+// the debounce, which decides whether a prefix is ever evaluated, and a sliding
+// rate limiter consulted at compose.ts:320, immediately before the request.
+//
+// A claim about a pipeline is a claim about a composition and must be measured
+// at the composition, which is this study's own rule from chapter 3. So this
+// mode drives all three together over a simulated minute of typing.
+if (process.argv.includes('--rate')) {
+  const { RateLimiter, COMPOSE_MAX_PER_MIN } = await import(pathToFileURL(out2).href);
+  console.log('\nCOMPOSE_MAX_PER_MIN ' + COMPOSE_MAX_PER_MIN +
+    ', sliding window 60000 ms, consulted at compose.ts:320 before the request.\n');
+  const MSG = 'the stream looks great today';
+  // A reader types a message, stops to read the preview, then sends and starts
+  // the next one. Without that pause a fast typist never settles a single
+  // prefix and the model reports zero calls at every fast rate, which is a
+  // property of the model and not of the product. The pause is what makes the
+  // last prefix of each message settle, and that one always does.
+  const PAUSE_MS = 2000;
+  console.log('one minute of typing ' + JSON.stringify(MSG) +
+    ', with a ' + PAUSE_MS + ' ms pause at the end of each message:\n');
+  console.log('  chars/s   wpm   settled   decided   SENT   refused   what binds');
+  for (const rate of [0.5, 1, 2, 3, 3.5, 5, 8]) {
+    const gap = 1000 / rate;
+    const limiter = new RateLimiter(COMPOSE_MAX_PER_MIN, 60_000);
+    let t = 0, settled = 0, decided = 0, sent = 0, refused = 0;
+    while (t < 60_000) {
+      let lastTranslated;
+      for (let pos = 1; pos <= MSG.length && t < 60_000; pos++) {
+        t += gap;
+        // A keystroke settles only when the next event is further off than the
+        // debounce. Mid-message that is the next keystroke; at the end of a
+        // message it is the pause, so the final prefix always settles.
+        const nextGap = pos === MSG.length ? PAUSE_MS : gap;
+        if (nextGap <= COMPOSE_DEBOUNCE_MS) continue;
+        settled++;
+        const prefix = MSG.slice(0, pos);
+        if (decideComposeAction(prefix, lastTranslated, undefined, 'fr') !== 'translate') continue;
+        decided++;
+        if (limiter.tryAcquire(t + COMPOSE_DEBOUNCE_MS)) { sent++; lastTranslated = prefix; }
+        else refused++;
+      }
+      t += PAUSE_MS;
+    }
+    const binds = refused > 0 ? 'THE LIMITER'
+      : gap <= COMPOSE_DEBOUNCE_MS ? 'the debounce, only the last prefix settles'
+      : 'the gate chain';
+    console.log('  ' + String(rate).padStart(7) + '   ' + String(Math.round(rate * 60 / 5)).padStart(3) +
+      '   ' + String(settled).padStart(7) + '   ' + String(decided).padStart(7) +
+      '   ' + String(sent).padStart(4) + '   ' + String(refused).padStart(7) + '   ' + binds);
+  }
+  console.log('\nwpm is characters per minute over five, the usual convention.');
+  console.log('The model types without hesitating inside a message, so the settled');
+  console.log('column is a floor at fast rates: a real pause mid-word settles a prefix.');
 }
 
 // The ceiling is a property of the gate chain rather than of the corpus of
