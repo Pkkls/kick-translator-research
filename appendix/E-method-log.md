@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twelve. Listed in full because a method log that omits them is an
+Thirteen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -298,6 +298,42 @@ The rule this pair yields, which is narrower and more useful than "be careful":
 > If the thing you are counting has a built or generated form, count that. A
 > pattern over the source is a guess about how the source will be interpreted,
 > and you are not the interpreter.
+
+### 4.13 The provenance scheme had no slot for borrowed facts
+
+**What happened.** This study tags every claim **[reported]**, **[replicated]**
+or **[new]**. An adversarial reading of its own chapters found three claims
+about the outside world carrying **[new]**, which says "this study's own
+analysis": the etymology of a Chinese laughter form, the conventionalisation
+chain behind a Japanese one, and an assertion about how neural translation
+systems behave on very short input, introduced with the words "this is a known
+behaviour of".
+
+None of the three is analysis. They are facts borrowed from general knowledge,
+none verified here, and two of them are the kind of internet etymology that is
+widely repeated and rarely sourced.
+
+**Cost.** Low in substance, because no argument in the study depends on any of
+them. High in what it says about the instrument.
+
+**Why it is not a slip.** The scheme had three slots and these claims fit none
+of them, so they went into the nearest one. **A provenance scheme with a
+missing category does not leave those claims untagged, which would be
+visible; it silently mislabels them as whichever neighbouring category is
+closest.** The absence of a slot is invisible precisely where it does the most
+damage.
+
+**The fix.** A fourth tag, **[outside]**, for general knowledge invoked and not
+verified, declared in the README as the weakest class of statement in the study
+and refutable by anyone who knows the domain. The three claims now carry it,
+and each is followed by a sentence saying what survives if the borrowed fact is
+wrong.
+
+The general form, which applies to any classification used for quality control:
+
+> Before trusting a tagging scheme, ask what it has no name for. Whatever that
+> is will not appear as missing. It will appear as a member of the nearest
+> category that does have a name.
 
 ### The pattern across the first three
 

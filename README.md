@@ -140,9 +140,20 @@ Every number in this study carries a tag:
 
 - **[reported]** taken from the project notebooks, by the development account.
 - **[replicated]** re-run for this study; the command is given.
-- **[new]** measured here for the first time; the method is given.
+- **[new]** measured or analysed here for the first time; the method is given.
+- **[outside]** general knowledge invoked from beyond the corpus and **not
+  verified by this study**: an etymology, a claim about how a class of system
+  behaves, a linguistic fact. Treat these as the weakest statements here and
+  refutable by anyone who knows the domain.
 
 A number with no tag is an error in this document. Report it.
+
+The fourth tag was added late, after an adversarial reading of this study
+found three claims about the outside world wearing the **[new]** tag, which
+says "this study's own analysis". An etymology is not an analysis, it is a
+fact, and a scheme with no slot for borrowed facts pushes them into whichever
+slot is nearest. The gap is recorded in
+[appendix E](appendix/E-method-log.md).
 
 ## Licence
 

@@ -55,11 +55,11 @@ the single-character CJK message: 草, は, 네 stay silent.
 This is where the character count shows itself to be the wrong unit. Those
 three examples are not fragments:
 
-- 草 is a complete, current Japanese internet utterance meaning laughter, by a
-  chain of conventionalisation (*warai* → *w* → a row of *w* resembling grass →
-  the character for grass) that makes it a written-laughter form in the sense
-  of [chapter 6](06-laughter.md), reached by a fourth mechanism the typology
-  there does not cover.
+- 草 is a complete, current Japanese internet utterance meaning laughter. The
+  chain of conventionalisation usually given for it (*warai* → *w* → a row of
+  *w* resembling grass → the character for grass) is **[outside]** and not
+  verified here; what matters for the argument is only that the single
+  character is a complete utterance, which the corpus's own bench treats it as.
 - は is a grammatical particle, and a plausible complete turn in context.
 - 네 is a complete affirmative reply in Korean.
 
@@ -91,12 +91,17 @@ The motivation is a failure worth examining closely. **[reported]** "bonjour"
 aimed at Japanese came back as the French syllables written in katakana, rather
 than as the Japanese word.
 
-The engine transliterated instead of translating. This is a known behaviour of
-neural translation systems on very short input: with almost no context, the
-decoder's most probable continuation for an unfamiliar or ambiguous token is
-often a character-level transcription rather than a lexical substitution. The
-model is not malfunctioning; it is producing the highest-probability output
-under a conditioning context that contains nearly nothing.
+The engine transliterated instead of translating. **[outside]** The explanation
+offered here is that with almost no context, a decoder's most probable
+continuation for an unfamiliar or ambiguous token can be a character-level
+transcription rather than a lexical substitution, so the model is not
+malfunctioning but producing the likeliest output under a conditioning context
+that contains nearly nothing.
+
+That account is plausible and this study did not verify it. What the corpus
+establishes is only the observation: a short greeting came back transliterated.
+The mechanism is borrowed reasoning about how such systems behave, and the
+remedy the project chose does not depend on the mechanism being right.
 
 The failure is invisible to every mechanical check the system has. A
 transliterated output is non-empty, is in the target script, is the right
@@ -135,8 +140,12 @@ automatically survive transport to another.
    several times stricter for logographic scripts, measured in content.
 3. Both sides of the trade need a witness in the test suite, or the floor will
    drift with the next change.
-4. Short input elicits transliteration rather than translation from neural
-   engines, and no mechanical check distinguishes the two outputs.
+4. Short input elicited transliteration rather than translation from the engine
+   in use, once, in the corpus. The general claim that neural engines behave
+   this way on short input is **[outside]** and unverified here. What holds
+   without it: no mechanical check distinguishes a transliterated output from a
+   translated one, so the failure is invisible to everything but a reader of
+   the target language.
 5. A knowledge-built table of head expressions is a cache with better economics
    than a traffic-built one in a medium whose head is heavy.
 

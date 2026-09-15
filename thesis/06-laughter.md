@@ -35,7 +35,9 @@ works on letter sequences within words of a language and these are neither.
 ## 6.2 A typology of written laughter [new]
 
 *The forms below are drawn from the project's lexicon; the three-way typology
-and the analysis are this study's, not the notebooks'.*
+and the analysis are this study's, not the notebooks'. The individual
+etymologies are **[outside]**: invoked from general knowledge, not verified
+here, and the typology does not depend on any single one of them being right.*
 
 The same non-verbal vocal act is conventionalised in writing by at least three
 distinct semiotic mechanisms, and which mechanism a community uses is itself
@@ -78,7 +80,7 @@ Hangul, they are frequent in chat, and they are not syllable blocks.
 | Form | Community | Mechanism |
 |---|---|---|
 | `555` | Thai | the digit 5 is read *ha*, so the sequence spells *hahaha* |
-| `2333` | Chinese | conventional, originating in a forum emoticon index rather than in sound |
+| `2333` | Chinese | conventional rather than phonetic; commonly reported to originate in a forum emoticon index **[outside]** |
 | `mdr` | French | acronym, *mort de rire* |
 | `lol` | English, now global | acronym, borrowed everywhere |
 | `wkwk` | Indonesian | conventionalised imitation |
