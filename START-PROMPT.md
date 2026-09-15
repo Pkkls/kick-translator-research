@@ -31,7 +31,7 @@ You are continuing a study that already exists. Do not start it over.
 3. `HANDOVER.md` — what this study is telling the account that develops the
    extension, ordered by value over cost.
 
-**Then run the five gates and the two reports, and confirm the gates are green
+**Then run the six gates and the two reports, and confirm the gates are green
 before changing anything:**
 
 ```bash
@@ -40,12 +40,14 @@ node appendix/D-scripts/check-links.mjs .
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 node appendix/D-scripts/axis-ledger.mjs .
+node appendix/D-scripts/scripts-index.mjs .
 node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
 node appendix/D-scripts/probe-consistency.mjs . /path/to/kick-chat-translator
 ```
 
-**Five of the seven must exit 0**: `git status` printing nothing, then
-`check-links`, `verify-handover-claims`, `audit-spec` and `axis-ledger`.
+**Six of the eight must exit 0**: `git status` printing nothing, then
+`check-links`, `verify-handover-claims`, `audit-spec`, `axis-ledger` and
+`scripts-index`.
 
 `probe-quotes` never fails on a finding and is a report: it lists quotations it
 could not match, and some of those are unmatchable by construction, from the
@@ -56,13 +58,13 @@ rather than the corpus. Read it and judge.
 Its constant and duplication halves cannot produce a false positive, so it
 exits 1 on either (4.76).
 
-If any of the seven disagrees with what `RESUME-HERE.md` records, the
+If any of the eight disagrees with what `RESUME-HERE.md` records, the
 repository is stale and reconciling it is the first task. It did on 2026-09-15:
 `axis-ledger` printed a budget count four documents contradicted, and
 reconciling it was the first pass (4.80).
 
-**Then open every pass with the count the goal asks for**, which is an eighth
-command and not one of the seven:
+**Then open every pass with the count the goal asks for**, which is a ninth
+command and not one of the eight:
 
 ```bash
 node appendix/D-scripts/stop-conditions.mjs . /path/to/kick-chat-translator

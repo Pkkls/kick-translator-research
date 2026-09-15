@@ -27,11 +27,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-link-guards.mjs` | Which URL shapes the product's two link guards recognise, outgoing `maskProtected` and the incoming `URL_RE`, against the privacy text's claim that links are stripped. Exits 1 if the defect is ever fixed, so this study learns it is stale | [appendix E 4.91](../E-method-log.md#491-both-link-guards-require-a-scheme-and-the-privacy-text-does-not) |
 
-**Thirteen scripts.** That count is here because two documents stated it from
+| `scripts-index.mjs` | Whether this README still names exactly the scripts in this directory, and whether the two counts it states agree with the directory. Walks the tree rather than reading a list, because the list is the thing that drifts | [appendix E 4.93](../E-method-log.md#493-the-table-of-what-is-here-was-kept-by-hand-four-times) |
+
+**Fourteen scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All thirteen take a path argument and print to standard output; `probe-quotes.mjs`,
+All fourteen take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

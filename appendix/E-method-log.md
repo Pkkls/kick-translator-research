@@ -3952,6 +3952,59 @@ author is the worst-placed reader there is.** `probe-consistency.mjs` exists to
 catch this class and cannot see it: its constant half compares `NAME = n` against
 the clone, and neither sentence states a number.
 
+### 4.93 The table of what is here was kept by hand four times
+
+**What happened.** Four scripts were added to `appendix/D-scripts` over thirteen
+passes, and each time the README's table gained a row and its two counts were
+edited, by hand, by the session that added the script. Every one of those edits
+was correct. That is the whole problem: **a hardcoded list that has been kept
+four times is not a list that is safe, it is a list whose blind spot has not
+been stood in yet**, which is 4.75's sentence about "it has never caused a
+problem" arriving from the other direction.
+
+It has failed once already. 4.81 found the count written as nine in one place
+and ten in another on the same day, by the same session, with nine on disk. That
+was the same table's neighbourhood and nothing caught it but a reading.
+
+**What was built.** `scripts-index.mjs` walks the directory, reads the table, and
+fails on three things: a script with no row, a row naming a script that is not
+there, and either of the two counts the prose states disagreeing with the
+directory. It walks rather than reading a list from anywhere, because the gate
+that walks the tree is the one that never missed a file.
+
+**Its first run was the witness, and nothing had to be planted.** Written before
+its own row existed, it printed exactly the state it was built to catch:
+
+```
+14 scripts on disk, 13 rows in the README
+ECHECS:
+  on disk with no README row: scripts-index.mjs
+  the bold count says Thirteen; there are 14
+  the "All N take a path argument" line says thirteen; there are 14
+```
+
+Three failures, all real, from the ordinary act of adding a file. **A witness
+you did not have to construct is worth more than one you did**, because a
+constructed witness proves the assertion can fire and a natural one proves the
+defect can occur. This is the first gate in this repository to get both at once,
+and it got them because it was written one step before the edit it guards rather
+than one step after.
+
+Two more were planted and restored from a copy: a row naming a `probe-ghost.mjs`
+that does not exist, and `check-links.mjs` listed twice. Each goes red with its
+own message.
+
+**Why both counts and not one.** The prose states the number twice, once in bold
+and once in *All N take a path argument*, and 4.81's failure was exactly one of
+the two being updated. Checking one of them would reproduce the bug it exists to
+prevent.
+
+**What it cannot see**, asked in the pass that wrote it: whether a row's
+description is true. A row that says the wrong thing about the right file passes,
+and no mechanical check does better. The "Used in" column is left to
+`check-links.mjs`, which already resolves those anchors, so checking them here
+would be a second thing to get wrong rather than a second instrument.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

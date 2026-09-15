@@ -14,7 +14,7 @@ nothing while the clone under study had no dependency tree at all for two
 passes (4.61). Check the clone builds, not only that git is quiet. That sentence was
 false once, and the uncommitted draft behind it is
 [entry 4.29](appendix/E-method-log.md), so check it rather than read it. The
-first command must print nothing, and the four after it are the gates that must
+first command must print nothing, and the five after it are the gates that must
 stay green:
 
 ```bash
@@ -23,6 +23,7 @@ node appendix/D-scripts/check-links.mjs .
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 node appendix/D-scripts/axis-ledger.mjs .
+node appendix/D-scripts/scripts-index.mjs .
 ```
 
 And one more that is not a gate on this repository but the count the goal asks
