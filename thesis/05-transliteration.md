@@ -165,10 +165,17 @@ global, which is a known and stated limit rather than an oversight.
 The same withholding applies as for arabizi: declaring `sl=ru` on Latin-script
 text would ask the engine to read Cyrillic where there is none.
 
-## 5.5 Shlyokavitsa: the case that stayed open
+## 5.5 Shlyokavitsa: the case that was closed, and the measurement that closed it
 
-Bulgarian written in Latin letters, which Bulgarian chat writes routinely, is
-recorded in the notebooks as diagnosed and deliberately not repaired.
+**This section said the case stayed open. It did not.** An earlier entry in the
+notebooks defers it; a later one solves it, and this study read the first and
+missed the second **[new]**. The correction is worth more than the original
+section, because the solution contains the sharpest overfitting measurement in
+the whole corpus.
+
+Bulgarian written in Latin letters, which Bulgarian chat writes routinely, was
+first recorded as diagnosed and deferred, on the reasoning that it would need a
+third marker table and the frequency data to justify its weight did not exist.
 
 **[reported]** The identifier scatters: `run` (Romanian) on "mnogo dobre igra",
 `pol` (Polish) on "mnogo smeshno", `ind` (Indonesian) on "az sam tuk", `swe`
@@ -181,11 +188,58 @@ case of [chapter 4](04-script-vs-language.md). A single symptom with two
 unrelated causes is a recurring hazard in this domain, because the reader
 reports what they see and what they see is one wrong flag.
 
-The disposition is explicit: the `sl` stays empty in every case, so the engine
-is not misled; the damage is the badge and the same-language skip. A third
-marker table would be needed, and the frequency data that would justify its
-weight does not exist. See [14. Limits](14-limits.md) on the absence of a real
-chat capture, which is the binding constraint behind several such decisions.
+The disposition at that point was explicit: the `sl` stays empty in every case,
+so the engine is not misled; the damage is the badge and the same-language skip.
+
+### What the later pass found
+
+**The framing was wrong, and correcting it made the work small.** The
+romanisation file defines itself as "the languages written in Latin letters
+that are not written that way", which *is* shlyokavitsa. It needed a fourth
+language in an existing table, not a third table.
+
+Then the measurement that decided the form, and it is the best instance of
+overfitting in this corpus **[reported]**:
+
+> Markers built by grammatical paradigm, the interrogatives, the future
+> particle, the demonstratives, the roots where Bulgarian diverges from
+> Russian, take **10 of the 20 lines written at the same time as them and ZERO
+> of the 4 written the day before**, by the previous pass, before the list
+> existed.
+
+Zero of four. A paradigm gives the words of a textbook; a chat writes *mnogo
+dobre igra* and *az sam tuk*, which carry none of them. The notebooks name it
+as the same defect as the short-word table built from greetings, caught before
+shipping this time rather than after.
+
+**The repair is a conjunction rule, and its false-positive measurement is the
+part to keep.** The words a chat actually writes are the ambiguous ones:
+`dobre` is Polish, `az` Hungarian, `sam` an English given name, `mnogo` and
+`smeshno` romanised Russian. One decides nothing. **Two in the same line
+decide: zero false positives across the 187 lines of both benches in the
+repository, in 19 languages that these lists had never looked at**, and 3 of
+the 4 held-out lines against 0 for the strong markers alone.
+
+End to end, three of four previously mislabelled lines become correct and none
+becomes wrong.
+
+### The five-letter floor, respected rather than waived
+
+The floor rejected nine of the strong Bulgarian markers, `shte`, `kade`,
+`koga`, `tova`, `tozi`, `tazi`, `tezi`, `kude`, `sme`. They were demoted to
+the second tier rather than granted an exemption **[reported]**.
+
+What that cost, measured: held-out recall does not move, 3 of 4 before and
+after. What falls is recall on the author's own lines, 16 to 14 of 20, **and
+that number only ever measured the fitting.**
+
+This is the discipline of [chapter 3](03-method.md#33-the-bench-that-measured-itself)
+applied prospectively rather than in hindsight: a rule was refused an exemption,
+the refusal was priced, and the price turned out to be paid entirely in the
+metric that does not predict anything.
+
+See [14. Limits](14-limits.md) on the absence of a real chat capture, which
+remains the binding constraint behind other decisions.
 
 ## 5.6 What this chapter licenses
 

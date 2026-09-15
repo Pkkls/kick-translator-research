@@ -103,7 +103,10 @@ public.
 | Romanisation markers, false positives on 20 traps | 0 of 20 | | [reported] |
 | Arabizi with wide digit set | 3 false positives | | [reported] |
 | Arabizi restricted to `[3579]` | 12 of 12, 0 false positives on 29 traps | 227 | [reported] |
-| Shlyokavitsa (Latin Bulgarian) | 9 of 12 silent, scattered verdicts, unresolved | | [reported] |
+| Shlyokavitsa, before | 9 of 12 silent, verdicts scattered across four languages | | [reported] |
+| Shlyokavitsa, paradigm-built markers | 10 of 20 fitted lines, **0 of 4 held-out** | | [reported] |
+| Shlyokavitsa, two-marker conjunction rule | 3 of 4 held-out, **0 false positives on 187 lines in 19 languages** | | [reported] |
+| Five-letter floor, cost of respecting it | held-out recall unchanged at 3 of 4; fitted recall 16 to 14 of 20 | | [reported] |
 | Keyboard smash, before | 0 of 11 dropped | | [reported] |
 | Keyboard smash, after | 15 of 15, 0 false positives | 424 | [reported] |
 | Smash threshold 0.6 vs 0.65 vs 0.7 | 2 FP / 0 FP / 0 FP shipped | | [reported] |

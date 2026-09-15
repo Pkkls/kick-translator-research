@@ -140,6 +140,35 @@ adopts it as a reading rule, and where the corpus does not make the provenance
 of a bench clear, [13. Results](13-results.md) says so rather than assuming the
 favourable case.
 
+### A second instance, sharper, and caught before shipping
+
+The corpus contains the same result once more, on Latin-script Bulgarian, and
+the numbers are starker **[reported]**. Markers built from grammatical
+paradigms took **10 of the 20 lines written alongside them and zero of the 4
+written the day before, by the previous pass, before the list existed.**
+
+Zero of four. The first instance, 20 of 20 against 4 of 12, could be read as a
+rule that generalised poorly. This one did not generalise at all: every line it
+caught was a line that had shaped it.
+
+The diagnosis in the notebooks is linguistic rather than statistical, and it is
+the better explanation: *a paradigm gives the words of a textbook; a chat writes
+"mnogo dobre igra" and "az sam tuk", which carry none of them.* Interrogatives,
+future particles and demonstratives are what a grammar book foregrounds and
+what running conversation uses least.
+
+**The repair generalises where the markers did not.** The words a chat actually
+writes are the ambiguous ones, each a real word of some other language:
+`dobre` Polish, `az` Hungarian, `sam` an English name, `mnogo` and `smeshno`
+romanised Russian. One decides nothing; two in the same line decide. Measured:
+**zero false positives across 187 lines in 19 languages the lists had never
+seen**, and 3 of 4 held-out lines against 0 for the strong markers alone.
+
+Two things follow. A conjunction of weak ambiguous signals beat a disjunction of
+strong unambiguous ones, on exactly the register that matters. And the project
+caught this one **before shipping** rather than after, which is what adopting
+the held-out discipline buys.
+
 ### The generalisation
 
 > Any rule extended until its examples pass has been fitted to those examples,

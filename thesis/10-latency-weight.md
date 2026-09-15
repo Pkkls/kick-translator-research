@@ -186,10 +186,25 @@ The corpus prices its linguistic features, which is rare and useful:
 
 | Feature | Bytes | Share of injected script |
 |---|---|---|
-| Laughter lexicon | 3791 | 1.55 % |
+| Laughter lexicon | 3791 isolated, 3555 marginal | 1.55 % |
 | Keyboard-smash filter | 424 | |
 | Arabizi | 227 | |
 | Romanisation markers | 617 | 0.26 % |
+
+**Two numbers for one table, and the difference is the lesson.** The corpus
+gives the laughter lexicon as 3555 bytes in the entry that introduces it and
+3791 in the entry that accounts for a weight-gate failure. Both are correct and
+they measure different things: 3791 is the module minified in isolation, 3555
+is what it adds to the page once the bundler has done its work on the whole.
+This study first transcribed both, in different chapters, without noticing they
+disagreed **[new]**.
+
+The practical point for anyone pricing a feature: **a module's isolated size
+and its marginal cost to a bundle are different quantities**, and the gap here
+is 236 bytes, or 6 percent of the smaller figure. Say which one a price list
+reports, because a reader comparing a feature's cost against a budget needs the
+marginal number and a reader deciding whether to vendor a dependency needs the
+isolated one.
 
 And it prices the alternative: the statistical identifier's data is 98 KB in
 the bundle, against a lighter competitor at 68 KB. **[reported]** Thirty

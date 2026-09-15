@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-one. Listed in full because a method log that omits them is an
+Twenty-two. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -665,6 +665,37 @@ accusation, or enumerating instances, where a blind spot becomes a short list.
 the most productive single step in this entire session, more than any axis and
 more than any amount of re-reading. That is the argument for making it a bar
 with a cost rather than a principle in a preamble.
+
+### 4.22 Read an early entry, missed the later one that settled it
+
+**What happened.** Chapter 5 said Latin-script Bulgarian was diagnosed and
+deliberately left unrepaired, citing a notebook entry that defers it. **A later
+pass in the same corpus solves it**, and this study read the first entry and
+never found the second.
+
+**Cost.** A chapter section asserting an open question that was closed, and,
+worse, the loss of the best material in the corpus: the repair contains an
+overfitting measurement of **10 of 20 fitted lines against zero of four
+held-out**, which is sharper than the 20-of-20 against 4-of-12 the method
+chapter was built on, plus a conjunction rule with zero false positives across
+187 lines in 19 languages.
+
+**Why it happened.** The corpus is chronological and was queried by theme. A
+theme query returns the passages that match, ranked by relevance, not the most
+recent state of a question. Two entries about the same subject, months apart,
+look alike to a search; only their position in the file says which one won.
+
+**The rule this yields, and it applies to any chronological corpus:**
+
+> Searching a journal by topic returns statements, not conclusions. Before
+> reporting that a question is open, find the last thing written about it, not
+> the best-matching thing. Sort by position, then read backwards.
+
+This is the same shape as the frame that asserted a fresh clone has no
+harnesses ([4.10](#410-repeated-a-claim-from-the-frame-without-checking-it)): a
+statement that was true when written, read later as though it still were. There
+it was the project's own file that had rotted; here it was this study reading
+a correct file at the wrong point in its history.
 
 ### The pattern across the first three
 
