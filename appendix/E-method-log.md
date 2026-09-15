@@ -5551,6 +5551,87 @@ is not knowable from here and is not claimed: what is claimed is that these
 sentences collide. How much Slovak or Polish traffic a Kick channel carries is
 not measured and cannot be without a capture this study does not have.
 
+### 4.115 Two characters decide a thousand, and a kaomoji is two characters
+
+**The replication first, because it is the better half.** The corpus reports a
+real defect and a real fix. The script pre-check's denominator used to count
+every non-ASCII character, emoji included, so emoji inflated it without ever
+being able to win a majority: *"да" plus two emoji* fell to 2 of 4, no strict
+majority, `undefined`; *"رائع" plus four emoji* did the same and franc took over
+and answered **Persian on Arabic**. The fix counts only characters carrying one
+of eight known scripts. The published figure is that it **holds to 6 emoji**.
+
+**It holds further than published.** `да` followed by fifty emoji is still
+Russian, and there is no limit to find, because emoji are not in the denominator
+at all. The 6 was the end of what was tried rather than the end of what works.
+That is the second time this study has found the corpus **under-stating** its own
+result, and it is worth saying as plainly as the over-statements.
+
+**What the fix left behind is a floor of two**, and the source is explicit about
+why: a single Cyrillic homoglyph in an English word counts 1, and at a floor of 1
+the whole line becomes Russian. The floor works for one character, measured here
+and replicating the documented mitigation.
+
+**Two characters are worth the entire message.** ASCII is skipped before counting
+starts, so a thousand characters of English contribute **nothing** to the
+denominator and two Cyrillic letters are 100 percent of it.
+
+| English, plus two Cyrillic letters | verdict |
+|---|---|
+| 7 characters | ru |
+| 102 characters | ru |
+| 602 characters | ru |
+| **1002 characters** | **ru** |
+
+Seven of the nine scripts tested decide a message this way: Cyrillic, Arabic,
+Hebrew, Thai, Devanagari, Kana and Hangul. Han is the exception and defers to
+franc deliberately (4.110); Greek is not among the eight counted, which is shown
+rather than assumed.
+
+**The realistic vector is not a homoglyph, it is a kaomoji.** `(・∀・)` carries
+two U+30FB katakana middle dots. That is two kana, the floor is met, and the kana
+rule wins outright without needing a majority. **2 of 5 ordinary kaomoji make an
+English sentence Japanese**, the other three being built from box-drawing and
+combining marks that no script claims.
+
+**This one reaches further than 4.112 and 4.114 did.** Those moved
+`detectLanguage` only, so the filters and the flag were wrong while the
+translation was not. Here **`confidentLanguage` returns the wrong answer**, and
+that is what the pipeline hands the provider as the source language. It is not a
+filter being wrong about a line it keeps. It is the wrong source language on the
+call.
+
+**Two fixes planted, and the first one re-introduced the bug the corpus had
+fixed.**
+
+| | emoji fix | real text | 1002-char homoglyph | kaomoji |
+|---|---|---|---|---|
+| shipped | holds | 4 of 4 | ru | 2 of 5 Japanese |
+| **proportional floor**, script characters at least 20 percent of non-space | **broken** | 4 of 4 | undefined | none |
+| **katakana punctuation is not kana** | holds | 4 of 4 | ru | **none** |
+
+The proportional floor is the obvious fix and it is wrong, because emoji are
+non-space characters: `да` plus fifty emoji becomes 2 of 52 and falls back to
+franc, which is precisely the defect the corpus repaired. **The replication built
+as a control caught it on the first run**, which is the whole argument for
+putting a published fix into a probe as a control rather than merely citing it.
+
+**The emoji fix and the floor are one mechanism seen from two sides.** Counting
+only script-bearing characters is what makes emoji harmless and what makes two
+characters decisive; the denominator cannot be made proportional without undoing
+the first. So the homoglyph half is structural.
+
+**The kaomoji half is not, and that is a clean result.** Excluding U+30FB,
+U+30FC, U+30FD and U+30FE — the middle dot, the prolonged sound mark and the
+iteration marks, which are punctuation rather than syllables — takes all the
+kaomoji out, leaves the emoji fix standing, leaves real Japanese at 4 of 4, and
+does not touch the homoglyph case. It is a different axis: not how much counts,
+but **what counts as kana**, and that one was simply misclassified.
+
+**Scope.** Nine scripts, five kaomoji, four real lines, printed by the probe. No
+chat capture exists here, so how often a kaomoji or a stray homoglyph arrives is
+not measured. What is measured is that two characters suffice at any length.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

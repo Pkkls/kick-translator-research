@@ -61,11 +61,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-shlyokavitsa-traps.mjs` | The corpus's *zero false positives on 187 lines in 19 languages* for the two-marker Bulgarian rule, attacked with Bulgarian's Latin-writing neighbours and with English on a gaming platform. Counts which markers do the damage, and replicates the source's claim that a strong marker always wins | [appendix E 4.114](../E-method-log.md#4114-slovak-for-we-are-fine-is-declared-bulgarian-and-the-marker-that-does-it-is-a-real-bulgarian-word) |
 
-**Thirty scripts.** That count is here because two documents stated it from
+| `probe-script-floor.mjs` | The corpus's emoji-denominator fix re-taken as a control, then what the floor of two it left is worth: two characters decide a message of any length on seven scripts, and two of five ordinary kaomoji carry enough katakana punctuation to reach it | [appendix E 4.115](../E-method-log.md#4115-two-characters-decide-a-thousand-and-a-kaomoji-is-two-characters) |
+
+**Thirty-one scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All thirty take a path argument and print to standard output; `probe-quotes.mjs`,
+All thirty-one take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

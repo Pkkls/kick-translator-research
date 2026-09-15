@@ -324,6 +324,13 @@ Cloned from the public repository, at the commit the study measured against.
 | Candidate fix, three distinct markers | false positives **14 → 2**, real shlyokavitsa **10 → 4** | [new] |
 | Candidate fix, drop `sam` and `sega` | false positives **14 → 10**, and costs a real Bulgarian line | [new] |
 | Why it costs one | `sam` is *съм* and `sega` is *сега*; they collide because they are frequent | [new] |
+| **The emoji-denominator fix, re-taken** | holds at **50 emoji** and has no limit; the corpus published *holds to 6* | [replicated] |
+| **English characters needed before two Cyrillic letters stop deciding** | none: **1002 characters** still reads `ru` | [new] |
+| Scripts that decide a message from two characters | **7 of 9 tested**; Han defers on purpose, Greek is not counted | [new] |
+| Ordinary kaomoji that make an English sentence Japanese | **2 of 5**, via two U+30FB katakana middle dots | [new] |
+| What this moves, unlike 4.112 and 4.114 | **`confidentLanguage`**, so the source language sent to the provider is wrong | [new] |
+| Candidate fix, a proportional floor | **re-introduces the emoji defect** the corpus had fixed | [new] |
+| Candidate fix, katakana punctuation is not kana | kaomoji **2 of 5 → 0**, emoji fix and real Japanese unchanged | [new] |
 
 ## 13.8 The three bars execution falsified
 
