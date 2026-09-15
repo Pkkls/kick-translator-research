@@ -206,10 +206,20 @@ reports, because a reader comparing a feature's cost against a budget needs the
 marginal number and a reader deciding whether to vendor a dependency needs the
 isolated one.
 
-And it prices the alternative: the statistical identifier's data is 98 KB in
-the bundle, against a lighter competitor at 68 KB. **[reported]** Thirty
-kilobytes, thirteen percent of the bundle, ride on an accuracy comparison,
-which the project ran rather than assumed. Its result is in
+And it prices the alternative, and the price is the lesson above committed one
+paragraph later. **[reported]** The weight gate's header puts the statistical
+identifier's data at 98 KB in the bundle against 68 KB for a lighter
+competitor: thirty kilobytes, thirteen percent, riding on an accuracy
+comparison the header says *has not run yet*. **[new]** The header was committed
+at 18:23 on 2026-08-31 and the comparison at 18:34, and the header still says
+it has not run. The comparison measured the stake directly, bundled and
+minified: 81121 bytes against 174824, a difference of 93703 and forty percent of
+the injected script **[reported]**, three times the estimate. The first pair is
+the size of each library's data; the second is what each adds to the page, and
+only the second is what the trade would have bought. An earlier version of this
+paragraph carried the thirty kilobytes as the stake of the comparison.
+
+The comparison ran rather than being assumed. Its result is in
 [13. Results](13-results.md#131-the-identifier-duel): the lighter library wins on
 global accuracy and loses decisively on the number that was declared decisive
 in advance, non-English messages classified as English and therefore dropped in

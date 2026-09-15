@@ -282,6 +282,7 @@ if (existsSync(join(root, poidsPath))) {
   // Counted exits rather than a guess at how a lower bound would be spelled:
   // adding one adds a second failing exit, and this goes red.
   claim('3.5b the weight gate has one failing exit, the growth one', 1, (poids.match(/sys\.exit\(1\)/g) || []).length);
+  claim('3.5b its header still says the identifier comparison has not run', true, /Elle n'a pas encore tourne/.test(poids));
 } else uncheckable('3.5b weight gate direction', poidsPath + ' absent');
 
 // 5: the frequency the listing already publishes.

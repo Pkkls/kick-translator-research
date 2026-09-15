@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **45/45 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **46/46 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -62,8 +62,12 @@ Read so far: the sections on the startup race, the false probes, the Bulgarian
 work, the day boundary, the weight field, the short-expression table, the
 silent-drop residue, and the Latin-only bench.
 
-**Still unopened**, most promising first: L143 "the detector that won everything
-except the one thing", L237 "the trimming experiment, run at last", L263 "what
+Also read in this session: L143, the identifier duel, and L394, the redone
+weight experiment, read out of order because it corrects the trimming numbers
+in L237. Read L237 with L394 beside it.
+
+**Still unopened**, most promising first: L237 "the trimming experiment, run at
+last", L263 "what
 a source allowlist costs without saying so", L207 "a change that shipped on one
 bench and was reverted on the next", L1205 onward, the whole live-debugging
 sequence.

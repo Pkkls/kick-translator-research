@@ -1220,6 +1220,32 @@ no commit ever touching Playwright in a manifest, witnessed by the same search
 finding `vitest`; and no infrastructure file recording a version, counted as
 "0 of 3" so that missing files cannot make it pass.
 
+### 4.37 An estimate joined to the experiment that replaced it
+
+**What happened.** Chapter 10 priced the identifier swap at thirty kilobytes,
+thirteen percent, from the weight gate's header, and pointed at the comparison
+in 13.1 as its result. The header's figures are the sizes of two libraries'
+data, written eleven minutes before the comparison was committed, and the
+header says the comparison has not run. The comparison measured what each
+library adds to the bundle: 93703 bytes, forty percent. The study carried both
+numbers, in two chapters that link to each other, and 13.1 used the right one.
+
+**Cost.** A stake understated by a factor of three in the chapter about weight,
+directly under a paragraph of the same chapter explaining that a module's
+isolated size and its marginal cost to a bundle are different quantities.
+
+**Why it happened.** Two sources, two dates, two instruments, one topic. A
+header comment reads as current because it sits in the current file. It is
+[4.22](#422-read-an-early-entry-missed-the-later-one-that-settled-it) with a
+comment in place of a journal entry, and the rule that would have caught it is
+the one in TRANSMISSION.md about pinning a number to its revision: the header's
+number belonged to 18:23.
+
+**And one suspicion of this account's, refuted before it was written.** Reading
+the duel, 13.1's italic quotation looked like a paraphrase of the journal. It is
+verbatim, from the work queue's entry on the same experiment. The comparison had
+been made against the wrong file.
+
 ### 4.36 The pass after the one quoted corrected it
 
 **What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth

@@ -18,6 +18,18 @@ anything, and a chat line rarely supplies it. So the pipeline does the cheap
 thing first: it looks at the characters, decides which writing system dominates,
 and returns the language associated with that writing system.
 
+**And the statistical identifier is only statistical for four scripts.**
+**[reported]** The corpus found, reading the package's own data files, that the
+identifier carries trigram profiles for Latin, Cyrillic,
+Arabic and Devanagari and recognises every other script with an expression that
+returns one language per script. **[replicated]** In the installed package, the
+trigram data has exactly those four scripts, 66 profiles between them, and 16
+of its 20 script expressions map straight to a single language, `cmn`, `jpn`,
+`kor` and `ell` among them. For Chinese, Japanese, Korean, Greek and a dozen
+more, the fallback that is meant to rescue the script shortcut is the same
+shortcut one level down. The corpus's phrase for it: *la meme idee un etage
+plus bas*.
+
 For a large share of traffic the shortcut is right, and it is right for a
 reason that has nothing to do with linguistics. It is right because usage is
 distributed unevenly. Most Arabic-script text on a Western streaming platform
