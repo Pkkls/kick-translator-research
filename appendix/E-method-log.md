@@ -1715,6 +1715,62 @@ entirely of existence checks is blind to duplication**, and the entry is here
 rather than being quietly fixed because the same slip is available to anyone
 editing these files the same way.
 
+### 4.51 A stop condition with a term nobody could evaluate
+
+**What happened.** The specification names three conditions for stopping and
+the first is that every axis A1 to A22 is *closed, or open with a number and a
+named reason*. Each of the 22 axes carries a **Bar**, the condition under which
+it closes, and all 22 bars are present and specific. No verdict was ever
+recorded against any of them. The axes live in appendix A, the findings live in
+chapters organised by subject, and chapter 13 never names an axis once, so
+there was no way to read the condition at all: not a hard way, no way.
+
+Counted by label, 19 of the 22 axes are never mentioned outside the
+specification. **That number is not the finding and must not be reported as
+one.** It measures citation, not coverage: chapter 13 publishes upwards of
+forty numbers on detection, latency, weight, the gates and the observable
+surface, and several of them answer a Bar exactly while naming no axis.
+Publishing "19 axes unaddressed" would have been
+[4.17](#417-published-a-false-accusation-against-complete-work) with a bigger
+denominator.
+
+**What was built.** [Appendix F](F-axis-ledger.md), one row per axis: the bar,
+a verdict, and the number the verdict rests on. Entering a verdict required a
+published number, so a subject discussed at length and never measured against
+its bar stays unrecorded. The result: **11 axes carry a verdict, 11 do not, and
+none is closed.** The most any axis reaches is open with a number, which the
+specification accepts as a resting state and which is the honest description of
+an audit that measured a great deal and finished nothing.
+
+Three of the eleven verdicts came from this session's own passes without anyone
+having named them as axis work at the time: A7 from the hidden-control run
+(4.48), A6 and A13 from the weight gate (4.49). The ledger did not need new
+measurement so much as it needed somewhere to put the measurements that
+existed.
+
+**Cost.** The first stop condition has been unreadable for the length of the
+study, which means every earlier statement about how near this work was to done
+rested on the other two conditions and on an impression standing in for the
+first.
+
+**Why it happened.** The specification and the results were written at
+different times for different readers, and the axis is a unit that only the
+specification uses. A document organises by what it is arguing; a condition
+counts by what it was specified against; and when those two shapes differ,
+nothing fails, the count just silently stops being possible. The check now
+runs: `axis-ledger.mjs` fails if the specification and the ledger disagree
+about which axes exist, and prints the verdict count, which is the condition.
+
+**The same mistake, twice in two passes.** [4.50](#450-an-edit-that-duplicated-the-paragraph-after-it-pushed-found-by-reading-the-file-for-something-else)
+records reverting a planted test value with `git checkout --` on a file that
+also held uncommitted work. The negative control for this pass planted a
+deleted row in appendix F and reverted it the same way, and appendix F was
+untracked, so git restored nothing and the row stayed deleted. Same operation,
+same pass structure, a different reason for it to fail. This log already says
+that a diagnosis propagates when something runs and not when it is written
+down, and this is the third time this study has proved it on itself. **Plant
+the control in a copy, or write the restore before the plant.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -31,7 +31,7 @@ You are continuing a study that already exists. Do not start it over.
 3. `HANDOVER.md` — what this study is telling the account that develops the
    extension, ordered by value over cost.
 
-**Then run the four gates and the two reports, and confirm the gates are green
+**Then run the five gates and the two reports, and confirm the gates are green
 before changing anything:**
 
 ```bash
@@ -39,11 +39,12 @@ git status --short
 node appendix/D-scripts/check-links.mjs .
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
+node appendix/D-scripts/axis-ledger.mjs .
 node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
 node appendix/D-scripts/probe-consistency.mjs . /path/to/kick-chat-translator
 ```
 
-The first four must be green. The last two are reports that list false
+The first five must be green. The last two are reports that list false
 positives beside real ones, so they are read, not kept green, except
 `probe-consistency`'s constant and duplication halves, which are checks. If any
 of them disagrees with what `RESUME-HERE.md` records, the repository is stale

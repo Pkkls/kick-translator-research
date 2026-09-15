@@ -15,7 +15,9 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-consistency.mjs` | Whether this study states one quantity twice with two values. Ratios are a report, keyed on wording and therefore weak; constants written as `NAME = n` are checked against the clone and are the half that catches drift | [appendix E 4.46](../E-method-log.md#446-the-rule-about-stale-numbers-had-nothing-behind-it) |
 
-All seven take a path argument and print to standard output; `probe-quotes.mjs`
+| `axis-ledger.mjs` | Whether [appendix F](../F-axis-ledger.md) still names exactly the axes the specification defines, and how many of them carry a verdict, which is the first of the three stop conditions | [appendix F](../F-axis-ledger.md), [appendix E 4.51](../E-method-log.md#451-a-stop-condition-with-a-term-nobody-could-evaluate) |
+
+All eight take a path argument and print to standard output; `probe-quotes.mjs`
 and `probe-consistency.mjs` take two, this repository and the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs

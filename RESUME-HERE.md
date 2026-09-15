@@ -11,7 +11,7 @@ anything.
 Everything in this repository is pushed. Working tree clean. That sentence was
 false once, and the uncommitted draft behind it is
 [entry 4.29](appendix/E-method-log.md), so check it rather than read it. The
-first command must print nothing, and the last two are the scripts that must
+first command must print nothing, and the four after it are the gates that must
 stay green:
 
 ```bash
@@ -19,12 +19,20 @@ git status --short
 node appendix/D-scripts/check-links.mjs .
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
+node appendix/D-scripts/axis-ledger.mjs .
 ```
 
 Last known: **63/63 checkable claims, 12/12 spec conditions, no broken internal
-link**. The link line used to be a sentence, "all internal links resolve", and
+link**, and the axis ledger naming exactly the 22 axes the specification
+defines. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
+
+The specification's own first stop condition is countable now rather than an
+impression: **11 of the 22 axes carry a verdict and 11 do not**, and none is
+closed. [Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that
+makes it readable (4.51), and `axis-ledger.mjs` prints the count and fails if
+the ledger and the specification stop agreeing about which axes exist.
 
 Two reports to read rather than to keep green, because they list false
 positives beside real ones (4.42, 4.46):
@@ -45,7 +53,7 @@ fails the moment a second one drifts, which is what 4.45 did undetected.
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
 - **The method log**, `appendix/E-method-log.md`, every recorded mistake
-- **Seven runnable scripts**, `appendix/D-scripts/`
+- **Eight runnable scripts**, `appendix/D-scripts/`
 
 ## The reading, by position
 
