@@ -870,7 +870,11 @@ anywhere:
   action was supposed to change, from the product's own surface, before
   counting anything downstream. **Zero after an action that never happened and
   zero after a broken pipeline are the same number, and only the read-back
-  separates them.**
+  separates them.** Drive the product's own control rather than writing the
+  state beneath it: a partial settings object written straight to storage is
+  not what the control writes, and the product has no reason to honour it. And
+  wait for the event the action caused, not for any event of its kind, or an
+  earlier one satisfies the wait.
 - **Can a fallback inside the probe do the work of a dead primary?** A query
   for a selector the product no longer emits, sitting behind a fallback that
   finds the element another way, never fails, so nothing notices the selector

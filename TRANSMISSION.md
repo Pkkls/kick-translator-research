@@ -146,6 +146,13 @@ the correct count for a local page is zero.
 A test asserting a provider list has three entries does not test that the second
 is ever reached. It reports green on any change that keeps the shape.
 
+**Drive the product's own control, and wait for the event you caused.** A probe
+wrote a partial settings object straight into storage and saw the page ignore
+it, which is not a finding: the bar never writes a partial object. Driven
+through the bar, the change arrived. The same pass had a wait that watched for
+any translation instead of this message's, so an earlier one satisfied it and
+the request under test landed on the wrong side of the measurement.
+
 **Attach interception at the layer the traffic actually leaves from.** Under an
 extension runtime, requests may leave the background worker rather than the
 page. Interception at the wrong layer reports zero traffic, indistinguishable
