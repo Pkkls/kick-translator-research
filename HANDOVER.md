@@ -980,19 +980,43 @@ met. **It is deliberately not moved for you**: that is a change to your
 repository. While it sits in this one it is an instrument in no runner, which is
 the thing your own handoff and this account's chapter 12 both warn about.
 
-**An afternoon, and it is the one that makes a green mean something.** Four of
-your offline gates read a file a fifth one writes, and the runner pools them on
-the stated premise that none does. `snapshot.mjs:143` writes `popup.html` into
-the harness directory; `boundaries.mjs`, `da-surfaces.mjs`, `names.mjs` and
-`rtl-surfaces.mjs` all read `path.join(HERE, 'popup.html')`; and `git ls-files`
-does not know that file, so a fresh clone has none of it. Observed here with a
-driver supplied through `UX_KIT`: `--only snapshot,boundaries` gives `snapshot`
-ok at 14.6s and `boundaries` ECHEC at 0.9s, `net::ERR_FILE_NOT_FOUND`. **The
-first run after a clone fails and the second passes**, which reads as a flake
-and is an ordering dependency. Your runner's own header is what would have
-stopped anyone looking: *They are independent: no gate reads what another
-writes*. Either make the four produce their own dump, or give `snapshot` a phase
-of its own the way `run-live.mjs` gives one to `latency`.
+**An afternoon, and it is the one that makes a green mean something.** Your
+offline suite, run twice back to back with nothing changed between the runs,
+gives two different answers **[re-run]**:
+
+| run | green | failures |
+|---|---|---|
+| first, after deleting the untracked `popup.html` | **34/40** | `long-content` `rtl-surfaces` `names` `da-surfaces` `flags-preview` `lang-panel-measure` |
+| second, immediately after | **38/40** | `flags-preview` `lang-panel-measure` |
+
+Run here with `--no-build --headless` and a driver supplied through `UX_KIT`,
+against `dist/` as your build script left it. Four gates went red to green with
+no change to any code.
+
+**Two fixtures are shared and neither is tracked.** `snapshot.mjs:143` writes
+`popup.html`, and `names`, `da-surfaces`, `rtl-surfaces` and `boundaries` read
+it. `chat-live.mjs` writes `chat-bundle.js`, and `long-content.mjs` reads it.
+Your runner's header says *They are independent: no gate reads what another
+writes, and the five that bundle with esbuild each own their own output file*,
+and both halves of that sentence are false.
+
+**You had already diagnosed the second one.** `bar-live.mjs` carries, above its
+own bundle path: *Its own bundle. chat-live.mjs owns chat-bundle.js, and two
+harnesses writing one file is how a test ends up reading another test's code.*
+Exactly right, and it was applied to the writer. `long-content` is the reader
+and still points at `chat-live`'s output. Either give it its own bundle, or give
+`chat-live` and `snapshot` a phase of their own the way `run-live.mjs` gives one
+to `latency`.
+
+**And two gates are red on every run, which are not flakes.**
+`lang-panel-measure` reads `lang-panel.html`, which only `lang-panel-shoot.mjs`
+writes, and that is one of the three shooters your runner excludes on the ground
+that they assert nothing and would buy runtime and no verdict. True about what
+it asserts, and it is the sole producer of a wired gate's input.
+`flags-preview` reads `scratchpad/harness/flags.css` and **nothing in the
+repository writes that file**; its own header says it exists to be looked at and
+gives a direct `node` invocation as its usage. It is a fourth shooter of the
+same kind as the three you excluded, and it is the one that is wired.
 
 This is worth putting beside your own entry that the live suite was not
 non-deterministic and that three probes were broken. That instinct was right and

@@ -3600,6 +3600,91 @@ absent. Building is allowed by the standing constraints and is measurement; doin
 it at the end of a pass, with no time to restore the tree and verify it, is how
 that trap gets sprung. The clone was clean before this pass and is clean after.
 
+### 4.88 The suite run twice, unchanged, gives two different answers
+
+**What happened.** With `UX_KIT` pointed at the Playwright install found in 4.87,
+the clone's whole offline suite ran for the first time from this account.
+`--no-build`, because `dist/` was already a current Chrome release and rebuilding
+is the trap the corpus records. `popup.html` was deleted first, since it is
+untracked output and a fresh clone does not have it: that restores the condition
+a newcomer meets rather than the condition this machine had.
+
+Two identical commands, back to back, nothing changed between them:
+
+| run | green | wall | failures |
+|---|---|---|---|
+| first, `popup.html` absent | **34/40** | 42.1s | `long-content` `rtl-surfaces` `names` `da-surfaces` `flags-preview` `lang-panel-measure` |
+| second, `popup.html` now present | **38/40** | 43.2s | `flags-preview` `lang-panel-measure` |
+
+**Four gates went from red to green with no change to any code**, which is the
+prediction 4.87 made from reading and is now observed. The parallel gain is
+x7.23, which is the reason the suite is pooled and the reason the race exists.
+
+**The runner's header has two clauses and both are false.** It reads: *They are
+independent: no gate reads what another writes, and the five that bundle with
+esbuild each own their own output file.*
+
+| fixture | written by | read by | tracked |
+|---|---|---|---|
+| `popup.html` | `snapshot.mjs` | `names`, `da-surfaces`, `rtl-surfaces`, `boundaries` | no |
+| `chat-bundle.js` | `chat-live.mjs` | `long-content.mjs` | no |
+
+The second one is the sharper of the two, because the corpus diagnosed it
+correctly and fixed half of it. `bar-live.mjs` carries this comment above its own
+bundle path:
+
+> Its own bundle. chat-live.mjs owns chat-bundle.js, and two harnesses writing
+> one file is how a test ends up reading another test's code.
+
+**The diagnosis is exact, it is in the file, and it was applied to the writer
+and not to the reader.** `bar-live` was given `bar-bundle.js` so that two
+harnesses would not write one file. `long-content` still reads `chat-live`'s
+output, so a test still reads another test's code, which is the sentence's own
+words. This is *a diagnosis propagates when something runs, not when it is
+written down*, occurring inside the comment that writes the diagnosis down. It
+is also the guard-fraction rule: the population was two consumers and the fix
+reached one.
+
+**Two gates are red on every run, and neither is a flake.**
+
+- `lang-panel-measure` reads `lang-panel.html`. The only file that writes it is
+  `lang-panel-shoot.mjs`, **one of the three shooters the runner deliberately
+  excludes** on the stated ground that they *draw images and print numbers for
+  a human and assert nothing, so adding them would buy runtime and no verdict*.
+  The reasoning is sound about what the shooter asserts and wrong about what it
+  produces: excluding it is exactly what makes a wired gate unable to pass. This
+  joins 4.82's orphan count to this pass: an orphan is not always inert.
+- `flags-preview` reads `flags.css`, and **nothing in the repository writes
+  that file**. Its own header says it exists *pour etre REGARDES*, to be looked
+  at, and gives its usage as a direct `node` invocation. It is a fourth shooter
+  of exactly the kind the other three were excluded for, and it is wired. So the
+  exclusion policy was applied to three members of a population of four, which
+  is the guard-fraction rule a second time in the same file.
+
+**What A13 can now carry.** Its bar asks for a repeat count over which the flake
+rate must be zero, and that row of the budget file has been empty because nobody
+had chosen N. **N = 2 is enough**, demonstrated rather than argued: two
+consecutive runs of the unchanged suite disagree by four gates. The rate at N=2
+is 4 of 40 order-dependent, 2 of 40 permanently red, 34 of 40 stable. A number
+chosen before a measurement is the specification's requirement and this one was
+not, so it goes in the budget as what the run supports and not as a ceiling
+somebody liked.
+
+**The gate from 4.80 went red on its own, for the first time.** Filling A13's
+row turned `axis-ledger.mjs` to *appendix G says 3 of the 8 rows carry a number;
+the table says 4 of 8*, which is the third of the three witnesses planted in
+4.80 and the one that pass called the one that matters, *the direction this
+defect actually arrived from*. It arrived from that direction eight passes
+later, from a real edit rather than a plant. A check written against a predicted
+failure is worth little until the prediction happens; this one took nine days of
+commits and about two hours.
+
+**What this pass did not do.** It did not rebuild, so the measurement is of
+`dist/` as it stood, a Chrome release built the same morning. It did not run the
+live gates, which open real kick.com. It observed a browser for the first time
+and re-took no published claim through one, so nothing in this study changes
+tag. The clone's tracked tree was clean before and after, checked both times.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

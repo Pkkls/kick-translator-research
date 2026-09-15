@@ -356,6 +356,18 @@ Run here against the clone at `226a176`, on a machine with no browser driver
 | Reported `PREREQ` | **0** |
 | Runner exit code | 1 |
 
+**With a driver supplied, the suite runs and disagrees with itself** **[new]**.
+Two identical commands back to back, nothing changed between them, gave 34 of 40
+and then 38 of 40. Four gates read fixtures another gate writes, `popup.html`
+from `snapshot.mjs` and `chat-bundle.js` from `chat-live.mjs`, and git tracks
+neither, so the first run after a clone is the one that fails. The runner's own
+header asserts the opposite in both its clauses, and `bar-live.mjs` carries the
+correct diagnosis of the second one in a comment, applied to the writer and not
+to the reader
+([4.88](../appendix/E-method-log.md#488-the-suite-run-twice-unchanged-gives-two-different-answers)).
+Two further gates are red on every run and are not flakes: they read fixtures
+that only an excluded shooter writes, or that nothing writes at all.
+
 So the newcomer does not meet an empty green. They meet **thirty-two red
 gates**, on a repository whose tests pass, and the only thing wrong is one
 absent dev dependency that the shim underneath has already diagnosed correctly

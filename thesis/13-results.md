@@ -219,6 +219,10 @@ Cloned from the public repository, at the commit the study measured against.
 | Offline gates, and how many reach Playwright | 40, of which **32** | [new] |
 | What those 32 are reported as | **`ECHEC`**, not `PREREQ`; the runner has no branch for exit 2 | [new] |
 | What actually runs without a driver | **8**: seven Python audits and `poids-notes` | [new] |
+| The suite with a driver, first run after deleting the untracked `popup.html` | **34 of 40**, 42.1s wall, x7.23 pooled | [new] |
+| The same command immediately again, nothing changed | **38 of 40**, 43.2s | [new] |
+| Gates that moved between the two | **4**, all reading a fixture another gate writes | [new] |
+| Gates red on both runs, and not flakes | **2**, reading fixtures nothing in the runner produces | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
 | Unit-test count stated in the README | 1032, against 1034 actual | [replicated] |
 
