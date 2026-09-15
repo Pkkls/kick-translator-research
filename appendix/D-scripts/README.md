@@ -55,11 +55,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-refusal-census.mjs` | Every `return undefined` in the detection path, enumerated from the TypeScript AST and split into a refusal, a *nothing yet*, and the fall-through, then all five driven to see whether each survives `detectLanguage`, with a unanimous control beside the two vote conflicts. Reports what `francToIso2` does with franc's answer, which is what actually decides | [appendix E 4.110](../E-method-log.md#4110-one-value-three-intentions-and-the-vocabulary-of-another-library-decides), [4.111](../E-method-log.md#4111-all-five-refusals-measured-and-three-leak-at-the-same-rate) |
 
-**Twenty-seven scripts.** That count is here because two documents stated it from
+| `probe-arabizi-traps.mjs` | The corpus's *zero false positives* for the arabizi detector, attacked with ordinary English gaming chat, which is the register this product runs in. Runs the pipeline's own order so reachability is checked rather than assumed, and carries a positive control of real arabizi because the feature repaired a measured harm | [appendix E 4.112](../E-method-log.md#4112-the-arabizi-detector-calls-ten-of-sixteen-english-gaming-lines-arabic) |
+
+**Twenty-eight scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-seven take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-eight take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

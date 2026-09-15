@@ -304,6 +304,12 @@ Cloned from the public repository, at the commit the study measured against.
 | **Unanimous short words: the product against franc alone** | **5 of 5** against 2 of 5 | [replicated] |
 | **Unanimous romanisation markers: the same** | **5 of 5** against **0 of 5**, the corpus's own published figure | [replicated] |
 | Repeated keys in `SHORT_WORD_LANG`, where the last silently wins | **0** of 136 pairs | [new] |
+| **Ordinary English gaming lines the arabizi detector calls Arabic** | **10 of 16**: `ak47`, `cloud9`, `ps5`, `gta5`, `mp5`, `top5`, `bf3`, `rx7`, `ak74`, `l33t` | [new] |
+| The positive control, real arabizi, taken first | **10 of 10 found**; the two outside `[3579]` correctly missed | [replicated] |
+| Arabic-target reader: English line dropped as *already in your language* | **10 of 10** | [new] |
+| English reader with *skip English* on: line not skipped, sent to a provider | **10 of 10** | [new] |
+| A word-final-digit rule, planted and measured | false positives **10 of 16 → 1 of 16**, control unchanged | [new] |
+| The probe's first assertion, which that rule passed while fixing nine lines | `count > 0`; replaced by set membership | [new] |
 
 ## 13.8 The three bars execution falsified
 

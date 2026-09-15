@@ -5311,6 +5311,89 @@ mixed message longer than `SHORT_TEXT_MAX` never reaches the short-word vote,
 by design and by a documented decision; that is a different door into the same
 room and is not measured here.
 
+### 4.112 The arabizi detector calls ten of sixteen English gaming lines Arabic
+
+**The claim under attack.** The corpus publishes two figures a pass apart. With a
+wide digit set the arabizi detector produced **3 false positives**; restricted to
+`[3579]` it reports **12 of 12 detected and 0 false positives on 29 traps**. The
+restriction is good work and the zero is true of those traps. **A zero is a
+statement about the traps**, and the population is what this study keeps
+learning to check.
+
+**The population here is a gaming chat, because that is what Kick is.**
+
+The shipped rule, from `arabizi.ts`: a word is arabizi when it strips to
+`[a-z0-9]`, is at least three characters, contains one of `3 5 7 9`, and holds
+at least two letters. One such word makes the whole message arabizi.
+
+**Ordinary English gaming chat, sixteen lines written for this pass:**
+
+| declared Arabic | |
+|---|---|
+| `nice ak47 shot` | `ak47` — four characters, a 7, two letters |
+| `cloud9 winning again` | an esports organisation |
+| `just got the ps5` | a console |
+| `gta5 still the best` | a game |
+| `mp5 is broken lol` | a weapon |
+| `ak74 or ak47 which one` | two weapons |
+| `top5 plays of the week` | ordinary English |
+| `bf3 was better than bf4` | two games |
+| `my rx7 build finally done` | a car, and a graphics card naming pattern |
+| `that was so l33t` | leetspeak, which genuinely has the arabizi shape |
+
+**10 of 16**, every one of them reaching the detector: none is caught by
+`isNoise` or `isSlangOnly` first, which the probe checks in the pipeline's own
+order rather than assuming.
+
+**The positive control came first and holds.** This feature repaired a measured
+harm: an arabizi message used to come out `lang_unknown`, so an Arabic reader who
+restricted their sources to `ar` lost exactly the messages they wanted. Ten real
+arabizi lines, **10 of 10 found**. Two lines whose only digit is a `2`, outside
+the restricted set, are correctly missed, and that is the restriction's stated
+cost shown rather than hidden. **This finding is not an argument for removing the
+feature**, and without the control it could be read as one.
+
+**The consequence, driven through the product's own filters, is 10 of 10 on
+four counts:**
+
+| the reader | what happens |
+|---|---|
+| target Arabic | the English line is dropped as *already in your language* |
+| source allowlist `[ar]` | English is admitted as Arabic |
+| source allowlist `[es]` | shown `lang_not_allowed` for an English line |
+| English, *skip English* on | **not skipped, and sent to a provider** |
+
+The last row is the ordinary case and the one that costs money: an
+English-speaking viewer on an English stream pays a translation call for
+`nice ak47 shot` because the product believes it is Arabic, and is then shown a
+translation of a sentence they wrote in their own language. The engine is not
+told `ar` — `confidentLanguage` withholds it, which is the same bounded shape as
+4.109 — so what comes back is translated from what the text actually is. The cost
+is the filter decisions, the flag, and the call.
+
+**A rule that would fix nine of the ten, measured rather than suggested.**
+Arabizi uses a digit **as a letter**, so it is never word-final: `3alaykom`,
+`7abibi`, `n5arej`, `ma3lish`. Gaming words end in theirs: `ak47`, `ps5`,
+`cloud9`, `top5`, `gta5`. Planted on a copy, *the digit may not be the last
+character* takes the false positives from **10 of 16 to 1 of 16** and leaves the
+control at **10 of 10**. The survivor is `l33t`, which has the arabizi shape
+honestly and would need something other than a shape rule. This is reported as a
+measurement, not as a patch: it is one bench, and the developing account owns
+that decision.
+
+**The probe's own assertion was too loose and the witness caught it.** It first
+asserted `fp.length === 0`, which the word-final rule passed at 1 of 16 while
+fixing nine lines, reporting nothing. Asserting the **set** instead makes a
+partial fix say which nine it fixed. **A count is a weaker assertion than a
+membership**, and a probe that says *still broken* while nine tenths of the
+problem has gone is a probe that will be ignored.
+
+**Scope.** Sixteen lines, printed in full by the probe. How often these words
+appear in real traffic is not measured and cannot be: this study has no
+multilingual chat capture, which chapter 14 already lists as a standing limit.
+What is measured is that the words are ordinary, on a platform for watching
+games.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
