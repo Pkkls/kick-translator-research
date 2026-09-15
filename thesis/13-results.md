@@ -227,6 +227,10 @@ Cloned from the public repository, at the commit the study measured against.
 | The same with A6's witness, a 2 ms synchronous loop in the row path | p50 **2.1 ms** | [new] |
 | Where one main thread saturates at that cost | about **5000 rows a second** | [new] |
 | The first version of that probe, before the DOM was capped | 1.3 ms, rising 0.3 to 3.3 across one run; withdrawn | [new] |
+| **First visible translation, profile that has never run the extension** | **p50 278 ms** over 5 runs, min 269, max 300 | [new] |
+| The control, a second message on the same page | **p50 47 ms** | [new] |
+| The part paid once: extension load, content script, observer, MV3 worker | **231 ms** | [new] |
+| That control against `metrics-offline`'s counter-derived `e2e.cloud` p50 | 47 ms against **44 ms**, a different instrument | [replicated] |
 | The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
 | What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |

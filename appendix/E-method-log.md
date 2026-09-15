@@ -4084,6 +4084,72 @@ verdict rather than a silence*. So the threshold is not a preference, it is the
 what A6's *breaks as* describes, and the measured p95 sits **55 times** under
 it. Nobody had to choose that number and nobody can argue with it.
 
+### 4.95 The cold-start number, and the control that replicated another harness
+
+**What happened.** A18's *measure* opens with the sentence its budget row has
+been empty for since the budget was built: *first run on a cold profile, with no
+settings and no reader action: how long until the first translation is visible*.
+4.61 had narrowed why. `metrics-offline.mjs` gives `e2e.cloud` p50 44 ms with
+the engine answered locally, and that is per message from arrival, not cold
+start, because it excludes everything paid once: the browser loading the
+extension, the content script arriving, the observer attaching, and MV3 booting
+a worker that is not running yet.
+
+Two harnesses come close and neither times anything. `extension-load.mjs` loads
+the real extension into a fresh profile and then waits a flat
+`waitForTimeout(3000)` before asserting. `translate-offline.mjs` drives the
+entire chain and asserts the text. Both prove the wiring; neither holds a clock.
+
+**`cold-start.mjs` borrows `translate-offline.mjs`'s setup and says so** in its
+header: the same fixture shape, the same URL interception, the same engine
+response shape. Reproducing rather than importing is the cost of not modifying
+the clone, and the header records which of the two is authoritative if they
+drift.
+
+| | min | p50 | max |
+|---|---|---|---|
+| first translation, profile that has never run it | 269 | **278 ms** | 300 |
+| **the control**, a second message on the same page | 46 | **47 ms** | 50 |
+
+Five runs of five painted, each with a fresh profile, each with exactly the
+engine calls expected.
+
+**The control is the whole point and it did two jobs.** Without it, 278 ms is a
+duration with nothing to compare it against. With it, **231 ms is the part paid
+once** and 47 ms is the part paid per message, which is the decomposition A18
+actually wants: a reader who installs and sees nothing is waiting on the cold
+half, and no amount of per-message tuning touches it.
+
+**Then it replicated a figure this study already had, by a different
+technique.** `metrics-offline.mjs` reads the product's own counters and reports
+`e2e.cloud` p50 **44 ms**. This probe asserts on the DOM from the outside and
+gets **47 ms**. Different instrument, different session, different definition of
+the endpoint, three milliseconds apart. **This study's replication record is
+nine measurements re-taken and five changed**, and this is the first latency
+figure to survive one. It is worth more than the cold number it was built to
+support: a counter agreeing with a wall clock means the counter is measuring
+what its name says.
+
+And 40 of those 47 milliseconds are `MIN_BATCH_WINDOW_MS`, a deliberate wait
+that `probe-consistency.mjs` already checks against the clone. So the product's
+own work per message is single-digit milliseconds and the rest is a choice.
+
+**The ceiling is a judgement and is labelled one.** A6's ceiling was the 60 Hz
+frame and needed no taste. A18 has no equivalent physical constant: the bar says
+*under the ceiling in the budget file* and nothing in the product implies a
+number. One second is entered, because A18's population is *the reader installs,
+sees nothing happen, and removes it*, and a second is the span over which a
+person decides nothing happened. The measured p50 is 3.6 times under it. **A
+ceiling that rests on a judgement should say so in the row rather than borrow
+the authority of the measurement beside it.**
+
+**What this does not measure**, stated because the number will be quoted: the
+engine is local and instant, so a real provider's round trip is added to both
+figures. A fresh profile is cold for the extension and warm for the binary and
+the disk cache, so a genuine first run after a store install is slower by an
+unmeasured amount. And nothing here is the reader's whole wait, only the
+product's share of it.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
