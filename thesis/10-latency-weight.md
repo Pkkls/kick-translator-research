@@ -150,6 +150,39 @@ requires a positive measured hit rate before keeping a zero-cost mechanism
 would discard it on evidence that was never capable of supporting the
 conclusion.
 
+**A later pass built the measurement one step closer.** **[reported]** Inside a
+page the question cannot be asked, because the in-tab cache answers first: it
+took 10 hits and the worker's tier saw only misses. After a page reload, where
+the in-tab cache restarts empty and the worker does not, the in-tab cache
+recorded 0 hits and 9 misses and the worker's tier 9 hits and 0 misses, with no
+provider call for 8 messages already seen. **[replicated]** The worker's tier is
+the persistent one: it is backed by IndexedDB, with an in-memory layer in front
+of it. **[new]** So the reload shows that tier serving what the in-tab cache
+cannot, across pages. It does not yet reach the case this section is about,
+hits that survive the worker being evicted, because a live worker can answer
+from its memory layer without reading the database at all. That needs a read
+after a cold worker, which is the same experiment the handover's section 3.5c
+asks for on another consumer of the same lifecycle.
+
+### 10.5b Forty milliseconds that looked like pure delay
+
+**[reported]** The request coalescer waits 40 ms under a comment calling that
+branch pure delay, which invites removing it. The corpus removed it and
+measured. With messages 1.2 seconds apart, the p50 wait went from 44 ms to 0
+for the same 15 provider calls, so the window bought nothing there. With the
+same messages arriving in bursts of three, provider calls went from 6 to 15 for
+the same 24 translations, two and a half times the requests against an endpoint
+that soft-bans by IP address. A burst does not reach the coalescer in one tick: each
+row passes the observer, detection and a cache lookup first, so a zero-delay
+timer fires before its siblings arrive. Reverted, with the measurement written
+beside the line.
+
+**[new]** The comment was accurate about what the branch does and silent about
+what it is for. A latency budget read line by line will always find a wait to
+remove; the price of removing it is paid in a different unit, requests, and on
+a different axis, the provider's tolerance, which is why it only shows up when
+the arrival pattern of real chat is imitated.
+
 ## 10.6 Weight, and prose that ships
 
 The system's injected script is budgeted: a gate compares against the previous
