@@ -3685,6 +3685,53 @@ live gates, which open real kick.com. It observed a browser for the first time
 and re-took no published claim through one, so nothing in this study changes
 tag. The clone's tracked tree was clean before and after, checked both times.
 
+### 4.89 The control: the gate list is in a working order, and pooling throws it away
+
+**What happened.** 4.88 left one question open, and it is the one that decides
+what the defect actually is. A suite that disagrees with itself between two
+pooled runs could be a missing dependency, or it could be an ordering the list
+gets right and concurrency destroys. The control separates them: run the same
+suite serially, from the same starting condition.
+
+`--no-build --headless --jobs 1`, with both untracked fixtures deleted first,
+`popup.html` and `chat-bundle.js`, so neither producer's output survives from an
+earlier run:
+
+| | green | wall | failures |
+|---|---|---|---|
+| pooled, 12 wide (4.88) | 34/40 then 38/40 | 42.1s | six, then two |
+| **serial, 1 wide** | **38/40** | 278.4s | **the same two, every time** |
+
+**The order the runner walks the array in is producer-first**: `snapshot` is the
+first gate it runs and `names`, its reader, is the second; `chat-live` runs
+fourth and `long-content`, its reader, twelfth. So the list is arranged so that
+every fixture exists before anything reads it. Whether that was designed or
+inherited, it works, and running `--jobs 1` is correct on a fresh clone every
+time.
+
+**So the defect is not a missing dependency. It is an ordering the list encodes
+and the runner's own parallelism discards.** `--jobs` defaults to
+`max(2, cpus().length)`, which is twelve here, so **the default path is the one
+that breaks and the serial path is the one that works**. That is the opposite of
+the usual arrangement, where the fast path is an optimisation of a correct slow
+path, and it is why nobody would look: the header justifies pooling by asserting
+independence, and the array quietly depends on order.
+
+**The speedup is what the false claim buys.** 278.4 seconds serial against 42.1
+pooled, x7.23. The claim is not decorative and removing it costs four and a half
+minutes a run, which is presumably why it was written. The repair is not
+serialising: it is that two gates own output four others read, and giving those
+four their own dumps, or giving the two producers a phase of their own the way
+`run-live.mjs` gives one to `latency`, keeps both the speed and the truth.
+
+**What a control is for.** Without this run the honest report was *the suite is
+order-dependent*, which is true and names no cause. With it the report is *the
+list is in a working order and the runner discards it*, which names the line to
+change. The corpus's own rule is that variance must be accounted for rather than
+filed as environmental; the corollary this pass adds is that accounting for it
+means finding the arrangement under which it does **not** occur, because that is
+what points at the mechanism.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

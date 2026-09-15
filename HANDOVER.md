@@ -993,6 +993,22 @@ Run here with `--no-build --headless` and a driver supplied through `UX_KIT`,
 against `dist/` as your build script left it. Four gates went red to green with
 no change to any code.
 
+**The control says exactly what to change.** Serially, from the same starting
+condition with both untracked fixtures deleted, `--jobs 1` gives **38/40 and the
+same two failures every time**, in 278.4s against 42.1s pooled **[re-run]**.
+Your `GATES` array is in a working order: `snapshot` runs first and its reader
+`names` second, `chat-live` fourth and its reader `long-content` twelfth. So the
+list encodes a producer-before-consumer ordering and `--jobs`, which defaults to
+`max(2, cpus().length)`, throws it away. **The default path is the broken one
+and the serial path is correct**, which is the reverse of the usual arrangement
+and is why this would never surface by inspection: the header justifies pooling
+by asserting independence while the array quietly depends on order.
+
+Don't serialise, it costs four and a half minutes a run. Two gates own output
+four others read. Give the four their own dumps, or give `snapshot` and
+`chat-live` a phase of their own the way `run-live.mjs` already gives one to
+`latency`, and you keep the x7.23 and the truth.
+
 **Two fixtures are shared and neither is tracked.** `snapshot.mjs:143` writes
 `popup.html`, and `names`, `da-surfaces`, `rtl-surfaces` and `boundaries` read
 it. `chat-live.mjs` writes `chat-bundle.js`, and `long-content.mjs` reads it.

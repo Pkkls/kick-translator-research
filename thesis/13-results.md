@@ -223,6 +223,8 @@ Cloned from the public repository, at the commit the study measured against.
 | The same command immediately again, nothing changed | **38 of 40**, 43.2s | [new] |
 | Gates that moved between the two | **4**, all reading a fixture another gate writes | [new] |
 | Gates red on both runs, and not flakes | **2**, reading fixtures nothing in the runner produces | [new] |
+| The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
+| What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
 | Unit-test count stated in the README | 1032, against 1034 actual | [replicated] |
 
