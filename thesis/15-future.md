@@ -114,8 +114,12 @@ and it is cheap to close.
 
 ## 15.8 Orphan probes with no written reason
 
-**[replicated]** 35 harness files no runner launches, an unknown subset of them
-deliberately excluded.
+**[new]** 29 orphans, harness files that no runner entry launches and no gate
+imports, an unknown subset of them deliberately excluded. An earlier count of
+35 compared gate names with file names
+([12.7](12-verification.md#127-orphans-and-the-count-that-indicts-too-much)).
+Classifying them by content does not work here: offline gates serve the host's
+URLs from fixtures, so a URL in a harness does not say where it runs.
 
 The useful number requires reading each exclusion
 ([ch. 12](12-verification.md#127-orphans-and-the-count-that-indicts-too-much)).

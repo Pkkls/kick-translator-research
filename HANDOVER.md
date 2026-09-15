@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 33 of 33 holding at the commit this was last checked against, and 4
+It reports 37 of 37 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -385,12 +385,27 @@ consistent. Your release assets carry a per-asset content digest, which is a
 better reproducibility check than two local rebuilds compared to each other:
 it also proves the artefact people download is the one the tag describes.
 
-**[re-run]** 56 harness files, 40 runner entries, 35 files no runner launches.
-**Do not read that last number as a finding.** Most are your documented
-exclusions: live probes, the three shooters, the runner itself. The number that
-would be a finding is *orphans with no written reason*, and producing it means
-reading each exclusion. This account published the raw count first and had to
-qualify it, which is the mistake in the other direction from 2.2.
+**[re-run]** 56 `.mjs` files in the harness directory and 40 runner entries.
+Counted by the file each entry launches, 22 files run and 34 do not. Of the 34,
+two are runners and three are modules a gate imports, `playwright`, `a11y` and
+`kick-actions`, which leaves **29 orphans**. **Do not read that as a finding
+either.** Most are your documented exclusions, live probes and shooters. The
+number that would be a finding is *orphans with no written reason*, and
+producing it means reading each exclusion; this account tried to classify them
+by content and could not, because your offline gates serve kick.com URLs from
+fixtures, so a URL does not say which world a harness runs in.
+
+**A correction, and it lands on your generator too.** This file said 35. Its
+recipe compared gate names with file names, which counts a module as a harness
+and misses a gate whose name is not its file: `store-shots-fixture.mjs` runs on
+every pass as `captures-readme`. `state.mjs` makes the same comparison and
+writes 32 orphans into `ETAT.json`, three of which are `a11y`, `kick-actions`
+and `store-shots-fixture`. Its exclusion list names three infrastructure files
+by hand and dates from 08:39 on 2026-08-30; `kick-actions` arrived at 15:46 and
+`a11y` at 16:22 the same day, and neither was added **[re-run]**. The three
+counts reconcile to the same 29, item by item **[re-run]**. Ten minutes: compare
+the scripts each entry launches, and derive helper modules from imports rather
+than from a list.
 
 ### 3.4 Two questions this account opened and closed with nothing
 

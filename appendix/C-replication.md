@@ -94,13 +94,19 @@ ls scratchpad/harness/*.mjs | wc -l
 grep -c "^  \['" scratchpad/harness/run-gates.mjs
 ```
 
-For the orphan list:
+For the orphan list, use the verifier rather than a pipeline:
 
 ```bash
-grep -o "^  \['[a-z0-9-]*'" scratchpad/harness/run-gates.mjs | sed "s/.*'\(.*\)'/\1/" | sort > gates.txt
-ls scratchpad/harness/*.mjs | xargs -n1 basename | sed 's/.mjs$//' | sort > files.txt
-comm -23 files.txt gates.txt
+node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 ```
+
+Its 3.3 claims count by the file each runner entry launches, inside the gate
+array with comments stripped, and set aside runners and modules a gate imports.
+The pipeline that used to stand here compared gate names with file names and
+gave 35 where the answer is 29 orphans: a module counts as a harness, and a
+harness that runs under another gate name counts as an orphan. It also breaks
+silently in an environment that rewrites `ls` for display, where it once
+returned 91 lines for 56 files.
 
 **Do not report that count alone.** Read each entry and separate the documented
 exclusions, which are live probes, image shooters and the runner itself, from

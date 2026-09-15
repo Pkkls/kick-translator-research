@@ -331,11 +331,26 @@ an empty directory, because no amount of reading can substitute for it.
 
 ## 12.7 Orphans, and the count that indicts too much
 
-**[replicated]** 56 harness files on disk, 40 entries in the gate runner, 35
-files that no runner launches.
+**[replicated]** 56 harness files on disk and 40 entries in the gate runner.
+**[new]** Counted by the file each entry launches, 34 files no entry runs: two
+runners, three modules that gates import, and **29 orphans**.
 
-That raw number overstates the problem, and this study published it before
-qualifying it, which is the error the corpus's own method warns against. The
+This section first said 35, and that was wrong twice over. The recipe in
+[appendix C.3](../appendix/C-replication.md#c3-gate-coverage-and-orphans)
+compared gate *names* with file *names*, so it counted imported modules as
+harnesses and missed a harness that runs under another gate name. The project's
+own state generator makes the same comparison and reports 32. The file-based
+count, the name-based recipe and the generator reconcile to the same 29, item
+by item, and the verifier now checks all three
+([4.33](../appendix/E-method-log.md#433-a-recipe-that-counted-labels-and-a-generator-that-agreed-with-it)).
+
+That number still overstates the problem, and this study published the first
+version before qualifying it, which is the error the corpus's own method warns
+against. **[reported]** The corpus had classified its orphans once already, by
+measurement rather than by name, in the older journal's third pass: six offline
+and thirteen live, three of the six asserting nothing, with the reason for
+leaving those three out written into the runner in place. The population has
+grown since. The
 exclusions are documented and principled:
 
 - live probes open a real session and are launched by hand;

@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **33/33 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **37/37 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -42,7 +42,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 6, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
+Read so far: passes 3, 6, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -52,7 +52,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L167 | Third pass: a harness nobody ran was reporting a real bug |
 | L356 | Eighth pass: a fifth analytics file, and two things I had asserted wrongly |
 | L386 | Ninth pass: the kit's own gate accused working code |
 | L418 | Pass ten: the bar panel gets the same treatment |

@@ -37,8 +37,16 @@ several" to a count. Enumerate the surfaces first, then check each.
 **Count the structure, not the text near it.** If the thing being counted has a
 built or generated form, count that one. A pattern over source is a guess about
 how the source will be interpreted, and you are not the interpreter. This study
-broke this rule three times: a gate array by line shape, a manifest by text
-pattern, a locale file by indentation.
+broke this rule four times: a gate array by line shape, a manifest by text
+pattern, a locale file by indentation, and orphan harnesses by the gate's name
+instead of the file the gate runs. A label beside the structure is still text
+near it.
+
+**Two speculations, then an instrument.** The corpus's rule, from a panel
+rendering 489 pixels below where its inline style put it: *I speculated twice
+about why before instrumenting, and stopped on the second.* Asking the DOM
+which ancestor had taken the containing block took one probe; reasoning about
+the offset was never going to converge.
 
 **When two instruments disagree, the probability that one is right is not one.**
 Settle with a third that shares technique with neither. In the worst case here,
@@ -183,6 +191,9 @@ here". It was executed. It was wrong.
   matching the upstream project's practice. Do not commit with a personal email
   into a public repository.
 - **`grep` is rewritten to `rg`** in this environment and `rg` may be missing.
+  **`ls` is rewritten too**, into a display with sizes, and a pipeline reading
+  it as a list of names returned 91 lines for 56 files. Call `/usr/bin/ls` and
+  `/usr/bin/grep` when the output feeds another command.
 - **An edit helper that refuses to write when its search string is absent** is
   what kept silent no-op edits out of this work. Keep that property.
 

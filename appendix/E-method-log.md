@@ -1109,6 +1109,54 @@ harnesses, and was repaired there too, by a check. The corpus does apply the
 cure; what it skips is enumerating the other copies once a diagnosis names the
 mechanism. Section 2.1 now says that instead of implying the cure was unknown.
 
+### 4.33 A recipe that counted labels, and a generator that agreed with it
+
+**What happened.** The older journal's third pass classifies the project's
+orphan harnesses by measurement. Holding this study's published count against
+the project's own state file produced a disagreement: 35 here, 32 there. Four
+documents carried the 35, three of them tagged **[replicated]**.
+
+A third instrument, derived from the file each runner entry launches, found 34
+files that no entry runs, of which two are runners and three are modules that
+gates import, leaving 29 orphans. Then both published counts were reproduced
+exactly and explained item by item. This study's recipe in appendix C.3
+compared gate *names* with file *names*: it counted the three modules and both
+runners as orphans, and it counted `store-shots-fixture.mjs` as one although
+the runner launches it on every pass under the name `captures-readme`. The
+project's generator makes the same comparison, excludes three infrastructure
+files from a list written by hand that morning, and so reports 32: the same
+fixture, plus the two modules created that afternoon.
+
+**Cost.** A wrong count in four documents for the life of the study, carrying
+the tag that means "executed here". It was executed. The recipe counted labels.
+
+**Why it happened.** It is the rule about counting the structure rather than
+the text near it, broken a fourth time. A gate's name is a label beside the
+script it runs, and the recipe matched labels because names and files usually
+coincide. The verifier's comment on its runner parse already warned that line
+shape gives different answers from structure; the orphan recipe lived in
+another file and was never ported to that parse. And it is
+the pattern TRANSMISSION.md opens its instruments rule with, repeated: two
+counts disagreed, and a third instrument found both wrong.
+
+**Two more errors inside the same pass, both caught before publication.**
+
+- Running the old recipe to reproduce the 35 first returned 91 lines for 56
+  files. The environment rewrites `ls` for display, and `xargs basename` read
+  sizes and columns as names. Re-run with the unwrapped binary, it gives 35.
+- An attempt to separate hand-launched orphans from the rest, by whether a
+  harness navigates to the host and whether its header says so, agreed with
+  itself on 24 of 29 and was discarded. The offline gates serve the host's URLs
+  from fixtures, so a URL does not say where a harness runs, and one header
+  said "measured on Kick" in words the pattern did not know. Nothing from it
+  was published.
+
+**What changed.** The verifier now counts orphans by launched file and checks
+all three numbers, including the generator's three false orphans, so the
+correction goes red when the project fixes its generator. Adding those claims
+also turned the handover's stated total wrong, and the claim added in 4.30
+caught it on its first real use.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

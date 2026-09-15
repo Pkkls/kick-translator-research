@@ -164,16 +164,19 @@ public.
 | Detection test files re-run for this study | 81 tests green, 723 ms | [replicated] |
 | Harness files on disk | 56 | [replicated] |
 | Entries in the gate runner | 40 | [replicated] |
-| Harness files no runner launches, raw count | 35 | [replicated] |
+| Harness files no runner entry launches | 34 | [new] |
+| of which runners, or modules a gate imports | 5 | [new] |
+| Orphans | 29 | [new] |
 | of which deliberately hand-launched | not separated by this study; see below | |
 
-The last row is the measurement this study got wrong on its first attempt, and
-the correction is recorded in
-[appendix B](../appendix/B-prompt-construction.md): a raw orphan count
-indicts a project that documented its exclusions. The number that would be a
-finding is *orphans with no written reason*, and producing it requires reading
-each exclusion. The raw count is given here because it is what was measured;
-the useful count is an open item.
+The orphan rows are the measurement this study got wrong twice. First it
+published a raw count as though it were a finding, which indicts a project that
+documented its exclusions; that correction is in
+[appendix B](../appendix/B-prompt-construction.md). Then the raw count itself,
+35, turned out to compare gate names with file names
+([12.7](12-verification.md#127-orphans-and-the-count-that-indicts-too-much)).
+The number that would be a finding is *orphans with no written reason*, and
+producing it requires reading each exclusion. It is still an open item.
 
 ## 13.6 Release and repository state
 

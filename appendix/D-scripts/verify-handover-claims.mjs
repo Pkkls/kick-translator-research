@@ -167,6 +167,26 @@ if (!existsSync(harness)) {
     else if (block[i] === ']') depth--;
   }
   claim('3.3 runner entries', 40, gateEntries, 'counted structurally, not by line');
+
+  // Orphans by the file each entry launches, not by its name. The first count
+  // here compared gate names with file names and published 35: it missed a gate
+  // whose name is not its file and counted imported modules as harnesses. The
+  // project's own state.mjs makes the same comparison and reports 32. All three
+  // reconcile to the same 29, item by item.
+  const launched = new Set([...block.replace(/\/\/.*$/gm, '').matchAll(/scratchpad\/harness\/([\w.-]+\.mjs)/g)].map((m) => m[1]));
+  const imported = new Set(files.flatMap((f) => [...readFileSync(join(harness, f), 'utf8').matchAll(/from\s+'\.\/([\w.-]+\.mjs)'/g)].map((m) => m[1])));
+  const RUNNERS = ['run-gates.mjs', 'run-live.mjs']; // ponytail: by name; a third runner needs adding here
+  const notLaunched = files.filter((f) => !launched.has(f));
+  const orphans = notLaunched.filter((f) => !imported.has(f) && !RUNNERS.includes(f));
+  claim('3.3 files no runner entry launches', 34, notLaunched.length, launched.size + ' launched');
+  claim('3.3 of those, runners or modules a gate imports', 5, notLaunched.length - orphans.length);
+  claim('3.3 orphans', 29, orphans.length);
+  const etatPath = join(root, '.agent', 'ETAT.json');
+  if (existsSync(etatPath)) {
+    const etat = JSON.parse(readFileSync(etatPath, 'utf8')).portes?.orphelins ?? [];
+    const wrong = etat.filter((n) => launched.has(n + '.mjs') || imported.has(n + '.mjs'));
+    claim('3.3 state.mjs orphans that are launched or imported', 3, wrong.length, wrong.join(', ') + ' of ' + etat.length);
+  } else uncheckable('3.3 state.mjs orphan list', '.agent/ETAT.json absent');
 }
 
 // 3.5b Manifest, counted structurally ---------------------------------------
