@@ -2839,6 +2839,44 @@ ask what the instrument could not see, which is the adversarial step the
 specification asks for after every probe and which this study had been applying
 to the corpus's instruments and not to its own.
 
+### 4.75 The same defect, in the instrument written to catch that class
+
+**What happened.** [4.74](#474-a-correction-pass-is-bounded-by-its-instrument-and-this-one-had-three-blind-spots)
+ended on the rule that an instrument's reach has to be questioned separately
+from its report. Applied immediately to the probes this session wrote:
+`probe-consistency.mjs` names its documents by hand, `README.md`,
+`HANDOVER.md`, `TRANSMISSION.md`, `RESUME-HERE.md`, appendices A, B, C and E,
+plus the thesis directory. **Not F and not G**, which were written in the same
+session as the probe.
+
+So the ledger, 24 rows of ratios, and the budget, a table of thresholds, were
+invisible to the instrument built to compare ratios and thresholds. Written in
+the same week, by the same reader, without the connection being made once.
+
+**Widened to every tracked Markdown file and measured**: 23 documents becomes
+26, 110 keyed ratios becomes 119, and the constant half goes from 1 checked to
+3. `KEEPALIVE_INTERVAL_SEC = 25`, quoted in appendix F, is now compared against
+the clone and agrees. The ratio half still reports one collision and it is the
+same Turkish false positive as before. **Nothing new was wrong.**
+
+**And that is the part worth keeping.** The identical defect in
+`probe-quotes.mjs` was hiding two real errors; here it was hiding nothing. The
+cost of a blind spot is not a property of the blind spot: it is a property of
+what happened to be standing in it, which nobody can know until they look. A
+blind spot that has never cost anything and one that has cost two errors are
+indistinguishable before the measurement, so **"it has not caused a problem" is
+not evidence about a blind spot, it is the absence of evidence** and it reads
+exactly like the presence of it.
+
+**Three self-inflicted breakages while doing this**, all caught by running the
+thing afterwards: a replacement that reported success while matching nothing, an
+import trimmed until the half of the file that still needed `readdirSync` threw,
+and before them the guard in
+[4.73](#473-removed-a-guard-whose-reason-was-not-written-down-and-measured-what-it-was-for)
+that had to go back. The pattern across the three is the same as the pattern
+across the findings: the edit was reasoned about, and the run was what settled
+it.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

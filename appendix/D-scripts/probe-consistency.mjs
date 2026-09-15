@@ -25,16 +25,20 @@
  *   node appendix/D-scripts/probe-consistency.mjs . [/path/to/kick-chat-translator]
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 
 const root = process.argv[2] ?? '.';
 const corpus = process.argv[3];
-const docs = [
-  'README.md', 'HANDOVER.md', 'TRANSMISSION.md', 'RESUME-HERE.md',
-  'appendix/A-audit-prompt.md', 'appendix/B-prompt-construction.md',
-  'appendix/C-replication.md', 'appendix/E-method-log.md',
-  ...readdirSync(join(root, 'thesis')).filter((f) => f.endsWith('.md')).map((f) => 'thesis/' + f),
-].filter((f) => existsSync(join(root, f)));
+// Every tracked Markdown file, not a list that has to be extended by hand. This
+// probe was written naming appendices A, B, C and E, in the same session that
+// added F and G, and never read either of them: the ledger is 24 rows of ratios
+// and the budget is a table of thresholds, which is precisely what the two
+// halves below look for. It is the defect 4.74 found in probe-quotes, in the
+// instrument written to catch that class, one pass later (4.75).
+const docs = execFileSync('git', ['-C', root, 'ls-files'], { encoding: 'utf8' })
+  .split('\n')
+  .filter((f) => /\.md$/.test(f) && !f.startsWith('appendix/D-scripts/'));
 
 const STOP = new Set(['the', 'a', 'an', 'of', 'and', 'at', 'in', 'on', 'to', 'is',
   'are', 'was', 'were', 'it', 'its', 'that', 'this', 'with', 'for', 'by', 'as',
