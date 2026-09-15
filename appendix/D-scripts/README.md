@@ -51,11 +51,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-shortcut-warrant.mjs` | Whether each detection shortcut is required and written down, per name and under both readings of *required*. Resolves the constant before counting, because five of the six ids are spelled once and used through it, and decides *forced* from the file boundary rather than from a classifier | [appendix E 4.108](../E-method-log.md#4108-six-of-eight-detection-shortcuts-need-no-fixed-name-at-all) |
 
-**Twenty-five scripts.** That count is here because two documents stated it from
+| `probe-refusal-overwritten.mjs` | The corpus's Cyrillic and Arabic-script separations re-taken on a bench written for this study and printed in full, and what `detectLanguage` does with the Mongolian guard's deliberate refusal. Drives the product's own filters with the values it returns, so the consequence is measured rather than argued | [appendix E 4.109](../E-method-log.md#4109-the-refusal-does-not-survive-its-own-caller-and-a1s-bar-named-this) |
+
+**Twenty-six scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-five take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-six take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

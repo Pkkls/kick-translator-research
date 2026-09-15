@@ -5041,6 +5041,96 @@ documented count and exits 1. All three named the right cause.
 a class prefix is not a single literal and the same rule would not read. This
 says nothing about whether any of these features should exist.
 
+### 4.109 The refusal does not survive its own caller, and A1's bar named this
+
+**Why this pass.** Thirty of the 45 `[reported]` figures in chapter 13 come from
+the corpus's language work, taken from the developing account's records and
+never re-measured here. The standing note has said for several passes that
+**nothing published has been re-taken through an independent instrument**. This
+takes the central one: *a writing system is not a language*, the defect
+diagnosed three times in one day on three scripts.
+
+**A bench was written here**, thirty Mongolian lines and ten each of Russian,
+Ukrainian, Bulgarian, Persian and Arabic, chat register, 15 to 33 characters,
+printed in full by the probe so the population can be argued with rather than
+only the number. The product's own `langDetect` is bundled and driven directly.
+
+**The separations replicate.**
+
+| | `confidentLanguage` |
+|---|---|
+| Russian | 10 of 10 |
+| Ukrainian | 10 of 10 |
+| Persian | 10 of 10 |
+| Arabic | 10 of 10 |
+| Bulgarian | 6 of 10 |
+
+Bulgarian at 6 of 10 is not a disagreement: the corpus publishes **7 of 12** for
+the held-out Bulgarian markers, and 60 percent against 58 percent is the same
+figure taken twice. Mongolian's guard fires on **25 of 30** here against the
+corpus's **17 of 20**, 83 against 85 percent. **Three separate figures
+replicated on a bench that shares no line with theirs**, which is the strongest
+thing this study has been able to say about the corpus so far.
+
+**What does not replicate is the refusal, because nobody had asked about it.**
+
+`cyrilliqueQuelleLangue` answers `undefined` for Mongolian deliberately, and the
+source argues it at length: franc-min does not carry Mongolian at all, and
+Mongolian is not among the 42 languages offered, so naming it would ask an
+engine to translate from a language it does not have. That `undefined` is a
+**refusal**. The product knows what the text is not and says *do not guess*.
+
+`confidentLanguage` respects it. `detectLanguage` calls the same lookup, sees
+`undefined`, reads it as **no information rather than a decision**, and falls
+through to franc, which is the one mechanism the comment above the guard exists
+to overrule. **4 of the 25 refusals are overwritten**: three become `ru`, one
+becomes `bg`, and every one of the four carries an exclusive Mongolian letter or
+particle that the guard correctly caught a moment earlier.
+
+**`undefined` is carrying two meanings.** *I do not know*, and *I know, and the
+answer is do not guess*. One caller can tell them apart and the other cannot,
+and nothing in the type says which is which.
+
+**A1's bar named this failure before anyone measured it.** Its words are *zero
+skips reasoned "same language as target" **unless the detector was looked up**.*
+That clause exists for exactly this: a guessed code standing in for a looked-up
+one at the skip decision. So the consequence was driven rather than argued, by
+calling the product's own filters with the values `detectLanguage` actually
+returns:
+
+| the reader | what happens | count |
+|---|---|---|
+| target Russian | the line is skipped as *already in your language* | **3 of 4** |
+| source allowlist `[ru]` | Mongolian is admitted as Russian | 3 of 4 |
+| allowlist excluding it | shown `lang_not_allowed`, not `lang_unknown` | 4 of 4 |
+| the 21 refusals that survive, for contrast | `lang_unknown`, the honest answer | 21 of 21 |
+
+**A reader whose target is Russian loses the message.** Not mistranslated:
+dropped, with a reason that says it was already readable. It is the one skip
+reason A1 singles out, produced by the one path A1 says must not produce it.
+
+**The damage is bounded and the bound matters.** The engine's source language
+comes from `confidentLanguage`, which respects the refusal, so translations are
+not wrong. Filter decisions and the flag are. Saying only *detection is broken*
+would be both too alarming and less useful than the sentence that fits: the
+looked-up answer and the guessed answer travel in the same variable, and the
+skip path cannot tell which it has.
+
+**The witness is the fix.** On a copy of the clone, three lines making
+`detectLanguage` treat the Cyrillic lookup's silence as a decision take the
+overwrite count from **4 of 25 to 0 of 25** and the probe red. That plant is not
+the recommended patch, and the difference is the point: it re-tests the script at
+the caller, so a Cyrillic-minority line whose lookup declined for some other
+reason would also lose franc. **The fix is to stop overloading `undefined`** and
+return a refusal the caller can recognise. The plant only proves the probe sees
+the mechanism it claims to see.
+
+**Scope.** One bench, written here, thirty Mongolian lines. A different thirty
+gives a different rate, and the rate is reported as this bench's. The mechanism
+does not depend on the rate: it depends on franc answering at all, and franc
+answers whenever it feels like it. The flag path is not driven; the two filter
+calls are.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

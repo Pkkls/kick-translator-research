@@ -283,6 +283,13 @@ Cloned from the public repository, at the commit the study measured against.
 | What forces the other two | a second source file repeating a string a constant already holds, **9 lines** | [new] |
 | Shortcuts named in any document the extension ships | **2 of 8**, both as debugging handles in `.agent/` notes | [new] |
 | Sites the classifier refused to name, before and after the rule moved to the file boundary | **59, then 1** | [new] |
+| **The corpus's separations, re-taken on a bench written here** | ru, uk, fa, ar **10 of 10** each; bg **6 of 10** against the corpus's 7 of 12 | [replicated] |
+| The Mongolian guard's recall, same bench | **25 of 30**, against the corpus's 17 of 20 | [replicated] |
+| **Refusals `detectLanguage` overwrites with a franc guess** | **4 of 25**: three become `ru`, one `bg` | [new] |
+| Of those, skipped as *already in your language* at a Russian target | **3 of 4**, the one skip A1's bar forbids from a guess | [new] |
+| Shown `lang_not_allowed` rather than `lang_unknown` | **4 of 4** | [new] |
+| The 21 refusals that survive, for contrast | `lang_unknown`, **21 of 21** | [new] |
+| Lines making the overwrite count 0 of 25 on a copy | **3** | [new] |
 
 ## 13.8 The three bars execution falsified
 

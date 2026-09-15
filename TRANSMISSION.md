@@ -427,9 +427,14 @@ outcome luck rather than method.
   form is spent too** (4.94): A6's per-row main-thread cost is measured by
   driving the product's own `inject()` in a real Chromium, 0.2 ms at the warm
   p50 with A6's own witness landing on it. What the line means now is narrow and
-  worth keeping narrow: **one quantity has been observed in a browser and every
-  other claim in this study is still about call sites.** Nothing is retagged in
-  bulk, and the next claim to be observed gets observed one at a time.
+  worth keeping narrow. **Seven probes drive a real Chromium**, and between them
+  they have observed the per-row cost, the cold start, the key's path through
+  storage, the detection surface from the page's own world, the startup window,
+  the worker eviction and the heap over a long session. Every other claim in
+  this study is still about call sites. Nothing is retagged in bulk, and the next
+  claim to be observed gets observed one at a time. **This sentence said "one
+  quantity" for six passes after it stopped being one**, which is what a count
+  written in prose and nowhere else does: no gate reads it, so nobody was told.
 - **No multilingual chat traffic.** One single-channel capture exists: the
   corpus's handoff of 2026-08-16 reports 804 messages from a live Spanish
   channel, with their length distribution, and its lines are not in the
@@ -455,6 +460,17 @@ outcome luck rather than method.
 Nine published measurements were re-taken with a second instrument: **five
 changed, four held, one was published without its parameter**. Three of the five
 over-stated and two under-stated.
+
+**Three of the corpus's own published figures have now been re-taken too, and
+all three held** (4.109): the Bulgarian markers at 6 of 10 against a published 7
+of 12, the Mongolian guard at 25 of 30 against a published 17 of 20, and the
+Persian, Ukrainian, Russian and Arabic separations at 10 of 10 each. That bench
+was written here and shares no line with theirs. It is a different population
+from the nine above, which are this study re-measuring itself, and it is the
+first independent confirmation of anything the corpus published. **The defect
+found in the same pass was not in any of those figures but in what a second
+caller does with them**, which is the shape to expect: a number that survives
+re-measurement can still be read wrongly one function away.
 
 Those nine were taken deliberately, by an account that had written the rules
 against these exact errors, and published only after being read back. Treat that
