@@ -47,11 +47,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-archive.mjs` | A11's archive clauses read from an unpacked published archive rather than from a build: instrumentation and source-map markers, web-accessible resources, and whether any licence text ships | [appendix E 4.106](../E-method-log.md#4106-the-archive-read-as-an-archive-and-a-check-withdrawn-for-being-mostly-wrong) |
 
-**Twenty-three scripts.** That count is here because two documents stated it from
+| `probe-long-session.mjs` | Whether the heap grows without bound over a long session, read through CDP after a forced collection, run twice: once as the product and once with the page retaining every message so a flat line has a control behind it. Reports each half's slope, because caps filling and a leak look the same at first | [appendix E 4.107](../E-method-log.md#4107-a-sensitive-control-was-not-enough-the-discriminator-was-the-slopes-decay) |
+
+**Twenty-four scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-three take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-four take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

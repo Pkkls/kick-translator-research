@@ -272,6 +272,10 @@ Cloned from the public repository, at the commit the study measured against.
 | Web-accessible resources in the shipped manifest | **none** | [new] |
 | Licence or notice files in the shipped artifact | **0**, against 4 runtime deps (3 MIT, 1 Apache-2.0) | [new] |
 | Icons shipped twice, byte-identical, with only one pair in the manifest | **4 files, 3520 bytes** | [new] |
+| **Heap over a 1200-message session, read after a forced collection** | first half **0.582 KB per message**, second half **0.051**, ratio **0.09** | [new] |
+| The same session with the page retaining every message, a deliberate leak | first half 1.450, second half 0.914, ratio **0.63** | [new] |
+| Where the product's trace flattens, and what it holds at | message **750**, then inside a **20 KB** band to the end | [new] |
+| The same measurement at 400 messages, before the halves were separated | 0.520 KB per message, **unreadable**: caps filling and a slow leak both fit it | [new] |
 
 ## 13.8 The three bars execution falsified
 

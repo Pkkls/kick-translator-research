@@ -4858,6 +4858,88 @@ than no check, because the next reader pays to triage it, and one whose error
 conceals the true positive is worse again. It is gone, and the duplicate icons
 are a measurement in this entry instead.
 
+### 4.107 A sensitive control was not enough; the discriminator was the slope's decay
+
+**What happened.** A6's last unmeasured clause is *no unbounded growth in a long
+session*, and it was the last unmeasured clause on any axis. Source reading finds
+caps everywhere that accumulates in the content script: `DECISION_LOG_MAX = 50`
+with a `shift()`, a context buffer that shifts past `MAX_CONTEXT_KEEP`, an in-tab
+cache that is an LRU deleting its oldest. **Reading a cap is not watching it
+hold**, which is what the clause asks.
+
+**The control came first**, because 4.104 had already paid for the lesson that a
+green needs one. The same session runs twice: once as the product, once with the
+page itself retaining every message in an array nothing trims. The second leaks
+by construction, so if the instrument cannot see it, the product's flat line
+means nothing and the run fails instead of reporting clean. The heap is read
+through CDP `Runtime.getHeapUsage` after an explicit `HeapProfiler.collectGarbage`,
+so each sample counts what survives collection.
+
+**At 400 messages the control worked and the answer was still unreadable.**
+
+| | slope |
+|---|---|
+| the product | 0.520 KB per message |
+| the leaking control | 1.380 KB per message |
+
+The control is clearly visible at 2.7 times the product, so the instrument has
+sensitivity. And 0.520 KB per message is **not zero**: over ten thousand
+messages that is five megabytes. A sensitive instrument, a real number, and no
+way to tell a leak from caps filling up.
+
+**The discriminator is not the slope, it is what the slope does.** A capped
+system and a leaking one both rise at first, because the caps fill. What
+separates them is the second half. So the probe gained one thing, a fit over each
+half of the run, and the run was tripled:
+
+| 1200 messages | first half | second half | ratio |
+|---|---|---|---|
+| the product | 0.582 | **0.051** | **0.09** |
+| the leaking control | 1.450 | 0.914 | 0.63 |
+
+The product's trace plateaus and stays there: 2129 KB climbing to 2464 by
+message 750, then 2466, 2469, 2465, 2466, 2469, 2481, 2485, 2486, 2484,
+oscillating inside about twenty kilobytes for the last four hundred and fifty.
+The control is at 3522 and still climbing.
+
+**The clause is met, and the evidence is the shape rather than the number.** A
+number alone said 0.520 and could not be read. The same measurement, run longer
+and split, says the caps fill in roughly the first six hundred messages and hold
+for the rest.
+
+**The lesson is distinct from 4.104's and worth separating.** There the failure
+was a control that did not exist: nine greens, only one of which was inside the
+window being tested. Here the control existed, was sensitive, and was **still not
+sufficient**, because it established that the instrument can see growth without
+establishing what kind of growth the product has. **A positive control proves an
+instrument can see the thing; it does not tell you which of two explanations you
+are looking at.** That takes a second question asked of the same data, and the
+question has to come from what the two explanations would each predict.
+
+**A second thing happened in the same pass, and it is 4.80's gate working.**
+The measurement gave A6 a heap-growth threshold, so appendix G gained a ninth
+row, and the prose above the table still said *8 of the 8 rows carry a number*.
+`axis-ledger.mjs` recounted the table and refused the file inside the same pass:
+*appendix G says 8 of the 8 rows carry a number; the table says 9 of 9*. That
+line was written into the gate because the count once read *two of seven* for a
+pass and four documents copied it. This is the first time it has caught the
+drift it was built for, against a change made by the session that built it, and
+the fix reached three documents rather than one: the table's own prose, the
+sentence declaring the file full, and `RESUME-HERE.md`, which states the count as
+current standing.
+
+**The ninth row is deliberately not a closing bar.** It was written after the
+number was known, which is the shape this study refuses when closing an axis, so
+it says so in its own cell and A6 stays open. What makes it worth writing at all
+is that the obvious threshold, a ceiling on the overall slope, is the one this
+pass proved unreadable. The bar that is worth handing on is the one on the decay,
+plus a floor on the control, because a flat line from a blind instrument
+satisfies any ceiling.
+
+**Scope.** Twelve hundred messages, the content script and the page, not the
+service worker's separate heap. Growth slower than this run would not appear,
+and the claim is about a session of this length and no longer.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

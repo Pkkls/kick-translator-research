@@ -71,10 +71,13 @@ fails the moment a second one drifts, which is what 4.45 did undetected.
 
 ## Why no axis is closed, counted rather than assumed
 
-The budget file is full, eight rows of eight, and **that closed no axis** (4.97).
-Every one of the seven bars that names it is a conjunction and the ceiling is one
-clause of it: across the seven, the budget unblocked **8 clauses of 31** and left
-23 where they were. A conjunction is only as closed as its weakest term, and the
+The budget file holds nine rows, all nine carrying a number, and **that closed
+no axis** (4.97). Every one of the seven bars that names it is a conjunction and
+the ceiling is one clause of it: across the seven, the budget unblocked
+**8 clauses of 31** and left 23 where they were. The ninth row does not change
+that arithmetic, because it was written **after** its clause was measured
+(4.107) and a bar fitted to a known number unblocks nothing; it is a threshold
+for the session after this one. A conjunction is only as closed as its weakest term, and the
 ceiling was never the weakest term in any of them.
 
 Two of the seven are further from closing than they looked, because their
