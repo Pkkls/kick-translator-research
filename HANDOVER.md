@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 59 of 59 holding at the commit this was last checked against, and 4
+It reports 60 of 60 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -169,7 +169,12 @@ than copy the gesture again; `audit-selecteurs` is an entry in the runner
 pass found the same mechanism in a different pair of files: the fixture
 screenshot harness had drifted to a scale factor its sibling's comment warned
 against **[yours]**. That one was repaired with a check that reads the
-dimensions out of the PNG, now present in both **[re-run]**.
+dimensions out of the PNG, now present in both **[re-run]**. And the next day
+it reached product code: the lookup that names a language in its own script
+existed three times, wrong in two different ways between them, which kept
+a language row showing a bare code and CI red for 48 runs; all three now
+delegate to one shared function **[yours]**, and both former copies import it
+**[re-run]**.
 
 **[mine]** So the remedy is known and practised, one instance at a time. What
 the pattern lacks is the step between the diagnosis and the diff: when a

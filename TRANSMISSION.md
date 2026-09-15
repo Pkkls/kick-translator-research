@@ -291,6 +291,9 @@ here". It was executed. It was wrong.
   `--no-ff`, a condensed `git log --oneline` showed what looked like a
   fast-forward, while `git rev-parse HEAD` named another object. Read the graph
   with `git cat-file -p HEAD`, which prints the parents.
+- **Git Bash rewrites arguments that look like paths.** `gh api /markdown`
+  failed as an endpoint under the Git installation directory. Drop the leading
+  slash, or set `MSYS_NO_PATHCONV=1`.
 - **Paths here contain spaces.** The corpus's `for g in $(find ...)` split on
   one and reported a single repository forty-four times. Quote, or read with
   `while IFS= read -r`.

@@ -683,8 +683,10 @@ store listing text, checked against the code that implements it. Every
 localised README against the source README, section by section, with the drift
 named. Every changelog entry against the commit that carries it.
 
-**Bar** no screenshot older than the feature it shows. No claim in any
-reader-facing document that the code does not implement. Localised documents
+**Bar** no screenshot older than the feature it shows, and none showing a real
+person's handle or message: images come from a fabricated page, never from a
+live channel nobody asked. No claim in any reader-facing document that the code
+does not implement. Localised documents
 either current or carrying a visible line saying which version they describe.
 No document asserting repository state that a generated file already owns.
 

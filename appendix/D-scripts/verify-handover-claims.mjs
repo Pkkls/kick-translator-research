@@ -276,6 +276,9 @@ const infra = ['scratchpad/harness/playwright.mjs', 'scratchpad/harness/run-gate
 // "0 of 3", not 0: with the files missing, a bare zero would hold over nothing.
 claim('3.6 no gate infrastructure records the browser version', '0 of 3', infra.filter((p) => /\.version\(\)|browserVersion/.test(read(p))).length + ' of ' + infra.length);
 
+// 2.1: the third copy-instead-of-share instance, in product code.
+claim('2.1 language-name lookups delegating to the shared function', '2 of 2', ['src/content/langChip.ts', 'src/content/langMenu.ts'].filter((p) => existsSync(join(root, p)) && /from\s+['"][^'"]*shared\/languages['"]/.test(read(p))).length + ' of 2');
+
 // 3.5b: the toolchain the builds above were never tagged with.
 claim('3.5b .nvmrc pins Node 20', '20', existsSync(join(root, '.nvmrc')) ? read('.nvmrc').trim() : 'absent');
 claim('3.5b the packer prints the running Node version', true, existsSync(join(root, 'scripts/pack.ts')) && /process\.version/.test(read('scripts/pack.ts')));
