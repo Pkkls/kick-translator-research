@@ -121,8 +121,9 @@ what was reported feels like closing the item.
 fail, and nothing guarantees it reached the artefact the assertion reads. A
 constant folded by a bundler, a patch whose pattern never matched: each produces
 a break that never arrived and a green that means nothing. The corpus's
-sentence: *a witness that does not break the thing it claims to break proves
-nothing.* And a witness that other tests also catch proves the gate works, not
+sentence, *un temoin qui ne casse pas la chose qu'il pretend casser ne prouve
+rien*: a witness that does not break the thing it claims to break proves
+nothing. And a witness that other tests also catch proves the gate works, not
 that it covers anything new: an end-to-end gate went red on a broken selector
 that four unit tests also caught. Look for a break only that gate can see, as
 the corpus's next gate did: short-circuiting hover arming left 621 of 621 unit
@@ -337,8 +338,9 @@ one session.
 
 The corpus under study records its own: at least fifteen false probe findings,
 and a single pass in which four wrong accusations preceded one real defect, the
-product right every time. Its opening line is the whole lesson: **all of them
-caught by a witness, none by a re-reading.**
+product right every time. Its opening line is the whole lesson: *toutes
+rattrapees par un temoin, aucune par une relecture*, **all of them caught by a
+witness, none by a re-reading.**
 
 ## 7. If you continue
 

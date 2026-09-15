@@ -11,7 +11,10 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `check-links.mjs` | Every relative link in every Markdown file here, anchor included, against GitHub's slug rule | [RESUME-HERE.md](../../RESUME-HERE.md), [appendix E 4.29](../E-method-log.md#429-a-draft-nobody-committed-and-what-replication-left-of-it) |
 
-All five take a path argument and print to standard output. Only
+| `probe-quotes.mjs` | Whether the corpus's words, where this study quotes them, are verbatim in the extension's tracked files, or labelled as translated. A report, not a gate: its attribution test lists known false positives | [appendix E 4.42](../E-method-log.md#442-quotations-that-were-not-the-corpuss-words-found-by-something-that-runs) |
+
+All six take a path argument and print to standard output; `probe-quotes.mjs`
+takes two, this repository and the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs
 Node 22.18 or later.

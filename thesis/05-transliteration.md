@@ -199,7 +199,7 @@ that are not written that way", which *is* shlyokavitsa. It needed a fourth
 language in an existing table, not a third table.
 
 Then the measurement that decided the form, and it is the best instance of
-overfitting in this corpus **[reported]**:
+overfitting in this corpus **[reported]**, in translation from its French:
 
 > Markers built by grammatical paradigm, the interrogatives, the future
 > particle, the demonstratives, the roots where Bulgarian diverges from

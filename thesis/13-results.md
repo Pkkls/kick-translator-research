@@ -21,7 +21,8 @@ Extended to 176 lines in 19 languages, the split is stark **[reported]**:
 | Non-Latin | ar 25/25, ja 25/25, ko 25/25, ru 25/25, zh 24/25 | **0 of 1125 pairs** |
 | Latin | es 3/8, fr 4/5, pt 3/6, tr 1/4 | **8 of 483 pairs** |
 
-Their conclusion is a rule, and this study's tables do not obey it:
+Their conclusion is a rule, and this study's tables do not obey it. In
+translation from the journal's French:
 
 > Reported per language, never as a total. All the damage measured in recent
 > days lives in the Latin half, and the half decided by writing system is

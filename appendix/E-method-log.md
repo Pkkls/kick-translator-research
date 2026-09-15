@@ -714,9 +714,12 @@ thing first
 relevance turned up a section titled "the probes that were wrong, four more",
 opening with "twelfth and following". **The project has been counting its own
 false probe findings all along**, at least fifteen of them, and its first line
-is the conclusion this log spent a session arriving at:
+is the conclusion this log spent a session arriving at, in its French and then
+in translation:
 
-> All of them caught by a witness, none by a re-reading.
+> Toutes rattrapees par un temoin, aucune par une relecture.
+
+All of them caught by a witness, none by a re-reading.
 
 **Cost.** None to any published claim, and considerable to this study's sense
 of originality. The calibration section in the handover, written as though an
@@ -757,7 +760,9 @@ three sections never opened by any theme query. One of them contains a
 refinement of the rule this entire study is built on, and the study did not
 have it.
 
-> **A witness that does not break the thing it claims to break proves nothing.**
+> **Un temoin qui ne casse pas la chose qu'il pretend casser ne prouve rien.**
+
+A witness that does not break the thing it claims to break proves nothing.
 
 The instance: a weight gate asserting that table prose stays out of the bundle.
 The witness referenced that prose from live code through a **constant** key.
@@ -774,8 +779,9 @@ green that certifies nothing.
 
 The same shape appears in their eleventh false probe, where a scripted patch
 failed silently on a bad escape, the file never changed, and six tests went red
-for unrelated reasons. Their note: the rule *check that the replacement
-happened* was already in their standing prompt and was not applied.
+for unrelated reasons. Their note: the rule *verifie que le remplacement a eu
+lieu*, check that the replacement happened, was already in their standing
+prompt and was not applied.
 
 **This study has that guard by accident rather than by design.** Every edit in
 this session goes through a helper that refuses to write when its search string
@@ -842,7 +848,7 @@ instrumented one. Corrected in both, with the finding narrowed to what is
 actually unguarded: the DOM identifiers.
 
 **And the corpus frames the stake better than this study did.** Its note: this
-matters more here than in most extensions *because the site already walls off
+matters more here than in most extensions, *since this site already walls off
 what it detects*. This study had argued the axis on reader privacy. The real
 exposure is product survival, and it is the stronger argument by a distance.
 
@@ -1360,6 +1366,43 @@ exactly, again. The number was taken from the section that produced it, and
 the correction sat in the next one. The earlier reading list had named topics
 rather than line numbers for this journal, so the section after was not even
 visible as unread.
+
+### 4.42 Quotations that were not the corpus's words, found by something that runs
+
+**What happened.** Entry 4.39 recorded three translations put in italics as
+quotations and concluded that nothing structural would have caught them.
+Reading the newer journal's never-listed sections turned up a fourth, a whole
+block quote in chapter 7, and this time the answer was to build the structural
+thing. [`probe-quotes.mjs`](D-scripts/probe-quotes.mjs) looks for each
+attributed quotation verbatim in the extension's tracked files. On the last
+commit before it, it listed 24; 14 were real, and three more were found by hand
+beside them, two in bold and one block quote whose paragraph the probe did not
+read as attributed.
+
+The seventeen, by kind: the corpus's most quoted line, *toutes rattrapees par
+un temoin, aucune par une relecture*, given in English as its words in the
+handover, TRANSMISSION.md, chapter 3 and this log; its witness sentence the
+same way in three places; its prompt rule, its paradigm diagnosis, its
+per-language rule and its dictionary verdict, each translated from French and
+presented as quoted; "walls off what it detects" with its conjunction changed
+in two places; the manifest's reason, paraphrased in chapter 11 in exactly the
+form the handover's section 2.1 says it had removed from the handover; two
+journal titles translated inside quotation marks; and one quotation checked
+"against the source" that had dropped the source's accent.
+
+**Cost.** Seventeen places where a reader was told they were reading the
+corpus and were reading this study, most of them in the passages written to
+credit the corpus. Where an English original existed, in the older journal or
+the work queue, the quotation now uses it; where the original is French, it is
+quoted in French and translated outside the quotation.
+
+**Why it happened.** Every one was written by an account that had 4.5 in its
+log, and the handover's section 2.1 explains the risk in its own text. A rule
+about quoting lives in the writer's attention, and translation is where
+attention does the work silently. The probe is not a gate: its test of
+attribution is a word list and it lists this study's own rules beside real
+cases, so it reports and a person reads it. That is weaker than a gate and much
+stronger than the sentence in 4.39 that nothing would have caught them.
 
 ### 4.36 The pass after the one quoted corrected it
 

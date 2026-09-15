@@ -63,9 +63,10 @@ without a recorded justification is indistinguishable from an ignored one.
 
 ## 11.2 Detectability, and the door closed on one side
 
-The manifest carries a comment explaining that web-accessible resources were
-removed because what remained *"gave any script on a kick.com page a stable URL
-to query to confirm the extension is installed"*.
+The manifest carries a comment, in French, explaining why web-accessible
+resources were removed, and the work queue gives the same reason in English:
+what was listed *gave any script on a kick.com page a stable URL to request as
+a test for whether the extension is installed*.
 
 The reasoning is exactly right. The measurement that accompanied it is
 incomplete, and this study measured the rest.
@@ -128,8 +129,8 @@ anything about them. **The door was closed, and gated, on one side; the other
 side was never framed as part of the same question.**
 
 **The corpus also states the stake better than this study had.** Its note is
-that detectability matters more here than in most extensions *because the host
-site already walls off what it detects*. That moves the axis out of privacy and
+that detectability matters more here than in most extensions, *since this site
+already walls off what it detects*. That moves the axis out of privacy and
 into product survival: a stable queryable name is what a countermeasure keys
 on, costing the site one line and the extension a release cycle. The reader's
 privacy is the secondary consideration.

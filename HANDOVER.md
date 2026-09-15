@@ -106,7 +106,7 @@ its general form sitting in a comment in the code for weeks.
 There is a fourth instance, outside language detection entirely, which is why
 this is worth raising as a pattern rather than as a detection problem. Your
 manifest comment gives the reason web-accessible resources were removed:
-*"Ce qui restait liste donnait a n'importe quel script d'une page kick.com une
+*"Ce qui restait listé donnait a n'importe quel script d'une page kick.com une
 URL stable a interroger pour confirmer que l'extension est installee."* The
 diagnosis is general: the page must not be able to query for us. Applied to one
 vector. **[read]** Four others are still there, and section 3.2 lists them.
@@ -848,10 +848,10 @@ second, better probe rather than by rereading:
 | Silent failure paths | 31 silent `catch` of 42 | 18, then 2, then none | The signal pattern did not match `log.debug(`, so every logged catch counted as silent |
 | Selector fallbacks | 2 lists, neither with a fallback | withdrawn | Parsed the file with a regex that split the arrays wrongly; the chains are there |
 
-**And you were counting these before this account was.** Your journal's "the
-probes that were wrong, four more" opens at "twelfth and following" and states
-the conclusion outright: *all of them caught by a witness, none by a
-re-reading.* Nothing in this section is a discovery; it is the same phenomenon
+**And you were counting these before this account was.** Your journal's "Les
+sondes qui se sont trompees, quatre de plus" opens at "Douzieme et suivantes"
+and states the conclusion outright: *toutes rattrapees par un temoin, aucune
+par une relecture*. Nothing in this section is a discovery; it is the same phenomenon
 measured from outside, by someone who had the advantage of your notes and
 reproduced the failures anyway.
 

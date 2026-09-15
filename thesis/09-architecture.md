@@ -228,6 +228,14 @@ The generalisation is that **redundancy is invisible to tests of the nominal
 path by construction**, so every redundant mechanism needs a test that removes
 it. A fallback nobody has ever seen fall back is a fallback nobody knows works.
 
+**[reported]** And one link of this chain was seen down. Measuring a later
+cascade against the real providers, the corpus found the third engine
+answering 500 on both of its hosts, so a reader with no key of their own was
+running on two engines and nothing else. **[new]** A unit test that asserts the
+list has three entries cannot notice that, which is the declaration test above
+meeting the case it is blind to by construction: a link that exists in the list
+and does not answer.
+
 ## 9.7 Coverage gaps that were not what they looked like
 
 **[reported]** Malay and Hebrew were never identified, two of the forty-two

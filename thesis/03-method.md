@@ -62,10 +62,13 @@ access, the object ships either way, and the bundle grew by 39 bytes that the
 threshold absorbed. Referenced through a **dynamic** key, the gate goes red on
 all thirty notes.
 
-The project's own sentence is the rule:
+The project's own sentence is the rule, in its French and then in translation:
 
-> A witness that does not break the thing it claims to break proves nothing,
-> and the first one here broke nothing.
+> Un temoin qui ne casse pas la chose qu'il pretend casser ne prouve rien, et
+> le premier ici ne cassait rien.
+
+A witness that does not break the thing it claims to break proves nothing, and
+the first one here broke nothing.
 
 So a witness has two failure modes, not one. It can fail to be run, which is
 visible. And it can be run while having no effect on the artefact under
@@ -78,8 +81,9 @@ artefact before reading the gate. Compare the built bytes, not the source. The
 corpus reaches the same place from another direction in its eleventh false
 probe, where a scripted patch silently failed because an escape was wrong, the
 file never changed, and six tests went red for a reason that had nothing to do
-with the product. Its note is that the rule *check that the replacement
-happened* was already written in its own standing prompt and was not applied.
+with the product. Its note is that the rule, *verifie que le remplacement a eu
+lieu*, check that the replacement happened, was already written in its own
+standing prompt and was not applied.
 
 ### Verify the failure is in the product before correcting it
 
@@ -106,9 +110,9 @@ wrong, four more" opens with "twelfth and following", so at least fifteen false
 probe findings are recorded there **[reported]**. Its first line is the
 conclusion this study reached independently and several months later:
 
-> All of them caught by a witness, none by a re-reading.
+> Toutes rattrapees par un temoin, aucune par une relecture.
 
-The four it then describes are worth the space, because each is a different
+All of them caught by a witness, none by a re-reading. The four it then describes are worth the space, because each is a different
 mechanism:
 
 - **A form body.** Three assertions of a provider test went red against correct
@@ -246,8 +250,9 @@ the register a person types in each, or twelve lines against four; they only
 say that "built by paradigm" is not a property that transfers on its own.
 
 The diagnosis in the notebooks is linguistic rather than statistical, and it is
-the better explanation: *a paradigm gives the words of a textbook; a chat writes
-"mnogo dobre igra" and "az sam tuk", which carry none of them.* Interrogatives,
+the better explanation, rendered here from their French: a paradigm gives the
+words of a textbook; a chat writes "mnogo dobre igra" and "az sam tuk", which
+carry none of them. Interrogatives,
 future particles and demonstratives are what a grammar book foregrounds and
 what running conversation uses least.
 

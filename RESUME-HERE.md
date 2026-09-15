@@ -26,13 +26,20 @@ link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
+One report to read rather than to keep green, because it lists false positives
+beside real ones (4.42):
+
+```bash
+node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
+```
+
 ## What is done
 
 - **15 thesis chapters**, `thesis/`
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
 - **The method log**, `appendix/E-method-log.md`, every recorded mistake
-- **Five runnable scripts**, `appendix/D-scripts/`
+- **Six runnable scripts**, `appendix/D-scripts/`
 
 ## The reading, by position
 
@@ -76,7 +83,7 @@ read beside L263 for the same reason.
 live-debugging sequence, is read; it produced handover section 3.7 (4.40).
 
 Never listed and not recorded as read either (L3 to L136, L284 to L517 and
-L598 to L743 read after the list closed): L744 to L886, and L970 to L1204.
+L598 to L886 read after the list closed): L970 to L1204.
 The earlier sessions' reading list names topics rather than line numbers for
 some of these, so part of that range may have been read without being
 recorded.

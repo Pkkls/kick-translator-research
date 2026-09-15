@@ -140,7 +140,9 @@ advance.
 
 **[reported]** Measured over the same 90 pairs, the table repairs 26, replaces
 35 answers that were already correct with its own register, is no better on 29,
-and answers all 90 without touching the network. The project's own reading:
+and answers all 90 without touching the network. The project's own reading,
+translated from its journal's French; its work queue says it in English as *the
+dictionary is mostly a zero-latency cache and its own header does not say so*:
 
 > The file sells itself as an anti-transliteration measure; measured, it is
 > mostly a zero-latency cache over the ninety commonest expressions in a chat,
