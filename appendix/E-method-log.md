@@ -4730,6 +4730,71 @@ than no check. Both the map and the two patterns now take a compound, and the
 wrong-count witness was re-run to confirm the widening did not turn the gate
 into a formality.
 
+### 4.105 One sentence of sixteen never reaches the catalogue, and the guard cannot see it
+
+**What happened.** A18's bar asks that *every empty and failure state shows a
+sentence a non-technical reader can act on*. The pass went to enumerate those
+states and immediately measured the wrong population: it compared the content
+script's `msg()` keys against `src/shared/i18n/keys.json` and reported **43 used,
+43 undeclared, 155 declared and unused**. A total mismatch is not a finding, it
+is a wrong population, and the arithmetic said so before the sentence was
+written. There are **two** catalogues: `src/shared/i18n` for the options page and
+popup, 155 keys, and `src/content/i18n` for the chat, **48 keys across nine
+locales**, with English needing no table because it is the fallback argument at
+every call site.
+
+**The product's own guard is the best test in the corpus.**
+`msg.coverage.test.ts` carries **43 assertions**, run here and passing, and it
+matches call sites to the catalogue **in both directions**: every call has an
+entry, and every entry has a call, so a dead key fails too. It refuses to pass on
+an empty scan, in its own words *finds the calls at all, so an empty scan cannot
+pass as a clean one*, which is this study's *a probe that measured nothing must
+fail* implemented by the account being studied. It even fails on **an exemption
+it no longer needs**. Nothing this pass could build would improve on it.
+
+**And it cannot see the defect.** `pipeline.ts:169`:
+
+```js
+if (realText.length < this.settings.minTextLength) {
+  return `it is shorter than your ${this.settings.minTextLength} character minimum`;
+}
+if (realText.length > MAX_TEXT_LENGTH) return localised('skipTooLong', 'it is longer than the size limit');
+if (isNoise(realText)) return localised('skipNoise', 'it is only emoji, symbols or laughter');
+```
+
+Every neighbour calls `localised()`. **This one returns a template literal**, so
+it never enters the system the coverage test scans, and no content locale carries
+a key for it. A reader with the interface in Japanese, Arabic or Turkish gets
+every skip reason in their own language **except this one**, which is English
+forever.
+
+**An empty report is a statement about the instrument's reach**, and the reach of
+a call-site scanner is call sites. The test reports complete and is correct about
+all 43 things it can reach. This is that rule's sharpest instance so far, because
+the instrument is not weak: it is thorough, bidirectional, self-checking, and
+blind to exactly one shape.
+
+**The mechanism was available and was not used**, which is what makes it an
+oversight rather than a limitation. The catalogue takes placeholders: `skipPrefix`
+is `'Not translated: $REASON$'` and `barVia` is `'$BASE$ · via $PROVIDER$'`, both
+called with an argument array. A localised minimum-length sentence is one
+`localised('skipTooShort', ..., [n])` call and nine catalogue entries.
+
+**And it is the one worth localising most.** Classified by whether the sentence
+names something the reader controls, the skip reasons split: eight name a setting
+or a list the reader owns, *your blocked list*, *your allowed list*, *your
+glossary*, *you asked to skip English*; the rest state a fact about the message.
+This sentence is in the first group and is the only one that prints the reader's
+own configured **value**. It is the most actionable sentence in the set and the
+only one they may not be able to read.
+
+**The check is built rather than the rule written.**
+`probe-untranslated.mjs` scans the reason-producing files for returned literals
+that never reach the catalogue: **2169 lines, 50 catalogue lookups seen, 1 raw
+sentence**. It names its four files as the population so a clean run's scope is
+visible, refuses if it finds too few lookups to be reading what it thinks, and
+exits 1 when the population moves in either direction.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

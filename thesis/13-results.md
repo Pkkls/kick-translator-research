@@ -265,6 +265,9 @@ Cloned from the public repository, at the commit the study measured against.
 | **Messages scheduled across the startup window, none in the markup** | **19**, weighted under the attach | [new] |
 | When the extension first marked the page | **41 ms** on that timeline | [new] |
 | Messages that arrived before that mark, and how many were lost | **8 arrived, 0 lost** | [new] |
+| Chat catalogue: keys, locales, coverage assertions | **48 keys, 9 locales, 43 assertions**, run and passing | [replicated] |
+| **Reader-facing sentences that never reach that catalogue** | **1**, `pipeline.ts:169`, English in every locale | [new] |
+| Skip reasons naming something the reader controls | **8 of 16** | [new] |
 
 ## 13.8 The three bars execution falsified
 

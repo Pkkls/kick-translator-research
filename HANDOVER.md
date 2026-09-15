@@ -1087,6 +1087,37 @@ So the sequence is: re-point those four at `onDomMessage`, decide whether the
 warm-vs-display test still has a subject, then delete the method and the
 setting. Deleting first costs you four tests that guard real regressions.
 
+**Ten minutes, and your best test cannot catch it.** `pipeline.ts:169` returns
+a template literal where every neighbour calls `localised()` **[re-run]**:
+
+```js
+if (realText.length < this.settings.minTextLength) {
+  return `it is shorter than your ${this.settings.minTextLength} character minimum`;
+}
+if (realText.length > MAX_TEXT_LENGTH) return localised('skipTooLong', ...);
+if (isNoise(realText)) return localised('skipNoise', ...);
+```
+
+So that one skip reason never enters the chat catalogue, and no locale carries a
+key for it. A reader with the interface in Japanese, Arabic or Turkish gets every
+other reason in their own language and this one in English.
+
+`msg.coverage.test.ts` is the most disciplined test in your repository: 43
+assertions, both directions, refuses an empty scan, fails on an exemption it no
+longer needs. It cannot see this, because a string that never calls `msg()` is
+not a call site. The report is complete and correct about all 43 things it can
+reach, which is the whole point.
+
+It is also the sentence most worth having in the reader's language. Of your
+sixteen skip reasons, eight name something the reader controls, and this is the
+only one that prints their own configured value back to them.
+
+The fix is one call and nine entries: the catalogue already does placeholders,
+`skipPrefix` is `'Not translated: $REASON$'` and `barVia` is
+`'$BASE$ · via $PROVIDER$'`, both called with an argument array.
+`node appendix/D-scripts/probe-untranslated.mjs <your repo>` finds it, and goes
+red the day it is fixed so this file stops claiming it.
+
 **Ten minutes, and it stops a wrong belief at the top of every pass.** Delete
 the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked
