@@ -24,6 +24,20 @@ The four decisions named there:
 
 A collector exists and has not been run against live traffic.
 
+**One of the four is not the capture's to settle.** **[reported]** The same
+queue records the trimming experiment run twice and corrected once: reducing
+the identifier to the languages the product maps frees zero bytes, because the
+data stays in the bundle either way, so the weight motive does not exist. What
+remains is an accuracy trade that *changes sign with the target set*: against
+the ten languages the product speaks the decisive loss is 8 and 8, against all
+42 targets it is 43 and 50. **[new]** A target is the language a reader
+translates into. A chat capture records what is written, not what readers have
+chosen, so it cannot say which target set is the real one; that is reader
+behaviour, and the product ships no telemetry that could record it. The only
+proxy in the corpus is the listing's views by localised page (HANDOVER.md 3.5).
+Three of the four decisions wait on the capture; the fourth waits on something
+the capture does not contain.
+
 ### What this invalidates
 
 **Nothing about mechanisms.** That a homoglyph defeats a one-character floor,

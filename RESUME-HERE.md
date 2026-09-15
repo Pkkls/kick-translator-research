@@ -62,13 +62,12 @@ Read so far: the sections on the startup race, the false probes, the Bulgarian
 work, the day boundary, the weight field, the short-expression table, the
 silent-drop residue, and the Latin-only bench.
 
-Also read in this session: L143, the identifier duel, and L394, the redone
-weight experiment, read out of order because it corrects the trimming numbers
-in L237. Read L237 with L394 beside it.
+Also read in this session: L143, the identifier duel; L237, the trimming
+experiment; and L394, the redone weight experiment, read beside L237 because it
+corrects it.
 
-**Still unopened**, most promising first: L237 "the trimming experiment, run at
-last", L263 "what
-a source allowlist costs without saying so", L207 "a change that shipped on one
+**Still unopened**, most promising first: L263 "what a source allowlist costs
+without saying so", L207 "a change that shipped on one
 bench and was reverted on the next", L1205 onward, the whole live-debugging
 sequence.
 

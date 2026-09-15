@@ -30,6 +30,17 @@ more, the fallback that is meant to rescue the script shortcut is the same
 shortcut one level down. The corpus's phrase for it: *la meme idee un etage
 plus bas*.
 
+**And the languages the product does not translate are doing work.**
+**[reported]** When the corpus looked at what the identifier's silences were,
+they were not refusals. It was answering Somali on Spanish, Lingala on
+Portuguese and Italian, Hausa and Uzbek on Turkish, Croatian on Polish, and
+because the product translates none of those, the answer mapped to nothing and
+the line went silent rather than wrong. Removing those languages turns the
+silences into answers: on the redone bench of 176 messages, silences went from
+11 to 1, right answers from 152 to 158, and wrong ones from 13 to 17. An
+unmapped language is a sink for the identifier's errors, and a list trimmed for
+tidiness empties the sink into the pipeline.
+
 For a large share of traffic the shortcut is right, and it is right for a
 reason that has nothing to do with linguistics. It is right because usage is
 distributed unevenly. Most Arabic-script text on a Western streaming platform
