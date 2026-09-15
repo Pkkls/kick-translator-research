@@ -2468,6 +2468,13 @@ the same two pages: *Chrome carries 2.9.2, updated 2026-08-30, **75 users**, and
 its description opens on "NEW IN 2.9.2"* and *AMO carries 2.7.0, reviewed
 2026-08-16, 4 daily users*.
 
+Read further, the queue dates that reading: *read off their own pages on
+**2026-08-31**, rather than taken from a note*. So the interval is exact.
+And the same item already states the rule this entry was reaching for: *do
+not take a store version from this file: it is a page, it changes without a
+commit, and it has already rotted once here.* The rule was written. What was
+missing was anyone re-reading the page it warns about.
+
 Version, date and the AMO figure agree exactly. The Chrome user count does not:
 75 there, 112 here, **up 49 percent**, and both readings describe the same
 version updated on the same day. Re-read a second time in this session to be
@@ -2533,6 +2540,47 @@ figure is not wrong, it is unverifiable**, which is what
 in this log already names: a number whose parameter was not stated. Three of
 these four figures survived eight months and a change of reader. The fourth did
 not survive the absence of one command line.
+
+### 4.68 Reading the rest of the queue: what it already held, and what it does not
+
+**What happened.** `.agent/PLAN.md` read from L700 to the end of *Waiting on
+kil*. Three of this session's findings meet their counterparts there, and they
+land differently.
+
+**The store figure, dated.** [4.66](#466-a-store-figure-that-moved-found-by-reading-the-entry-that-already-held-it)
+reported Chrome at 112 users against the queue's 75, and could not say over what
+interval. The queue dates its reading: *read off their own pages on
+**2026-08-31***. So the interval is exact, and the same item closes with the
+rule the entry was reaching for, already written: *do not take a store version
+from this file: it is a page, it changes without a commit, and it has already
+rotted once here.* The rule existed. Nothing was re-reading the page it warns
+about, which is the gap, and it is a smaller and more specific gap than a
+missing rule.
+
+**The touch targets, and the halves do not overlap.** The queue records the
+same two controls this study measured, at their pre-fix sizes: the gear 25 by
+19, the pause 26 by 18, and a retry arrow at 10 by 15, all against WCAG 2.5.8's
+24 by 24, all made 24 tall, with `bar-widths` promoted to a gate and the witness
+*removing the rule turns it red at all ten widths*. This study's run measured
+the post-fix sizes, 25 by 24 and 26 by 24, which agree.
+[4.48](#448-the-witness-could-not-be-run-as-written-and-running-half-of-it-beat-the-prediction)
+is not the same finding and is not covered by that entry: **a control that is
+shrunk is caught, a control that is hidden is not.** Hiding takes it to 0 by 0,
+which the guard `(c.l > 0 || c.h > 0)` skips by design, for the on-device chip
+that is legitimately absent. The gate the queue built to catch one regression
+cannot see the other, and nothing says so.
+
+**The hazard this session walked into twice, and the corpus had already named.**
+An entry records that `package:all` used to leave `dist/` holding the Firefox
+build, so anyone loading `dist/` unpacked got a silent extension, and *this is
+what broke kil's browser after the 2.9.3 packaging*. The fix was to end the
+script on `npm run build`. This session put a non-Chrome build in `dist/` twice,
+once instrumented for metrics and once for Firefox, and restored with
+`npm run build` both times, which is the same instinct arriving at the same
+place. It was not knowledge: the entry had not been read yet. **The difference
+between a habit and a rule is that the rule survives the person who had the
+habit**, and the corpus wrote the rule into the script rather than into a note,
+which is the version that works.
 
 ### The pattern across the first three
 
