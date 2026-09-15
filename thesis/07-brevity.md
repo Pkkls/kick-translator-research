@@ -111,6 +111,26 @@ can see that it is not a translation.
 **[reported]** Ninety common expressions ship with an answer, which makes them
 both correct and free: no request, no latency, no quota.
 
+**One repair that looked free and pointed the wrong way** deserves recording,
+because the trap is general **[reported]**. Seven of eight cases in that table
+return nothing useful, and they appeared separable by a property that costs
+nothing to read: the engine already returns the source language it detected, so
+a katakana answer to an *English* entry is usually correct, since English is
+written in katakana in ordinary Japanese, while a katakana answer to a French
+or Spanish entry is a spelling-out.
+
+Measured on the twelve words concerned, the engine answers `en` for *bonjour*,
+*merci*, *gracias*, *ciao* and *lindo* — **precisely because it failed to
+identify them**. The rule would have killed five repairs of six and kept none of
+the six witnesses: the exact inverse of what it promised.
+
+The general form is worth naming, because the signal really is free and really
+is available:
+
+> A failing component's own output is not evidence about the cases where it
+> fails. Its answer on those inputs is a symptom of the failure, so any rule
+> keyed on that answer is anti-correlated with the thing it is trying to catch.
+
 This also produces an architectural observation. The table is a **cache
 populated by knowledge rather than by traffic**. Conventional caches exploit
 temporal locality in what users happen to send; this one exploits the fact that

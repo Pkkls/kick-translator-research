@@ -50,6 +50,37 @@ that one probe red **[reported]**. The witness is the only thing that
 distinguishes a probe that guards the behaviour from a probe that merely runs
 alongside it.
 
+**And the rule has a second storey the corpus discovered the hard way.** A
+witness is an action taken to make an assertion fail. Nothing guarantees the
+action reached the artefact being asserted about.
+
+The instance **[reported]**: a weight gate asserts that a table's prose does not
+travel into the shipped bundle. The witness was to reference that prose from
+live code, which should make the bytes appear and the gate go red. Referenced
+through a **constant** key, the gate stayed green: the bundler folds a constant
+access, the object ships either way, and the bundle grew by 39 bytes that the
+threshold absorbed. Referenced through a **dynamic** key, the gate goes red on
+all thirty notes.
+
+The project's own sentence is the rule:
+
+> A witness that does not break the thing it claims to break proves nothing,
+> and the first one here broke nothing.
+
+So a witness has two failure modes, not one. It can fail to be run, which is
+visible. And it can be run while having no effect on the artefact under
+assertion, which is invisible and produces a confident green. **Between the
+change and the assertion sits a toolchain that is entitled to optimise the
+change away.**
+
+The practical form: after breaking something, verify that the break reached the
+artefact before reading the gate. Compare the built bytes, not the source. The
+corpus reaches the same place from another direction in its eleventh false
+probe, where a scripted patch silently failed because an escape was wrong, the
+file never changed, and six tests went red for a reason that had nothing to do
+with the product. Its note is that the rule *check that the replacement
+happened* was already written in its own standing prompt and was not applied.
+
 ### Verify the failure is in the product before correcting it
 
 The notebooks call this the most common way to waste a pass, and list real

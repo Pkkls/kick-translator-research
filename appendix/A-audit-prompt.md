@@ -865,6 +865,14 @@ axis lists, and confirm the replication step catches it rather than agreeing
 with it. The cheapest version: change the pattern a count depends on and check
 that the structural count disagrees.
 
+**And validate the witness before believing it.** A witness is an action meant
+to make an assertion fail, and nothing guarantees the action reached the
+artefact the assertion reads. A constant folded by the bundler, a scripted
+patch whose pattern never matched, a file written to the wrong path: each
+produces a break that never arrived and a green that means nothing. After
+breaking something, confirm the break is visible in the thing being asserted
+about, not merely in the source you edited.
+
 **Why the bars lean this way, and in which direction.** Probe errors are not
 symmetric, but the direction depends on what the probe is looking for, and
 getting this backwards costs you the wrong half of the discipline.

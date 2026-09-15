@@ -92,6 +92,18 @@ Very little software testing carries one, and the general form is worth stating:
 > where the thing should be there. Without it, the absence check cannot
 > distinguish "correctly removed" from "never looked in the right place".
 
+The same reasoning applies one level down, to the witness itself. **[reported]**
+The corpus records a witness for a weight gate that broke nothing: the prose it
+was meant to pull into the bundle was referenced through a constant key, the
+bundler folded the access, and the gate stayed green while 39 bytes moved. The
+witness was valid as an action and void as evidence.
+
+> A witness must be shown to have changed the artefact the assertion reads.
+> Otherwise a green gate is reporting on a change that never arrived.
+
+That is the negative control applied to the control: the paired assertion for a
+witness is a check that the break is visible in the built output.
+
 ## 12.5 The gate that accused a healthy field
 
 **[reported]** The store-listing gate counts 44 fields against their limits in

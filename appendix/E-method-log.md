@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-three. Listed in full because a method log that omits them is an
+Twenty-four. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -739,6 +739,47 @@ published a store-version claim in the plan, in a pushed commit and in a report,
 all three wrong, and then finds that a third item rested on the same false
 premise. Their revision rate is not an inference from this study. It is written
 down by them, with the same candour this log aims for.
+
+### 4.24 The corpus's best single sentence, which this study did not have
+
+**What happened.** Continuing to read the newest journal by position turned up
+three sections never opened by any theme query. One of them contains a
+refinement of the rule this entire study is built on, and the study did not
+have it.
+
+> **A witness that does not break the thing it claims to break proves nothing.**
+
+The instance: a weight gate asserting that table prose stays out of the bundle.
+The witness referenced that prose from live code through a **constant** key.
+The bundler folded the access, the object shipped anyway, 39 bytes moved, and
+**the gate stayed green**. Through a dynamic key it goes red on all thirty
+notes.
+
+**Why this matters more than another example.** Every chapter here treats the
+witness as binary: break it, see red. The corpus shows the witness has a second,
+invisible failure mode. It can be performed correctly and have no effect on the
+artefact under assertion, because a toolchain sits between the edit and the
+build and is entitled to optimise the edit away. The result is a confident
+green that certifies nothing.
+
+The same shape appears in their eleventh false probe, where a scripted patch
+failed silently on a bad escape, the file never changed, and six tests went red
+for unrelated reasons. Their note: the rule *check that the replacement
+happened* was already in their standing prompt and was not applied.
+
+**This study has that guard by accident rather than by design.** Every edit in
+this session goes through a helper that refuses to write when its search string
+is absent and prints NOT FOUND, which is why no silent no-op edit is in this
+log. That was written for convenience, not as a witness check, and it has been
+doing the job of one for twenty-three entries.
+
+**A third section, and a trap worth carrying elsewhere.** A repair that looked
+free: use the engine's own detected source language to separate cases. Measured,
+the engine answers `en` for *bonjour*, *merci*, *gracias*, *ciao* and *lindo*,
+**because it failed to identify them**. The rule would have killed five repairs
+of six and kept none of the six witnesses, the exact inverse of its promise.
+A failing component's output is a symptom of the failure, so a rule keyed on it
+is anti-correlated with what it means to catch.
 
 ### The pattern across the first three
 
