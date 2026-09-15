@@ -172,6 +172,23 @@ first one refuses or rate-limits.
 **[reported]** Truncating the chain to a single engine left the full unit-test
 suite green and turned exactly one probe red.
 
+**A unit test did exist, and it is the interesting part.** Removing the chain
+from the default settings is caught, but that test asserts a constant: it says
+the list has three entries, not that the second is ever reached
+**[reported]**. So the suite guards the shape of the configuration and says
+nothing about its effect, which is the same distinction as a comment that is
+true of the events and false of the handling. **A test over a constant is a
+test of the declaration, not of the behaviour it declares.**
+
+**And the probe needed the right interception layer to see anything at all.**
+Its first version routed at the page level and measured nothing, because under
+this extension runtime the translation requests leave from the background
+worker rather than from the page. Routing at the browser-context level sees
+them. That was found by noticing the gate reported the engine called once, not
+by reasoning about it: **an interception that is attached at the wrong layer
+reports zero traffic, which looks exactly like a product that made no
+requests.**
+
 This is the clearest available demonstration of the witness rule from
 [chapter 3](03-method.md#every-correction-leaves-a-witness). The chain is a
 resilience property: it has no effect on any output until something fails.

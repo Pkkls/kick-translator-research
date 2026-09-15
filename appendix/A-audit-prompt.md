@@ -838,6 +838,13 @@ anywhere:
   an expiry date. Check the thing.
 - **Does the verifier share a technique with what it verifies?** If it does, it
   measures stability, not truth, and it will confirm the error it inherited.
+- **Is any test asserting a constant where a behaviour is meant?** A test that
+  a list has three entries does not test that the second is ever reached. It
+  guards the declaration and reports green on any change that keeps the shape.
+- **Is network interception attached at the layer the traffic actually leaves
+  from?** In an extension runtime, requests may leave the background worker
+  rather than the page. Interception at the wrong layer reports zero traffic,
+  which is indistinguishable from a product that made no requests.
 - **Can the probe actually perform the action it tests?** A probe that sets a
   value on a control that stopped being an input, or dispatches an event nothing
   listens for, runs clean and measures the default. Read back the state the
