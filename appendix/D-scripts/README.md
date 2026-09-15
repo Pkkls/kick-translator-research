@@ -29,11 +29,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `scripts-index.mjs` | Whether this README still names exactly the scripts in this directory, and whether the two counts it states agree with the directory. Walks the tree rather than reading a list, because the list is the thing that drifts | [appendix E 4.93](../E-method-log.md#493-the-table-of-what-is-here-was-kept-by-hand-four-times) |
 
-**Fourteen scripts.** That count is here because two documents stated it from
+| `row-cost.mjs` | Main-thread cost per arriving chat row, driving the product's own `inject()` in a real browser with the DOM capped the way a virtualised list keeps it. Sets A6's second budget row; `--witness` plants the synchronous loop A6 names | [appendix E 4.94](../E-method-log.md#494-the-first-number-this-probe-produced-was-a-property-of-the-probe) |
+
+**Fifteen scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All fourteen take a path argument and print to standard output; `probe-quotes.mjs`,
+All fifteen take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

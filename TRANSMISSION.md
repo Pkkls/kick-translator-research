@@ -422,9 +422,14 @@ outcome luck rather than method.
   `node_modules`, which is an environment variable rather than a change to the
   extension. A Playwright install exists on the machine this study runs on. With
   `UX_KIT` pointed at it, `snapshot` ran green in a real Chromium in 14.6
-  seconds. So the sentence used to mean *this account had no browser* and now
-  means *this account has not yet re-taken anything through one*. Nothing in
-  this study is tagged as observed, and nothing should be until it is.
+  seconds. So the sentence used to mean *this account had no browser* and then
+  meant *this account has not yet re-taken anything through one*. **That second
+  form is spent too** (4.94): A6's per-row main-thread cost is measured by
+  driving the product's own `inject()` in a real Chromium, 0.2 ms at the warm
+  p50 with A6's own witness landing on it. What the line means now is narrow and
+  worth keeping narrow: **one quantity has been observed in a browser and every
+  other claim in this study is still about call sites.** Nothing is retagged in
+  bulk, and the next claim to be observed gets observed one at a time.
 - **No multilingual chat traffic.** One single-channel capture exists: the
   corpus's handoff of 2026-08-16 reports 804 messages from a live Spanish
   channel, with their length distribution, and its lines are not in the

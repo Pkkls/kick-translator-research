@@ -223,6 +223,10 @@ Cloned from the public repository, at the commit the study measured against.
 | The same command immediately again, nothing changed | **38 of 40**, 43.2s | [new] |
 | Gates that moved between the two | **4**, all reading a fixture another gate writes | [new] |
 | Gates red on both runs, and not flakes | **2**, reading fixtures nothing in the runner produces | [new] |
+| **Per-row main-thread cost of `inject()`, in a browser** | **p50 0.2 ms, p95 0.3 ms**, DOM capped at 60, layout forced per row | [new] |
+| The same with A6's witness, a 2 ms synchronous loop in the row path | p50 **2.1 ms** | [new] |
+| Where one main thread saturates at that cost | about **5000 rows a second** | [new] |
+| The first version of that probe, before the DOM was capped | 1.3 ms, rising 0.3 to 3.3 across one run; withdrawn | [new] |
 | The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
 | What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |

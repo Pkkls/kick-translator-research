@@ -311,10 +311,14 @@ stripper figures, the one-declaration box model and the 22 axes held.
 
 **Never measured here, and each needs something this account did not have:**
 
-- Anything observed in a browser, **though this is now one environment variable
-  and one build away** (4.87): a Playwright install exists on this machine, the
-  shim reads `$UX_KIT` before the clone's own `node_modules`, and `snapshot` has
-  run green in a real Chromium. Nothing has been re-taken through one yet.
+- Anything observed in a browser, **except one quantity, which now is** (4.94):
+  A6's per-row main-thread cost, 0.2 ms at the warm p50, taken by driving the
+  product's own `inject()` in a real Chromium with A6's own witness planted and
+  landing. The unlock is one environment variable, `UX_KIT` pointed at a
+  Playwright install on this machine, and the clone's shim reads it before its
+  own `node_modules` (4.87). Everything else here is still about call sites, and
+  the next observation should be taken one claim at a time rather than by
+  retagging in bulk.
   Every source-derived claim is about call
   sites, not about what renders. **What was missing is now named rather than
   assumed** (4.47): the corpus's queue contradicts itself on the blocker, one

@@ -4005,6 +4005,85 @@ and no mechanical check does better. The "Used in" column is left to
 `check-links.mjs`, which already resolves those anchors, so checking them here
 would be a second thing to get wrong rather than a second instrument.
 
+### 4.94 The first number this probe produced was a property of the probe
+
+**What happened.** A6's second clause, *per-row main-thread cost under the
+budget file entry at the highest message rate the harness can generate*, has
+been empty since the budget was built, with the note that no harness measures
+it. Checked again first, per the rule about looking for the instrument before
+building one: of the clone's 56 harnesses three mention a clock, none is in the
+row path, and `chat-live.mjs` renders real rows through the product's own
+`inject()` while measuring **density in pixels**. The note held.
+
+`row-cost.mjs` drives that same `inject()` over 600 rows in a real browser and
+times each one with layout forced after it, so a row pays for what it caused
+rather than letting the browser batch the cost past the end of the measurement.
+
+**The first run printed a number and the number was wrong.**
+
+```
+  first  20 rows    0.100   13.600   13.600    1.325  ms
+  the rest          1.300    4.000    5.900    1.676  ms
+```
+
+The warm median was **higher** than the cold one, which is backwards: a cold
+call carries parse, style resolution and JIT that no later row pays, so it
+should be the expensive one. A number that moves in the wrong direction is the
+cheapest kind of surprise to have, and this study's own habit is to re-check a
+surprising figure rather than publish it (4.9).
+
+**One speculation, then an instrument.** The hypothesis was that
+`getBoundingClientRect()` forces layout over the whole document, so the cost
+grows with the number of rows already on the page and is not a per-row cost at
+all. Rather than reason about it, the probe gained four lines printing the
+median per quarter of the run:
+
+```
+  trend across the warm set, p50 per quarter:
+    0.300   0.900   1.900   3.300  ms
+```
+
+**An eleven-fold rise across one run.** The probe was measuring its own
+accumulated DOM. Published as it stood, *1.3 ms per row* would have been a
+figure whose true statement is *1.3 ms per row when about 300 rows are already
+on the page*, and nothing in the output said so.
+
+**The repair is also the more faithful harness.** Kick's list is virtualised: it
+recycles rows and the DOM holds a bounded window, which is the mechanism
+[4.87](#487-four-gates-read-what-one-gate-writes-in-a-runner-whose-header-says-none-does)
+and the recycling finding both turn on. Capping the chat at 60 rows is what the
+product actually presents to the browser, and it is what makes the measurement
+a per-row one:
+
+| | p50 | p95 | max | trend across quarters |
+|---|---|---|---|---|
+| before the cap | 1.300 | 4.000 | 5.900 | 0.3 → 0.9 → 1.9 → 3.3 |
+| **after** | **0.200** | **0.300** | 0.400 | 0.2 → 0.2 → 0.2 → 0.2 |
+
+Flat, which is what a per-row cost looks like. One main thread saturates around
+**5000 rows a second**; a fast chat is single digits.
+
+**The witness is A6's, word for word**, *add a deliberate synchronous loop in
+the row path; the budget goes red*. Planted in the bundle, which is a copy,
+never in the clone's sources: a 2 ms loop moves the warm p50 from 0.200 to
+2.100 and leaves the trend flat at 2.100. The rise is the plant, to within the
+clock's resolution.
+
+**And the clock's resolution is the honest limit here.** Page-side
+`performance.now()` is coarsened in Chromium, and every value in the run is a
+multiple of 0.1 ms. So 0.2 is two ticks, and the right reading of this row is
+*under a third of a millisecond*, not *0.200 exactly*. A number quoted past the
+resolution of the instrument that produced it is a number with a false unit,
+which is the class 4.22's *a number without its unit or parameter is not a
+measurement* covers from the other side.
+
+**What the ceiling is, and why it was not invented.** The budget file's own rule
+forbids plausible ceilings: *a bar compared against an invented number returns a
+verdict rather than a silence*. So the threshold is not a preference, it is the
+60 Hz frame, 16.7 ms. A row that costs more than a frame drops one, which is
+what A6's *breaks as* describes, and the measured p95 sits **55 times** under
+it. Nobody had to choose that number and nobody can argue with it.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
