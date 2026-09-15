@@ -2670,6 +2670,44 @@ fourth honest snapshot rather than an error. Left alone: it is a comment
 explaining a byte count taken at that revision, and changing it would make the
 arithmetic beside it wrong.
 
+### 4.71 A version that was never cut, whose work is in the product
+
+**What happened.** [4.69](#469-the-changelog-and-the-releases-are-two-records-that-disagree-about-which-versions-exist)
+found `2.8.1` holding the largest section in the changelog, 253 lines, with no
+tag and no release, and left the obvious question open: is the work there, or
+does the changelog describe something that never shipped?
+
+It shipped. The section's first claim is about the batching window, and the
+reasoning it gives, *expected arrivals are rate times window, so 180ms needs
+roughly five and a half lines a second*, appears **verbatim as a comment beside
+`BATCH_WINDOW_MS` in `constants.ts`**. `MIN_BATCH_WINDOW_MS = 40` is the floor
+the section describes. `coalescer.ts` carries `adaptiveWindowMs()` and, in a
+comment, the exact defect the section's second bullet reports: *this runs only
+when a new window opens, so counting here counted WINDOWS rather than messages*.
+
+**And a measurement taken here for another reason confirms it from the
+outside.** [4.61](#461-deleting-the-dependency-tree-of-the-repository-under-study-through-a-junction)
+ran `metrics-offline.mjs` and read `coalesce.window` at p50 **40 ms**, which is
+`MIN_BATCH_WINDOW_MS` exactly. On a fixture where messages arrive slowly, the
+adaptive window sits on its floor, which is what the section says the change was
+for. A `[reported]` claim about a shipped behaviour, confirmed by a runtime
+reading taken before the claim was read.
+
+**So the missing thing is a label.** No feature is absent, no reader is being
+told about work that does not exist, and the version number 2.8.1 names a set of
+changes that are in every build since. What it does not name is anything a user
+can install, which is the whole of the defect, and it reaches three translated
+READMEs that head their what-new section with it.
+
+**Why the first framing was worth abandoning.** A changelog section with no
+release invites the reading that something was written and never done, and that
+reading is the alarming one, which by now is enough on its own to slow down and
+check: this study's first count has been too high or too dark five times out of
+five when it was not checked, and this is the sixth. The check was one grep for
+a sentence from the section, in the source. **A claim that quotes its own
+mechanism is cheap to verify**, and this changelog quotes its mechanisms
+everywhere, which is why the check took one command.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
