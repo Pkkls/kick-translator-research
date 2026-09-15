@@ -186,7 +186,7 @@ Cloned from the public repository, at the commit the study measured against.
 | First measurement of the same quantity, by a coarser probe | 1 of 3, withdrawn | [new] |
 | Neutralisation of direction-control characters inside rendered text | none, on any surface | [new] |
 | Source files referencing a direction-control character | 0 | [new] |
-| Page-queryable signals confirming installation | 4 classes (fixed element id, document attribute, 98 prefixed class names, per-row marker) | [new] |
+| Page-queryable signals confirming installation | **11**: seven fixed element ids, an attribute and a class on the document element, a per-row marker, and 98 prefixed class names; first reported as 4 from a three-file scope | [new] |
 
 ## 13.8 The three bars execution falsified
 

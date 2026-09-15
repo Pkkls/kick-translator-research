@@ -78,12 +78,23 @@ stylesheet and the DOM-writing call sites in the content script sources.
 
 Findings, against the repository as it stood during this study:
 
+Method, second pass: the population is every stable signal the content script
+leaves on a node reachable from the shared document, so the scope is all
+nineteen content-script files rather than the three the first probe read.
+
 | Signal | Location | Queryable by a page script as |
 |---|---|---|
-| A `<style>` element with a fixed id, appended to the document element | content injector | `document.getElementById(...)` |
-| A fixed attribute set on the document element | content injector | an attribute read on `<html>` |
+| `kt-inject-style` | a `<style>` on the document element | `getElementById` |
+| `data-kt-scheme` | attribute on the document element | an attribute read on `<html>` |
+| `kt-hide-original` | class toggled on the document element | `classList.contains` |
+| `kt-compose-bar`, `kt-floating-bar`, `kt-float-lang-menu` | element ids on the body | `getElementById` |
+| `kt-lang-chip`, `kt-lang-menu`, `kt-lang-list` | element ids on the body | `getElementById` |
+| `data-kt-id` | attribute on the host's own chat rows | an attribute selector |
 | 98 distinct class names sharing a fixed prefix | injected stylesheet | a class selector |
-| A processed-marker attribute written onto the host's own chat rows | observer | an attribute selector on the host's nodes |
+
+All are string literals; none is generated at runtime, so a page script can
+hard-code any of them. The first pass of this measurement reported four, from a
+probe whose scope was three files.
 
 The removed vector required a network fetch. The remaining vectors require a
 single synchronous DOM call. **The door was closed on the expensive side and

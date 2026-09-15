@@ -251,15 +251,34 @@ SVG element **[read]**.
 
 **[read]** Page-queryable signals that confirm the extension is installed:
 
-| Signal | Cost to a page script |
-|---|---|
-| A `<style>` element with a fixed id on the document element | one `getElementById` |
-| A fixed attribute on the document element | one attribute read |
-| 98 class names sharing a fixed prefix | one class selector |
-| A processed-marker attribute on the host's own chat rows | one attribute selector |
+| Signal | Where | Cost to a page script |
+|---|---|---|
+| `kt-inject-style` | a `<style>` element on the document element | one `getElementById` |
+| `data-kt-scheme` | an attribute on the document element | one attribute read |
+| `kt-hide-original` | a class toggled on the document element | one `classList.contains` |
+| `kt-compose-bar` | an element id on `document.body` | one `getElementById` |
+| `kt-floating-bar` | an element id | one `getElementById` |
+| `kt-float-lang-menu` | an element id | one `getElementById` |
+| `kt-lang-chip` | an element id on `document.body` | one `getElementById` |
+| `kt-lang-menu` | an element id on `document.body` | one `getElementById` |
+| `kt-lang-list` | an element id | one `getElementById` |
+| `data-kt-id` | an attribute written onto the host's own chat rows | one attribute selector |
+| 98 class names sharing a fixed prefix | injected stylesheet | one class selector |
+
+Every one is a string literal in the source. None is generated at runtime, so
+none varies between installs or sessions: a page script can hard-code any of
+them **[re-run]**. One further id, `kt-metrics-dump`, exists only in the
+instrumented build and your release check keeps it out.
 
 The vector you removed required a network fetch. These require one synchronous
 call.
+
+**A correction this section owes you.** It first listed four signals, from a
+probe that read three files. Reading all nineteen content-script files gives
+the eleven above. The published number was low by a factor of two and a half,
+and the error ran toward under-stating rather than toward accusation, which is
+the opposite direction from every other probe error in this document. See
+section 6.
 
 **[mine]** The bar you were holding, which this file's companion specification
 held too until it was executed, is unachievable: an extension that renders

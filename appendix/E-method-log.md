@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Eighteen. Listed in full because a method log that omits them is an
+Nineteen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -524,6 +524,40 @@ a different shape and says nothing about scope:
 > Two instruments agreeing on the wrong subject is not replication. Before
 > replicating a measurement, state what population the claim is about, and
 > check that the instrument sees all of it.
+
+### 4.19 An enumeration that under-counted, which inverts the bias rule
+
+**What happened.** The detectability finding listed four page-queryable
+signals, from a probe that read three content-script files. Declaring the
+population first, as the previous entry's rule requires, puts the scope at all
+nineteen. The re-run finds **eleven**: seven fixed element ids, an attribute
+and a class on the document element, a marker written onto the host's own rows,
+and the prefixed class names. All string literals, none generated at runtime.
+
+A second instrument confirmed the part that mattered most: no identifier is
+computed, so a page script can hard-code any of them.
+
+**Cost.** The published figure was low by a factor of two and a half. Unlike
+every other probe error in this log, it under-stated rather than over-stated.
+
+**Why that matters more than the number.** This log had already concluded that
+probe errors run toward accusation, and A22's replication bar was built on that
+asymmetry: discount findings, trust absences. **That rule is only true for
+probes looking for a guard.** A probe enumerating instances fails in the
+opposite direction, because a scope that is too narrow returns a plausible
+short list rather than an obvious blank.
+
+So the asymmetry is real and its sign is not fixed:
+
+> The direction of a probe's error follows what it was looking for. Searching
+> for a guard, a blind spot becomes a false accusation. Enumerating instances,
+> a blind spot becomes an under-count. Decide which of the two you are doing
+> before reading the number, and discount the outcome that a scope error would
+> have produced.
+
+A22 now carries both directions. The version written one pass earlier carried
+only one, and would have told a reader to trust exactly the result that was
+wrong here.
 
 ### The pattern across the first three
 

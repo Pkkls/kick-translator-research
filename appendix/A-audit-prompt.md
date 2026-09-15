@@ -857,12 +857,25 @@ axis lists, and confirm the replication step catches it rather than agreeing
 with it. The cheapest version: change the pattern a count depends on and check
 that the structural count disagrees.
 
-**Why the bars lean this way.** Probe errors are not symmetric. A probe reports
-a guard missing wherever it fails to look properly, so its mistakes surface as
-findings and almost never as clean bills of health. **An unreplicated finding
-should be discounted; an unreplicated negative result is comparatively safe.**
-That asymmetry is why the expensive confirmation is required on accusations and
-not on absences.
+**Why the bars lean this way, and in which direction.** Probe errors are not
+symmetric, but the direction depends on what the probe is looking for, and
+getting this backwards costs you the wrong half of the discipline.
+
+**A probe searching for a guard** reports it missing wherever the probe failed
+to look properly, so its errors surface as accusations. Here an unreplicated
+finding should be discounted and an unreplicated absence is comparatively safe.
+
+**A probe enumerating instances** misses whatever lies outside its scope, so
+its errors surface as under-counts. Here the polarity inverts: a short list is
+the suspicious result, and "I found four" deserves more scrutiny than "I found
+none", because a scope that was too narrow produces a plausible small number
+rather than an obvious blank.
+
+Both failures were observed in the pass that wrote this axis: three guard
+probes over-accused, and one enumeration under-counted by a factor of two and a
+half. So the rule is not "discount findings". It is **discount whichever
+outcome a scope error would have produced**, and to know that you have to say
+what the probe was looking for before you read its number.
 
 ---
 
