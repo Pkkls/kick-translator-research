@@ -2492,6 +2492,48 @@ cases in advance. That is the argument for finishing the read: not that
 measuring mid-read is always wasteful, but that it makes the outcome a matter of
 luck rather than of method.
 
+### 4.67 Four figures re-read, three confirmed, and the fourth is not re-checkable
+
+**What happened.** The queue's item on `node_modules` in the history carries
+four measurements this study can take again without an account, and taking them
+again is what [4.66](#466-a-store-figure-that-moved-found-by-reading-the-entry-that-already-held-it)
+argues for.
+
+**Confirmed, all four social figures.** *0 forks, 0 stars, 0 watchers and 0 open
+pull requests*, unchanged. That matters more than it reads: the item's whole
+argument for a history rewrite being safe rests on nobody downstream having a
+history to break, and that premise still holds.
+
+**Confirmed, the tooling.** `git filter-repo` is still not installed, so the
+operation still needs `pip install git-filter-repo` first, exactly as recorded.
+
+**Corrected, the clones.** The item says a sweep found *a second clone of this
+repository*. Swept again: there are **three**. Two are current and sit at the
+same commit, `226a176`, one under `02 - Projects` and one directly under
+`Downloads`, and a hand reaching for either gets the same tree. The third is the
+stale one, `_doublons/kick-chat-translator-STALE-jun2026`, HEAD `6c5d42b` of
+2026-06-15, and it has been renamed since the sweep to say so in its own path.
+A fourth clone matched the name but is a different repository.
+
+**Verified by hash, which the queue could only assert.** The item says the stale
+clone's five uncommitted entries hold nothing unique any more, because
+`feat/transliteration-guard` is pushed. `transliterationGuard.ts` and its test
+hash to `cc221f0de97714b1` and `5c0d1ec812f945be` in both places. The commit
+message says *Rescue transliterationGuard exactly as it was found*, and it is
+exact. The three modified source files were not compared: master has moved far
+past June and a hash there would answer a different question.
+
+**Not re-checkable, and that is the finding.** The item also says *9.49 MB of
+16.41 MB on disk, 57.8 percent of the repository*. `git count-objects -vH`
+answers 11.84 MiB in 7928 objects here, and the two numbers cannot be compared,
+because nothing records which command produced the 16.41. A repack would change
+it; so would counting the working tree, or `.git` including loose objects. **The
+figure is not wrong, it is unverifiable**, which is what
+[4.21](#421-a-number-whose-parameter-was-not-stated-and-a-hash-taken-without)
+in this log already names: a number whose parameter was not stated. Three of
+these four figures survived eight months and a change of reader. The fourth did
+not survive the absence of one command line.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
