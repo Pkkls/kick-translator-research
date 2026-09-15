@@ -18,7 +18,7 @@
  *
  *   node appendix/D-scripts/axis-ledger.mjs .
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = process.argv[2] ?? '.';
@@ -62,10 +62,41 @@ console.log(`  closed ${closed.length}, open with a number ${open}, no verdict r
 console.log(`  first stop condition: ${unrecorded.length === 0 ? 'MET' : 'NOT MET, ' + unrecorded.length + ' axes carry no verdict'}`);
 if (unrecorded.length) console.log('    ' + unrecorded.map((c) => c[1]).join(' '));
 
+// The specification asks for two artefacts, not one. An axis whose bar states
+// its threshold "in the budget file" cannot be read until that file carries a
+// row for it, so the same drift check applies to appendix G.
+const needsBudget = [];
+for (let i = 0; i < inSpec.length; i++) {
+  const from = spec.findIndex((l) => new RegExp('^#{1,4}\\s*' + inSpec[i] + '\\.').test(l));
+  // Stop at the next heading of ANY level, not at the next axis. The last axis
+  // has no next axis, so bounding by axis alone ran its body to end of file and
+  // swallowed the prose after it, which is how A22 was first reported as naming
+  // the budget file when its bar does not. Fifth first count in this study to
+  // come out too high.
+  const next = spec.findIndex((l, k) => k > from && /^#{1,4}\s/.test(l));
+  const body = spec.slice(from, next < 0 ? spec.length : next).join('\n');
+  if (/budget file/i.test(body)) needsBudget.push(inSpec[i]);
+}
+const budgetPath = join(root, 'appendix/G-budget.md');
+let budgetRows = [];
+if (existsSync(budgetPath)) {
+  budgetRows = readFileSync(budgetPath, 'utf8')
+    .split('\n')
+    .filter((l) => /^\|\s*A\d{1,2}\s*\|/.test(l))
+    .map((l) => l.split('|')[1].trim());
+}
+const budgetMissing = needsBudget.filter((a) => !budgetRows.includes(a));
+const setRows = existsSync(budgetPath)
+  ? readFileSync(budgetPath, 'utf8').split('\n')
+    .filter((l) => /^\|\s*A\d{1,2}\s*\|/.test(l) && !/\*not set\*/.test(l)).length
+  : 0;
+console.log(`budget file: ${needsBudget.length} bars name it, ${budgetRows.length} rows present, ${setRows} carrying a number`);
+
 const problems = [];
 if (missing.length) problems.push('in the specification, absent from the ledger: ' + missing.join(', '));
 if (extra.length) problems.push('in the ledger, absent from the specification: ' + extra.join(', '));
 if (dupes.length) problems.push('listed twice in the ledger: ' + [...new Set(dupes)].join(', '));
+if (budgetMissing.length) problems.push('bars naming the budget file with no row in appendix G: ' + budgetMissing.join(', '));
 
 if (problems.length) {
   console.log('\nECHECS:\n  ' + problems.join('\n  '));

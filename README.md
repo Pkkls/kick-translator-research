@@ -97,6 +97,7 @@ claims authorship of the engineering.
 | [D. Scripts](appendix/D-scripts/) | The probes, as they were actually run |
 | [E. Method log](appendix/E-method-log.md) | How this was produced: the commands, every mistake, what was efficient, what was refused |
 | [F. The axis ledger](appendix/F-axis-ledger.md) | The 22 axes against their own bars: 11 carry a verdict, 11 do not |
+| [G. The budget file](appendix/G-budget.md) | The thresholds seven bars compare against: two set, five naming the measurement that would set them |
 
 ## Start here if you are continuing this work
 

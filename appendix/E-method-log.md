@@ -2057,12 +2057,15 @@ same error reflected.
 **The second artefact, and it is the one that matters now.** That sentence asks
 for two things: *the ledger and the budget file are asked for by this document
 and will not be there the first time it is read.* There is no budget file.
-Counted across the 22 axes, **eight bars state their threshold as a ceiling, a
-floor, a count or a rate in the budget file**: A3, A5, A6, A11, A13, A18, A21
-and A22. Those eight are not open because measurement is hard. They are
-unreadable because the document they compare against was never written, and
-each pass that reaches one of them rediscovers that at its own cost. This has
-now been found three times from three different axes before anyone counted it.
+Counted across the 22 axes, **seven bars state their threshold as a ceiling, a
+floor, a count or a rate in the budget file**: A3, A5, A6, A11, A13, A18 and
+A21. The first count said eight and included A22, whose bar does not name it at
+all; [4.58](#458-the-budget-file-exists-now-and-the-count-that-justified-it-was-wrong)
+records how the extraction produced that and what it cost. Those seven are not
+open because measurement is hard. They are unreadable because the document they
+compare against was never written, and each pass that reaches one of them
+rediscovers that at its own cost. This has now been found three times from
+three different axes before anyone counted it.
 
 **The step this file was still missing.** The same first pass has a step two:
 *walk the index and mark each axis with the instrument it needs and whether that
@@ -2083,6 +2086,50 @@ silently widens its population is precisely what
 exists to catch in a counter, and it was in the gate written to read the file
 that records A19. It is scoped to the ledger table now, and it exits 2 rather
 than 0 if that heading ever disappears.
+
+### 4.58 The budget file exists now, and the count that justified it was wrong
+
+**What happened.** [4.57](#457-the-specification-asked-for-this-file-by-name-and-for-one-more-nobody-made)
+reported that eight of the 22 bars state their threshold in the budget file, and
+listed A22 among them. A22's bar does not mention it. The match came from the
+sentence *the ledger and the budget file are asked for by this document*, which
+sits in the section about a first pass, after the last axis in the file.
+
+The extraction bounded each axis's body by the next axis heading. The last axis
+has no next axis, so its body ran to the end of the document and absorbed every
+section after it. That is the whole error: a boundary rule that is correct for
+21 cases and silently wrong for the one at the end. It is bounded by the next
+heading of any level now, and the comment says why.
+
+The real count is **seven**: A3, A5, A6, A11, A13, A18, A21. The wrong number
+had reached four documents and one pushed commit before the check that found it
+was written, which is the argument for writing the check in the same pass rather
+than the next one.
+
+**Fifth in a row, and the rate has stopped being a surprise.**
+[4.55](#455-the-fourth-alarming-first-number-in-five-passes-and-the-rate-is-now-the-finding)
+counted four first numbers that were too high. This is the fifth, and it differs
+from the other four in a way worth recording: the first four were rules applied
+to a population before the population had shown which rule it obeyed. This one
+was an off-by-one at a boundary, which is the oldest bug there is. **The rate
+does not have a single cause, and a rate with several causes is not a lesson
+about method, it is a reason to check.** A study that has been wrong high five
+times out of five on first counts should publish no first count.
+
+**What was built.** [Appendix G](G-budget.md), the second artefact the
+specification asks for, in its first honest state: **two of the seven axes carry
+a number**, A6's weight reference and margin, which already existed inside
+`audit_poids.py` rather than in a shared file, and A11's advisory floor, which is
+zero in the production tree and is a measurement rather than a tolerance. The
+other five say what would set them and whether the instrument exists, and for
+five of those the instrument is already in the repository.
+
+The empty rows are the point. A budget file full of plausible ceilings would
+read as evidence, and a bar compared against an invented number returns a
+verdict instead of a silence, which is worse than having no file at all.
+
+`axis-ledger.mjs` now fails when a bar names the budget file and appendix G has
+no row for it, so the two cannot drift apart again without something going red.
 
 ### The pattern across the first three
 

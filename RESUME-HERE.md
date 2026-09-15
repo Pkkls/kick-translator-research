@@ -145,10 +145,12 @@ correction lands in the next entry at the earliest, and
 The specification asks for two files by name, under a heading about the first
 pass, and says neither will exist the first time it is read. **One is built
 now**: [appendix F](appendix/F-axis-ledger.md), the axis ledger, with the verdict
-per axis and the instrument each one needs. **The other is not**: there is no
-budget file, and **8 of the 22 bars**, A3, A5, A6, A11, A13, A18, A21 and A22,
+per axis and the instrument each one needs. **The other is built now too**: [appendix G](appendix/G-budget.md), in its first
+honest state, two of seven axes carrying a number and five naming the
+measurement that would set them (4.58). Before this pass there was no budget
+file, and **7 of the 22 bars**, A3, A5, A6, A11, A13, A18 and A21,
 state their threshold as a ceiling, a floor, a count or a rate in it. Those
-eight cannot be read until it exists, and it is a page of numbers (4.57).
+seven cannot be read until it exists, and it is a page of numbers (4.57).
 
 ## Candidates with one instrument, and the one that got its second
 

@@ -99,12 +99,12 @@ hard".
 
 ## The other artefact the specification asked for, and nobody made
 
-Eight of the 22 bars, **A3, A5, A6, A11, A13, A18, A21 and A22**, state their
+Seven of the 22 bars, **A3, A5, A6, A11, A13, A18 and A21**, state their
 threshold as a ceiling, a floor, a count or a rate *in the budget file*. There
 is no budget file. The specification says so itself, under the heading about a
 first pass: *the ledger and the budget file are asked for by this document and
 will not be there the first time it is read.* Both were asked for, neither was
-made, and eight bars are unreadable as a consequence rather than as an
+made, and seven bars are unreadable as a consequence rather than as an
 accident. This file closes the first of the two. The second is a page of
 numbers and remains the cheapest unbuilt thing in this study (4.57).
 
