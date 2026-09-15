@@ -4421,6 +4421,62 @@ end state is measuring a different quantity from one that records a sequence**,
 and which one answers the question is a decision to make before running, not
 after reading the output.
 
+### 4.100 An absence claim that is two thirds true, and dead code the tests hold in place
+
+**What happened.** The 2.6.0 changelog removes a feature, which makes it the one
+shape of entry that can be checked completely:
+
+> **The WebSocket path to Kick's chat relay is gone, and with it the Connection
+> mode setting.**
+
+An absence is a claim about what you opened, so here is what was opened: every
+tracked file under `src/`, the built `dist/assets/content.js`, and the manifest's
+host list, at 2.10.0, four minor versions after that entry.
+
+| the claim | at 2.10.0 |
+|---|---|
+| the transport is gone | **true**: no `new WebSocket`, no `wss://`, no relay key, and no undeclared host |
+| the Connection mode setting is gone | **false**: `settings.ts:74` still declares `connectionMode: z.enum(['auto', 'websocket', 'dom']).default('auto')` |
+| the path is gone | **false**: `pipeline.ts:206` still defines `onWebSocketMessage`, and it **ships** |
+
+`connectionMode` is read by nothing. It is schema only, so it never reaches the
+content bundle, but it is still parsed, still defaulted, and still travels in and
+out of the settings export that 2.6.0 added in the same release.
+
+`onWebSocketMessage` is called by nothing in the product. It is in
+`dist/assets/content.js` all the same, minified, **298 bytes**, 0.128 percent of
+the 233601 the injected script costs on every Kick page.
+
+**The interesting part is why it is still there, and it is not neglect.** Five
+tests call that method. One, at `pipeline.test.ts:106`, is genuinely about the
+dead feature: whether the warm path can suppress the display path. **The other
+four use it as a door to reach live behaviour**: auto-target resolution, explicit
+target passthrough, and the minimum-length floor from both sides. The first of
+them carries a comment naming the regression it guards, an infinite recursion in
+`prepare()` that dropped every incoming message.
+
+So the 298 bytes are load-bearing for the suite. **Deleting the dead code means
+rewriting four tests that guard live behaviour**, and that is the difference
+between a useful recommendation and a careless one: *delete this* is wrong, and
+*re-point four tests at `onDomMessage`, then delete this* is right. A count of
+dead bytes would have produced the first.
+
+**What this is an instance of.** A13's witness says *delete the feature a gate
+claims to guard, not a line inside it, and confirm that gate is the one that
+fails*, and warns that a gate staying green with its subject removed is guarding
+a shape rather than a behaviour. Here the subject was removed from the product
+two years of releases ago and five tests stayed green, because they were never
+about the subject. They are not bad tests. They are good tests **anchored to a
+removed feature's entry point**, which is a state the witness does not describe
+and which no run of it would reveal.
+
+**And it is the third absence claim this study has checked.** The frame's *a
+fresh clone has no harnesses* was false (4.10). The queue's *2.9.3 and 2.9.4 were
+tagged* named a tag that does not exist (4.69). This one is two thirds true,
+which is the most common result and the least useful shape to report as a
+verdict: the transport really is gone, and saying *the claim is false* would be
+as wrong as repeating it.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

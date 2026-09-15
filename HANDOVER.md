@@ -1048,6 +1048,31 @@ in a second and would have caught it the day it was written. 21 more ratios in
 your sources name a ground a sentence away and cannot be checked mechanically at
 all; putting the pair on the line is what makes a comment checkable.
 
+**An hour, and the order of the two steps is the whole point.** Your 2.6.0
+entry says the WebSocket path to Kick's relay is gone *and with it the
+Connection mode setting*. At 2.10.0 the transport really is gone, and the other
+two are not **[re-run]**:
+
+- `settings.ts:74` still declares `connectionMode: z.enum(['auto', 'websocket',
+  'dom']).default('auto')`, read by nothing. Schema only, so it never reaches
+  the content bundle, but it is still parsed, still defaulted, and still rides
+  in and out of the settings export you added in that same release.
+- `pipeline.ts:206` still defines `onWebSocketMessage`, called by nothing in the
+  product, and it **ships**: 298 minified bytes in `dist/assets/content.js`,
+  0.128% of the 233601 injected on every Kick page.
+
+**Do not just delete it.** Five unit tests call that method. One,
+`pipeline.test.ts:106`, is genuinely about the warm path not suppressing the
+display path. The other four use it as a convenient entrance to test live
+behaviour: auto-target resolution without recursion, explicit target
+passthrough, and the minimum-length floor from both sides. The first carries
+your own comment about the infinite recursion in `prepare()` that dropped every
+incoming message.
+
+So the sequence is: re-point those four at `onDomMessage`, decide whether the
+warm-vs-display test still has a subject, then delete the method and the
+setting. Deleting first costs you four tests that guard real regressions.
+
 **Ten minutes, and it stops a wrong belief at the top of every pass.** Delete
 the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked

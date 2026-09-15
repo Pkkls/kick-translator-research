@@ -233,6 +233,9 @@ Cloned from the public repository, at the commit the study measured against.
 | That control against `metrics-offline`'s counter-derived `e2e.cloud` p50 | 47 ms against **44 ms**, a different instrument | [replicated] |
 | **First message after the worker is killed, against a warm message** | **81 ms against 46**, added latency **35 ms** | [new] |
 | Messages lost to the eviction | **0 of 5 runs**; every one translated | [new] |
+| **The 2.6.0 claim that the WebSocket path and its setting are gone** | transport gone; **setting and receiving half both present at 2.10.0** | [new] |
+| Dead `onWebSocketMessage` in the shipped injected script | **298 minified bytes**, 0.128% of 233601 | [new] |
+| Unit tests calling it, and how many are about it | **5**, of which **1** | [new] |
 | The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
 | What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
