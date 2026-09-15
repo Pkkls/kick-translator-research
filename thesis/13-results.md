@@ -276,6 +276,13 @@ Cloned from the public repository, at the commit the study measured against.
 | The same session with the page retaining every message, a deliberate leak | first half 1.450, second half 0.914, ratio **0.63** | [new] |
 | Where the product's trace flattens, and what it holds at | message **750**, then inside a **20 KB** band to the end | [new] |
 | The same measurement at 400 messages, before the halves were separated | 0.520 KB per message, **unreadable**: caps filling and a slow leak both fit it | [new] |
+| **Detection shortcuts the product reads back at all** | **6 of 8**; `kt-lang-menu` is written for `aria-controls` and never queried | [new] |
+| The same under the bar's own reading, forced to a fixed guessable literal | **3 of 8**: `data-kt-scheme`, `data-kt-id`, `kt-floating-bar` | [new] |
+| Stylesheet rules selecting any of the six element ids | **0**; every rule works through `kt-` class names | [new] |
+| What forces `data-kt-scheme` | **48 CSS rules**, and a stylesheet cannot import a constant | [new] |
+| What forces the other two | a second source file repeating a string a constant already holds, **9 lines** | [new] |
+| Shortcuts named in any document the extension ships | **2 of 8**, both as debugging handles in `.agent/` notes | [new] |
+| Sites the classifier refused to name, before and after the rule moved to the file boundary | **59, then 1** | [new] |
 
 ## 13.8 The three bars execution falsified
 

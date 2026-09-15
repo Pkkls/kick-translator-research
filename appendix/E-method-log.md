@@ -4940,6 +4940,107 @@ satisfies any ceiling.
 service worker's separate heap. Growth slower than this run would not appear,
 and the claim is about a session of this length and no longer.
 
+### 4.108 Six of eight detection shortcuts need no fixed name at all
+
+**What happened.** A11's third clause is *every detection shortcut
+required-and-written-down or gone*, and it was the last clause on any axis with
+no number against it. Two earlier passes had circled it. 4.103 measured the
+surface from the page's own world, **6 fixed element ids and 2 `data-kt`
+attributes** queryable by name. 4.54 answered the documentation half as a
+blanket *no document in either repository counts them*. Neither asked the
+question the clause actually poses, which is per shortcut and has two terms.
+
+**"Required" turned out to have two readings that give different numbers**, so
+both are reported rather than one being picked quietly:
+
+| reading | what it asks | result |
+|---|---|---|
+| read back at all | does the product ever look the name up | **6 of 8** |
+| required as a fixed, guessable literal | does code outside the declaring file have to spell the string | **3 of 8** |
+
+**The second is the bar's own reading**, because the bar is about the cost of
+detection: *finding the extension costs a page script a read of rendered
+content and never a query by name*. An id the product reads back only through
+the constant that declares it, in one file, would work identically with a
+per-install random suffix, and then there is nothing left to query by name.
+
+**A literal search gets this backwards, which is the trap.** Five of the six ids
+appear exactly once as a string, in their own `const X_ID = 'kt-…'` line, and
+every later use is of `X_ID`. Counting strings would report them as write-only
+decoration. They are read back three and four times each, through the constant.
+So the probe resolves the constant first and then counts uses of it, and the
+first number it produced, before that step existed, was the wrong one.
+
+**The result, per name:**
+
+| name | constant | read back | forced to a fixed literal by |
+|---|---|---|---|
+| `kt-lang-chip` | `CHIP_ID` | yes, 3 | nothing |
+| `kt-floating-bar` | `FLOAT_ID` | yes, 4 | 3 lines in `index.ts` |
+| `kt-float-lang-menu` | `FLOAT_LANG_MENU_ID` | yes, 1 | nothing |
+| `kt-compose-bar` | `COMPOSE_ID` | yes, 4 | nothing |
+| `kt-lang-menu` | `MENU_ID` | no, `aria-controls` only | nothing |
+| `kt-inject-style` | `STYLE_ID` | yes, 1 | nothing |
+| `data-kt-scheme` | none | no | **48 CSS rules** and `injector.ts:152` |
+| `data-kt-id` | `PROCESSED_MARK` | yes | 6 lines in `index.ts` |
+
+**No stylesheet selects any of the six ids.** Every rule in `inject.css` works
+through `kt-` class names instead, which means no id's value is load-bearing for
+appearance. That was the measurement most likely to overturn the finding and it
+came back clean.
+
+**Two of the three forced names are forced structurally and one is not.**
+`data-kt-scheme` is spelled in 48 CSS rules, and a stylesheet ships as a static
+file that cannot import a constant, so that literal is genuinely fixed.
+`data-kt-id` is spelled inside `querySelectorAll` selector strings in `index.ts`
+while `observer.ts` holds it as `PROCESSED_MARK`. `kt-floating-bar` is the same
+shape: `injector.ts` declares `FLOAT_ID`, and `index.ts` repeats the raw string
+three times rather than importing it. **Importing the constant would move that
+one out of the forced set without changing a line of behaviour**, which puts the
+floor at two rather than three.
+
+**The documentation half, counted rather than asserted: 2 of 8**, and both
+mentions are incidental. `data-kt-id` appears in `.agent/PLAN.md` and a journal
+entry as *the mark the observer leaves on a row it saw*, used while diagnosing
+an attach race; `kt-inject-style` appears in the same journal as evidence the
+content script had run. Both are debugging handles. **Neither document says the
+surface is intended, and none of the other six is named anywhere.** The only
+place all eight are written down is this study, which is an audit of the product
+and not the product's documentation. 4.54's blanket was right in direction and
+too coarse to act on: the useful statement is that the clause fails on both
+terms for six names, on one term for two, and the remedy differs.
+
+**The instrument changed shape mid-pass, and the reason is worth keeping.** The
+first version decided the finding from a regex over call shapes, sorting each
+site into query, write, css or other. It put **59 sites in `other`**, 48 of them
+a single obvious CSS selector shape, and it got `kt-floating-bar` wrong, calling
+it unforced because the classifier missed a raw literal in a second file. The
+rewrite moved the finding off the classifier and onto one line that needs no
+taste: **a literal is forced when code outside the file that declares its
+constant spells the same string.** Comments do not count, because nothing breaks
+when a comment goes stale. The classifier stayed, demoted to output a reader can
+scan, and `other` went from 59 to 1: `makeLangMenu(FLOAT_LANG_MENU_ID)`, the one
+hop this script does not follow, reported as the argument it is.
+
+**That is the same shape as 4.106's withdrawn check** and the second time in
+three passes. There the answer was to delete a check that was mostly false
+positives. Here the answer was to move the decision to a rule that cannot be
+mostly wrong and keep the classification as description. **A check whose
+judgement is doing the work should be asked what happens when the judgement is
+removed**; if a plain structural fact gives the same answer, the judgement was
+never the instrument.
+
+**Witnesses, three, on a throwaway copy and never in the clone.** A raw
+`#kt-compose-bar` planted in a second file moves the forced set and exits 1. A
+name renamed away in its own module exits 2 with *the population has moved and
+this measurement is stale, not clean*. A markdown file naming an id raises the
+documented count and exits 1. All three named the right cause.
+
+**Scope.** Eight names, the ones a page can query directly. The 24 rendered
+`kt-` class names are a fifth kind of signal and are counted by 4.103, not here;
+a class prefix is not a single literal and the same rule would not read. This
+says nothing about whether any of these features should exist.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -49,12 +49,14 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-long-session.mjs` | Whether the heap grows without bound over a long session, read through CDP after a forced collection, run twice: once as the product and once with the page retaining every message so a flat line has a control behind it. Reports each half's slope, because caps filling and a leak look the same at first | [appendix E 4.107](../E-method-log.md#4107-a-sensitive-control-was-not-enough-the-discriminator-was-the-slopes-decay) |
 
-**Twenty-four scripts.** That count is here because two documents stated it from
+| `probe-shortcut-warrant.mjs` | Whether each detection shortcut is required and written down, per name and under both readings of *required*. Resolves the constant before counting, because five of the six ids are spelled once and used through it, and decides *forced* from the file boundary rather than from a classifier | [appendix E 4.108](../E-method-log.md#4108-six-of-eight-detection-shortcuts-need-no-fixed-name-at-all) |
+
+**Twenty-five scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-four take a path argument and print to standard output; `probe-quotes.mjs`,
-`probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
+All twenty-five take a path argument and print to standard output; `probe-quotes.mjs`,
+`probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
