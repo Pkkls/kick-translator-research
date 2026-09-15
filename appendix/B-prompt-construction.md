@@ -75,7 +75,7 @@ produced three times on unrelated subjects
 |---|---|---|---|
 | 17 | Supply chain and observable surface | Four page-queryable signals confirming installation, while the manifest documents removing one vector for exactly that reason | — |
 | 18 | | | **Bar falsified.** "No page script can confirm the extension is present" is unsatisfiable by anything that renders. Rewritten as a *cost* bar |
-| 19 | Interface i18n | Store-facing locales complete; internal coverage 34 keys of 155 per language | — |
+| 19 | Interface i18n | Store-facing locales complete; internal coverage reported as 34 of 155, later found to be 155 of 155 and withdrawn | — |
 | 20 | | An existing script already computed that number; this pass reimplemented it | **Added:** look for the instrument before building one, and its corollary, an instrument nothing launches is worse than one that does not exist |
 | 21-24 | Release integrity, repository hygiene, instrumentation | Versions consistent; 11.84 MiB pack, 7 of 9 remote branches already merged; counters are free-form string keys | — |
 | 25 | | The forge publishes a digest per release asset | **Bar falsified.** Two local rebuilds compared byte for byte is more expensive and proves less than comparing to the published digest |

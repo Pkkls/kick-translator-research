@@ -156,7 +156,8 @@ the useful count is an open item.
 | Repository pack size | 11.84 MiB | [replicated] |
 | Remote branches | 9, of which 7 already merged into the main branch | [replicated] |
 | Store-facing locales, key completeness | 10 of 10 complete | [replicated] |
-| Internal interface locale coverage | 34 keys of 155 declared, per language | [replicated] |
+| Internal interface locale coverage | **155 of 155, complete**; an earlier figure of 34 in this study was a probe artefact, withdrawn | [replicated] |
+| The project's own i18n checker, run | reports 5 keys and 150 missing per locale, on complete files | [replicated] |
 | Tagged releases in the study period | 16, over three months | [replicated] |
 
 ## 13.6b What a fresh clone can actually run

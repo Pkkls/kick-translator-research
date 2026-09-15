@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Sixteen. Listed in full because a method log that omits them is an
+Seventeen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -452,6 +452,48 @@ The finding stands as unreplicated in the sense that matters, since no
 instrument observed the behaviour, and the handover says so. What the
 replication added is that the project's own strongest instrument is silent on
 the case.
+
+### 4.17 Published a false accusation against complete work
+
+**What happened.** This study reported that each locale file carried 34 of 155
+declared keys, with the rest falling back to English, and published it in the
+handover, the results table and the construction log. **Every locale file
+carries all 155. The coverage is complete.**
+
+The probe matched `/^\s{2}[a-zA-Z][a-zA-Z0-9_]*\s*:/` against the file. 121 of
+the 155 keys are quoted, because they are whole English sentences with spaces
+in them, and the pattern saw none of them.
+
+**Cost, and it is the highest of the session.** Finished work was accused of
+being 22 percent done, in a public repository, for about two hours. Every other
+mistake in this log was either caught before publication or cost a number.
+This one cost a judgement about someone else's work, in the direction that
+damages.
+
+**What caught it.** A22's replication bar, applied retroactively, and
+specifically its instruction to replicate with an instrument of a different
+shape. The different instrument chosen was the project's own checker, which is
+the most independent one available.
+
+**What the replication found instead.** The project's checker is itself broken.
+It reports 5 keys and 150 missing per locale, listing as absent keys that are
+plainly present. Two instruments disagreed, a third settled it by walking the
+object structure, and **both of the first two were wrong**.
+
+That is worth stating as a rule, because the obvious reading of a disagreement
+is that one side is right:
+
+> When two instruments disagree, the probability that one of them is correct is
+> not one. Settle it with a third that shares technique with neither, and be
+> prepared for both originals to fall.
+
+**The deeper failure is that the tag lied.** This claim carried **[re-run]**,
+which in this study's scheme means executed here against a clone. It was
+executed. The execution was wrong. A provenance tag certifies that a
+measurement happened, never that it was competent, and nothing in the scheme
+distinguishes a careful measurement from a careless one. That gap has no fix
+here beyond A22's replication bar, which is precisely why that bar exists and
+why it is the one thing in the specification with a cost attached.
 
 ### The pattern across the first three
 

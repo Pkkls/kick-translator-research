@@ -277,10 +277,37 @@ conveniences with queryable names.
 
 ### 3.3 Smaller, verified, low damage
 
-**[re-run]** Interface localisation: your declared key set has 155 entries;
-each language file carries 34. The rest fall back to English. `i18n-check.mjs`
-already computes this, so the number is not news to the tooling, only to
-whoever last read its output.
+**Interface localisation: this account published a false accusation here, and
+the retraction is the useful part.**
+
+The claim was that each language file carries 34 of 155 declared keys, with the
+rest falling back to English. **That is wrong. Every locale file carries all
+155, and the coverage is complete [re-run].** The probe counted only unquoted
+keys at one indentation level; 121 of your 155 keys are quoted, because they
+are whole English sentences with spaces in them, and it missed every one.
+
+Nothing was wrong with your localisation. An outside reader accused finished
+work of being 22 percent done, for two hours, in a public repository.
+
+**What the replication found instead is a real defect, and it is yours.**
+`scripts/i18n-check.mjs` reports **5 keys and 150 missing per locale**, and
+lists as missing keys that are plainly present in the files: `'options &
+preferences'`, `saved`, `ready`, `Providers`. Run it and read the output:
+
+```bash
+node scripts/i18n-check.mjs
+```
+
+It reports near-total absence on files that are complete. Whatever its parser
+does, it is not reading the locale objects. That matters more than a coverage
+number, because this is the instrument anyone would trust to answer the
+question, and it answers it wrongly in the alarming direction. It is the thing
+that would tell you a locale had regressed, and it cannot.
+
+**[read]** The distinction worth keeping: an instrument nobody runs is a known
+hazard, recorded in section 4. An instrument that runs and lies is worse,
+because its output is evidence. This one produced 150 false missing-key reports
+in a single run.
 
 **[re-run]** Nine remote branches, seven already merged into master.
 
@@ -647,10 +674,14 @@ script with a larger neighbour, is the exact shape that produced Persian,
 Mongolian and Bulgarian. The capture says which of the twenty-four actually
 appear, and that turns a list into a queue.
 
-**Not now, and this is a recommendation against work.** The interface locale
-coverage at 34 of 155 keys, and the seven merged branches. Both are real, both
-are cheap, and neither costs a reader anything. They are listed in section 3.3
-so they are not rediscovered, not so they are done.
+**Twenty minutes, and it repairs an instrument rather than a product.** Fix
+`i18n-check.mjs`, which reports 150 missing keys per locale on files that are
+complete. Section 3.3. It is the only instrument in this project found to give
+a wrong answer, and a wrong answer from a checker is worse than no checker.
+
+**Not now, and this is a recommendation against work.** The seven remote
+branches already merged into master. Real, cheap, and it costs a reader
+nothing. Listed in section 3.3 so it is not rediscovered, not so it is done.
 
 ## 9. How to refute this file
 

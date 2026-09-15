@@ -103,9 +103,34 @@ const keys = JSON.parse(read('src/shared/i18n/keys.json'));
 const declared = Array.isArray(keys) ? keys.length : Object.keys(keys).length;
 claim('3.3 declared interface keys', 155, declared);
 
+// Counted by walking the object, not by matching lines. The published figure
+// was 34, from a pattern that saw only unquoted keys at one indentation; 121
+// of the 155 keys are quoted because they are English sentences. The coverage
+// is complete. This is the error A22 exists for, and it reached publication.
+function countObjectKeys(source) {
+  const body = source.slice(source.indexOf('{') + 1, source.lastIndexOf('}'));
+  let depth = 0;
+  let inStr = null;
+  let keys = 0;
+  let atKey = true;
+  for (let i = 0; i < body.length; i++) {
+    const c = body[i];
+    if (inStr) { if (c === inStr && body[i - 1] !== '\\') inStr = null; continue; }
+    if (c === "'" || c === '"') { if (depth === 0 && atKey) { keys++; atKey = false; } inStr = c; continue; }
+    if (c === '{' || c === '[') { depth++; continue; }
+    if (c === '}' || c === ']') { depth--; continue; }
+    if (c === ',' && depth === 0) { atKey = true; continue; }
+    if (depth === 0 && atKey && /[A-Za-z_]/.test(c)) {
+      let j = i;
+      while (j < body.length && /[\w$]/.test(body[j])) j++;
+      if (body[j] === ':') { keys++; atKey = false; i = j; }
+    }
+  }
+  return keys;
+}
 const langFiles = readdirSync(join(root, 'src/shared/i18n')).filter((f) => /\.ts$/.test(f) && f !== 'index.ts');
-const perFile = new Set(langFiles.map((f) => (read('src/shared/i18n/' + f).match(/^\s{2}[a-zA-Z][a-zA-Z0-9_]*\s*:/gm) || []).length));
-claim('3.3 entries per language file', '34', [...perFile].join(','), langFiles.length + ' files');
+const perFile = new Set(langFiles.map((f) => countObjectKeys(read('src/shared/i18n/' + f))));
+claim('3.3 entries per language file', '155', [...perFile].join(','), langFiles.length + ' files, counted structurally');
 claim('3.3 an Arabic interface locale ships', true, existsSync(join(root, 'src/shared/i18n/ar.ts')));
 
 // 3.3 Branches and release ---------------------------------------------------
