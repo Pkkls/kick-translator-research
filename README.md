@@ -97,6 +97,12 @@ claims authorship of the engineering.
 | [D. Scripts](appendix/D-scripts/) | The probes, as they were actually run |
 | [E. Method log](appendix/E-method-log.md) | How this was produced: the commands, every mistake, what was efficient, what was refused |
 
+## Start here if you are continuing this work
+
+[RESUME-HERE.md](RESUME-HERE.md) carries the exact state: what is verified, what
+the two scripts must report, and the journal sections still unread with their
+line numbers. The unfinished reading is the productive part.
+
 ## The one document meant to be acted on
 
 [HANDOVER.md](HANDOVER.md) is written for the account that develops the system,
