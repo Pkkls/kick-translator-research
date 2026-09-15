@@ -157,6 +157,23 @@ than asserts, and your gates fail rather than remind. The class of defect in
 this section is the class that has no gate, and the cheap move is to give each
 one a check rather than a sentence.
 
+**You have already applied that cure, which sharpens what is missing.** Your
+sixth pass on 2026-08-30 found the same mute gesture in three live harnesses,
+two of them beside a comment describing the trap, and diagnosed it in one line:
+the gesture was copied instead of shared. It moved into one module, and the
+sweep that found the dead selectors became a gate **[yours]**. Both are there:
+`kick-actions.mjs` is imported by all three harnesses, and `audit-selecteurs`
+is an entry in the runner **[re-run]**. Seven hours later your twenty-sixth
+pass found the same mechanism in a different pair of files: the fixture
+screenshot harness had drifted to a scale factor its sibling's comment warned
+against **[yours]**. That one was repaired with a check that reads the
+dimensions out of the PNG, now present in both **[re-run]**.
+
+**[mine]** So the remedy is known and practised, one instance at a time. What
+the pattern lacks is the step between the diagnosis and the diff: when a
+diagnosis names a mechanism, *copied instead of shared*, enumerate the other
+copies before closing the one in front of you.
+
 ### 2.2 You have made the same reasoning error three times, and measurement
 caught it every time
 

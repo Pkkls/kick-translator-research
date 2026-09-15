@@ -22,15 +22,16 @@ node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
 Last known: **33/33 checkable claims, 12/12 spec conditions, no broken internal
-link**, 31 entries in the method log. The link count used to be a
-sentence, "all internal links resolve", and nine of them did not.
+link**. The link line used to be a sentence, "all internal links resolve", and
+nine of them did not. Counts that no script reads, such as the number of
+entries in the method log, are deliberately not restated here (4.30).
 
 ## What is done
 
 - **15 thesis chapters**, `thesis/`
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
-- **The method log**, `appendix/E-method-log.md`, 31 recorded mistakes
+- **The method log**, `appendix/E-method-log.md`, every recorded mistake
 - **Five runnable scripts**, `appendix/D-scripts/`
 
 ## The reading that is still unfinished, and it is the productive one
@@ -41,7 +42,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
+Read so far: passes 6, 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -51,7 +52,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L298 | Sixth pass: three more mute probes, and a question the data cannot answer |
 | L167 | Third pass: a harness nobody ran was reporting a real bug |
 | L356 | Eighth pass: a fifth analytics file, and two things I had asserted wrongly |
 | L386 | Ninth pass: the kit's own gate accused working code |
@@ -95,6 +95,12 @@ promoted to the handover before something differently shaped has run.
   would pass both. The witness: in a copy of a Chrome build, never the working
   `dist/` (the journal's pass twenty-seven is why), hide `.kt-float-opts` and
   run both gates. If this reading is right, both stay green.
+- **Which store data exists, open until L356 is read.** Pass six declined
+  "store analytics" as a basis for optimisation because they hold no install or
+  usage figure. Axis A18 of the specification says the store dashboards are
+  the only place the ratio of views to installs exists. Those may be two
+  different datasets or one of the two statements is wrong; pass eight is
+  titled "a fifth analytics file" and should say which.
 
 ## What is measured and what is not
 

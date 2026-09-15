@@ -1089,6 +1089,26 @@ language, and a **[reported]** tag certifies the source, not the fidelity.
 > When repeating a finding, keep its verb. "Said", "suggested", "indicated" and
 > "established" are four different claims about the same measurement.
 
+### 4.32 A pattern argued without the instance where the corpus had cured it
+
+**What happened.** The handover's section 2.1 argues that the corpus diagnoses
+in prose and repairs in a diff, with nothing holding the two together. The
+older journal's sixth pass, never opened until now, is a counter-instance: a
+gesture copied into three harnesses, two of them beside a comment warning about
+the trap, diagnosed as *copied instead of shared* and moved into one module,
+with the sweep that found the dead selectors turned into a gate. Both are in
+the repository today.
+
+**Cost.** Not a wrong claim, an unfair one, of the same kind as
+[4.26](#426-the-journal-this-study-never-opened-and-the-gate-it-did-not-credit),
+and in the section most likely to read as criticism.
+
+**What it changed.** The credit made the recommendation sharper rather than
+weaker. The same mechanism recurred seven hours later in another pair of
+harnesses, and was repaired there too, by a check. The corpus does apply the
+cure; what it skips is enumerating the other copies once a diagnosis names the
+mechanism. Section 2.1 now says that instead of implying the cure was unknown.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

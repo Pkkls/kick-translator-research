@@ -857,6 +857,12 @@ anywhere:
   counting anything downstream. **Zero after an action that never happened and
   zero after a broken pipeline are the same number, and only the read-back
   separates them.**
+- **Can a fallback inside the probe do the work of a dead primary?** A query
+  for a selector the product no longer emits, sitting behind a fallback that
+  finds the element another way, never fails, so nothing notices the selector
+  die. An assertion gated on a value that is always null never runs. Sweep the
+  probes for reads that cannot succeed, and gate the sweep: its witness is the
+  finding count reaching zero on unchanged product code.
 - **Is the probe acting from the world the real event comes from?** A page's
   own router calls its own functions; an extension's patch of those functions
   lives in an isolated world and never sees them. A probe that triggers the

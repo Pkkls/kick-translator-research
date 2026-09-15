@@ -127,6 +127,13 @@ indistinguishable from randomness.** A cache that answers without applying makes
 every second occurrence of a repeated line show nothing; the pattern exists and
 is invisible to the person experiencing it, which makes it nearly unreportable.
 
+**A fallback inside a probe can do the work of a dead primary.** A harness
+queried a class that never existed, behind a `??` that found the element
+another way, so the selector died and nothing noticed; contrast assertions
+gated on a value that was always null could not fire. The corpus swept its
+probes for reads that cannot succeed and made the sweep a gate, witnessed by
+the count reaching zero on unchanged product code.
+
 **A probe that measured nothing must fail.** A pass over an English chat
 translated to English reports zero translations and zero errors, which is
 indistinguishable from success.
