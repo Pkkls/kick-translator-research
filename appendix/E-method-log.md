@@ -3396,6 +3396,66 @@ builtins, no dependency, and `gh` only behind `--with-network`. That is what
 moving it into the clone's runner costs, and it is in the handover as half an
 hour rather than as *some work*.
 
+### 4.85 Four numbers for one list, none of them wrong, and the accusation withdrawn
+
+**What happened.** Reading `CHANGELOG.md` forward from L138, the three unread
+2.9.x sections, the same list of languages is counted three times in eighty
+lines: **43** in the 2.9.0 section, twice, **42** in the 2.9.2 section, and
+**forty** in 2.9.2's opening sentence. A fourth, **39**, is in `PLAN.md`, in the
+entry about a dump audited while a filter was holding.
+
+This study publishes 42, in the handover under a `[re-run]` tag and in 4.18, and
+the verifier checks it on every run as *18 of your 42 languages are named in
+langDetect.ts*. So the draft finding was that the corpus's changelog, its
+published 2.9.0 release body and its store listing all overstate the product's
+own language count by one.
+
+**Measured first, which is what killed it.** `LANGUAGES` in
+`src/shared/languages.ts`, counted by brace depth at every release tag:
+
+| v2.7.0 | v2.8.0 | v2.9.0 | v2.9.1 | v2.9.2 | v2.9.3 | v2.10.0 | HEAD |
+|---|---|---|---|---|---|---|---|
+| 42 | 42 | 42 | 42 | 42 | 42 | 42 | 42 |
+
+Forty-two distinct codes at each, never 43, so the list did not shrink after
+2.9.0 and the revision is not the explanation. That made the accusation look
+safe, and it was the second instrument that took it apart: `langMenu.ts` calls
+`addRow('auto', ...)` before the loop over `LANGUAGES`, so the rendered menu is
+one channel-language row plus 42, and **43 entries is exactly right**. The bar
+panel filters out whatever is already drawn as a favourite tile, up to
+`FAVORITE_LANGS_MAX = 4`, plus the auto row, so 40 is 42 less two already on
+screen and 39 is 42 less three. Every one of the four numbers is correct for the
+population it was taken over.
+
+**What the corpus actually does wrong is smaller and worse to read.** None of
+the four says what it counted. The chip menu's comment says *43 rows*, the
+panel's says *6 rows of 40*, and the sentence between them says *the same 42
+languages*, seven lines apart in two files. A reader who compares any two of
+them finds a contradiction that is not there, and the only way out is to read
+the code, which is what this pass did with a finding half drafted. The study's
+own rule covers it exactly and is written for a different case: **a population
+with documented exceptions reports two numbers**, the adjusted one and the raw
+one, so nobody has to trust your filter. Here there is no filter to distrust,
+only an unnamed denominator.
+
+**The one thing that is loose rather than merely unlabelled.** The 2.9.0
+section, and the published release body that repeats it word for word, says
+*listed 43 languages one per line* in its first sentence and *the same 43
+entries* in its third. The second phrasing is right and the first is one too
+many, since one of the 43 is not a language. Two words in a release body nobody
+will reread, recorded because the store listing uses the correct phrasing and
+the changelog does not, which means somebody already noticed once.
+
+**Cost, and why it is filed as a result.** One pass, no correction to anything.
+This is the tenth finding drafted and withdrawn before publication in this
+study, after the nine listed in 4.44, 4.53, 4.54, 4.55, 4.58, 4.63, 4.71, 4.73
+and 4.78, and it is the first withdrawn by reading the product's rendering code
+rather than by recounting. **The draft was wrong in the alarming direction**,
+which is the ninth time, and the direction is not a coincidence: a pass reading a
+changelog against a source is looking for disagreement, so every unexplained
+gap presents itself as one. The discipline that caught it is not scepticism, it
+is asking what else could produce this number before writing the sentence.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
