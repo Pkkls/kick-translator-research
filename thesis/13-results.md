@@ -331,6 +331,13 @@ Cloned from the public repository, at the commit the study measured against.
 | What this moves, unlike 4.112 and 4.114 | **`confidentLanguage`**, so the source language sent to the provider is wrong | [new] |
 | Candidate fix, a proportional floor | **re-introduces the emoji defect** the corpus had fixed | [new] |
 | Candidate fix, katakana punctuation is not kana | kaomoji **2 of 5 → 0**, emoji fix and real Japanese unchanged | [new] |
+| **The `note` prose, re-taken from a build** | **0 of 43** notes in 27 files; the fix landed and holds | [replicated] |
+| What the prose actually cost, both sides of the removing commit built | **2147 bytes** (235134 → 232987), against a published 1754 | [new] |
+| Why the published figure was low | it counted the strings; the bundle also lost the keys, quotes and commas | [new] |
+| How the provenance was kept | a separate `LAUGHTER_NOTES` object, tree-shaken, **no build step written** | [new] |
+| **The weight reference against that saving** | `REFERENCE_OCTETS` last raised **before** the removal and never lowered | [new] |
+| Today's 233601 against the reference as it stands | **+0.16 %** | [new] |
+| The same against a reference re-baselined after the removal | **+1.10 %**, seven times larger, both inside the 2 % margin | [new] |
 
 ## 13.8 The three bars execution falsified
 

@@ -5632,6 +5632,80 @@ but **what counts as kana**, and that one was simply misclassified.
 chat capture exists here, so how often a kaomoji or a stray homoglyph arrives is
 not measured. What is measured is that two characters suffice at any length.
 
+### 4.116 A finding was acted on, the fix is better than the one recommended, and the reference was not moved
+
+**The first time this study can record that something it published changed the
+product.** Chapter 10 reports, from the corpus, that 42 of the laughter table's
+45 `note` fields shipped in the content script at **1754 bytes, 0.85 percent of
+it**, read by nothing at runtime. The commit that answers it is
+`d89d1db`, named **"Take the laughter table's prose out of every Kick page"**.
+
+**The fix is better than the one this study recommended.** The disposition
+offered two paths: *strip the field at build time*, or abandon the discipline
+that makes provenance mandatory. It warned against the second because the rule
+requiring provenance is what gives the lexicon its value. The developing account
+took a third path neither sentence contained: the notes moved into a separate
+`LAUGHTER_NOTES` object keyed by each pattern's source, outside the entries the
+content script imports. Nothing at runtime touches it, so it is tree-shaken, and
+**no build step was written or has to be maintained**. Two tests hold the
+discipline in both directions: every form must carry a note over eight
+characters, and no note may be orphaned. The recommendation asked for a
+mechanism; the answer removed the need for one.
+
+**Proven from the artifact, not from the import graph.** All 43 notes searched
+for across the 27 files of a fresh build: **0 found**. The search is sensitive,
+checked on five interface sentences that certainly ship: **5 of 5**. Planted on a
+worktree, one line making `detectLanguage` call a reader of `LAUGHTER_NOTES` puts
+**all 43 back**, so the probe sees the regression it is there to see.
+
+**That control had to be replaced.** The first version used laughter forms as its
+positive control and scored 1 of 3, because **the table stores regular
+expressions**: `jajaja` is never in the build as a literal, only
+`^(?:ja){2,}j?a?$`. A control drawn from the same file as the thing being
+searched for looked natural and was measuring the wrong property.
+
+**The published cost was under-counted: 2147 bytes, not 1754.** Building both
+sides of the removing commit gives the bundle's own number.
+
+| | content.js |
+|---|---|
+| `d89d1db^`, the prose still in | **235134** |
+| `d89d1db`, the prose out | **232987** |
+| the difference | **2147 bytes** |
+
+The corpus counted the note strings. The bundle also lost the keys, the quotes,
+the colons and the commas around them, which is 393 bytes more, **22 percent
+above the figure published**. Both numbers are of real things; only one of them
+is what a reader stopped downloading.
+
+**And the budget reference was never moved.** `REFERENCE_OCTETS = 233217` in
+`audit_poids.py` was last raised by `16c4ce6`, which is an **ancestor** of
+`d89d1db`. The reference therefore still contains 2147 bytes of prose that has
+not shipped since August.
+
+| | today's 233601 reads as |
+|---|---|
+| against the reference as it stands | **+384 bytes, +0.16 percent** |
+| against a reference re-baselined after the removal (≈231070) | **+2531 bytes, +1.10 percent** |
+
+The gate is green either way, both being inside the 2 percent margin, and that is
+the point: **a deliberate saving that is not re-baselined is silently spent.**
+The margin is quietly funding later growth with bytes someone worked to recover,
+and the drift the audit reports is **a seventh of the real one**. Nothing in the
+product is wrong; the instrument is describing a baseline that no longer exists.
+
+This is the same shape as the browser count in `TRANSMISSION.md` that read *one
+quantity* for six passes after it became seven (4.109), and as the README count
+that read *nine* while the directory held ten (4.81). **A number that describes
+a past state keeps being true of that state and stops being true of the
+subject.** The difference here is that this one is read by a gate every release,
+which makes it worse rather than better: the gate lends it authority.
+
+**Scope.** One table, one commit, one build each side. The dist read is a build,
+not the published archive; `probe-archive.mjs` is the instrument for what a store
+serves. Whether tree-shaking keeps working is exactly why the probe reads the
+build rather than the imports.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

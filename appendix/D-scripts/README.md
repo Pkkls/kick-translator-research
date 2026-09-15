@@ -63,11 +63,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-script-floor.mjs` | The corpus's emoji-denominator fix re-taken as a control, then what the floor of two it left is worth: two characters decide a message of any length on seven scripts, and two of five ordinary kaomoji carry enough katakana punctuation to reach it | [appendix E 4.115](../E-method-log.md#4115-two-characters-decide-a-thousand-and-a-kaomoji-is-two-characters) |
 
-**Thirty-one scripts.** That count is here because two documents stated it from
+| `probe-note-bytes.mjs` | Whether the laughter table's provenance really left the bundle, searched for across every file of a build rather than reasoned from the import graph, with a sensitivity control of interface prose that certainly ships | [appendix E 4.116](../E-method-log.md#4116-a-finding-was-acted-on-the-fix-is-better-than-the-one-recommended-and-the-reference-was-not-moved) |
+
+**Thirty-two scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All thirty-one take a path argument and print to standard output; `probe-quotes.mjs`,
+All thirty-two take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only
