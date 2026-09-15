@@ -143,6 +143,28 @@ invisible by construction. A green suite that measured nothing produces the
 same output as a green suite that measured everything. The remedy is that every
 probe carries an assertion that fails when its own denominator is zero.
 
+### Assert the property that matters, not the one that is visible
+
+**[reported]** The outgoing path had only ever been checked on the live site.
+The project's framing of what to assert is the transferable part:
+
+> The property worth asserting is not that a preview appears. It is which
+> language the preview targets.
+
+Incoming chat goes to the reader's language; an outgoing reply must go to the
+channel's. Confusing the two sends a carefully written sentence in the wrong
+language in front of an audience. So the fixture answers Spanish as the channel
+language while the browser asks for English, and the gate reads the target the
+engine actually received.
+
+**The design point is the deliberate divergence.** If both languages were the
+same, every confusion between them would pass. A probe must arrange for the two
+things it is distinguishing to differ, or it cannot distinguish them.
+
+The break also showed the fallback is sound: with no channel language the panel
+shows nothing, rather than offering a translation into the reader's own language
+and inviting them to send it.
+
 ### On the second failure of the same method, change layer
 
 Not a third attempt with different parameters. The project's formulation: *if

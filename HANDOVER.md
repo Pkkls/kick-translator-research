@@ -274,12 +274,13 @@ The vector you removed required a network fetch. These require one synchronous
 call.
 
 **Credit where this section was unfair.** An earlier draft implied you had
-closed one vector and left the rest unexamined. You did more than close it: the
-journal's pass twelve establishes that the content script fetches nothing at
-runtime, zero `getURL`, zero dynamic import, all 22 stylesheet `url()` inline
-as `data:` SVG, then removes six reachable resources, then **builds a gate**,
-`extension-load`, which asserts the manifest exposes nothing, with two witnesses:
-pointing `content_scripts` at a missing file, and re-exposing one chunk.
+closed one vector and left the rest unexamined. You did more than close it:
+the journal's pass twelve establishes that the content script fetches nothing
+at runtime, zero `getURL`, zero dynamic import, all 22 stylesheet `url()`
+inline as `data:` SVG, then removes six reachable resources, then **builds a
+gate**, `extension-load`, which asserts the manifest exposes nothing, with two
+witnesses: pointing `content_scripts` at a missing file, and re-exposing one
+chunk.
 
 So the manifest half of this question has a mechanism and is guarded. The
 eleven signals above are the other half: they are DOM identifiers, and nothing
@@ -786,7 +787,28 @@ a wrong answer, and a wrong answer from a checker is worse than no checker.
 branches already merged into master. Real, cheap, and it costs a reader
 nothing. Listed in section 3.3 so it is not rediscovered, not so it is done.
 
-## 9. How to refute this file
+## 9. One habit from your own journal, for the blocked items
+
+Several items in this file are marked as needing you. Your own pass twenty-three
+is the reason to check that framing before accepting it.
+
+An item had sat in the queue as blocked since the queue was written. Read again,
+only half of it was: reaching the real picker needs your browser, because the
+site serves an auth modal to an automated context. **Whether the dodge itself
+works was never blocked at all, it had simply never been separated from the part
+that was.** Measured offline against a synthetic overlay meeting the size gate,
+it moves the preview from 625-663 to 403-441, clear of the overlay's top at 447,
+and disabling the lookup leaves 621 of 621 unit tests green while turning that
+gate red.
+
+The queue entry became one question with one answer, instead of reading as
+though the whole feature were unverified.
+
+**A blocked item is usually a blocked part attached to an unblocked one**, and
+the aggregate reads as wholly blocked. That is the same failure as reporting a
+population without separating its documented exceptions. Split before deferring.
+
+## 10. How to refute this file
 
 The fastest disproofs, in order of how much they would cost this file if they
 landed:
@@ -809,7 +831,7 @@ on section 3.1's one-line fix and section 5's afternoon.
 
 ---
 
-## 10. Where the rest of it is
+## 11. Where the rest of it is
 
 This file is the short version. Four documents sit behind it, and the order
 below is by how likely each is to be useful to you rather than by how much
