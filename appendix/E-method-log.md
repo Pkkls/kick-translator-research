@@ -2176,6 +2176,49 @@ one finds a bar that reads as a guarantee until placed beside the failure its ow
 axis describes. **Each is a statement that is locally true and wrong about what
 it is for, and none of the three is findable by checking the statement.**
 
+### 4.60 One selector without a fallback, in a file that gives fallbacks to everything else
+
+**What happened.** A4's bar asks that every selector have at least one fallback
+or a named reason it cannot. Five groups of host-page selectors exist and four
+of them are better than the bar asks. `containers` lists six candidates and
+labels three of them *Legacy fallbacks*. `COMPOSE_SELECTORS` lists seven, says
+they are ordered most-specific first, records that the live shape was verified
+in 2026, and names what happens if all seven miss: *the feature simply doesn't
+mount, graceful no-op*. `extractUsername` tries four in sequence, each with a
+comment saying which Kick variant it is for, one of them dated to a live check
+in August. `pickInjectionTarget` falls back to the row's first child and then to
+the row itself, so it cannot return nothing.
+
+The fifth is `messageRows: ['div[data-index]']`. One selector. No alternative,
+and no sentence anywhere saying why it has none. The file explains what
+`data-index` is, that the virtualiser recycles it, and that it is too weak to
+serve as an identifier on its own, which is why `buildSyntheticId` hashes a
+username and a text prefix into it. Every one of those sentences is about the
+attribute's value, and none is about the selector's fragility.
+
+**Why it is the one that matters.** It is the load-bearing selector. The
+container has six ways to be found, so if Kick renames the row attribute the
+observer still attaches to a real container, the status still reports a live
+attachment, and no row is ever recognised. That is A4's *breaks as* sentence
+returned verbatim: *Kick ships a class name change on a Tuesday and the
+extension goes quiet, with a green bar still claiming it is live.* The axis
+describes the failure, and the one selector positioned to cause it is the one
+without the protection the axis asks for.
+
+**What this is not.** It is not a careless file. Four groups out of five exceed
+the bar and one of them carries a dated live verification, which is rarer in
+selector code than any fallback. The gap is a single line among two hundred, and
+the interesting question is how a line like that survives in work of that
+standard.
+
+The answer visible from here: **a fallback chain is written when the author has
+seen the thing break more than one way.** Containers, composers and username
+markup have all changed shape on Kick and each change left a candidate behind in
+the list, which is why those lists are long. `div[data-index]` has never
+changed, so nothing has ever added a second entry to it. A fallback list is a
+scar record, and the selector with no scars is the one with no protection,
+which inverts the intuition that the stable thing is the safe one.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
