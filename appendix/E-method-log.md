@@ -1879,6 +1879,57 @@ which is the top-level file the search had already covered. For a moment the two
 results looked like a contradiction rather than a location. It prints the path
 now, and the comment says why.
 
+### 4.54 Seventeen advisories, none of which ship
+
+**What happened.** A11's bar opens with *zero advisories above the severity
+floor in the budget file*. `npm audit` on the repository reports **17: three
+critical, nine high, four moderate, one low.** That number was not written down,
+because the bar is about what the extension ships and `npm audit` is about the
+whole tree. Re-run against production only: **zero, at every severity.** The
+four runtime dependencies are `franc-min`, `idb-keyval`, `preact` and `zod`, and
+not one of them carries an advisory. All 17 are in the twenty devDependencies,
+which never enter a bundle.
+
+Reporting 17 would have been the alarming direction again, and this log has now
+recorded that direction enough times that the split was done before the number
+was written rather than after. **The rule that produced the right answer was
+cheap: before publishing a count, ask which population the bar is about.**
+
+**What the bar cannot be read against.** There is no budget file. No audit
+script, no audit configuration, nothing that names a severity floor. The clause
+refers to a document that does not exist, which is
+[4.51](#451-a-stop-condition-with-a-term-nobody-could-evaluate) at the scale of
+a single axis rather than of the whole specification: a condition that reads as
+a requirement, and cannot be evaluated because the thing it measures against was
+never written.
+
+**What is genuinely open, and it is the part the axis says it is really about.**
+The bar ends *finding the extension costs a page script a read of rendered
+content, never a query by name.* Enumerated in the content script, there are at
+least four queries by name on the host page, and they cover four of the eight
+categories the axis lists in its own text:
+
+- an identifier on a node attached to a shared root: `#kt-floating-bar`
+- a marker written onto the host's own nodes: `data-kt-id`, on Kick's chat rows
+- an attribute set on the document element: `data-kt-scheme`
+- a class toggled on the document element, beside 79 distinct `kt-` names
+
+Each has a plausible product need and at least one has its rationale written
+beside it. What no document does is **count them**, and the axis names that
+exact failure: *the trap this axis is really about: closing one vector and
+recording the question as settled.* Nothing in either repository names the
+detection surface, so there is no record of a vector having been closed, and no
+record of one having been left open either.
+
+**One clause closed sideways.** The bar asks that zero instrumentation in a
+release bundle be *proven from the archive*, and `check-strip` proves it from
+the build directory instead. Those are the same claim here, but only because
+[4.52](#452-the-reproducibility-claim-nobody-had-run-and-it-holds-exactly)
+showed the archive rebuilds byte-identical from the tag. A clause that was
+weaker than it asked for is carried by a measurement taken two passes earlier
+for a different axis, which is an argument for the ledger: the evidence for one
+bar frequently sits under another.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
