@@ -95,6 +95,7 @@ claims authorship of the engineering.
 | [B. How the prompt was built](appendix/B-prompt-construction.md) | Thirty refinement passes, and the three bars that only execution could falsify |
 | [C. Replication protocol](appendix/C-replication.md) | How to re-derive every number this study took |
 | [D. Scripts](appendix/D-scripts/) | The probes, as they were actually run |
+| [E. Method log](appendix/E-method-log.md) | How this was produced: the commands, every mistake, what was efficient, what was refused |
 
 ## The one document meant to be acted on
 

@@ -1,0 +1,306 @@
+# Appendix E. How this was produced, and what it cost
+
+A record of the session that made this repository: the order things happened
+in, the commands that produced the corpus, every mistake and what it cost, the
+things that were refused, and what was efficient against what was waste.
+
+It exists because the account that develops the system may want to run the
+same kind of pass again, and the expensive part of this session was not the
+writing. It was finding out which approaches work on this material. That part
+is reusable and is written down here rather than left to be rediscovered.
+
+Nothing here is flattering by design. The mistake list in section 4 is the
+longest section and that is the correct proportion.
+
+---
+
+## 1. The order it happened in
+
+Four regimes, and the transition between the second and third is the only
+interesting thing about the sequence.
+
+### Regime 1: survey (two tool calls)
+
+Two batched command runs against the repository, each pairing a set of shell
+commands with a set of questions, so that the output is indexed and only the
+matching sections come back. The first established structure, stack, build,
+gates and release shape. The second established the working method: the
+standing frame, the plan, the generated state file, the journals.
+
+**Cost: two round trips for what would otherwise have been twenty file reads.**
+This is the single most reusable thing in this log and section 5 gives the
+commands.
+
+### Regime 2: build a specification by review (passes 1 to 16)
+
+Wrote a twenty-one axis audit specification, then reviewed it sixteen times:
+falsifiability of every bar, blind spots, reading cost, cheat surface, cold
+clone behaviour, priority arithmetic, conflicts with the existing frame,
+sandbox rules, redundancy, vocabulary, resumption, witness quality,
+portability, bootstrap, and a full mechanical audit.
+
+Eleven of the sixteen passes changed the document. The mechanical audit at the
+end reported every condition green.
+
+### Regime 3: execute the specification (passes 17 to 30)
+
+Ran its axes against the real code. **Three of its requirements turned out to
+be unsatisfiable or uncheckable**, none of which sixteen review passes had
+found. Full account in [appendix B](B-prompt-construction.md).
+
+The transition between regimes 2 and 3 is the finding of this log: review and
+execution find disjoint classes of defect, and the review regime cannot tell
+you it has stopped producing.
+
+### Regime 4: the study, and the handover
+
+Indexed the notebooks, queried them by theme, wrote fifteen chapters and four
+appendices, wrote three runnable scripts, ran them, and corrected the chapters
+where running them contradicted what had been written. Then thirty passes over
+a handover document written for the developing account rather than for a
+reader.
+
+---
+
+## 2. What was produced, and which question each thing answers
+
+| Artefact | Answers | Read it if |
+|---|---|---|
+| [thesis/](../thesis/) | What is hard about translating live chat, linguistically and architecturally | You want the analysis |
+| [HANDOVER.md](../../HANDOVER.md) | What an outside reading found, what to do first, how wrong this account was | You develop the system |
+| [appendix A](A-audit-prompt.md) | What to audit, with a bar and a witness per axis | You want the specification |
+| [appendix B](B-prompt-construction.md) | How the specification was built and where it was wrong | You want the method behind the specification |
+| [appendix C](C-replication.md) | How to re-derive every number | You do not trust a number here |
+| [appendix D](D-scripts/) | The probes as run | You want to run them |
+| This file | How the work was done, and what it cost | You want to repeat the exercise |
+
+---
+
+## 3. The corpus extraction, with the commands
+
+The notebooks are roughly 310 KB: a work queue, two daily journals, a
+changelog, a handoff, a standing frame. Reading them into context directly
+would have consumed most of the session's capacity on raw bytes and left
+little for the analysis.
+
+What worked: index them once, then query by theme as each chapter needed
+material.
+
+```bash
+# Establish the shape of the history without reading the history
+git log --reverse --date=short --pretty=format:'%ad %h %s' | head -3
+git tag --sort=creatordate --format='%(creatordate:short) %(refname:short)'
+wc -c CHANGELOG.md .agent/PLAN.md HANDOFF.md .agent/PROMPT.md
+ls .agent/JOURNAL/
+```
+
+Then index the four large documents in one batched run and query them per
+theme. Queries that produced usable material, in the order the chapters needed
+them:
+
+```
+franc tinyld duel comparaison detecteur mesure
+script ecriture majorite non-ASCII emoji dilue
+persan declare arabe source confiante separation
+mongol ukrainien bulgare lus comme russe
+arabizi chiffres forme son piege SMS latin
+romanised russe grec japonais latin table
+rire formes ecritures sources attestation
+texte court deux caracteres plancher mesure
+smash filter clavier aleatoire bruit
+latence millisecondes moteur on-device
+cache en onglet persistant taux de hit
+coalescer batch file d attente chaine de repli
+poids du script injecte octets marge
+service worker MV3 tue etat fusionne storage
+```
+
+**Two practical notes.** The queries work better in the language the notebooks
+are written in, which here is French for the journals and English for the
+frame; mixed queries returned both. And one batched run of five large files
+plus eleven queries exceeded the response limit, which cost a round trip: index
+first with few queries, then query separately.
+
+---
+
+## 4. Every mistake, and what each cost
+
+Eight. Listed in full because a method log that omits them is an advertisement.
+
+### 4.1 Direction handling: accused working code, twice over
+
+**What happened.** A probe looked for a direction attribute near each write of
+untrusted text and reported one guarded surface of three. Writing it up as a
+publishable script forced it to look at the element rather than near the write:
+two of three. Tracing the third surface to its callers showed it never receives
+untrusted text: two of two.
+
+**Cost.** Three chapters and the handover had to be corrected after publication
+of the wrong number inside this repository. Roughly an hour.
+
+**What would have prevented it.** Tracing the callers before writing the number
+down. The corpus's own frame says exactly this and it was in context.
+
+### 4.2 Silent failure paths: thirty-one false positives
+
+**What happened.** A probe classified a `catch` as silent when its body matched
+no signal pattern. The pattern included `log(` but not `log.debug(`, so every
+logged catch counted as silent. Reported 31 of 42. The real answer, after two
+more refinements, is that the remaining silences are deliberate and carry a
+comment saying why.
+
+**Cost.** Would have been a fabricated finding in the handover. Caught before
+publication because the four hottest hits were inspected before writing.
+
+**What would have prevented it.** Reading four of the thirty-one before
+counting them. The number was produced first and the reading second.
+
+### 4.3 Selector fallbacks: a parsing error reported as an absence
+
+**What happened.** A regex meant to extract selector arrays split them wrongly
+and reported two lists with no fallback chain. The chains exist.
+
+**Cost.** Low; withdrawn before it reached any document.
+
+### 4.4 "Twenty lines above"
+
+**What happened.** The handover said a construction sat twenty lines above the
+write it guards. It is 111.
+
+**Cost.** Low, and it is the one that says something: the number was plausible,
+unimportant, and wrong, which is the profile of a detail nobody checks. It was
+caught by a script written to re-derive every claim, not by rereading.
+
+### 4.5 A translation presented as a quotation
+
+**What happened.** A comment written in French in the manifest was quoted in
+English, in quotation marks, in a draft of the handover.
+
+**Cost.** None, caught before publication. It is the failure the handover's own
+refutation section lists fourth, which is why that section exists.
+
+### 4.6 Two counts of the same conditions
+
+**What happened.** An ad-hoc audit counted fourteen conditions; the published
+script groups them and counts twelve. Both were reported as totals in different
+documents.
+
+**Cost.** Low, and the fix was to stop reporting the total. The failure count
+is the number that carries meaning; a total that depends on how checks were
+bundled carries none.
+
+### 4.7 An orphan count published without its exceptions
+
+**What happened.** Reported 35 harness files launched by no runner, without
+separating the documented exclusions. The raw number indicts a project that
+had already reasoned about most of them.
+
+**Cost.** One correction, and it produced the rule that a population with
+documented exceptions reports two numbers.
+
+### 4.8 Reimplemented an instrument that already existed
+
+**What happened.** Wrote a locale coverage counter. `scripts/i18n-check.mjs`
+already computes it.
+
+**Cost.** Minutes, and it produced the more useful corollary: an instrument
+that exists and is in no runner is worse than one that does not exist, because
+its presence reads as coverage.
+
+### The pattern across the first three
+
+All three accused working code, and all three erred in the same direction. A
+probe reports a guard missing wherever it fails to look properly, so its errors
+surface as findings and never as clean bills of health. **A probe that is wrong
+is almost always wrong in the alarming direction**, which means an unreplicated
+finding from a fresh probe should be discounted rather than acted on, and a
+negative result from a probe is worth more than a positive one.
+
+---
+
+## 5. What was efficient, and what was waste
+
+**Efficient, in order.**
+
+1. **Index once, query per chapter.** 310 KB of notebooks were used across
+   fifteen chapters without ever being read whole.
+2. **Writing a probe as a publishable script.** This is the highest-yield
+   practice in the session and it is not obvious. Two of the three probe errors
+   in section 4 were exposed by the act of adding arguments, a usage line and a
+   fail-on-empty assertion, not by rereading the result. Publication is a
+   verification step.
+3. **A claim verifier.** One script that re-derives every measurable claim in a
+   document and prints expected against actual. It caught 4.4 immediately and
+   makes the document falsifiable by its reader in one command.
+4. **Executing one axis early.** The cheapest pass in the whole sequence, pass
+   9, produced the rule the rest of the work was organised around.
+
+**Waste, in order.**
+
+1. **Passes 10 to 16.** Seven review passes over a document that had stopped
+   yielding, when one execution pass would have found more. The review regime
+   gives no signal that it is finished.
+2. **Producing numbers before reading the instances behind them.** Sections
+   4.2 and 4.7 are both this.
+3. **Not looking for existing instruments first.** Section 4.8.
+
+---
+
+## 6. What was refused, and why that was right
+
+Three actions were blocked by the harness during this session. All three are
+recorded because a method log that hides its friction is less useful.
+
+**Writing a file outside the session's working directory.** Refused. The fix
+was to move the session to the directory that was actually being worked in,
+which is the correct fix rather than a workaround.
+
+**A batch of shell commands copying files across directories.** Refused. Same
+resolution.
+
+**Creating the public repository.** Refused, and this one is the right barrier
+in the right place. Publishing is outward-facing and irreversible in practice,
+and the surrounding work being finished does not make the last step automatic.
+The repository exists locally with its commits, and the command that publishes
+it is handed to the person who decides.
+
+The general point for anyone repeating this exercise: the friction is on the
+boundary between analysis and distribution, not inside the analysis. Nothing in
+the reading, measuring or writing was constrained.
+
+---
+
+## 7. What this session deliberately did not do
+
+- **Did not modify the system under study.** Not one line. Every finding is a
+  measurement and a recommendation; the diffs are for the account that owns the
+  code.
+- **Did not run the full gate suite.** It needs the ignored harness directory,
+  and running a subset then reporting the suite would be the failure the study
+  spends a chapter on.
+- **Did not open a browser.** Every source-derived claim is about call sites,
+  and that limit is stated wherever such a claim appears.
+- **Did not touch the stores, the accounts or any credential.**
+- **Did not evaluate translation quality**, which is the first thing a user
+  would ask about and is out of scope for all of it.
+
+---
+
+## 8. If you are repeating this on another project
+
+The shortest version of what worked:
+
+1. Read the working method before the code. If the project has a standing
+   frame, a plan and a generated state file, those three tell you more in ten
+   minutes than the source does in an hour.
+2. Index the long-form notebooks and query them per question. Never read them
+   whole.
+3. Pick the axis with the highest damage among those whose instrument you
+   actually have, and execute it before writing any more specification.
+4. Write every probe as a script someone else could run, with a fail-on-empty
+   assertion. Do this even for a one-off, especially for a one-off.
+5. Trace every number to the decision it feeds before reporting it, and read
+   four instances behind any count before publishing the count.
+6. Write a verifier for your own claims and hand it to the reader.
+7. Report your own error rate. It is the number that tells the reader what the
+   rest is worth.

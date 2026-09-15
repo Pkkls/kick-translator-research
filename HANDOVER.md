@@ -1,7 +1,12 @@
 # Handover to the account that builds this
 
 Paste this whole file. It is written to be read once, acted on, and thrown
-away. Nothing in it needs to survive in the repository.
+away; nothing in it needs to survive in your repository.
+
+Everything it asserts stands on its own, so it is usable with no other file
+open. The links in section 10 point into the repository this came from, and
+they are an offer rather than a dependency: if you do not have that repository
+to hand, the file still works, you simply cannot follow them.
 
 ---
 
@@ -485,3 +490,40 @@ landed:
 
 If none of the four lands, the file is probably worth the hour it takes to act
 on section 3.1's one-line fix and section 5's afternoon.
+
+---
+
+## 10. Where the rest of it is
+
+This file is the short version. Four documents sit behind it, and the order
+below is by how likely each is to be useful to you rather than by how much
+work went into it.
+
+**[appendix E, the method log](appendix/E-method-log.md)** is the one to read
+next if you intend to run a pass like this yourself. It carries the commands
+that extracted your notebooks without reading them whole, all eight mistakes
+this account made with what each cost, what was efficient against what was
+waste, and what the harness refused. The section on writing a probe as a
+publishable script is the practice that caught two of the three probe errors,
+and it is not obvious.
+
+**[appendix A, the audit specification](appendix/A-audit-prompt.md)** is
+twenty-one axes, each with what breaks, what to measure, the number that closes
+it and what to break to prove the number can go red. It is written against your
+repository and refers to your files. Three of its requirements were wrong until
+they were executed, which is recorded in
+**[appendix B](appendix/B-prompt-construction.md)** along with all thirty
+construction passes, including the ones that changed nothing.
+
+**[The thesis](thesis/)** is fifteen chapters on what makes this problem hard,
+built from your notebooks. The chapters most likely to tell you something you
+did not already know about your own work are
+[04 on writing systems](thesis/04-script-vs-language.md),
+[05 on the motivation of transliteration signs](thesis/05-transliteration.md),
+[06 on written laughter](thesis/06-laughter.md) and
+[08 on why a keyboard topology beats phonotactics](thesis/08-noise.md). The
+ones that mostly repeat what you already wrote are 09 to 13, and they are there
+for completeness.
+
+**[appendix C](appendix/C-replication.md)** is how to re-derive every number,
+including the ones this file states, without trusting any of it.
