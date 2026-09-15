@@ -35,21 +35,27 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 12, 15, 16, the gate-suite section at L63, and the probe
-typology at L202.
+Read so far: passes 12, 14, 15, 16, 20, 22, 23, the gate-suite section at L63,
+and the probe typology at L202. Each one produced either a correction to
+something published here or a rule now in TRANSMISSION.md.
 
 **Still unopened**, with the ones most likely to pay first:
 
 | Line | Section |
 |---|---|
+| L902 | Pass twenty-four: found by looking at a picture |
 | L298 | Sixth pass: three more mute probes, and a question the data cannot answer |
-| L608 | Pass fourteen: the chain that keeps translation alive |
-| L804 | Pass twenty: what keeps the free quota alive |
-| L852 | Pass twenty-two: the half that talks back |
 | L167 | Third pass: a harness nobody ran was reporting a real bug |
 | L356 | Eighth pass: a fifth analytics file, and two things I had asserted wrongly |
 | L386 | Ninth pass: the kit's own gate accused working code |
-| L639-1098 | passes 17 to 28, all unread |
+| L418 | Pass ten: the bar panel gets the same treatment |
+| L486 | Pass eleven: the gates stop depending on a browser this machine happens to have |
+| L569 | Pass thirteen: the thing the product is for |
+| L719 | Pass seventeen: the number the listing sells |
+| L751 | Pass eighteen: the language a reader picks |
+| L779 | Pass nineteen: somebody else's DOM |
+| L830 | Pass twenty-one: the version nobody would hear about |
+| L937-1098 | passes 25 to 28, unread |
 
 ### Journal of 2026-08-31 (61 sections)
 

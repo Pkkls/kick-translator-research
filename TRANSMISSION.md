@@ -58,6 +58,35 @@ a break that never arrived and a green that means nothing. The corpus's
 sentence: *a witness that does not break the thing it claims to break proves
 nothing.*
 
+**Assert the property that matters, not the one that is visible.** A gate for
+the outgoing path does not assert that a preview appears; it asserts which
+language the preview targets. And it arranges for the two candidate languages to
+differ, because if they are the same every confusion between them passes. **A
+probe must make the things it distinguishes differ.**
+
+**Ask whether the number the probe reads could have two causes.** A zero request
+count can mean the cache worked, or that something upstream discarded the input
+before any cache was consulted. Vary the input so only the mechanism under test
+can produce the result, and write in the probe why that variation is there.
+
+**A test over a constant is a test of the declaration, not of the behaviour.**
+A test asserting a provider list has three entries does not test that the second
+is ever reached. It reports green on any change that keeps the shape.
+
+**Attach interception at the layer the traffic actually leaves from.** Under an
+extension runtime, requests may leave the background worker rather than the
+page. Interception at the wrong layer reports zero traffic, indistinguishable
+from a product that made no requests.
+
+**A blocked item is usually a blocked part attached to an unblocked one**, and
+the aggregate reads as wholly blocked. Split before deferring. Same failure as
+reporting a population without separating its documented exceptions.
+
+**A defect correlated with a property the reader cannot observe is
+indistinguishable from randomness.** A cache that answers without applying makes
+every second occurrence of a repeated line show nothing; the pattern exists and
+is invisible to the person experiencing it, which makes it nearly unreportable.
+
 **A probe that measured nothing must fail.** A pass over an English chat
 translated to English reports zero translations and zero errors, which is
 indistinguishable from success.

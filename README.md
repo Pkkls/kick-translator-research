@@ -99,6 +99,7 @@ claims authorship of the engineering.
 
 ## Start here if you are continuing this work
 
+[START-PROMPT.md](START-PROMPT.md) is the text to paste into a fresh session.
 [TRANSMISSION.md](TRANSMISSION.md) carries everything transmissible: the rules
 learned, the environment traps, the dead ends, and what was never measured.
 [RESUME-HERE.md](RESUME-HERE.md) carries the exact state: what is verified, what
