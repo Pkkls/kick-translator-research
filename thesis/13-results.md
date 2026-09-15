@@ -236,6 +236,10 @@ Cloned from the public repository, at the commit the study measured against.
 | **The 2.6.0 claim that the WebSocket path and its setting are gone** | transport gone; **setting and receiving half both present at 2.10.0** | [new] |
 | Dead `onWebSocketMessage` in the shipped injected script | **298 minified bytes**, 0.128% of 233601 | [new] |
 | Unit tests calling it, and how many are about it | **5**, of which **1** | [new] |
+| Declared interface keys, by tag | 121 at v2.5.0, **140 at v2.6.0**, 155 from v2.8.0 to HEAD | [new] |
+| The 2.6.0 claim of 140 covered strings | **holds at its own revision** | [replicated] |
+| Tracked files containing a NUL byte | **9, all images**; no source file | [replicated] |
+| The 2.6.0 duplicate-panel fix reaching all four bar updaters | **4 of 4**, all via `findBar()` | [replicated] |
 | The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
 | What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |

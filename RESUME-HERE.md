@@ -163,7 +163,7 @@ Next, in the order most likely to correct something published here:
 | File | Lines | Why first |
 |---|---|---|
 | `.agent/PLAN.md` | 1287 | **read end to end.** The four Done sections, L760 to the end, were read on 2026-09-15 and produced 4.82 |
-| `CHANGELOG.md` | 901 | **read to L560 of 900**: 17 sections compared against tags and releases (4.69); 2.10.0, 2.9.2, 2.9.1, 2.9.0, 2.8.1, 2.7.0 and the head of 2.6.0 read by position (4.70, 4.71, 4.85, 4.98, 4.99, 4.100). **Open at L560**, inside 2.6.0's Added block. Nine sections below it, 2.5.0 down to 2.0.0 |
+| `CHANGELOG.md` | 901 | **read to L650 of 900**: 17 sections compared against tags and releases (4.69); 2.10.0 down to 2.6.0 read by position (4.70, 4.71, 4.85, 4.98, 4.99, 4.100, 4.101). **Open at L650**, inside 2.6.0's Fixed block. Eight sections below it, 2.5.0 down to 2.0.0 |
 
 ### Three things `PLAN.md` turned up that nobody has pursued
 

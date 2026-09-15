@@ -139,9 +139,23 @@ worker. The usage-statistics tracker is the third consumer of that same
 lifecycle and got neither treatment. Section 3.5c.
 
 Six instances, on six unrelated subjects, over three months. At that count it
-stops being a series of oversights and becomes a property of the workflow: the
-diagnosis is written in prose, the remedy is written in a diff, and nothing
-holds the two together afterwards.
+stops being a series of oversights and starts looking like a property of the
+workflow: the diagnosis is written in prose, the remedy is written in a diff,
+and nothing holds the two together afterwards.
+
+**Stated that strongly it goes further than the evidence, and here is the
+counter-example, found by the same method [re-run].** Your 2.6.0 duplicate-panel
+fix ends on exactly this kind of claim, *they all go through the same lookup as
+the mount now*, about four surfaces: the label, the counter, the throttle
+indicator and the on-device chip. All four call `findBar()`, which is
+`findChatPanel()?.querySelector('#' + FLOAT_ID)`, the mount's own lookup. Four
+of four. And the one place that deliberately stays page-wide, removal at
+`injector.ts:693`, is the one your next sentence says stays page-wide and why.
+
+So the pattern is a tendency and not a law, and what separates that instance
+from the six is worth more than the count: there, the remedy had a **named
+function** that every surface had to call. The six all repaired a behaviour
+in place instead. A shared lookup is the mechanism; *be more careful* is not.
 
 **Before you read that as criticism, here is the control.** This account
 produced three instances of one diagnosis of its own inside a single session,

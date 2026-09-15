@@ -4477,6 +4477,81 @@ which is the most common result and the least useful shape to report as a
 verdict: the transport really is gone, and saying *the claim is false* would be
 as wrong as repeating it.
 
+### 4.101 Four claims checked, four hold, and one of them is the counter-example this study needed
+
+**What happened.** Reading 2.6.0 forward from L560. Four claims in it are
+checkable and all four hold, which makes this the first pass here to produce no
+correction at all. Three are routine and the fourth is not.
+
+**The routine three.**
+
+*All 140 strings are covered*, said of Korean, Turkish and Spanish. The study's
+own verified figure is **155** declared interface keys, checked on every run of
+`verify-handover-claims.mjs`. Those look like they disagree and do not:
+`src/shared/i18n/keys.json` counted at each tag gives **121 at v2.5.0, 140 at
+v2.6.0, 140 at v2.7.0, and 155 from v2.8.0 to HEAD**. The changelog is right at
+its own revision and the study is right at HEAD. *A file name is not a
+population; pin the revision*, and the cost of not pinning it here would have
+been a published contradiction between two correct numbers.
+
+*The source file no longer contains a NUL byte.* Enumerated over every tracked
+file rather than the one that was fixed, because an absence is a claim about
+what you opened: **9 tracked files contain a NUL byte and all nine are images**,
+four icons and five screenshots. No source file does.
+
+*Never grows past fifty*, of the Debug tab's call list, is asserted by
+`pipeline.test.ts:212` under that name. The claim has a test.
+
+**The fourth is worth the entry on its own.** 2.6.0 describes a duplicate-panel
+defect: Kick leaves a second copy of the chat panel carrying the same id, the
+bar was mounted into the dead one, and *everything that updated the bar
+afterwards, the label, the counter, the throttle indicator and the on device
+chip, still searched the whole page*. Its fix claim is a guard-fraction claim,
+in the plainest possible words:
+
+> They all go through the same lookup as the mount now.
+
+**This study has recorded six instances of that claim being false in this
+corpus**, and put them in the handover as a property of the workflow: a
+diagnosis written in prose, a remedy written in a diff, nothing holding the two
+together. A seventh was found in running code two passes ago (4.99). So the
+prior was strong and the population is stated by the claim itself, four
+surfaces.
+
+Checked one by one against `injector.ts`:
+
+| surface | how it finds the bar |
+|---|---|
+| the label and language tag, `updateFloatingBar` | `findBar()` |
+| the throttle indicator, `showThrottleIndicator` | `findBar()` |
+| the provider counter, `updateActiveProvider` | `findBar()` |
+| the on-device chip, `updateLocalChip` | `findBar()` |
+
+and `findBar()` is `findChatPanel()?.querySelector('#' + FLOAT_ID)`, which is
+the mount's own lookup, the one whose comment explains that a plain
+`querySelector('#channel-chatroom')` picks the dead panel. **Four of four.**
+
+And the exception is deliberate and documented: `injector.ts:693` removes the
+bar with `document.querySelectorAll`, page-wide, which is what the changelog's
+own next sentence says it does and why, *so it can never strand a copy behind*.
+A guard that is complete **and** names the one place it deliberately does not
+apply is the shape this study has been asking for throughout.
+
+**What that costs this study.** Handover section 2.1 argues from six instances
+that the diagnose-locally pattern is a property of the workflow. Six instances
+support a tendency; they do not support a law, and this is a counter-example
+found by the same method that found them. The section is not wrong and it was
+stated more strongly than the evidence carries. **A pattern with six instances
+and one counter-example is a different claim from a pattern with six
+instances**, and the difference matters most to the account being told about
+its own habits.
+
+**A confirmation pass is a result, and this is the second.** 4.85 was the first
+and it was a withdrawal; this one corrects nothing and confirms four. The reason
+to record it is the denominator: this study's replication rate is *nine
+re-taken, five changed*, and a rate is only worth quoting if the confirmations
+are counted as carefully as the corrections.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
