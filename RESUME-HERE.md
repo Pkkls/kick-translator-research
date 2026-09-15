@@ -140,6 +140,16 @@ Before publishing anything from a section, open the section after it. A
 correction lands in the next entry at the earliest, and
 [4.36](appendix/E-method-log.md) is what skipping that cost.
 
+## The two artefacts the specification asked for
+
+The specification asks for two files by name, under a heading about the first
+pass, and says neither will exist the first time it is read. **One is built
+now**: [appendix F](appendix/F-axis-ledger.md), the axis ledger, with the verdict
+per axis and the instrument each one needs. **The other is not**: there is no
+budget file, and **8 of the 22 bars**, A3, A5, A6, A11, A13, A18, A21 and A22,
+state their threshold as a ceiling, a floor, a count or a rate in it. Those
+eight cannot be read until it exists, and it is a page of numbers (4.57).
+
 ## Candidates with one instrument, and the one that got its second
 
 Recorded so they are not rediscovered, and so nothing reaches the handover

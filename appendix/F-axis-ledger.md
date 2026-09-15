@@ -58,6 +58,56 @@ work rather than an index of it.
 | A21 | A full storage area degrades the product and never corrupts it | no verdict recorded | |
 | A22 | Every finding published carries a second, differently-shaped instrument | open, with a number | Nine measurements went through the bar and **five changed** ([14.2b](../thesis/14-limits.md)). Two candidates were executed rather than re-read and both came back stronger than their reading ([4.48](E-method-log.md), [4.49](E-method-log.md)). The rate is the verdict, and it is not zero |
 
+## The instrument each axis needs, and whether it exists here
+
+Step 2 of the specification's own first pass: *walk the index and mark each axis
+with the instrument it needs and whether that instrument exists on this machine
+today. Now the queue is real.* This table is that step, taken late. "Exists"
+means it was run, or it was run in this session and is known to work, not that
+something with a plausible name is present.
+
+| Axis | Instrument it needs | Here today |
+|---|---|---|
+| A1 | An instrumented build plus real traffic, counters read back | build yes, traffic no |
+| A2 | The benches in `src/content/langDetect*.test.ts` | yes, run |
+| A3 | `compose-kick-live.mjs`, `compose-live.mjs` | present, not run here |
+| A4 | Source reading plus a live Kick DOM | source yes, live DOM no |
+| A5 | Playwright with the worker evicted by hand | possible, never run |
+| A6 | `audit_poids.py` on a release build | yes, run |
+| A7 | `bar-widths.mjs` against a copied build | yes, run |
+| A8 | `scripts/i18n-check.mjs` | present and known wrong |
+| A9 | A live browser against the host's art direction | no |
+| A10 | `probe-render-sinks.mjs` | present, classification deliberately manual |
+| A11 | `npm audit` for the tree; nothing for the detection surface | half |
+| A12 | A signed-in session in a second browser | **no**, and the missing value is named (4.47) |
+| A13 | `run-gates.mjs` | yes, read |
+| A14 | A fresh clone and the public verification | yes |
+| A15 | A worktree at the tag, a rebuild, the forge's digests | yes, run (4.52) |
+| A16 | `probe-orphan-assets.mjs` and reading | yes, run (4.53) |
+| A17 | `git` | yes |
+| A18 | Playwright on a cold profile | possible, never run |
+| A19 | `metrics-offline.mjs` | present, not run here |
+| A20 | `probe-render-sinks.mjs` | present |
+| A21 | A browser with its storage quota filled | possible, never run |
+| A22 | This method log and the replication bar | yes |
+
+Seven axes need something that exists and has never been pointed at them. One,
+A12, needs something this account does not have, and 4.47 named it down to the
+registry value. **No axis is blocked by a missing instrument that could not be
+built**, which is a different and more uncomfortable answer than "the work is
+hard".
+
+## The other artefact the specification asked for, and nobody made
+
+Eight of the 22 bars, **A3, A5, A6, A11, A13, A18, A21 and A22**, state their
+threshold as a ceiling, a floor, a count or a rate *in the budget file*. There
+is no budget file. The specification says so itself, under the heading about a
+first pass: *the ledger and the budget file are asked for by this document and
+will not be there the first time it is read.* Both were asked for, neither was
+made, and eight bars are unreadable as a consequence rather than as an
+accident. This file closes the first of the two. The second is a page of
+numbers and remains the cheapest unbuilt thing in this study (4.57).
+
 ## What this table says about the stop condition
 
 Twelve axes carry a verdict and ten do not. The first stop condition is

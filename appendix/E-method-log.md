@@ -1725,6 +1725,12 @@ recorded against any of them. The axes live in appendix A, the findings live in
 chapters organised by subject, and chapter 13 never names an axis once, so
 there was no way to read the condition at all: not a hard way, no way.
 
+**Corrected by [4.57](#457-the-specification-asked-for-this-file-by-name-and-for-one-more-nobody-made).**
+The specification asks for this ledger by name and tells the first pass to
+build it. So the gap was not unnoticed; it was an instruction that went
+unfollowed for fifteen chapters, which makes the omission larger than this
+entry described and makes the ledger less of an idea than a debt.
+
 Counted by label, 19 of the 22 axes are never mentioned outside the
 specification. **That number is not the finding and must not be reported as
 one.** It measures citation, not coverage: chapter 13 publishes upwards of
@@ -2029,6 +2035,54 @@ file, which [4.54](#454-seventeen-advisories-none-of-which-ship) established
 against a different axis. Two of the 22 bars now refer to that same missing
 document, so it is not a local omission in one axis's wording: the
 specification was written expecting a file that was never created.
+
+### 4.57 The specification asked for this file by name, and for one more nobody made
+
+**What happened.** [4.51](#451-a-stop-condition-with-a-term-nobody-could-evaluate)
+records building the axis ledger to make the first stop condition readable, and
+describes the gap as something nobody had noticed. That is not what happened.
+The specification asks for the ledger explicitly, under a heading about the
+first pass, and tells the reader how to make it: *create the ledger with one
+line per axis, every one of them marked unexamined. That is an honest state and
+it takes minutes.*
+
+So the ledger was not an idea this study had. It was an instruction this study
+was given and did not follow, through fifteen chapters, and the correction to
+4.51 is that the omission is larger rather than smaller than that entry says.
+The same passage names the failure mode it was guarding against: *the failure
+mode of a first pass is spending it on the file and not on the product.* This
+study spent every pass on the product and never made the file, which is the
+same error reflected.
+
+**The second artefact, and it is the one that matters now.** That sentence asks
+for two things: *the ledger and the budget file are asked for by this document
+and will not be there the first time it is read.* There is no budget file.
+Counted across the 22 axes, **eight bars state their threshold as a ceiling, a
+floor, a count or a rate in the budget file**: A3, A5, A6, A11, A13, A18, A21
+and A22. Those eight are not open because measurement is hard. They are
+unreadable because the document they compare against was never written, and
+each pass that reaches one of them rediscovers that at its own cost. This has
+now been found three times from three different axes before anyone counted it.
+
+**The step this file was still missing.** The same first pass has a step two:
+*walk the index and mark each axis with the instrument it needs and whether that
+instrument exists on this machine today. Now the queue is real.* Appendix F had
+verdicts and no instruments. It has both now, and the answer is uncomfortable:
+seven axes need an instrument that exists in the repository and has never been
+pointed at them, one needs something this account does not have and whose
+missing value is named to the registry key, and **no axis is blocked by an
+instrument that could not be built**.
+
+**And a defect in the gate, made by this edit and caught by running it.**
+`axis-ledger.mjs` counted every table row whose first cell is an axis label.
+Adding the instrument table gave it a second population and it reported 38
+verdicts against 22 axes **without failing**, because both tables happen to
+contain all 22 labels so the missing-and-extra checks stayed green. A check that
+silently widens its population is precisely what
+[A19](#455-the-fourth-alarming-first-number-in-five-passes-and-the-rate-is-now-the-finding)
+exists to catch in a counter, and it was in the gate written to read the file
+that records A19. It is scoped to the ledger table now, and it exits 2 rather
+than 0 if that heading ever disappears.
 
 ### The pattern across the first three
 

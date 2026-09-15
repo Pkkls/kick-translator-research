@@ -31,7 +31,18 @@ const inSpec = spec
   .filter((l) => /^#{1,4}\s*A\d{1,2}\./.test(l))
   .map((l) => l.replace(/^#+\s*/, '').split('.')[0]);
 
+// Scoped to the ledger table, not to every table in the file. Appendix F grew a
+// second table keyed by the same axis labels and this filter counted both,
+// reporting 38 verdicts against 22 axes without failing: a check that silently
+// widened its population, which is the defect A19 exists to catch in a counter.
+const from = ledger.findIndex((l) => /^##\s+The ledger\s*$/.test(l));
+if (from < 0) {
+  console.error('appendix F has no "## The ledger" heading, so there is no table to read');
+  process.exit(2);
+}
+const to = ledger.findIndex((l, i) => i > from && /^##\s/.test(l));
 const rows = ledger
+  .slice(from, to < 0 ? ledger.length : to)
   .filter((l) => /^\|\s*A\d{1,2}\s*\|/.test(l))
   .map((l) => l.split('|').map((c) => c.trim()));
 const inLedger = rows.map((c) => c[1]);
