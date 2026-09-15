@@ -106,6 +106,13 @@ Arabic does not use: پ, چ, ژ, گ. Their presence is decisive evidence for
 Persian. Their absence is weak evidence for Arabic, because a short Persian
 line can easily contain none of them.
 
+**[reported]** The repair stands on its tests and bench measurements, and
+nothing has observed it on a live Persian stream: one was judged too hard to
+find for a live harness to be worth it. The corpus recorded that as an open
+item rather than a fact, in its own words *parce que la regle sur ce qu'on n'a
+pas observe ne cesse pas de s'appliquer parce que regarder coute cher*: the rule
+about what was not observed keeps applying when looking is expensive.
+
 ### The Cyrillic script: three languages answered as Russian
 
 **[reported]** The script pre-check returned `ru` for any majority-Cyrillic

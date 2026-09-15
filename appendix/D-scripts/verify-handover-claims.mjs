@@ -187,6 +187,8 @@ if (!existsSync(harness)) {
   // and this claim's first run found the offline translation gate as well.
   claim('2.1 harnesses importing the shared gesture module', 4, files.filter((f) => /from\s+'\.\/kick-actions\.mjs'/.test(readFileSync(join(harness, f), 'utf8'))).length);
   claim('2.1 the dead-selector sweep is a runner entry', true, /\[\s*'audit-selecteurs'/.test(block));
+  claim('3.6 the runner pools by default', true, /flag\('--jobs',\s*Math\.max\(2,\s*cpus\(\)\.length\)\)/.test(runner));
+  claim('3.6 the runner keeps no record of a replayed red', false, /retry|rejou|replay|attempt/i.test(runner));
   claim('2.1 screenshot harnesses asserting PNG dimensions', 2, files.filter((f) => /^store-shots/.test(f) && /readUInt32BE\(16\)/.test(readFileSync(join(harness, f), 'utf8'))).length);
   const etatPath = join(root, '.agent', 'ETAT.json');
   if (existsSync(etatPath)) {

@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **49/49 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **51/51 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -71,11 +71,9 @@ read beside L263 for the same reason.
 **Still unopened**, most promising first: L1205 onward, the whole live-debugging
 sequence.
 
-Added by the rule in 4.36, each being the section after one already quoted:
-L518 "Le persan restera theorique", after the weight field; L589 "Piege
-d'environnement, un de plus", after the Latin-only bench; L928 "Le plancher de
-cinq lettres", after the Latin-script Bulgarian; L962 "Piege d'environnement",
-after the false probes.
+The four sections added by the rule in 4.36, each the one after a section
+already quoted, are read: L518, L589, L928, L962. L962 carried the replay rule
+now in chapter 12.4b.
 
 ### How to read them
 

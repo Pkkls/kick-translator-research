@@ -235,6 +235,22 @@ observation, requires no further work, and forecloses the investigation. It
 should therefore be the most expensive conclusion to reach, not the cheapest,
 and reaching it honestly means accounting for each varying run individually.
 
+**[reported]** A day later the same author reached it again, more carefully and
+still without a measurement. A pooled run of the offline gates came back 37 of
+38, one gate failing on an aborted navigation; replayed alone it passed, and the
+whole suite replayed gave 38 of 38. The entry calls it parallelism rather than a
+regression, on the explanation that several browsers starting together
+sometimes abort a navigation, and sets a rule, in its own words *une porte
+rouge sous `--jobs` se rejoue seule avant d'etre crue*: a gate red under
+pooling is replayed alone before it is believed. **[replicated]** The runner pools by
+default, one worker per core with a floor of two, and has no record of replayed
+reds. **[new]** The explanation may well be right. But it was asserted, and the
+rule turns every future red of that shape into a green by procedure, including
+the one that is a race in the product and only shows under load. The cheap form
+of the author's own discipline is to keep the red: log each replayed failure
+with its error, so that the second occurrence is visible as a second
+occurrence.
+
 ## 12.4c The probe that must act from the site's own world
 
 **[reported]** Changing channel on this platform is an app navigation: the URL

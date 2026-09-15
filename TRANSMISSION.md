@@ -254,7 +254,9 @@ here". It was executed. It was wrong.
 - **`grep` is rewritten to `rg`** in this environment and `rg` may be missing.
   **`ls` is rewritten too**, into a display with sizes, and a pipeline reading
   it as a list of names returned 91 lines for 56 files. Call `/usr/bin/ls` and
-  `/usr/bin/grep` when the output feeds another command.
+  `/usr/bin/grep` when the output feeds another command. The corpus hit the
+  same hook with `diff`, which answered "Files are identical" on two files six
+  lines apart, and it rewrites `npx` to `npm`. Compare with a second tool.
 - **`git checkout -- .` is not a way to ask a question about history.** The
   corpus ran it after applying a stash, then dropped the stash, and lost two
   modified harnesses. To look at the last commit without touching the tree,

@@ -210,7 +210,7 @@ And it prices the alternative, and the price is the lesson above committed one
 paragraph later. **[reported]** The weight gate's header puts the statistical
 identifier's data at 98 KB in the bundle against 68 KB for a lighter
 competitor: thirty kilobytes, thirteen percent, riding on an accuracy
-comparison the header says *has not run yet*. **[new]** The header was committed
+comparison the header says has not run, *elle n'a pas encore tourne*. **[new]** The header was committed
 at 18:23 on 2026-08-31 and the comparison at 18:34, and the header still says
 it has not run. The comparison measured the stake directly, bundled and
 minified: 81121 bytes against 174824, a difference of 93703 and forty percent of

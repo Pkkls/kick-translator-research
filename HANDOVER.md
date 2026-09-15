@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 49 of 49 holding at the commit this was last checked against, and 4
+It reports 51 of 51 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -666,6 +666,15 @@ not a dependency: it loads whichever `node_modules/playwright` an environment
 variable, a local kit path or a local install supplies **[re-run]**. Nothing
 records which version a run used, not the runner, not the resolver, not
 `ETAT.json` **[re-run]**.
+
+**The replay rule, from the day after your weather sentence.** A pooled run
+failed one gate on an aborted navigation, passed replayed alone, and the entry
+concluded parallelism and set the rule that a red under pooling is replayed
+alone before it is believed **[yours]**. Pooling is the runner's default, and
+nothing keeps a replayed red **[re-run]**. **[mine]** Keep the red anyway: one
+line appended per replayed failure, with its error. The explanation may be
+right, and a second identical line is then the difference between weather and a
+race that only shows under load.
 
 **[mine]** So the pin, if there is one, lives in whatever folder supplies
 Playwright on your machine. A clone that takes the third route the resolver

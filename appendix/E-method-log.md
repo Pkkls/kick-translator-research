@@ -1283,6 +1283,23 @@ in the count's nine restatements. The correction now lives in chapter 14.1, the
 other mentions point there, and three verifier claims hold the facts it rests
 on, including that the waiting item still says four.
 
+### 4.39 A translation in italics, three times in one session, after 4.5 was in the log
+
+**What happened.** Reading the newer journal's French sections, this account
+put English renderings in italics as though they were the corpus's words: the
+rule about what was not observed, in chapter 4, and the replay rule, in chapter
+12, both caught on the read-back before commit. Writing this entry turned up a
+third, already pushed: chapter 10 had put the weight gate's French header in
+italics as *has not run yet*. All three now quote the French and translate
+outside the italics.
+
+**Cost.** One published, and it stood for four commits. It is recorded because
+[4.5](#45-a-translation-presented-as-a-quotation) is the same error, the
+handover's section 2.1 explains why it matters, and neither stopped it: the
+switch of language between source and prose is exactly where a paraphrase
+slips into quotation marks without a decision being taken. The read-back
+caught both; nothing structural would have.
+
 ### 4.36 The pass after the one quoted corrected it
 
 **What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth
