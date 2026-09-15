@@ -3732,6 +3732,80 @@ filed as environmental; the corollary this pass adds is that accounting for it
 means finding the arrangement under which it does **not** occur, because that is
 what points at the mechanism.
 
+### 4.90 The half-typed link goes to the provider, and the debounce is the only thing stopping it
+
+**What happened.** A3's fourth bar clause, *calls to any engine per typed
+character stay under the ceiling in the budget file*, had been empty since the
+budget was built, and the row said the instrument was `compose-kick-live.mjs`.
+That harness opens the real kick.com with a signed-in profile. So the row was
+unset for want of an instrument this account was never going to run, which is
+the same shape as A15's missing gate in 4.83: **not a hard measurement, an
+unwritten one.**
+
+**It does not need a browser.** `decideComposeAction(text, lastTranslated,
+detected, target)` is a pure function returning one of seven actions, and only
+`translate` reaches an engine. The count for a message is therefore the number
+of its prefixes returning `translate`, and the controller's debounce sits before
+it, so a prefix that never settles is never decided. The prefix count is the
+**worst case**, reached by a typist slower than the debounce, which is exactly
+what the specification asks an axis to be measured at.
+
+`compose-calls.mjs` bundles the clone's own module the way its harnesses do and
+walks seven constructed cases:
+
+| case | calls / chars | per character |
+|---|---|---|
+| one long word, no spaces | 24 / 27 | **0.889** |
+| ordinary sentence | 23 / 28 | 0.821 |
+| at the two-character floor | 1 / 2 | 0.500 |
+| pure slang, four emotes | 7 / 19 | 0.368 |
+| a bare link | 7 / 25 | 0.280 |
+| a handle only | 0 / 9 | 0.000 |
+| one character | 0 / 1 | 0.000 |
+
+**The bound is 1.000 and it belongs to the gate chain rather than to a
+preference.** Past the two-character floor, every further character changes the
+text, so `skip-unchanged` cannot fire twice running and no case can exceed one
+call per character. The long-word case reaches 0.889, which says the bound is
+tight rather than theoretical.
+
+**The finding is in the two rows that look reassuring.** A bare link costs 7
+calls and pure slang costs 7, and both are messages the guards skip once they
+are complete. Printed with `--prefixes`, the reason is plain:
+
+| message | what reaches an engine |
+|---|---|
+| `https://example.com/a/b/c` | `ht` `htt` `http` `https` `https:` `https:/` `https://` |
+| `kekw kekw kekw kekw` | `ke` `kekw k` `kekw ke` `kekw kekw k` `kekw kekw ke` `kekw kekw kekw k` `kekw kekw kekw ke` |
+
+**The guards read complete tokens, and a prefix of a link is not a link.**
+`isLinkOrMentionOnly` recognises the URL from `https://e` onward and everything
+shorter is ordinary text; `isSlangOnly` recognises `kekw` and `kekw kekw` and
+loses the message the moment a new partial token starts. So a reader typing a
+URL sends seven fragments of a URL scheme to a third-party translation provider,
+and the skip that was supposed to prevent that is a property of the finished
+message while the cost is paid per prefix. The handle case is the control: `@`
+makes it a mention at the first character, so it costs nothing, and that is what
+a guard looks like when it fires on prefixes.
+
+**What actually holds the number down is the debounce, and nothing else.**
+`COMPOSE_DEBOUNCE_MS = 320`, trailing, and `compose.ts:275` clears the previous
+timer on every keystroke, so a typist faster than 320ms a character settles once
+at the end. That is a good design and it is not a guard: it is a timing
+coincidence between a constant and a human, and it degrades exactly for the
+readers who type slowly. The axis's own *breaks as* sentence names this, *the
+preview shows a translation of a half-typed word and thrashes*, and the
+measurement says it is reachable rather than hypothetical.
+
+**Direction of the error, stated because the rule demands it.** Every
+simplification here counts high. `detected` is passed as undefined, where the
+real controller may return `skip-same-lang`; the in-tab cache sits after this
+decision, so a repeat costs a decision and not a call; and a rolling rate limiter
+caps network calls independently of all of it. The number is what the decision
+permits, not what the socket sees, which is the safe direction for a ceiling and
+the wrong direction for a claim about traffic. **No claim about traffic is made
+here.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

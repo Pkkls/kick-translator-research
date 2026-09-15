@@ -23,13 +23,16 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `version-agreement.mjs` | Whether the extension's version is one answer across the package, the derived manifest, the built manifest, the newest tag, the tag reachable from HEAD and, with `--with-network`, the published release and its assets. The gate A15's bar asks for and nothing in the clone provides | [appendix E 4.83](../E-method-log.md#483-the-clause-a15-could-not-close-was-an-afternoons-instrument) |
 
-**Eleven scripts.** That count is here because two documents stated it from
+| `compose-calls.mjs` | Engine calls per typed character on the outgoing path, counted by walking a message's prefixes through the clone's own `decideComposeAction`. Sets A3's budget row without a browser, and prints which prefixes of a link or an emote run reach a provider | [appendix E 4.90](../E-method-log.md#490-the-half-typed-link-goes-to-the-provider-and-the-debounce-is-the-only-thing-stopping-it) |
+
+**Twelve scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All eleven take a path argument and print to standard output; `probe-quotes.mjs`,
+All twelve take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
-the extension's, and `version-agreement.mjs` takes only the extension's. Only
+the extension's, and `version-agreement.mjs` and `compose-calls.mjs` take only
+the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs
 Node 22.18 or later.
