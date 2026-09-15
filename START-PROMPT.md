@@ -3,6 +3,15 @@
 Copy everything between the rules. It is self-contained: every fact it needs is
 on disk, and it deliberately states none of them itself.
 
+**Send the `/goal` line first, on its own, then paste the rest.** The goal
+installs a stop condition: the session cannot end while sections remain unread,
+which is what keeps the work going across context resets rather than stopping
+at whatever felt like a natural pause.
+
+---
+
+/goal Lire par position chaque section de journal encore listee dans RESUME-HERE.md, pousser apres chacune ce qu'elle change, et ne t'arreter que lorsque cette liste est vide et que les deux scripts de verification sont verts
+
 ---
 
 You are continuing a study that already exists. Do not start it over.
