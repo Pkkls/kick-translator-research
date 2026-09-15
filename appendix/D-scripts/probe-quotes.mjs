@@ -120,4 +120,23 @@ for (const d of docs) {
 
 console.log(`${tracked.length} tracked files in the corpus, ${checked} attributed quotations checked, ${report.length} not found verbatim`);
 for (const r of report) console.log('  ' + r);
+
+// Read, not driven to zero. Some of these cannot be matched however carefully
+// they were transcribed, and a reader who does not know that will either chase
+// them or stop trusting the list. Three classes, all met in one session:
+//
+//   the specification    `scratchpad/PROMPT-PERFECTION.md` is gitignored, so it
+//                        is not among the tracked files searched above. Every
+//                        sentence quoted from it is unverifiable here (4.63).
+//   a commit message     not a file, so not in the corpus text at all.
+//   this study's words   quoting a chapter of this study is not a corpus
+//                        attribution, and the heuristic above cannot tell.
+//
+// What is left after those three is what to look at. Three of them were real
+// in 4.72: a colon become a comma, and two parentheticals lost.
+if (report.length) {
+  console.log('\nBefore chasing one: three classes here are unmatchable by construction,');
+  console.log('quotations from the untracked specification, commit messages, and this');
+  console.log("study quoting itself. See this file's tail comment. The rest is real.");
+}
 process.exit(checked === 0 ? 2 : 0);
