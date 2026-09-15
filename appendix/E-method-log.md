@@ -937,6 +937,93 @@ own series ran five changed of nine. Neither number is a story about
 competence; together they are the base rate for measuring a system from a
 position of partial knowledge.
 
+### 4.29 A draft nobody committed, and what replication left of it
+
+**What happened.** The resume file said the working tree was clean. It was not.
+A previous session had read passes twenty-five to twenty-eight of the older
+journal, which the resume file still listed as unread, and left an uncommitted
+draft: three rules for TRANSMISSION.md and a new section 8.3b of chapter 8. The
+draft tagged its numbers with the handover's vocabulary instead of the
+thesis's, and tagged a fact about French grammar **[new]**, which is
+[4.13](#413-the-provenance-scheme-had-no-slot-for-borrowed-facts) committed
+again by an account that had the entry in its repository.
+
+Nothing in it had been published, so it went through the replication bar before
+anything else. The second instrument,
+[`probe-emote-stripper.mjs`](D-scripts/probe-emote-stripper.mjs), differs from
+the first in the three places that could move the answer: it runs the
+product's own module out of git at the repair commit and its parent instead of
+retyped expressions, it feeds whole lines with their capitals and diacritics,
+and it declares the revision of every corpus. It refuses to report unless its
+extracted expressions reproduce the module's output on every line.
+
+| Draft claim | Outcome |
+|---|---|
+| Listing damage 37 before, 8 after; by rule 8, 16, 13 | **changed**: read a later revision. At the project's revision the project's 30, 13 and 13, 8, 9 hold as 29, 13 and 13, 8, 8 |
+| "The gap is tokenisation, not a different file" | **changed**: three commits and 54 lines later, a different file |
+| The two readings rank the rules in opposite orders | **withdrawn** |
+| The length rule's sixteen words, six of them English | **changed** as a finding: eight came from lines written after the repair; on the right population, five of eight |
+| `ez` damage by locale: fr 13, tr 2, es 0, pt 0 | three **held**, one **changed**, pt 1 (`talvez`); the French list gave twelve words for a count of thirteen |
+| The old suite passed because it asserted what the parser kept | **changed**: exact equalities; the blind spot was its inputs |
+| A screenshot harness drifted beside its own comment | **changed**: the comment was in the sibling harness |
+| The rule shipped for months | **held**: thirteen tagged releases |
+
+**Six of eight changed or withdrawn, one partly, one held**, before publication,
+from an account holding every rule in TRANSMISSION.md. The nine-measurement
+table above counts published measurements and is left as it is; this is the
+same bar applied one step earlier, and it produced more.
+
+**Two published sentences fell with it.** Chapter 8.3 had said from the start
+that the `ez` rule deleted *every* Turkish negative aorist and inverted meaning
+by deleting precisely the negation. Its own next paragraph gave the suffix as
+`-mez` or `-maz`, and a rule ending in `ez` cannot match `-maz`. Through the
+module, `yapmaz` and `olmaz` pass, `gitmez` vanishes whole, and meaning inverts
+only where a non-ASCII letter ends the match and leaves a stem: `içmez` becomes
+`iç`. The sentence wore **[reported]**. The notebooks never said "every".
+
+**This session's own errors in the same pass**, because a log that lists only
+the draft's would misstate whose errors they were:
+
+- A line count of the two journals by `Measure-Object -Line`, which skips blank
+  lines, gave 859 and 1198 for files of 1100 and 1536. Caught because it
+  disagreed with the resume file, before it was used.
+- Seeing the ASCII character class, this account expected the draft had counted
+  accented words the rule cannot reach. The newer listing lines are written
+  without diacritics. The prior was wrong, and it cost nothing only because the
+  probe ran before the sentence was written.
+- The corrected chapter first said the 54 added lines "are the release notes
+  for the repair". They come from three commits, one of them about permissions.
+  It first said the draft disagreed with the project "on two rules of three";
+  it disagreed on all three. And it first tagged a claim about emote coverage
+  **[replicated]** that the probe does not measure. All three were caught by
+  reading the sentence against the probe's output rather than against the
+  sentence before it.
+
+**And a sentence in the resume file with nothing behind it.** It recorded "all
+internal links resolve". Checking the links added in this pass meant checking
+all of them, and nine of 208 did not, across seven files. Eight pointed at two
+headings that had since gained a provenance tag, which GitHub folds into the
+anchor; one pointed at a numbered heading without its number. Nobody broke a
+link on purpose; a heading changed and nothing was watching. The sentence is now
+[`check-links.mjs`](D-scripts/check-links.mjs), validated by running it on an
+export of the last commit, where it reports the nine and exits 1.
+
+**Cost.** The longest pass of the session, most of it spent establishing which
+revision each number belonged to.
+
+**The rule, which is now in TRANSMISSION.md:**
+
+> A file name is not a population. Pin the revision, and when a replication
+> disagrees, check the population's history before the instrument's logic.
+
+**One candidate left open, deliberately.** Pass twenty-eight's width gate skips
+any target of zero size, not only the chip that is absent by design, and the
+bar gate asserts the gear and the pause button by DOM presence. Read together,
+a gear hidden by a stylesheet would pass both. That is two readings of source,
+not a second instrument, and the witness that would settle it needs a browser
+and a build. It is in the resume file as a candidate, not in the handover as a
+finding.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

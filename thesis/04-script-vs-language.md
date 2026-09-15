@@ -245,7 +245,7 @@ guarded surface of three, a better probe reported two of three, and tracing the
 third to its callers showed it carries no untrusted text at all **[new]**. The
 guard-as-a-fraction rule found a real gap, and the fraction it first reported
 was wrong in the direction that flatters the finding. See
-[11.3](11-privacy-surface.md#replication-bidirectional-text) for the corrected
+[11.3](11-privacy-surface.md#replication-bidirectional-text-new) for the corrected
 measurement and what survived it, and [appendix D](../appendix/D-scripts/) for
 both probes.
 

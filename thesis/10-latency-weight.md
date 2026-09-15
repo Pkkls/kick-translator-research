@@ -210,7 +210,7 @@ And it prices the alternative: the statistical identifier's data is 98 KB in
 the bundle, against a lighter competitor at 68 KB. **[reported]** Thirty
 kilobytes, thirteen percent of the bundle, ride on an accuracy comparison,
 which the project ran rather than assumed. Its result is in
-[13. Results](13-results.md#the-identifier-duel): the lighter library wins on
+[13. Results](13-results.md#131-the-identifier-duel): the lighter library wins on
 global accuracy and loses decisively on the number that was declared decisive
 in advance, non-English messages classified as English and therefore dropped in
 silence.

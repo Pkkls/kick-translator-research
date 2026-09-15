@@ -4,12 +4,17 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | Script | What it measures | Used in |
 |---|---|---|
-| `probe-render-sinks.mjs` | Markup sinks, text-node writes, direction-attribute assignments, and whether any source handles direction-control characters | [11.3](../../thesis/11-privacy-surface.md#replication-bidirectional-text), [13.7](../../thesis/13-results.md#137-observable-surface) |
+| `probe-render-sinks.mjs` | Markup sinks, text-node writes, direction-attribute assignments, and whether any source handles direction-control characters | [11.3](../../thesis/11-privacy-surface.md#replication-bidirectional-text-new), [13.7](../../thesis/13-results.md#137-observable-surface) |
 | `audit-spec.mjs` | The audit specification against the conditions it was written under | [appendix B](../B-prompt-construction.md), pass 16 |
 | `verify-handover-claims.mjs` | Every measurable claim in the handover, expected against actual, with the unverifiable ones listed rather than skipped | [HANDOVER.md](../../HANDOVER.md) |
+| `probe-emote-stripper.mjs` | What the inline emote-name stripper destroyed before and after its repair, by rule, per corpus and per revision, using the product's own module out of git | [8.3b](../../thesis/08-noise.md#83b-the-damage-measured-and-the-language-the-corpus-did-not-name), [appendix E 4.29](../E-method-log.md#429-a-draft-nobody-committed-and-what-replication-left-of-it) |
 
-Both take a path argument and print to standard output. Neither writes
-anything.
+| `check-links.mjs` | Every relative link in every Markdown file here, anchor included, against GitHub's slug rule | [RESUME-HERE.md](../../RESUME-HERE.md), [appendix E 4.29](../E-method-log.md#429-a-draft-nobody-committed-and-what-replication-left-of-it) |
+
+All five take a path argument and print to standard output. Only
+`probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
+imports, under the system temp directory, removed before it exits. It needs
+Node 22.18 or later.
 
 ## Two things they are built to demonstrate
 

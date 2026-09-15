@@ -54,7 +54,7 @@ Two sub-questions, both answerable without real users:
 ## 15.3 A valid engine comparison
 
 The reported 22 ms against 1618 ms compares different language-pair populations
-([ch. 10](10-latency-weight.md#103-why-the-comparison-is-not-valid-as-stated)).
+([ch. 10](10-latency-weight.md#103-why-the-comparison-is-not-valid-as-stated-new)).
 
 The fix is cheap: restrict the cloud series to the same pair as the local
 series, or force the local series to cover more pairs by downloading them
@@ -99,7 +99,7 @@ on, and it interacts with the emoji-denominator fix. Worth measuring only after
 **[new]** Both surfaces that render untrusted text are isolated from their
 siblings, and **no neutralisation of direction-control characters inside the
 text exists anywhere**
-([ch. 11](11-privacy-surface.md#replication-bidirectional-text)).
+([ch. 11](11-privacy-surface.md#replication-bidirectional-text-new)).
 
 The open part is not the fix, which is small. It is the measurement this study
 could not take: what a reader actually sees when a chat line carrying an

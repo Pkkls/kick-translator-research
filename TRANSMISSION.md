@@ -24,7 +24,11 @@ Each was paid for. Several were learned twice.
 The corpus committed one correct general diagnosis locally six times over three
 months. This study, holding that finding and actively hunting for it, committed
 its own three times in one session. Neither account was careless. Build the
-check, not the rule.
+check, not the rule. A comment is not a check, and it does not even reach the
+next file: the fixture harness for the store screenshots drifted to twice the
+required scale factor while its sibling, the live harness for the same
+screenshots, carried a comment saying to keep it at one. The repair was to read
+the dimensions back out of the PNG.
 
 **A guard is a fraction of the surfaces that need it, never a presence.** One
 occurrence reads as "handled" to a search and as "handled in one place of
@@ -46,11 +50,40 @@ agreeing about the same file, when the claim is about a chain of five, is not
 replication: they share a blind spot and confirm each other inside it. Declare
 the population before replicating.
 
+**A file name is not a population. Pin the revision.** A replication read the
+same path the project had measured and disagreed with it on all three rules.
+The file had been edited three times since, and the lines added included the
+release notes for the change being measured, quoting words it destroyed. On two
+of the rules every word of the disagreement came from those lines; the third
+was the instrument's own error and was never traced. At the right revision, with
+the product's own module instead of retyped expressions, the project's figures
+held to within one.
+
 **The direction of a probe's error follows what it was looking for.** Hunting
 a guard, a blind spot becomes a false accusation, so discount findings.
 Enumerating instances, a blind spot becomes a plausible short list, so
 discount the short list. Getting this backwards means trusting exactly the
 wrong result.
+
+**Run the artefact that ships, not the one that builds it.** Every gate in the
+corpus pointed at the build directory; what reaches a store is the archive. When the archive was finally exercised it passed, but the question had
+never been asked, and the same pass found five store screenshots that would
+have been rejected on their dimensions alone.
+
+**A probe run against a broken subject answers nothing, including the question
+it appeared to refute.** A width hypothesis was tested and came back "no bar at
+any width", which reads as a refutation. The build under test was the wrong
+browser's and started nothing at all. When it was repaired nobody had answered
+the width question, and answering it properly found three touch targets below
+the accessibility floor. A negative result from a subject that could not have
+produced a positive one is not a negative result.
+
+**A user report names one instance. The population is yours to enumerate.** The
+same accessibility defect was reported once, fixed once, and the rest of the
+class went on sitting there because the audits ran on dumps of two components
+and the bar appeared in neither. This is the guard-fraction rule arriving
+through a different door, and the report is what makes it dangerous: fixing
+what was reported feels like closing the item.
 
 **Validate the witness.** A witness is an action meant to make an assertion
 fail, and nothing guarantees it reached the artefact the assertion reads. A
@@ -106,7 +139,9 @@ run before blaming the environment.
 
 **A number without its unit or parameter is not a measurement.** Both accounts
 produced one: a character count read against a byte reference, and a gzipped
-size published without its compression level.
+size published without its compression level. The corresponding discipline is
+to count in the units the consumer counts in: the corpus's listing auditor
+measures UTF-16 code units because that is what a web form counts.
 
 **Look for the instrument before building one. An instrument that exists and is
 in no runner is worse than none**, because its presence reads as coverage.

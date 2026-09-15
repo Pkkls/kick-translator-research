@@ -210,7 +210,7 @@ Cloned from the public repository, at the commit the study measured against.
 |---|---|---|
 | Markup sinks for chat or provider text | all text-node; no markup path found | [new] |
 | Sole `innerHTML` in content sources | internal icon table into an SVG element, no external input | [new] |
-| Surfaces rendering untrusted text, with direction handling | **2 of 2** (the third surface carries no untrusted text; see [11.3](11-privacy-surface.md#replication-bidirectional-text)) | [new] |
+| Surfaces rendering untrusted text, with direction handling | **2 of 2** (the third surface carries no untrusted text; see [11.3](11-privacy-surface.md#replication-bidirectional-text-new)) | [new] |
 | First measurement of the same quantity, by a coarser probe | 1 of 3, withdrawn | [new] |
 | Neutralisation of direction-control characters inside rendered text | none, on any surface | [new] |
 | Source files referencing a direction-control character | 0 | [new] |

@@ -8,24 +8,30 @@ anything.
 
 ## State
 
-Everything in this repository is pushed. Working tree clean. Two scripts must
-stay green and are the first thing to run:
+Everything in this repository is pushed. Working tree clean. That sentence was
+false once, and the uncommitted draft behind it is
+[entry 4.29](appendix/E-method-log.md), so check it rather than read it. The
+first command must print nothing, and the last two are the scripts that must
+stay green:
 
 ```bash
+git status --short
+node appendix/D-scripts/check-links.mjs .
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **32/32 checkable claims, 12/12 spec conditions**, all internal
-links resolve, 28 entries in the method log.
+Last known: **32/32 checkable claims, 12/12 spec conditions, 220 internal
+links and 0 broken**, 29 entries in the method log. The link count used to be a
+sentence, "all internal links resolve", and nine of them did not.
 
 ## What is done
 
 - **15 thesis chapters**, `thesis/`
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
-- **The method log**, `appendix/E-method-log.md`, 28 recorded mistakes
-- **Three runnable probes**, `appendix/D-scripts/`
+- **The method log**, `appendix/E-method-log.md`, 29 recorded mistakes
+- **Five runnable scripts**, `appendix/D-scripts/`
 
 ## The reading that is still unfinished, and it is the productive one
 
@@ -35,9 +41,11 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 12, 14, 15, 16, 20, 22, 23, the gate-suite section at L63,
-and the probe typology at L202. Each one produced either a correction to
-something published here or a rule now in TRANSMISSION.md.
+Read so far: passes 12, 14, 15, 16, 20, 22, 23, 25 to 28 and "Left behind",
+the gate-suite section at L63, and the probe typology at L202. Each one
+produced either a correction to something published here or a rule now in
+TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
+most of an uncommitted draft built on them (4.29).
 
 **Still unopened**, with the ones most likely to pay first:
 
@@ -55,7 +63,6 @@ something published here or a rule now in TRANSMISSION.md.
 | L751 | Pass eighteen: the language a reader picks |
 | L779 | Pass nineteen: somebody else's DOM |
 | L830 | Pass twenty-one: the version nobody would hear about |
-| L937-1098 | passes 25 to 28, unread |
 
 ### Journal of 2026-08-31 (61 sections)
 
@@ -76,6 +83,19 @@ returns statements ranked by relevance, and in a chronological corpus the most
 relevant passage is often the one that was later superseded. That mistake is
 [entry 4.22](appendix/E-method-log.md) in the method log, and it cost this study
 a section asserting a question was open when a later pass had closed it.
+
+## Candidates with one instrument, waiting for a second
+
+Not findings. Each is recorded so it is not rediscovered, and so it is not
+promoted to the handover before something differently shaped has run.
+
+- **The width gate may not see a hidden button** **[read]**. `bar-widths.mjs`
+  skips every target whose rounded size is 0 by 0, not only the on-device chip
+  its comment names, and `bar-live.mjs` asserts the gear and the pause button
+  by `querySelector` presence. Read together, a gear hidden by a stylesheet
+  would pass both. The witness: in a copy of a Chrome build, never the working
+  `dist/` (the journal's pass twenty-seven is why), hide `.kt-float-opts` and
+  run both gates. If this reading is right, both stay green.
 
 ## What is measured and what is not
 

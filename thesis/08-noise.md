@@ -152,19 +152,35 @@ feature shared with a superset cannot separate a subset.
 
 ### A suffix rule against Turkish morphology
 
-**[reported]** The token `ez` appeared in a suffix list, and deleted every
-Turkish negative aorist.
+**[reported]** The token `ez` appeared in a suffix list, and deleted Turkish
+negative aorists ending in `-mez`: `etmez`, `istemez`, `gitmez`, `gerekmez`,
+`gondermez`.
 
-This is the sharpest instance of the general hazard in the corpus. Turkish is
+This is the sharpest instance of the general hazard the corpus names, and
+[8.3b](#83b-the-damage-measured-and-the-language-the-corpus-did-not-name)
+shows it is not the sharpest instance there is. Turkish is
 agglutinative: grammatical information is carried by productive suffixes
 appended to stems. The negative aorist is formed with a suffix whose surface
-form includes `-mez` / `-maz` under vowel harmony. An ASCII substring rule
-written against an English gaming interjection therefore intersects a
+form is `-mez` or `-maz` under vowel harmony **[outside]**. An ASCII substring
+rule written against an English gaming interjection therefore intersects a
 **productive grammatical morpheme** of an unrelated language.
 
-The damage profile is the worst available: it is systematic rather than
-occasional, it applies to an entire inflectional category, it is silent, and it
-inverts meaning, since what is deleted is precisely the negation.
+**A correction to this section as first published.** It said the rule deleted
+*every* Turkish negative aorist, and that it inverted meaning because what it
+deleted was precisely the negation. Both were wrong, and the paragraph above
+already held the fact that refutes the first: a rule ending in `ez` cannot
+match `-maz`. Run through the product's own pre-repair module **[new]**,
+`yapmaz`, `olmaz`, `anlamaz` and `kalmaz` pass untouched, and `gitmez`,
+`gelmez` and `istemez` vanish whole, so the negation is not isolated: the verb
+goes with it. The rule's `\w` and `\b` are ASCII, so a non-ASCII letter ends a
+match, and that produces the only case where meaning does invert: `içmez`
+leaves `iç` and `geçmez` leaves `geç`, bare stems that read as imperatives
+**[outside]**, while `görmez` leaves `gö`, which reads as nothing.
+
+The damage profile is still severe: it is systematic rather than occasional, it
+covers the half of an inflectional category that vowel harmony assigns to front
+vowels, it is silent, and it removes the verb rather than the negation, except
+where a diacritic leaves a stem behind that means the opposite.
 
 The generalisation, which this study proposes as the strongest practical claim
 of the chapter:
@@ -174,6 +190,201 @@ of the chapter:
 > question is never whether a stripping heuristic over-generates but which
 > language it over-generates into, and that question must be asked before the
 > rule ships, not after a user reports it.
+
+## 8.3b The damage measured, and the language the corpus did not name
+
+The two rules above are recorded in the notebooks as findings. A later pass
+measured them, which is a different act, and this study then re-measured them
+twice. The first instrument disagreed with the project and was wrong; the
+second agreed with the project, and the reason the first one was wrong is the
+part worth keeping.
+
+### The third rule, which is not a substring rule at all
+
+**[reported]** The stripper carried a rule the chapter above does not mention:
+any all-lowercase word of thirteen characters or more was deleted. It has no
+suffix list and no case pattern. Its only criterion is length. **[new]** It
+entered the code on 2026-05-31 and left it on 2026-08-30, and thirteen tagged
+releases carry it, from 2.1.0 to 2.9.2 (`git tag --contains 1451833
+--no-contains 7c64018`).
+
+That matters for the generalisation. A substring rule fails by colliding with a
+morpheme of another language, which is the claim 8.3 makes. A length rule needs
+no second language to fail: it encodes an implicit belief about how long a word
+gets, and it fires wherever that belief is wrong.
+
+### What it destroys, measured twice
+
+The instrument is
+[`probe-emote-stripper.mjs`](../appendix/D-scripts/probe-emote-stripper.mjs). It
+takes the product's own module out of git at the repair commit and at its
+parent, feeds each non-empty line of `store-listing.md` to it whole, as a chat
+message would arrive, and diffs the words going in against the words coming
+out. It attributes each loss to a rule using expressions extracted from the
+module's source, and refuses to report unless applying those expressions in
+order reproduces the module's output on every line.
+
+| at the revision the project measured | project **[reported]** | this study **[replicated]** |
+|---|---|---|
+| word tokens | 11583 | 12061 |
+| distinct words destroyed, before | 30 | 29 |
+| distinct words destroyed, after | 13 | 13 |
+| attributed to the mixed-case rule | 13 | 13 |
+| attributed to the length rule | 8 | 8, the same eight |
+| attributed to the suffix rule | 9 | 8, all from `ez` |
+
+The project's figures hold. The token gap is tokenisation. The one-word gap on
+the suffix rule was not traced.
+
+**The first instrument, and why it disagreed.** It tokenised a cleaned copy of
+the listing, tested each word against retyped expressions, and reported 37
+destroyed before and 8 after, with the length rule at 16, the suffix rule at 13
+and the mixed-case rule at 8. From that it concluded that the two readings
+ranked the rules in opposite orders. That conclusion was drafted and never
+published, and it was wrong for a reason no amount of care over the
+expressions would have caught:
+
+- **The file was a different revision.** The listing was edited three times
+  after the project measured it, and the first instrument read the latest one.
+  The 54 non-empty lines present now and absent then come from three commits:
+  the release notes for the repair itself, in eleven languages, which describe
+  the defect and quote words it destroyed; six lines on permissions; and the
+  notes for the following release, on touch targets. Measured separately
+  **[new]**, those lines contribute 8 words to the length rule, 8 to the suffix
+  rule and none to the mixed-case rule, and every word by which the latest
+  revision exceeds the earlier one on those two rules comes from them.
+- **The mixed-case count was low for a reason that was not recovered.** At the
+  latest revision the module destroys 13 words by that rule, as at the earlier
+  one. The first instrument found 8. It was not kept, so the missing five
+  cannot be traced to a step.
+
+A population that contains text written about the result being measured is not
+a population, and nothing about the file's name said so. The earlier draft also
+stated that the gap between its token count and the project's was
+"tokenisation, not a different file". It was a different file.
+
+### What the length rule deletes in its author's own language
+
+At the revision the project measured, the length rule destroyed eight words
+**[replicated]**:
+
+> completamente, almacenamiento, armazenamento, **certifications,
+> communications, conditionally, creditworthiness, justifications**
+
+Five of the eight are English. The rule was written by an English-speaking
+author, against English-language emote codes, and it deletes ordinary English
+derivational morphology. Nothing about it required a second language to break.
+What it actually encodes is a prior on word length that is wrong for
+polysyllabic derivation in every language it was applied to.
+
+The 54 lines written after the repair are a separate population of real prose,
+reported beside the first rather than merged into it. They add eight more
+**[new]**: `accesibilidad`, `acessibilidade`, `reaproveitando`,
+`accessibilite`, `accessibility`, `erisilebilirlik`, `kurmadiginizi`,
+`yuksekliginde`. The Turkish three are there only because those lines are
+written without diacritics: the rule's character class is ASCII, so
+`erişilebilirlik` breaks at `ş` into pieces shorter than thirteen and survives.
+How often chat is typed without diacritics is a frequency this study cannot
+measure ([chapter 14](14-limits.md)).
+
+> A rule whose criterion is a surface statistic, length, case shape, character
+> class, is a claim about a distribution. It does not need to leave the
+> author's own language to be false, and it will be most false in whichever
+> language sits furthest from the distribution the author never wrote down.
+
+### The language the corpus did not name
+
+The notebooks attribute the `ez` damage to Turkish **[reported]**, and name
+Spanish `vez` and Czech `bez` and `kez` alongside it.
+
+The product ships a second body of real prose in each of its interface
+languages: its own interface strings. Population declared: for each locale,
+the values of the shared catalogue, the content-script catalogue and the
+manifest messages at the current revision, with English taken from the
+catalogue's keys, which are the English source strings. Run through the
+pre-repair module **[new]**:
+
+| locale | distinct words | destroyed, all rules | destroyed by `ez` |
+|---|---|---|---|
+| fr | 493 | 24 | **13** |
+| tr | 560 | 14 | 2 |
+| pt | 478 | 12 | 1 |
+| es | 470 | 11 | 0 |
+
+The other six locales, `ar`, `en`, `ja`, `ko`, `ru` and `zh`, lose nothing to
+`ez`. The first instrument reported the same 13 and 2 over a population it did
+not declare, and 0 for Portuguese. The Portuguese word is `talvez`, "perhaps",
+the counterpart of the Spanish `vez` the notebooks name.
+
+The thirteen French words are not a scatter:
+
+> augmentez, cliquez, enregistrez, laissez, lisez, ouvrez, rechargez,
+> regardez, relisez, restaurez, sélectionnez, tapez, utilisez
+
+The first instrument listed twelve and counted thirteen. The missing one is
+`sélectionnez`, which the ASCII word boundary cuts after `é`, so the rule
+deletes `lectionnez` and leaves `sé`.
+
+Every one is a second-person plural form. **[outside]** In French, `-ez` ends
+the second-person plural of nearly every verb across the present, the
+imperfect, the future, the conditional and the subjunctive, with `êtes`,
+`faites` and `dites` the common exceptions. Turkish `-mez` marks one polarity
+of one tense, for half the vowels.
+
+What that licenses, and what it does not. In interface text the French loss is
+six and a half times the Turkish by distinct words. Interface text is written
+in imperatives addressed to *vous*, which is the register that maximises `-ez`,
+and chat is written in neither, so the ratio says nothing about users. Two
+ordinary French words outside that register, `avez` and `assez`, are destroyed
+in the listing's newer prose **[new]**, which shows the damage does not need
+the imperative; it does not show how often it happened. The defensible claim is
+narrower than the one first drafted: **the rule intersected a person-and-number
+ending of an entire verb system, in one of the ten shipped locales, and the
+notebooks named a smaller category in another.**
+
+That was available to anyone who ran the rule over text in the languages the
+product claims to support.
+
+### How it was found, which is the part that transfers
+
+**[reported]** Not by a gate, and not by a user report. Fabricated screenshots
+were staged on a mock page, twelve messages in and ten translations out. The
+product's own reason on the two untranslated lines said the translation came
+back identical to the original, which is exactly what the mock returns for a
+sentence it does not hold.
+
+The available move was to accept that: the mock is incomplete, the gap is in
+the harness, move on. Instead the mock was instrumented to say *which* sentences
+it could not find, and they were not the sentences that had been typed. Two
+words had been deleted before anything left the page.
+
+> When a stub reports that it cannot handle an input, read the input. The
+> stub's own incompleteness is the most comfortable available explanation and
+> it is the one that ends the investigation.
+
+The regression suite around this is the second transferable part. Eight new
+tests, seven of which fail against the old rules; the ten parser tests that
+already existed passed either way **[reported]**.
+
+Why they passed is not what this section first said. The draft blamed the shape
+of the assertions, as though the suite checked what the parser kept and never
+what it threw away. Read at the parent of the repair commit **[new]**, the
+assertions are exact equalities on the output, `realText` equal to
+`'vamos agora'`, which fail the moment a word goes missing. What the suite
+lacked was an input the rules could damage: its sentences are `hello world`,
+`vamos agora`, `hi there`, `check now`, with no word ending in `ez`, none of
+thirteen letters and none in mixed case. **An exact assertion over inputs in one
+register tests nothing outside that register**, and a stripping rule is a claim
+about every register the product will meet.
+
+> A filter must be scored on both of its outputs. Coverage alone is half a
+> measurement, and it is the half that never goes down.
+
+By that score the length rule was indefensible on its own numbers: it destroyed
+eight ordinary words in the corpus the project measured, five of them English
+**[replicated]**, and caught a single emote name that another rule already
+caught **[reported]**; the emote sample was not re-run here. It bought nothing,
+and thirteen tagged releases carried it **[new]**.
 
 ## 8.4 Two opposite strategies for one problem
 
@@ -206,14 +417,32 @@ surfaces that need this guard have it, and do they agree*.
    noise; it is separable from smash by lexical diversity.
 4. Every substring-stripping heuristic is a claim about all forty-two languages
    and must be evaluated as one.
-5. Inputs that broke a rule belong in the test file permanently.
-6. A claim about a pipeline's composed behaviour must be measured at the
-   composition; both components can be correct while the belief about their
-   combination is false.
+5. A heuristic whose criterion is a surface statistic rather than a substring,
+   word length above all, is a claim about a distribution, and it can be false
+   in the author's own language without ever leaving it.
+6. A filter is scored on both of its outputs, what it catches and what it
+   destroys, over text in every language the product claims to support. A rule
+   that destroys eight ordinary words to catch one emote name another rule
+   already caught is refuted by its own numbers.
+7. An exact assertion over inputs in one register tests nothing outside it. The
+   parser suite that let a grammatical ending be deleted asserted equality, and
+   would have failed on the first French imperative it was given; it was never
+   given one.
+8. A corpus used to measure a change must be taken at the revision the change
+   was measured against. A file that later absorbs text about the result is a
+   different population under the same name.
+9. Inputs that broke a rule belong in the test file permanently.
+10. A claim about a pipeline's composed behaviour must be measured at the
+    composition; both components can be correct while the belief about their
+    combination is false.
 
 ---
 
 *Sources: project work queue, "Done, kept for the record"; `HANDOFF.md`
-sections 6 and 8. All measurements **[reported]**. The linguistic analysis of
+sections 6 and 8; journal of 2026-08-30, pass twenty-five; commit `7c64018`
+and its parent. Measurements in 8.3 and 8.3b are **[replicated]** or **[new]**
+where tagged, by
+[`probe-emote-stripper.mjs`](../appendix/D-scripts/probe-emote-stripper.mjs);
+all others **[reported]**. The linguistic analysis of
 syllabic sonorants, agglutinative over-generation and expressive lengthening is
 this study's **[new]**.*

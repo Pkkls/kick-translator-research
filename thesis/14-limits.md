@@ -93,7 +93,7 @@ The 3 to 10 improvement was measured on ten messages, all of the same shape
 
 ### The latency comparison
 
-Fully developed in [ch. 10](10-latency-weight.md#103-why-the-comparison-is-not-valid-as-stated):
+Fully developed in [ch. 10](10-latency-weight.md#103-why-the-comparison-is-not-valid-as-stated-new):
 the two series differ on language pair, the local series has n=8, and its p95
 is a maximum. The mechanism claim survives; the ratio does not.
 
@@ -109,7 +109,7 @@ and is not evidence that it works.
 The measurements tagged **[new]** and **[replicated]** were taken against one
 checkout at one moment, mostly by reading source rather than by observing a
 running build in a browser. For the direction-handling finding in
-[ch. 11](11-privacy-surface.md#replication-bidirectional-text), the count is a
+[ch. 11](11-privacy-surface.md#replication-bidirectional-text-new), the count is a
 count of call sites: a surface rendered by a path this study did not identify
 would be missed, and the rendered consequence was never observed. A statement
 about call sites is weaker than a statement about what a reader sees, and this

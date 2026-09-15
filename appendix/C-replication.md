@@ -36,7 +36,7 @@ git rev-parse --short HEAD
 
 Produces the figures in
 [13.7](../thesis/13-results.md#137-observable-surface) and the corrected
-measurement in [11.3](../thesis/11-privacy-surface.md#replication-bidirectional-text).
+measurement in [11.3](../thesis/11-privacy-surface.md#replication-bidirectional-text-new).
 
 ```bash
 node appendix/D-scripts/probe-render-sinks.mjs /path/to/kick-chat-translator
