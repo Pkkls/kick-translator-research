@@ -10,6 +10,31 @@ Read every accuracy figure against
 taken on the bench that produced the rule measures the fitting, not the
 performance.
 
+**And against a rule the corpus states that this table breaks.** A late journal
+entry records that the project's own bench covered 14 languages, all
+Latin-script, so every detection figure it had published was a Latin figure;
+Arabic, Japanese, Korean, Russian and Chinese had never been looked at once.
+Extended to 176 lines in 19 languages, the split is stark **[reported]**:
+
+| | Per-language result | Silent losses |
+|---|---|---|
+| Non-Latin | ar 25/25, ja 25/25, ko 25/25, ru 25/25, zh 24/25 | **0 of 1125 pairs** |
+| Latin | es 3/8, fr 4/5, pt 3/6, tr 1/4 | **8 of 483 pairs** |
+
+Their conclusion is a rule, and this study's tables do not obey it:
+
+> Reported per language, never as a total. All the damage measured in recent
+> days lives in the Latin half, and the half decided by writing system is
+> clean. That is not a compliment to the code, it is the reason the two halves
+> must never be averaged again.
+
+**Several totals below average exactly those two populations**, because this
+study transcribed aggregate figures from earlier entries without the later
+split. Where a figure is a single number over mixed scripts, it hides a
+distribution with two modes: near-perfect where the script decides, and lossy
+where it does not. Read every aggregate here as an average over two mechanisms,
+not as one measurement.
+
 ---
 
 ## 13.1 The identifier duel

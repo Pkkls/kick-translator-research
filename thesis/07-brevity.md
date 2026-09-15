@@ -131,13 +131,34 @@ is available:
 > fails. Its answer on those inputs is a symptom of the failure, so any rule
 > keyed on that answer is anti-correlated with the thing it is trying to catch.
 
-This also produces an architectural observation. The table is a **cache
-populated by knowledge rather than by traffic**. Conventional caches exploit
-temporal locality in what users happen to send; this one exploits the fact that
-the head of the distribution in any greeting-heavy medium is short, stable,
-and knowable in advance. For a chat product the head is very heavy, so a small
-hand-built table plausibly outperforms a much larger traffic-driven cache on
-the metric that matters, which is requests avoided per byte shipped.
+This also produces an architectural observation, and the corpus reaches it
+independently and with numbers. The table is a **cache populated by knowledge
+rather than by traffic**. Conventional caches exploit temporal locality in what
+users happen to send; this one exploits the fact that the head of the
+distribution in any greeting-heavy medium is short, stable, and knowable in
+advance.
+
+**[reported]** Measured over the same 90 pairs, the table repairs 26, replaces
+35 answers that were already correct with its own register, is no better on 29,
+and answers all 90 without touching the network. The project's own reading:
+
+> The file sells itself as an anti-transliteration measure; measured, it is
+> mostly a zero-latency cache over the ninety commonest expressions in a chat,
+> which repairs 26 pairs along the way. The calls avoided are the larger half
+> of what it buys, against an endpoint that soft-bans by IP.
+
+Two wiring decisions follow from that reading and are worth transferring. The
+table answers **before** the cache rather than after, because it is a
+synchronous lookup where the cache is IndexedDB, and nothing is written back:
+the answer is a pure function of the input, so a cache entry would only buy a
+stale copy of a table that ships with the build. And the provider recorded is
+the on-device one rather than the network one, because nothing was asked of
+anybody, which keeps the statistics honest about where an answer came from.
+
+**The general point is about naming.** A component whose measured value is
+mostly X while its name and header say Y will be maintained as Y: someone will
+weigh its accuracy contribution, find it modest, and remove weight that was
+actually buying request avoidance. A name is a maintenance instruction.
 
 ## 7.5 The reach of the short-word table
 

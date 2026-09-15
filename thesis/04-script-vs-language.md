@@ -25,6 +25,22 @@ is Arabic. Most Cyrillic text is Russian. The shortcut is not a linguistic
 claim, it is a prior, and it is a prior about who is watching rather than about
 how writing works.
 
+**The silent-drop rate, measured.** This study asserted throughout that the
+worst failure here is a line dropped without trace, and only late in the work
+found the corpus's own number for it **[reported]**. Over 663 message-and-target
+pairs needing a translation, **11 are skipped as "already in your language" for
+a message that is not: 1.7 percent.** Eleven of the 51 test messages are lost at
+at least one target, and **all eleven are at non-English targets**: French 4,
+Portuguese 3, German 2, Spanish 1, Indonesian 1.
+
+Two details make that number more useful than its size suggests. The skip is not
+owned by the English rule that gets the attention: `ignoreEnglish` loses one
+message in thirty-four, while the same-language check owns the rest and asks
+only that the wrong answer *equal the reader's target*, which is a different and
+larger door. And the loss is concentrated where the reader is least likely to be
+served by the fallback, since an English-target reader is the best-covered case
+in the system.
+
 The failure mode follows directly. When the prior is wrong, the shortcut is not
 merely unhelpful, it is **confidently** wrong, because it returns an answer that
 the pipeline treats as looked-up rather than guessed. And in this system the

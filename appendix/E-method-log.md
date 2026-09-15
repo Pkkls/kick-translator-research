@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-four. Listed in full because a method log that omits them is an
+Twenty-five. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -780,6 +780,40 @@ the engine answers `en` for *bonjour*, *merci*, *gracias*, *ciao* and *lindo*,
 of six and kept none of the six witnesses, the exact inverse of its promise.
 A failing component's output is a symptom of the failure, so a rule keyed on it
 is anti-correlated with what it means to catch.
+
+### 4.25 The corpus states the rule this study's results table breaks
+
+**What happened.** Continuing through unread sections found the project
+discovering, mid-corpus, that its own bench covered 14 languages all in Latin
+script, so **every detection number it had published was a Latin number** and
+five of the ten languages its interface speaks had never been measured once.
+
+Extended to 176 lines in 19 languages, the two halves separate completely: zero
+silent losses in 1125 non-Latin pairs, eight in 483 Latin ones; per-language,
+25 of 25 across Arabic, Japanese, Korean and Russian against 3 of 8 for Spanish
+and 1 of 4 for Turkish.
+
+Their rule: **reported per language, never as a total**, because the half
+decided by writing system is clean and all the damage lives in the other.
+
+**This study's results chapter breaks that rule.** It carries aggregate figures
+transcribed from earlier entries, which average a near-perfect population with a
+lossy one. The chapter now says so, but the honest fix would be to re-derive
+each figure per language, which the corpus supports and this study did not do.
+
+**And it is the same error as [4.18](#418-measured-one-file-and-concluded-about-a-chain)
+at one level up.** There, a count over one file of five became a claim about a
+chain. Here, a measurement over one script family became a claim about a
+detector. In both cases the instrument was sound and the population was not the
+one the claim was about. The corpus caught its version; this study caught its
+own only after reading theirs.
+
+**Also recovered, and it matters more than the correction**: the silent-drop
+rate the whole thesis rests on had a measured value in the corpus all along.
+663 pairs, 11 skipped as "already in your language" for messages that are not,
+1.7 percent, all at non-English targets. Ten chapters asserted that this failure
+class is the worst one here without ever stating its size, because a theme query
+had never surfaced the entry that measured it.
 
 ### The pattern across the first three
 
