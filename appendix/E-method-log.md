@@ -1930,6 +1930,55 @@ weaker than it asked for is carried by a measurement taken two passes earlier
 for a different axis, which is an argument for the ledger: the evidence for one
 bar frequently sits under another.
 
+### 4.55 The fourth alarming first number in five passes, and the rate is now the finding
+
+**What happened.** A19's bar contains one clause the axis says a gate can
+check: a counter and the population it is divided by share a prefix and differ
+by a final segment, and *a numerator whose denominator does not exist under the
+same prefix is a gate failure*. Thirty-six counters and timings were enumerated
+from the call sites, and the rule was applied mechanically: 20 counters under 15
+prefixes, **12 of 15 prefixes holding a single counter**.
+
+That number is wrong by a factor of four. The rule was applied as written and
+the code uses a shape the rule does not describe: `retry.normalized` and
+`retry.normalized.answered` are a pair, a total and a sub-count, and the
+mechanical grouping split them because one is a prefix of the other rather than
+a sibling of it. Dynamic keys are a third shape: `skip.${reason}` expands at
+runtime into a family that sums to its own denominator. Counting all three
+shapes, **3 of 20 counters have no denominator readable beside them**:
+`dom.attach`, `drop.recycled.unrescued`, `google.batch.fallback`. Two of those
+three carry a word in their own name that implies a ratio, which is what makes
+them worth naming at all.
+
+**The rate, which is the reason this entry is not just another correction.**
+Counting this session's passes over the specification:
+
+| pass | first number | after checking |
+|---|---|---|
+| [4.44](#444-three-structural-findings-in-the-file-the-reading-list-named-next-and-two-of-them-died-on-contact) | three structural defects in the queue | one, and it was not a defect |
+| [4.53](#453-a-probe-built-for-one-finding-refuted-the-finding-before-it-was-published) | an artefact left behind unnoticed | kept deliberately, documented |
+| [4.54](#454-seventeen-advisories-none-of-which-ship) | 17 advisories, 3 critical | 0 reaching the bundle |
+| this one | 12 of 15 prefixes unpaired | 3 of 20 counters |
+
+Four passes, four first numbers that were alarming and wrong in the same
+direction. That is not four accidents. [The pattern across the first three](#the-pattern-across-the-first-three)
+in this log says a probe that is wrong is almost always wrong in the alarming
+direction, and states it about probes. **It is a property of first passes, not
+of probes.** A first count applies a rule to a population before the population
+has told you which rule it obeys, and a rule applied early fails by finding
+violations, never by finding compliance. So the useful form of the rule is a
+number rather than a warning: on this specification, in this session, the first
+count has been wrong four times out of four, and it has always been too high.
+
+**What else A19 leaves open.** [Chapter 13](../thesis/13-results.md) publishes a
+6.7 percent in-tab cache hit rate and a 1.0 percent persistent rate, 8 hits in
+821 lookups, and does not say that these come from an instrumented build. The
+same chapter says elsewhere that the release strips instrumentation, so the two
+statements sit a few lines apart without being connected, and a reader can take
+figures that only an instrumented build can produce as describing the product
+they installed. The figures are `[reported]` and there is no reason to doubt
+them; what is missing is the build they describe.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
