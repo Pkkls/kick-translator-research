@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 64 of 64 holding at the commit this was last checked against, and 4
+It reports 67 of 67 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -979,6 +979,24 @@ open clause, *one version everywhere, checked by a gate rather than by eye*, is
 met. **It is deliberately not moved for you**: that is a change to your
 repository. While it sits in this one it is an instrument in no runner, which is
 the thing your own handoff and this account's chapter 12 both warn about.
+
+**Three lines, and it is the first thing anyone cloning you will see.**
+`run-gates.mjs` reports a missing prerequisite as a failed gate. On a machine
+with no browser driver it prints **32 `ECHEC` of 40 and exits 1**, where those
+32 exited 2 and `playwright.mjs` says in its own header that two rather than one
+is deliberate, *a missing prerequisite is not a failed gate*. `run-live.mjs`
+already does it right: `r.code === 2 ? 'PREREQ'`, and `echecs` filtered apart
+from `absents`. The offline runner classifies at three sites as `r.code === 0 ?
+'ok' : 'ECHEC'` and totals with `results.filter((r) => r.code !== 0)`.
+
+Measured here at `226a176` with no driver installed: 8 gates ran, the seven
+Python audits and `poids-notes`; 32 could not start; none was reported as a
+prerequisite. **Nobody sees an empty green, which is the failure this axis is
+usually about. They see a repository that looks broken** and is not. You built
+the distinction and put it in the runner where it almost never fires, since your
+live gates are hand-launched anyway, and left it out of the one holding every
+gate that can produce a 2. This account did the mirror image of the same thing
+and it is in section 3.3.
 
 **And fix the count your generator writes.** `state.mjs` lists 32 orphan
 harnesses and 13 of them are launched or imported: all nine of `run-live.mjs`'s

@@ -215,7 +215,10 @@ Cloned from the public repository, at the commit the study measured against.
 | Unit tests | **1034 passed, 0 failed** | [replicated] |
 | Harness files present in the clone | **56** | [replicated] |
 | Audit scripts present | **8** | [replicated] |
-| Gate runner without a browser driver | **exits non-zero**, names the cause, offers three fixes | [replicated] |
+| Gate runner without a browser driver | **exits 1**; the shim names the cause and offers three fixes | [replicated] |
+| Offline gates, and how many reach Playwright | 40, of which **32** | [new] |
+| What those 32 are reported as | **`ECHEC`**, not `PREREQ`; the runner has no branch for exit 2 | [new] |
+| What actually runs without a driver | **8**: seven Python audits and `poids-notes` | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
 | Unit-test count stated in the README | 1032, against 1034 actual | [replicated] |
 

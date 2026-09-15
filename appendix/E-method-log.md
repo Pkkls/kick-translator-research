@@ -3456,6 +3456,87 @@ changelog against a source is looking for disagreement, so every unexplained
 gap presents itself as one. The discipline that caught it is not scepticism, it
 is asking what else could produce this number before writing the sentence.
 
+### 4.86 The suite refuses, the runner reports it as a failure, and this study called that correct
+
+**What happened.** Two reading passes in a row had confirmed published figures
+rather than corrected them (4.85, and the interface-locale count, where nine
+translation files plus English inline is the ten the study already states). The
+corpus's own dead-end rule covers that exactly, *seven consecutive review passes
+over a document produced nothing that one execution pass then found in minutes*,
+so this pass stopped reading and ran the clone's offline gate suite.
+
+`node scratchpad/harness/run-gates.mjs --no-build`, on a machine with no browser
+driver, against the clone at `226a176`:
+
+| | |
+|---|---|
+| Offline gate rows | 40 |
+| Reaching Playwright, directly or through one import hop | **32** |
+| Reported `ok` | 8, the seven Python audits and `poids-notes` |
+| Reported `ECHEC` | **32** |
+| Reported `PREREQ` | **0** |
+| Runner exit | 1 |
+
+The clone's working tree was clean before and after; `--no-build` was used so
+nothing rewrote `dist/`, which is a trap this corpus already paid for.
+
+**What the study published, tagged `[replicated]`.** Chapter 12.6: *Run a gate
+without it and the runner exits non-zero, prints why, and offers three ways to
+supply it*, followed by *That is the correct behaviour and it is worth stating
+as the positive result it is: the one failure mode this axis exists to catch, a
+newcomer seeing a green that is empty, does not occur here. The suite refuses
+rather than pretending.* Chapter 13.6b carried the same as a row.
+
+**Every clause of the measurement is true and the conclusion does not follow.**
+The runner does exit non-zero. The reason is printed and three fixes are
+offered, by the shim, thirty-two times. What was never checked is the one thing
+the conclusion is about: whether the refusal survives into the report. It does
+not. `playwright.mjs` states the rule in its own header, *two rather than one on
+purpose: a missing prerequisite is not a failed gate*, and exits 2.
+`run-live.mjs` implements it, `r.code === 2 ? 'PREREQ'`, with `echecs` filtered
+apart from `absents`. `run-gates.mjs` classifies at three sites as `r.code === 0
+? 'ok' : 'ECHEC'` and totals with `results.filter((r) => r.code !== 0)`. There
+is no branch for 2 anywhere in it.
+
+**Non-zero was the wrong aggregate, and this study has the entry that says so.**
+[4.49](#449-a-gate-that-cannot-measure-reports-the-same-exit-code-as-one-that-measured)
+is the same defect one directory away and pointing the other way: a weight gate
+that could not measure exited 0 exactly like one that had, so a caller reading
+the exit code could not tell a measurement inside the margin from no measurement
+at all. Here a gate that could not start exits like one that ran and failed.
+**Both errors are a two-valued reading of a three-valued signal**, and this
+study found one of them by reading a file and missed the other while running the
+suite that demonstrates it. The measurement that would have caught it is one
+column wider than the one that was taken: not *what code did it exit* but *what
+did the report call it*.
+
+**The project made the mirror of the same mistake, which is why this is worth
+the space.** It built the three-valued distinction and put it in the runner
+where it almost never fires, since the live gates open real kick.com and are
+launched by hand anyway, and left it out of the runner that holds all 32 gates
+capable of producing a 2. An instrument in the wrong place, again, and the third
+time in five passes: the ledger's A13 evidence taken from the wrong pass (4.82),
+a version gate written into the wrong repository (4.83), and now a distinction
+implemented in the wrong runner.
+
+**What a newcomer actually meets.** Not an empty green, which is the failure
+A14 is usually about and which this study checked for and correctly ruled out.
+Thirty-two red gates on a repository whose 1034 unit tests pass, where the
+honest report is *8 ran, 32 could not start*. That is a worse first impression
+than an empty green and it is three lines from being right, and both of those
+facts are now in the handover.
+
+**No witness was planted, and the reason is the constraint rather than the
+cost.** Demonstrating that a gate exiting 1 and a gate exiting 2 are
+indistinguishable in this report means adding a failing gate to the clone, which
+is a change to the extension. Three instruments agree without one: the runner's
+own three classification sites and its filter, the sibling runner's contrasting
+code, and a 40-gate run whose output holds 32 `ECHEC` and no `PREREQ`. The
+witness the developing account can run in one line is in the handover. A claim
+in `verify-handover-claims.mjs` now asserts the defect rather than the repair,
+so **fixing `run-gates.mjs` turns this study red**, which is the intended way
+for a session here to learn that it was fixed.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -326,16 +326,45 @@ rule the file states about itself, and it argues that the rule needs a
 mechanism rather than a resolution: a generated file cannot rot, and a prose
 file will, including one written by someone who knows it will.
 
-**What a fresh clone genuinely cannot do**, and the project handles it well.
-The gates need a browser driver, which is deliberately not a dependency: the
-continuous integration runs the four npm commands and never the gates, so
+**What a fresh clone genuinely cannot do**, and the project handles half of it
+well. The gates need a browser driver, which is deliberately not a dependency:
+the continuous integration runs the four npm commands and never the gates, so
 adding it would pull browser binaries into two jobs for nothing. Run a gate
-without it and the runner **exits non-zero**, prints why, and offers three ways
-to supply it **[replicated]**.
+without it and the shim **exits 2**, prints why, and offers three ways to supply
+it **[replicated]**.
 
-That is the correct behaviour and it is worth stating as the positive result it
-is: the one failure mode this axis exists to catch, a newcomer seeing a green
-that is empty, does not occur here. The suite refuses rather than pretending.
+An earlier version of this paragraph said the runner *exits non-zero* and called
+that correct, the positive result being that a newcomer never sees an empty
+green. **The first half is true and the conclusion was drawn from the wrong
+number.** *Non-zero* is exactly the aggregate inside which the refusal is
+invisible. `playwright.mjs` says in its own header that two rather than one is
+deliberate, *a missing prerequisite is not a failed gate*. `run-live.mjs`
+implements that, printing `PREREQ` for a 2 and counting absences apart from
+failures. **`run-gates.mjs` does not**: it classifies at three sites as
+`r.code === 0 ? 'ok' : 'ECHEC'` and totals with `results.filter((r) => r.code
+!== 0)`, so a 2 is a failure to it.
+
+Run here against the clone at `226a176`, on a machine with no browser driver
+**[new]**:
+
+| | |
+|---|---|
+| Offline gates | 40 |
+| Reaching Playwright, directly or through one import | **32** |
+| Reported `ok` | 8, the seven Python audits and `poids-notes` |
+| Reported `ECHEC` | **32** |
+| Reported `PREREQ` | **0** |
+| Runner exit code | 1 |
+
+So the newcomer does not meet an empty green. They meet **thirty-two red
+gates**, on a repository whose tests pass, and the only thing wrong is one
+absent dev dependency that the shim underneath has already diagnosed correctly
+in thirty-two separate messages. That is the same defect as
+[4.49](../appendix/E-method-log.md), where a gate that could not measure exited
+0 exactly like one that had, and it is that defect run backwards: here a gate
+that could not start exits like one that ran and failed. The project found and
+fixed the distinction in the runner where it almost never fires, and left it out
+of the runner that holds all 32 gates capable of firing it.
 
 The general statement survives the correction, in a sharper form:
 

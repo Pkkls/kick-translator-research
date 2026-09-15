@@ -201,6 +201,18 @@ if (!existsSync(harness)) {
   // C.3 to report both numbers was about documented exclusions, not this.
   claim('3.3 orphans able to exit 1', 7, orphans.filter((f) => /process\.exit\(\s*1\s*\)/.test(readFileSync(join(harness, f), 'utf8'))).length);
 
+  // playwright.mjs exits 2 and says in its own header that a missing
+  // prerequisite is not a failed gate. run-live.mjs implements that. The
+  // offline runner does not, and it is the one holding all 32 gates that can
+  // produce a 2, so the distinction exists where it never fires and is absent
+  // where it fires every time on a machine without a browser driver (4.86).
+  // These two expectations are written as the defect: fixing run-gates.mjs
+  // turns the first red, which is the intended way to learn it was fixed.
+  claim('3.3 the offline runner tells a prerequisite from a failure', false, /code === 2|code !== 0 && .*!== 2/.test(runner));
+  claim('3.3 the live runner does', true, /code === 2/.test(liveSrc));
+  claim('3.3 the shim exits 2 and says why', true,
+    /process\.exit\(2\)/.test(readFileSync(join(harness, 'playwright.mjs'), 'utf8')));
+
   // 2.1: the cure the corpus applied, one instance at a time.
   // 4, not the 3 the journal names: first written as 3 from those three files,
   // and this claim's first run found the offline translation gate as well.
