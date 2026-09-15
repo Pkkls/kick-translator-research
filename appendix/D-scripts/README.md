@@ -37,11 +37,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-contrast.mjs` | Every contrast ratio the product states beside the pair it states it for, recomputed by the WCAG formula, with the ones whose ground is a sentence away counted rather than guessed at. Exits 1 when the known mismatch is fixed or a new one appears | [appendix E 4.98](../E-method-log.md#498-two-figures-in-one-comment-measured-against-two-grounds-it-does-not-name) |
 
-**Eighteen scripts.** That count is here because two documents stated it from
+| `probe-key-storage.mjs` | Whether the DeepL key stays out of synced storage, by recording every value it takes there rather than sampling the end state. Drives the real extension through its own service worker | [appendix E 4.99](../E-method-log.md#499-the-key-is-taken-out-of-synced-storage-by-a-guard-written-for-another-problem) |
+
+**Nineteen scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All eighteen take a path argument and print to standard output; `probe-quotes.mjs`,
+All nineteen take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

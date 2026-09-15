@@ -4357,6 +4357,70 @@ was caught because the traceback was printed beside the exit code. **The
 repaired witness needs no copy of the clone at all**, only a copy of the one
 file in a repository of its own, which is both allowed and simpler.
 
+### 4.99 The key is taken out of synced storage by a guard written for another problem
+
+**What happened.** Reading the changelog forward from L470, 2.7.0 announces
+*Your DeepL key stays on the machine you typed it on ... It now lives in local
+storage*. Chapter 11 repeats it as **[reported]** and had never re-run it, which
+makes it the kind of claim this study exists to test: a privacy promise, taken
+on trust, about a credential.
+
+**The source reading.** `settings.ts` has three `storage.sync.set` sites and all
+three wrap the object in `withoutKey()`. The comment beside the constant states
+the reasoning better than this study could, and the migration comment works
+through which order of failures could lose the key. It is careful, deliberate
+work, and it makes the fourth site legible: `background/index.ts:39` writes the
+settings object whole, and the branch's own guard is `next.deeplApiKey &&
+!next.providerOrder.includes('deepl')`. The default order is `['google',
+'mymemory', 'lingva']`, so that condition is true exactly once, on the event the
+whole 2.7.0 change was made for.
+
+**The runtime check refuted the source reading, and the refutation was wrong.**
+Driving the real extension and reading `chrome.storage.sync` afterwards: the
+auto-promote had fired, the order was `['deepl', ...]`, and `deeplApiKey` in
+sync was an **empty string**. Read alone, that says the key never went there and
+the finding is dead.
+
+**Reading a final state cannot tell "never written" from "written and taken out
+again".** The distinction is the entire question, because a credential that
+reaches the replicating area has reached it whatever happens next. So the probe
+stopped sampling the end and recorded every value the field takes, from a
+`chrome.storage.onChanged` listener installed before anything is written:
+
+```
+(empty string)                 the options page saves, key stripped
+"ZZ-not-a-real-deepl-key-ZZ"   background/index.ts:39 writes it whole
+(empty string)                 the next loadSettings() removes it
+```
+
+**The key transits synced storage.** What removes it is the migration inside
+`loadSettings()`, which finds a key in sync, concludes it is a stray from a
+build that used to sync keys, moves it to local and clears sync. That guard was
+written for a different problem and happens to cover this path; nothing in the
+code is aimed at this one. A guard that catches a defect it was not written for
+is luck holding, and luck is not a mechanism.
+
+**What is claimed and what is not.** Not that the key is stored in sync: it is
+not, at rest. Not that Chrome replicated it: a signed-out test profile
+replicates nothing, and how much of that window a real sync client uses is not
+something this can time. What is claimed is that on the one event the 2.7.0
+change exists for, the credential is written into the area whose purpose is
+replication, and is removed by something aiming elsewhere.
+
+**`withoutKey` reaches three of the four surfaces that need it.** That is the
+guard-fraction rule, which this study put in the handover as the corpus's own
+recurring pattern with six instances. This is a seventh, in running code, and
+the first of the seven found by this account rather than read out of the
+notebooks.
+
+**The order of the two instruments is the lesson.** The source reading found the
+site and over-claimed the consequence. The runtime reading found the consequence
+and, taken at its final state, would have withdrawn a true finding. Neither was
+sufficient and neither was wrong about what it saw. **A probe that samples an
+end state is measuring a different quantity from one that records a sequence**,
+and which one answers the question is a decision to make before running, not
+after reading the output.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

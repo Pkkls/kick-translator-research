@@ -65,6 +65,44 @@ there leaves the machine as a matter of course, and is stored by a third party
 that has nothing to do with the translation provider or with the extension. Local
 storage stays on the device.
 
+**[new] Re-run, and the move is three surfaces of four.** `settings.ts` has
+three `storage.sync.set` sites and every one of them strips the key through
+`withoutKey()`, with a comment working through the migration order so that no
+failure can lose it. It is careful work. There is a fourth
+`storage.sync.set`, in `background/index.ts`, and it writes the settings object
+whole:
+
+```js
+if (next.deeplApiKey && !next.providerOrder.includes('deepl')) {
+  next = { ...next, providerOrder: ['deepl', ...next.providerOrder] };
+  void chrome.storage.sync.set({ [STORAGE_KEY_SETTINGS]: next });
+```
+
+The branch's own guard is that the key exists, and the default provider order
+is `['google', 'mymemory', 'lingva']`, so it is true exactly once: the first
+time a reader configures DeepL.
+
+Observed in a real browser, by recording every value the field takes in synced
+storage rather than reading its final state:
+
+| | `deeplApiKey` in `storage.sync` |
+|---|---|
+| the options page saves | *empty string* |
+| `background/index.ts` auto-promotes | **the key** |
+| the next `loadSettings()` | *empty string* |
+
+**The key enters the replicating area and is taken out again.** What takes it
+out is the migration written for a *different* problem, the one that rescues a
+key left behind by an older build; nothing in the code is aimed at this path.
+How much of that window a sync client uses is not something this study can
+time, and the claim here is only that a credential reaches the area whose
+purpose is replication, on the one event the 2.7.0 change was made for.
+
+Reading the final state alone says the opposite, and did: the first run of this
+probe reported the key absent from sync and was right about the end and wrong
+about what happened
+([4.99](../appendix/E-method-log.md#499-the-key-is-taken-out-of-synced-storage-by-a-guard-written-for-another-problem)).
+
 The general rule this instance supports: **a user-supplied credential belongs
 in the narrowest storage scope that satisfies the feature.** Cross-device
 convenience is a feature request, and it is not free; it converts a local

@@ -962,7 +962,41 @@ Stated so the boundary is visible rather than implied.
 Ordered by value over cost, with the cost stated. Nothing here needs a
 decision from anyone else.
 
-**Read this one first. Your privacy text and your traffic disagree, and both
+**Read this one first, because it is a credential.** `withoutKey()` covers
+three of your four `storage.sync.set` sites. The fourth is
+`background/index.ts:39`, the DeepL auto-promote, and it writes the settings
+object whole **[re-run]**:
+
+```js
+if (next.deeplApiKey && !next.providerOrder.includes('deepl')) {
+  next = { ...next, providerOrder: ['deepl', ...next.providerOrder] };
+  void chrome.storage.sync.set({ [STORAGE_KEY_SETTINGS]: next });
+```
+
+The branch's guard is that the key exists, and your default order is
+`['google', 'mymemory', 'lingva']`, so it is true exactly once: the first time
+somebody configures DeepL. Which is the event your own 2.7.0 entry was written
+for.
+
+Recording every value the field takes in sync, rather than reading its end
+state, in a real browser with the built extension loaded: **empty string, then
+the key, then empty string again.** What takes it out is the migration in
+`loadSettings()` that rescues a key left behind by an older build. That guard
+was written for a different problem and happens to cover this path. Nothing you
+have is aimed at it.
+
+The end state is clean, so this is narrower than "the key is synced", and it is
+not nothing: the credential is written into the area whose purpose is
+replication. How much of that window a real sync client uses is not something
+this account can time, and you can: sign a test profile in and watch.
+
+`node appendix/D-scripts/probe-key-storage.mjs <your repo>` prints the trace.
+The fix is one call: `withoutKey(next)` at that site, or route the promote
+through `saveSettings` so there is one writer instead of four. Your own section
+2.1 pattern, a guard reaching some of its surfaces, and this is the seventh
+instance.
+
+**Then this one. Your privacy text and your traffic disagree, and both
 link guards have the same blind spot.** `PRIVACY.md` says a chat message's text
 is sent *after we strip emotes, URLs, and `@mentions`*. All eleven localised
 store listings say *Emotes, mentions, links and emoji spam are stripped before

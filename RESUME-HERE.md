@@ -237,9 +237,16 @@ than reading it here (4.30, 4.80).
 `axis-ledger.mjs` and the checking halves of `probe-consistency.mjs`, both of
 which exit non-zero. The total is in the D-scripts README rather than here.
 
-**Four findings that reach a reader**, in the order they would cost something:
+**Five findings that reach a reader**, in the order they would cost something:
 
-0. **Both link guards require a scheme, and the privacy text does not say so**
+0. **The DeepL key transits synced storage** (4.99). `withoutKey()` covers three
+   of four `storage.sync.set` sites; the fourth is the auto-promote in
+   `background/index.ts:39`, whose guard is that the key exists and which fires
+   exactly once, the first time a reader configures DeepL. Recorded as a
+   sequence rather than an end state: empty, **the key**, empty. What removes it
+   is a migration written for a different problem. One call fixes it.
+
+0b. **Both link guards require a scheme, and the privacy text does not say so**
    (4.91). `PRIVACY.md` and all eleven localised store listings say links are
    stripped before anything is sent. Outgoing `PROTECT_RE` and incoming
    `URL_RE` are both anchored on `https?://`, so `kick.com/somechannel`,
