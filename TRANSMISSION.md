@@ -155,6 +155,13 @@ route re-attachment had never worked, because it asserted one effect of a
 channel switch out of four and a safety net elsewhere kept that one alive. The
 harness asserting all four existed and was in no runner.
 
+**Write down what correct means before running the case.** A case judged
+afterwards is judged in favour of what the product already does, and a ceiling
+chosen after the measurement is green by construction. The corpus rebuilt three
+test categories by writing each one's intent first. Its probe still accused the
+product on four cases, and what exposed that was a witness on the fix, not the
+intent: the intent decides what counts as correct, not whether the probe is.
+
 **A test over a constant is a test of the declaration, not of the behaviour.**
 A test asserting a provider list has three entries does not test that the second
 is ever reached. It reports green on any change that keeps the shape.

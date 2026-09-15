@@ -106,6 +106,18 @@ Arabic does not use: پ, چ, ژ, گ. Their presence is decisive evidence for
 Persian. Their absence is weak evidence for Arabic, because a short Persian
 line can easily contain none of them.
 
+**[replicated]** The product's rule does not stop at those four. Its set is six
+characters, `[پچژگکی]`: the four letters plus keheh and farsi yeh, and Urdu's
+seven further letters are tested before it, since an Urdu line carries Persian
+letters too. **[outside]** Keheh and farsi yeh are not extra letters of the
+alphabet but the forms a Persian keyboard types where an Arabic one types ك and
+ي, and they are among the most frequent characters in any Persian sentence,
+where the four extra letters are comparatively rare. **[new]** That is what
+makes the rule reach 11 of 12 Persian lines with no false positive on 12 Arabic
+ones **[reported]**: the discriminating evidence is mostly an encoding
+difference, not the letters an alphabet chart shows. The one line it misses
+contains nothing outside the Arabic set.
+
 **[reported]** The repair stands on its tests and bench measurements, and
 nothing has observed it on a live Persian stream: one was judged too hard to
 find for a live harness to be worth it. The corpus recorded that as an open
