@@ -121,7 +121,7 @@ Next, in the order most likely to correct something published here:
 | File | Lines | Why first |
 |---|---|---|
 | `.agent/PLAN.md` | 1287 | **L1 to L760 read**, the whole Open and Waiting sections; the four Done sections from L760 unread. Stopping short of L486 cost 4.65 |
-| `CHANGELOG.md` | 901 | **opened at last**: 17 version sections, compared against the tags and the releases in 4.69. The prose of each section is still unread |
+| `CHANGELOG.md` | 901 | **opened at last**: 17 version sections compared against the tags and the releases (4.69), and the 2.10.0 section read, which corrected the thesis own laughter count (4.70). The prose of the other 16 is unread |
 
 The queue is counted rather than described: **114 entries under seven
 headings, 7 open, 6 blocked on kil, 101 done**, and the section titled `## Open`

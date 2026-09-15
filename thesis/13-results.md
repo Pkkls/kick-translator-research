@@ -138,7 +138,7 @@ public.
 | Keyboard smash, before | 0 of 11 dropped | | [reported] |
 | Keyboard smash, after | 15 of 15, 0 false positives | 424 | [reported] |
 | Smash threshold 0.6 vs 0.65 vs 0.7 | 2 FP / 0 FP / 0 FP shipped | | [reported] |
-| Laughter forms recorded, of which language-marking | 43, of which 22 | 3791 | [reported] |
+| Laughter forms recorded, of which language-marking | **45, of which 22** at the current revision; 43 was the reported figure and 44 held at `16c4ce6` ([ch. 6](06-laughter.md)) | 3791 | [replicated] |
 | Usable source language on mixed messages | 3 of 10 → 10 of 10 | | [reported] |
 | of which previously **wrong** | 2 of the 3 | | [reported] |
 

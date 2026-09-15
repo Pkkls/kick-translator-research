@@ -134,7 +134,7 @@ words. That is a sound procedure on that set, and the set is small.
 
 ### The laughter lexicon
 
-43 forms, of which 22 mark a language
+45 forms, of which 22 mark a language, the count corrected in [ch. 6](06-laughter.md) and carried stale here until now
 ([ch. 6](06-laughter.md)). Written laughter is a live convention that changes
 faster than orthography: forms appear, spread, and are borrowed. `lol` is
 already excluded for exactly this reason. The lexicon needs periodic

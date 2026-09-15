@@ -2627,6 +2627,49 @@ same shape as [4.45](#445-a-chapter-published-a-constant-that-another-chapter-of
 one level up: a fact arrives where the argument wanted it, and nothing walks it
 to the other place that owns it.
 
+### 4.70 One table, four numbers, and the only document that tracked the drift was the one that owns it
+
+**What happened.** The 2.10.0 changelog says *45 forms across nine writing
+systems*. Counted by parsing `src/shared/laughter.ts`: **45 entries, 22 marking
+a language**. The changelog is right. So is the README, which says 45.
+
+Then the same quantity, elsewhere:
+
+| where | forms |
+|---|---|
+| `src/shared/laughter.ts`, counted now | **45** |
+| `CHANGELOG.md`, `README.md` | 45 |
+| `scratchpad/audit_poids.py` | 44 |
+| `.agent/PLAN.md`, thesis 13, thesis 14 | 43 |
+
+**And chapter 6 already had it right, in full.** It states the reported 43, then
+says *that count belongs to an earlier revision and was published without one*,
+gives 44 at `16c4ce6` and 45 at the current revision, 22 in both, and records
+that it counted **by importing the module rather than reading it**. That is
+better than this pass did: the count here came from a regular expression, and
+the first three attempts at it returned 0 because the table is named `FORMES`
+and its key is `langue`, not the English words being searched for.
+
+**So the finding is not that the number is wrong somewhere.** It is that the
+chapter that owns laughter corrected the number carefully, and the two chapters
+that summarise, results and limits, quote the uncorrected one. This is
+[4.45](#445-a-chapter-published-a-constant-that-another-chapter-of-the-same-study-had-already-recorded-as-reverted)
+running the other way: there a fact reached the chapter that wanted it and never
+reached the chapter that owned it, and here it was the owner who had it and the
+summarisers who did not. **Both directions fail, so proximity to the subject is
+not what decides whether a correction travels. Nothing decides it. Nothing
+carries corrections between chapters at all.**
+
+Both are corrected now, and 13's row is retagged `[replicated]` because the
+figure it carries is one this study counted rather than inherited.
+
+**A fifth reading of the same quantity, in a script.** `audit_poids.py` holds 44
+in a comment decomposing the weight it charges to the laughter table. It is
+frozen at exactly the revision chapter 6 names, `16c4ce6`, which makes it a
+fourth honest snapshot rather than an error. Left alone: it is a comment
+explaining a byte count taken at that revision, and changing it would make the
+arithmetic beside it wrong.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
