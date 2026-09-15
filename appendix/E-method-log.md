@@ -1824,6 +1824,61 @@ row for, which is [4.51](#451-a-stop-condition-with-a-term-nobody-could-evaluate
 in its practical form. **The ledger's first act was to point at a four-minute
 measurement that had been waiting for two releases.**
 
+### 4.53 A probe built for one finding refuted the finding, before it was published
+
+**What happened.** A16's bar forbids a screenshot showing a real person's
+handle or message, in those words. Five screenshots are tracked. Four are
+produced by `store-shots-fixture.mjs`, a harness written so that the room, the
+handles and the messages are invented and the engine is answered locally. The
+fifth, `screenshots/japanese-chat.jpg`, is three months older, is the only one
+that is not a `.png`, is produced by no harness, and opened and looked at, it
+shows four real handles and their messages. The handles are not reproduced
+here.
+
+A search over the reader-facing documents for the file's name found nothing, so
+the account being written was: the replacement was built, the old artefact was
+left behind, nothing pointed at it and that is why it survived, and no check
+that works by following references could ever see it.
+
+**That account is wrong.** The probe written to support it,
+[`probe-orphan-assets.mjs`](D-scripts/probe-orphan-assets.mjs), enumerates
+tracked images instead of following references, and it reported the file as
+referenced. The reference is in `screenshots/README.md`, a file the search had
+not covered because the search ran over a hand-written list of top-level
+documents. That README states the whole thing plainly: it says the image this
+replaced *carried four real handles*, and it says `japanese-chat.jpg` *is kept
+as the record of what the earlier capture looked like* and *is no longer
+referenced by any README*.
+
+So nothing was left behind by oversight. The team diagnosed it, wrote the
+replacement, removed every reference, documented the decision, and chose to
+keep the file. Publishing the first account would have been
+[4.17](#417-published-a-false-accusation-against-complete-work) again, against
+work that is not merely complete but unusually careful about exactly this.
+
+**What survives, and it is smaller and real.** The bar is about what the
+repository contains, not about what its READMEs link. A tracked file in a
+public repository shows four real handles whether or not anything points at it,
+and the retention reason, being *the record of what the earlier capture looked
+like*, is now also served by the sentence in `screenshots/README.md` that
+describes it. The prose carries the record; the image adds the handles. So A16
+rests open with a documented trade rather than closed, and the trade is the
+owner's to make, not this study's.
+
+**Why the entry.** The probe was written to demonstrate a finding and refuted it
+on its first run, which is the best thing an instrument built this way can do
+and the reason to build it before writing rather than after. The reading and
+the enumeration disagreed, and the enumeration was right because the reading had
+a hand-written list in it. **A search over a list you wrote is a search over
+your own assumptions**, and a search over what the repository actually contains
+is not.
+
+One defect in the probe, found in the same minute. It printed the basename of
+the referencing document, so `screenshots/README.md` appeared as `README.md`,
+which is the top-level file the search had already covered. For a moment the two
+results looked like a contradiction rather than a location. It prints the path
+now, and the comment says why.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

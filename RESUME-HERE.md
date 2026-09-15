@@ -29,7 +29,7 @@ nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
 The specification's own first stop condition is countable now rather than an
-impression: **12 of the 22 axes carry a verdict and 10 do not**, and none is
+impression: **13 of the 22 axes carry a verdict and 9 do not**, and none is
 closed outright, though A15's reproducibility half is: both published archives
 rebuild byte-identical from the tag (4.52).
 [Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that
@@ -55,7 +55,7 @@ fails the moment a second one drifts, which is what 4.45 did undetected.
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
 - **The method log**, `appendix/E-method-log.md`, every recorded mistake
-- **Eight runnable scripts**, `appendix/D-scripts/`
+- **Nine runnable scripts**, `appendix/D-scripts/`
 
 ## The reading, by position
 

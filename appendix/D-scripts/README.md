@@ -15,10 +15,12 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-consistency.mjs` | Whether this study states one quantity twice with two values. Ratios are a report, keyed on wording and therefore weak; constants written as `NAME = n` are checked against the clone and are the half that catches drift | [appendix E 4.46](../E-method-log.md#446-the-rule-about-stale-numbers-had-nothing-behind-it) |
 
+| `probe-orphan-assets.mjs` | Which tracked images nothing produces and nothing references. Enumerates instead of following references, which is what every other check here does, and is why it refuted the finding it was written for on its first run | [appendix E 4.53](../E-method-log.md#453-a-probe-built-for-one-finding-refuted-the-finding-before-it-was-published) |
+
 | `axis-ledger.mjs` | Whether [appendix F](../F-axis-ledger.md) still names exactly the axes the specification defines, and how many of them carry a verdict, which is the first of the three stop conditions | [appendix F](../F-axis-ledger.md), [appendix E 4.51](../E-method-log.md#451-a-stop-condition-with-a-term-nobody-could-evaluate) |
 
-All eight take a path argument and print to standard output; `probe-quotes.mjs`
-and `probe-consistency.mjs` take two, this repository and the extension's. Only
+All nine take a path argument and print to standard output; `probe-quotes.mjs`
+`probe-consistency.mjs` take two, this repository and the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs
 Node 22.18 or later.
