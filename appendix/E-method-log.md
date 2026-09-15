@@ -2269,6 +2269,56 @@ broke was outside everything that uses it.**
 **And do not link a live tree into a scratch directory.** Copy, or point the
 tool at the original. The four minutes saved bought a two-pass silent breakage.
 
+### 4.62 Three numbers the code says were guessed, and the run that read them back was empty
+
+**What happened.** A21 asks that requests under refusal never exceed a count,
+and that a refusal escalate the chain rather than repeat it. Both are answerable
+from the source, and both answer well. Per-provider health carries
+`consecutiveFailures` and `cooldownUntilMs`, the candidate list is filtered to
+providers whose cooldown has expired, and the `rate_limit` ladder is
+`min(10_000, 1500 * 2 ** (cf - 1))`. So the chain escalates by construction, and
+sustained refusal settles at one attempt per ten seconds per provider: **six a
+minute per provider, twenty-four across the four**. That is now the budget
+file's A21 entry, marked as derived from the ladder rather than observed,
+because it is what the code permits and not what anything watched.
+
+**The comment beside it is the finding.** Three lines under the ladder:
+
+> Which provider cools down, on what code, and for how long. Those are the
+> three numbers the backoff ladder above was guessed from, and none of them has
+> ever been read back.
+
+The author wrote the constants, knew they were guesses, instrumented the two
+counters that would check them, said in the file that nobody had read them, and
+shipped. That is an unusually complete piece of honesty and it is also a
+complete failure loop: the diagnosis, the instrument, and the note that the
+instrument is unread, all in one place, with nothing running.
+
+**And the run that finally read them was empty.**
+[4.61](#461-deleting-the-dependency-tree-of-the-repository-under-study-through-a-junction)
+records `metrics-offline.mjs` being run for the first time in this study. It
+prints every counter that fired, and `cooldown.trip` and `cooldown.ms` are not
+among them, because that harness answers the translation engine from a local
+fixture and a fixture never refuses. **So the three numbers have still never
+been read back, and the instrument that would read them cannot, in the only
+configuration anyone runs it in.**
+
+That is a sharper thing than an unread counter. A counter nobody looks at is a
+habit. A counter whose only offline harness makes its subject impossible is a
+structural hole: the harness was built to remove the network, the counter exists
+to measure what the network does when it refuses, and the two cannot be in the
+same room. Closing it needs a fixture that refuses on purpose, which is one
+branch in a file that already intercepts every request, and the same branch
+would serve A21's rate clause and the whole `chain.depth` family.
+
+**What is still open in A21 and is not about refusal.** `saveSettings` takes a
+`Partial<Settings>` and writes `{ ...current, ...patch }`, so it merges rather
+than overwrites, which is what A5's bar asks for and what this one asks for
+under concurrency. But the read and the write are separate awaits. Two tabs that
+both read before either writes will each merge onto the same stale `current`,
+and the second write wins on every field the first one changed. The bar says no
+setting loses a write under concurrent tabs, and this one can.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
