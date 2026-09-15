@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 43 of 43 holding at the commit this was last checked against, and 4
+It reports 45 of 45 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -511,6 +511,14 @@ Two notes on those numbers, both of which this account got wrong first.
 it moves 12 percent between compression levels, and the level was not stated.
 Compare against your own gate's periphery and its own level, not against a
 number whose parameter is missing. The raw size is the parameter-free one.
+
+**Your weight gate fails in one direction.** `audit_poids.py` exits 1 when the
+injected script grows past its two percent margin and never when it shrinks
+**[re-run]**. Your twelfth pass records a first reading of a 12 percent drop
+that went unnoticed for that reason **[yours]**. That reading was a character
+count and there was no drop, but a real one of that size, a module the bundler
+quietly left out, would pass the same way. **[mine]** A lower bound costs one
+comparison, and a sudden loss of bytes is as much a signal as a gain.
 
 **The identical hash was first taken without deleting `dist` between builds**,
 which leaves open that the second build reused output rather than rebuilding.

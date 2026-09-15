@@ -21,7 +21,7 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **43/43 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **45/45 checkable claims, 12/12 spec conditions, no broken internal
 link**. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
@@ -42,23 +42,19 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 8 to 28 and "Left behind", the gate-suite section at
+Read so far: passes 3, 6 to 28 and "Left behind", the gate-suite section at
 L63, and the probe typology at L202. Each one produced either a correction to
 something published here or a rule now in TRANSMISSION.md. Passes 25 to 28
 produced both: they corrected chapter 8.3 and most of an uncommitted draft
 built on them (4.29).
 
-**Still unopened.** The list that stood here is done. This row was added after
-it, by the rule in 4.36: pass six is quoted in the handover, and the section
-after it had never been opened.
+**Still unopened: none of the listed sections.** The last one added, L329, was
+added by the rule in 4.36 because pass six is quoted in the handover; reading
+it led back to pass twelve and a unit this study had supplied (4.31).
 
-| Line | Section |
-|---|---|
-| L329 | Seventh pass: measuring the only thing that could be measured |
-
-Never listed and not recorded as read either: L3 to L126, L219, L233, L241,
-L269. They are the opening of the journal and the first passes; entry 4.27
-drew on at least one of them without saying which.
+Never listed and not recorded as read either: L3 to L45, L103 to L126, L219,
+L233, L241, L269. They are the opening of the journal and the first passes;
+entry 4.27 drew on at least one of them without saying which.
 
 ### Journal of 2026-08-31 (61 sections)
 
@@ -105,6 +101,11 @@ promoted to the handover before something differently shaped has run.
   this exact trap in its tenth pass, for another gate: *it measures the targets
   it finds, it does not count them*. That was repaired there with a row count;
   `bar-widths` asserts no count of its targets. Still one instrument.
+- **The weight gate passes without measuring on an instrumented build**
+  **[read]**. `audit_poids.py` exits 0 with a message when `dist/` holds the
+  metrics build, so a run of the gates with `--no-build` after that build
+  counts it green. Whether the runner's default build makes this unreachable
+  in practice was not read.
 
 ## What is measured and what is not
 

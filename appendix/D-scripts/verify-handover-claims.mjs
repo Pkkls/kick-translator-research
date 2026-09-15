@@ -274,6 +274,16 @@ const infra = ['scratchpad/harness/playwright.mjs', 'scratchpad/harness/run-gate
 // "0 of 3", not 0: with the files missing, a bare zero would hold over nothing.
 claim('3.6 no gate infrastructure records the browser version', '0 of 3', infra.filter((p) => /\.version\(\)|browserVersion/.test(read(p))).length + ' of ' + infra.length);
 
+// 3.5b: the weight gate compares upward only.
+const poidsPath = 'scratchpad/audit_poids.py';
+if (existsSync(join(root, poidsPath))) {
+  const poids = read(poidsPath);
+  claim('3.5b the weight gate fails on growth', true, /if pourcent > MARGE/.test(poids));
+  // Counted exits rather than a guess at how a lower bound would be spelled:
+  // adding one adds a second failing exit, and this goes red.
+  claim('3.5b the weight gate has one failing exit, the growth one', 1, (poids.match(/sys\.exit\(1\)/g) || []).length);
+} else uncheckable('3.5b weight gate direction', poidsPath + ' absent');
+
 // 5: the frequency the listing already publishes.
 claim('5 the listing sells a hover usage ratio', true, /point at a message, which cuts usage by roughly 10x/.test(read('store-listing.md')));
 

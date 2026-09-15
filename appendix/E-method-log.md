@@ -853,7 +853,8 @@ rewrite producing a self-referential constant, and a heredoc eating an escape
 **an hour after the author had written down that heredocs do this**.
 
 **One more unit error, theirs, matching one of this study's.** A first reading
-reported the content script at 200874 bytes and called it a 12 percent drop.
+reported the content script at 200874, with no unit, and called it a 12 percent
+drop.
 It was a character count against a byte reference; the file holds multi-byte
 UTF-8 and was 228406 bytes. Same class as this study's gzip figure published
 without its compression level: **a number whose unit or parameter is unstated
@@ -1088,6 +1089,14 @@ language, and a **[reported]** tag certifies the source, not the fidelity.
 
 > When repeating a finding, keep its verb. "Said", "suggested", "indicated" and
 > "established" are four different claims about the same measurement.
+
+**A third instance, found later in the same session, and the worst placed.**
+Entry 4.26 quoted the corpus's unit error as a first reading of "200874 bytes".
+The journal wrote "200,874" with no unit, because the whole point was that it
+was a character count. The transcription supplied the unit the error lacked,
+inside the entry about numbers whose unit is not stated. It surfaced only
+because a search for the number failed: the journal writes it with a comma, and
+the first pattern allowed a space or an underscore.
 
 ### 4.32 A pattern argued without the instance where the corpus had cured it
 
