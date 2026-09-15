@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty. Listed in full because a method log that omits them is an
+Twenty-one. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -594,6 +594,77 @@ is the counting-the-source failure of 4.12 in its mildest form.
 **The replication rate so far.** Five published measurements put through the
 bar: three changed, two held. A bar that never fails is not a bar, and one that
 always fails would mean the pass produced nothing worth keeping.
+
+### 4.21 A number whose parameter was not stated, and a hash taken without
+clearing the output
+
+**What happened.** The last two unreplicated measurements went through the bar.
+
+**The gzipped size was published as "90 425 bytes" with no compression level.**
+Measured across levels: 100 982 at `-1`, 90 425 at the default, 90 198 at
+`-9`. The figure is correct at the default and moves **12 percent** across the
+range. A number that depends on a parameter, published without the parameter,
+is not reproducible, and nobody reading it can tell which of the three they
+would get.
+
+Worse, it is not the number the question wants. No one ships gzip at a chosen
+level: a store measures the archive, and transfer size depends on what a server
+negotiates. The raw size, 233 601 bytes, is the parameter-free one and should
+have led.
+
+**The identical-hash claim was taken without deleting the output directory
+between the two builds.** If the second build had reused its output, the
+comparison would have been a file against itself. Re-run with `dist` removed,
+it holds, and it also holds against a clone built an hour earlier, which is a
+stronger claim than the original: **the build reproduces across clones, not
+just within one tree.** The replication strengthened the finding rather than
+weakening it, which had not happened before in this series.
+
+**The rule this pair yields:**
+
+> A measurement that takes a parameter is two facts, the value and the
+> parameter, and publishing one of them publishes neither. A measurement that
+> compares two artefacts must establish that they were separately produced,
+> because the cheapest explanation for two identical things is that they are
+> one thing.
+
+### The replication rate, complete
+
+Nine published measurements were put through A22's replication bar, each with a
+second instrument of a different shape. The series is finished, so the rate can
+be stated rather than sampled:
+
+| Measurement | Outcome |
+|---|---|
+| Direction handling, 1 of 3 guarded | **changed** to 2 of 2, population re-scoped |
+| Prefixed class names, 99 | **changed** to 98, one was a comment placeholder |
+| Locale coverage, 34 of 155 | **changed** to 155 of 155, retracted entirely |
+| Languages without a marker, 24 | **changed** to 17, scope was one file of five |
+| Page-queryable signals, 4 | **changed** to 11, scope was three files of nineteen |
+| Silent catch blocks | held, nothing to report |
+| Marked debt, zero | held, against a wider vocabulary and scope |
+| Unit tests, 1034 | held, against a static count plus generated cases |
+| Identical content.js across engines | held, and strengthened: reproducible across clones |
+| Gzipped size, 90 425 | incomplete: correct at the default level, published without the level |
+
+**Five of nine changed. Four held. One was published without its parameter.**
+
+Every one of those measurements was taken deliberately, by an account that had
+written the rules against these exact errors, and published only after being
+read back. The rate is not a story about carelessness; it is what the base rate
+looks like when someone measures a codebase they did not write.
+
+Two things follow that are worth more than the individual corrections.
+
+**The direction of the error is not constant.** Three of the five were
+over-statements, and two were under-statements. Which one you get depends on
+whether the probe was looking for a guard, where a blind spot becomes a false
+accusation, or enumerating instances, where a blind spot becomes a short list.
+
+**Replication is not a formality with a high pass rate.** At five in nine it is
+the most productive single step in this entire session, more than any axis and
+more than any amount of re-reading. That is the argument for making it a bar
+with a cost rather than a principle in a preamble.
 
 ### The pattern across the first three
 

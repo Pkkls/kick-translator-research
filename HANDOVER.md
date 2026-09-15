@@ -411,9 +411,10 @@ queue.
 
 | | |
 |---|---|
-| Injected script, gzipped | **90 425 bytes** (88.3 KB) |
-| Injected script, raw | 228.1 KB |
-| `content.js` from the Chromium build and the Firefox build | **byte-identical**, same sha256 |
+| Injected script, raw | **233 601 bytes** |
+| Injected script, gzipped | 100 982 at `-1`, **90 425 at the default**, 90 198 at `-9` |
+| `content.js` from the Chromium build and the Firefox build | **byte-identical**, same sha256, with `dist` deleted between them |
+| Same hash from a second clone, built an hour apart | **yes**, so the build reproduces across clones |
 | Divergence between the two builds | confined to the manifest: background as service worker against scripts array, plus the gecko block |
 | Built manifest host permissions | 8, matching the source exactly |
 | Web-accessible resources | none |
@@ -423,9 +424,19 @@ verified about the injected code on one engine holds on the other, so the
 cross-browser axis reduces to the manifest and to the runtime APIs, which is a
 much smaller surface than it looks from outside.
 
-The gzipped figure is offered as a datum rather than as a regression: this
-account does not know the periphery your own weight gate measures, so it is a
-number to compare against your gate, not a verdict from mine.
+Two notes on those numbers, both of which this account got wrong first.
+
+**The gzipped figure was first published as a single number.** It is not one:
+it moves 12 percent between compression levels, and the level was not stated.
+Compare against your own gate's periphery and its own level, not against a
+number whose parameter is missing. The raw size is the parameter-free one.
+
+**The identical hash was first taken without deleting `dist` between builds**,
+which leaves open that the second build reused output rather than rebuilding.
+Re-run with the directory removed, it holds. It also holds across two separate
+clones built an hour apart, which is a stronger statement than the one
+originally made: the build is reproducible, not merely consistent within a
+working tree.
 
 ### 3.5d The day boundary is UTC, which is a decision you may not have taken
 
@@ -629,8 +640,16 @@ second, better probe rather than by rereading:
 | Silent failure paths | 31 silent `catch` of 42 | 18, then 2, then none | The signal pattern did not match `log.debug(`, so every logged catch counted as silent |
 | Selector fallbacks | 2 lists, neither with a fallback | withdrawn | Parsed the file with a regex that split the arrays wrongly; the chains are there |
 
-The two that held on the first run were the detectability enumeration and the
-localisation counts, both of which count things rather than judge them.
+Since then the same bar has been applied to nine published measurements, and
+the series is complete: **five changed, four held, one was published without
+its parameter.** The detectability enumeration and the localisation count,
+listed above as having held on their first run, were both among the five that
+later changed: the first under-counted by a factor of two and a half, the
+second was an accusation against complete work and was retracted.
+
+Three of the five were over-statements and two were under-statements, so there
+is no single direction to correct for. What decides it is whether the probe was
+looking for a guard or enumerating instances.
 
 **The pattern in the three failures is one-directional and worth more than the
 failures.** Every one of them erred toward accusation. That is structural
