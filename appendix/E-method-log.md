@@ -2582,6 +2582,51 @@ between a habit and a rule is that the rule survives the person who had the
 habit**, and the corpus wrote the rule into the script rather than into a note,
 which is the version that works.
 
+### 4.69 The changelog and the releases are two records that disagree about which versions exist
+
+**What happened.** `CHANGELOG.md` had never been opened by this study, which
+[RESUME-HERE](../RESUME-HERE.md) has said for every pass. Opened, it holds 17
+version sections. Compared against the tags and against the published releases,
+which A16 asks for in the words *every changelog entry against the commit that
+carries it*, four versions sit in exactly one record:
+
+| version | tag | GitHub release | changelog section |
+|---|---|---|---|
+| 2.8.0 | yes | **yes** | **no** |
+| 2.8.1 | **no** | **no** | yes, 253 lines, the largest in the file |
+| 2.9.3 | yes | no | no, and the queue explains it |
+| 2.3.1 | **no** | no | yes |
+
+**It is not a numbering slip, which was the first guess.** `v2.8.0` was
+published on 2026-08-27 and its release notes describe a language button inside
+Kick's message box and a light-against-dark fix. The `2.8.1` section is dated
+2026-08-28 and describes a batching window and the latency it costs. Different
+work. So 2.8.0's changes exist only in a GitHub release body, and 2.8.1's exist
+only in a changelog, and neither record knows about the other's version.
+
+**A statement in the queue is wrong.** It says *2.9.3 and 2.9.4 were tagged and
+never published, so the changelog folds both in*. `git tag -l 'v2.9.*'` answers
+v2.9.0, v2.9.1, v2.9.2, v2.9.3. **There is no v2.9.4.** The folding-in is
+correct for 2.9.3; the second half of the sentence describes a tag that does not
+exist.
+
+**And it reaches the reader.** The three localised READMEs head their what-new
+section at **2.8.1**, which is the version with no tag and no release, and link
+that heading to `releases/latest`, which serves 2.10.0. So a Spanish, Japanese
+or Brazilian reader is shown the name of a release that was never made, above a
+link to a different one.
+
+**Why this survived.** Both records are written by hand at the moment of a
+release, and each is complete on its own terms: the changelog reads as a
+changelog and the releases page reads as a releases page. Nothing compares them,
+because comparing them requires holding both at once and no document does.
+`state.mjs` reads the release, `audit-fiche` reads the listing, and the
+changelog is read by people. **Two honest records disagreeing is not a lie
+anywhere; it is the absence of a third thing that reads both**, which is the
+same shape as [4.45](#445-a-chapter-published-a-constant-that-another-chapter-of-the-same-study-had-already-recorded-as-reverted)
+one level up: a fact arrives where the argument wanted it, and nothing walks it
+to the other place that owns it.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
