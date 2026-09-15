@@ -170,7 +170,16 @@ stripper figures, the one-declaration box model and the 22 axes held.
 **Never measured here, and each needs something this account did not have:**
 
 - Anything observed in a browser. Every source-derived claim is about call
-  sites, not about what renders.
+  sites, not about what renders. **What was missing is now named rather than
+  assumed** (4.47): the corpus's queue contradicts itself on the blocker, one
+  paragraph reading the registry and concluding the key is present so the
+  problem is a click in the extension's own interface, the next restating that
+  the unblock is a native-messaging key copied from Chrome. Measured on the
+  machine, both are part right. Brave carries
+  `com.anthropic.claude_code_browser_extension` and not
+  `com.anthropic.claude_browser_extension`, which is the host the tool that
+  returns empty actually speaks to. One value, named. Writing it is a change to
+  system settings and was left to kil.
 - Any frequency in multilingual chat traffic. One single-channel Spanish
   capture's summary figures exist in the corpus's handoff of 2026-08-16
   (thesis 14.1); nothing about which languages appear.

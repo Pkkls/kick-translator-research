@@ -1555,6 +1555,46 @@ An instrument that prints what it compared can be debugged by its reader; one
 that prints only its conclusion has to be trusted, and this study has no reason
 left to trust one.
 
+### 4.47 A limit accepted as structural was one measurement from being named
+
+**What happened.** The list of what this study never measured opens with
+"anything observed in a browser", under the heading that each of them needs
+something this account did not have. That sentence was never tested. The
+corpus's queue says what the missing thing is, twice, and the two statements
+contradict each other inside one entry: one paragraph reads the registry and
+concludes *it is neither the registry nor the install, the extension simply is
+not CONNECTED, which is a click in its own UI*, and the paragraph after it
+restates the version that reading had just retracted, *the unblock is a
+native-messaging registry key copied from Chrome to Brave*, and hands it to kil
+as worth more than the bug it was blocking.
+
+Read off the machine, both are part right and neither is the answer. Brave has
+one Anthropic native-messaging host registered,
+`com.anthropic.claude_code_browser_extension`, and not the other,
+`com.anthropic.claude_browser_extension`, which is the host the tool reporting
+no connected browser speaks to. So a key is missing, as the retracted paragraph
+said, and it is one key rather than the class of them, which is what the
+retraction was reaching for and overshot. Chrome has both.
+
+**Cost.** None published: nothing in this study ever carried either version,
+because this part of the queue had never been read. What it cost was the
+limit's shape. "Needs something this account did not have" was carried in four
+documents as though the missing thing were unknown, and it was one read-only
+registry query away from being named.
+
+**Why it happened.** A limit is easier to state than to measure, and stating it
+honestly feels like the end of the work rather than the middle. The rule that
+follows is the one this log keeps arriving at from new directions: **measure a
+limit to its boundary, do not stop at declaring it.** A limit named to the
+value, the key, the permission or the account that would lift it is an item
+someone can act on. A limit named as a category is a closed door with no handle
+drawn on it. The check was one query and this study ran it in the forty-seventh
+entry rather than the first.
+
+**What was not done.** The key was not written. Changing a native-messaging
+registration is a change to system settings, which this account does not make,
+so the finding is reported to the person whose machine it is and stops there.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
