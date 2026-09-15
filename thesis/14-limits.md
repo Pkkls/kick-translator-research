@@ -2,7 +2,9 @@
 
 > Every frequency claim in this study is unsupported. The project knows it,
 > records it as its own outstanding request, and has taken decisions by
-> refusing to move rather than by guessing. This chapter states what fails if
+> refusing to move. Refusing to move is not the absence of a guess: at least
+> one revert was argued on a frequency nobody measured
+> ([15.1](15-future.md#151-one-real-chat-capture)). This chapter states what fails if
 > the frequency assumptions are wrong.
 
 ---

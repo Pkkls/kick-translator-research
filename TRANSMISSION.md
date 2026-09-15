@@ -219,6 +219,13 @@ next one is.** This study quoted a gate from the pass that built it; the pass
 beginning on the following line says the gate had not done what its commit
 claimed.
 
+**A revert is a decision, and it can rest on the same unmeasured number as the
+change.** The corpus raised a length bound, found a mixed-language line it
+broke, and put the bound back because a single foreign word in a sentence is
+"more common in a chat" than a longer foreign line. Nobody had measured that.
+Staying where you were feels like declining to guess, and it is a guess with
+the status quo's name on it.
+
 **Establish severity at the output, never at the failing component.** In a
 pipeline with defaults and fallbacks, a broken component does not imply a
 user-visible failure, in either direction.

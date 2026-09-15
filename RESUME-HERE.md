@@ -62,13 +62,13 @@ Read so far: the sections on the startup race, the false probes, the Bulgarian
 work, the day boundary, the weight field, the short-expression table, the
 silent-drop residue, and the Latin-only bench.
 
-Also read in this session: L143, the identifier duel; L237, the trimming
+Also read in this session: L143, the identifier duel; L207, the reverted
+length bound; L237, the trimming
 experiment; L263, the allowlist; L394, the redone weight experiment, read beside
 L237 because it corrects it; and L526, the allowlist measured from both sides,
 read beside L263 for the same reason.
 
-**Still unopened**, most promising first: L207 "a change that shipped on one
-bench and was reverted on the next", L1205 onward, the whole live-debugging
+**Still unopened**, most promising first: L1205 onward, the whole live-debugging
 sequence.
 
 Added by the rule in 4.36, each being the section after one already quoted:

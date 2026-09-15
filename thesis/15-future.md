@@ -23,7 +23,14 @@ The measurements it would produce, in the order they matter:
    and it is the number that would say whether a script-relative floor is worth
    the ordering change it requires.
 2. **Code-switching rate**, within a line and across adjacent lines. Currently
-   an unmeasured assumption behind several conflict rules.
+   an unmeasured assumption behind several conflict rules, and behind one
+   shipped constant: **[reported]** a raise of the short-text bound from 20 to
+   30 characters was committed, then reverted when eight mixed lines showed a
+   single French word sending an English sentence out as French, on the ground
+   that *a single foreign word inside another language is more common in a chat
+   than a 25 character foreign sentence*. That sentence is this rate, assumed.
+   The corpus says as much: the bound sits at 20 *on this measurement, not
+   because 20 was ever measured as optimal*.
 3. **Laughter frequency by form**, which would validate or refute the
    [chapter 6](06-laughter.md) lexicon's weighting and reveal forms it lacks.
 4. **Emote share of tokens**, which prices the entire stripping problem in
