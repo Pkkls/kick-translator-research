@@ -104,6 +104,44 @@ witness was valid as an action and void as evidence.
 That is the negative control applied to the control: the paired assertion for a
 witness is a check that the break is visible in the built output.
 
+## 12.3b Four commands are not the gates
+
+**[reported]** A journal entry records running the gate suite for the first time
+in a week and getting exit 1 on two of eighteen gates, both failing since a
+commit made the day before. The entry's own conclusion is the one to carry:
+
+> "Gates green" was said several times over this session meaning typecheck,
+> lint, test and build. The eighteen-gate suite was never run once, and two of
+> its gates were red the whole time, one of them made red by a change made that
+> day. Four commands are not the gates; they are four of them.
+
+The two failures are instructive in opposite directions, and neither was a
+product defect.
+
+**A stale allowlist.** An audit flagged a physical CSS property in a new
+component. The same exception already existed for an older component with its
+reason written beside it: the placement function writes viewport coordinates,
+which are physical by definition, so a logical property must not fight them.
+The new component arrived later with the identical construct and was never
+added to the list. Checked both ways, which is the witness: with the exception
+the audit exits 0, without it exits 1.
+
+**A gate encoding a superseded contract.** Six assertions failed on a behaviour
+changed that same day on request. Three unit tests encoded the same old
+contract and **were retargeted, while the gate was not, because the unit tests
+run in the everyday command and the gate does not.**
+
+That second one is the mechanism behind the general rule: a check outside the
+command people actually run will drift out of date, and its red will be
+discovered by whoever eventually runs it rather than by whoever caused it. The
+retargeting was also done properly, keeping both assertions and inverting them,
+since keeping only one would pass a control that opens and never closes.
+
+**A third audit then surfaced three findings that were all correct-by-design**,
+and the disposition is worth noting because it is the opposite of silencing:
+the exceptions added were narrow, one selector and two properties, and were
+validated against six cases including three that must still be caught.
+
 ## 12.4b Flakiness filed as weather
 
 **[reported]** The work queue once carried the item "the live gates are not

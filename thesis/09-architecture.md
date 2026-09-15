@@ -57,23 +57,52 @@ careful stages give no warning when a later one overwrites their work.
 ## 9.3 The recycled row
 
 A virtualised chat list reuses DOM nodes: a node that displayed message *n*
-displays message *n+40* once *n* has scrolled away. Translation is
-asynchronous. A request issued against a node can therefore return after that
-node has been reassigned to a different message.
+displays message *n+40* once *n* has scrolled away.
 
-The result is a correct translation attached to the wrong line. Every counter
-reports success: a request was made, an answer returned, a node was updated.
+**The defect the corpus actually measured is simpler and worse than the one
+this chapter first described.** An earlier version of this section reasoned
+about an asynchronous answer landing on a row that had been reassigned, which
+is a real hazard and is not what happened. What happened **[reported]**:
 
-This is an instance of a general hazard: **asynchronous work holding a
-reference to a mutable identity**. The node is identity; the message is
-content; the code assumes the binding between them is stable for the duration
-of a network round trip, and the host page guarantees no such thing.
+The scroller reuses a row by **replacing its contents**. The row is therefore
+the mutation *target* and never an added node. The observer collected
+candidates from added nodes and their descendants only. Measured: **eight
+recycled rows, no translation, no reason on the line, no provider call.**
 
-The remedy is to key the response to content rather than to position, and to
-verify the binding at the moment of attachment rather than at the moment of
-request. The corpus shows the project holds a dedicated gate for row recycling,
-which is the correct disposition: this class cannot be caught by unit tests,
-because it requires the host's recycling behaviour to be in play.
+Not a translation on the wrong row. No translation at all, and no trace that
+one was ever due.
+
+**The comment above that loop is the part to keep.** It states that the
+recycling case is covered by watching childList with subtree, and the project's
+verdict on its own comment is exact:
+
+> which is true of the events and false of the handling.
+
+The subscription did receive the mutations. The handler discarded them, because
+it looked for candidates in the wrong place within an event it was correctly
+given. A comment that describes the subscription and is read as describing the
+behaviour is a specific and under-named failure: **both halves are true
+statements about different things, so nothing in review catches it.**
+
+The fix walks up from the mutation target to the enclosing row. Re-processing a
+row whose text has not changed costs nothing, because processing returns early
+on the identifier the row already carries, which is also what stops the
+extension's own insertions from looping.
+
+**Two witnesses, and the second exposed a hole under 620 tests.** The gate goes
+from 9 of 9 to 1 of 9 with the walk removed. And a unit test now fails without
+it, which required the test double to **stop discarding the MutationObserver
+callback it was handed**: until then no test could deliver a mutation, so
+nothing in 620 tests could reach that branch at all.
+
+That is a test double silently defining a whole branch as unreachable. The unit
+suite was not weak on this behaviour; it was structurally incapable of
+addressing it, and nothing said so.
+
+**And the gate's own assertion needed hardening.** It failed only at zero, so it
+passed on one translation for nine rows, which is precisely the failure it
+exists to catch. A threshold assertion set at the degenerate case rather than at
+the expected value is a gate that only catches total absence.
 
 ## 9.4 The cache key
 

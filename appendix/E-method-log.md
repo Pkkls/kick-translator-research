@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-seven. Listed in full because a method log that omits them is an
+Twenty-eight. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -896,6 +896,46 @@ detectability finding, a better typology of probe failures, the base-rate
 sentence, a unit error matching one of this study's, and these two failure
 modes. **The corpus was answering questions this study was deriving from
 scratch, in a file the search had never surfaced.**
+
+### 4.28 Four wrong accusations before one real bug, and what the real one was
+
+**What happened.** The most complete account of the probe-error rate in either
+record is a single pass of the older journal, titled "a real bug, found behind
+four wrong accusations". Its opening: getting to the defect took four probes
+that accused working code, **and the product was right every time**.
+
+The four, each a different mechanism: a driver that destroyed what the
+extension had inserted; a mock that returned one segment where the adapter
+joins a batch and splits by lines, so the product correctly reported that the
+translation came back identical to the original and the author fixed the wrong
+thing after reading that message; a skip reason read off the wrong element,
+returning null, which produced **a confident written finding that bursts of
+messages were being silently dropped** and was withdrawn with "the claim was
+mine, not the product's"; and a witness that exited on a timeout rather than on
+its assertion.
+
+**The real defect was better than any of the four accusations.** The scroller
+recycles a row by replacing its contents, so the row is the mutation target and
+never an added node, while the observer collected candidates from added nodes
+only. Eight recycled rows, no translation, no reason, no request. And the
+comment above the loop says the case is covered by watching childList with
+subtree, which the journal calls **true of the events and false of the
+handling**.
+
+**Two things this study had wrong and has now fixed.** Chapter 9 described the
+recycling hazard as an answer landing on a reassigned row, which is plausible,
+general, and not what the corpus measured. And the chapter credited a gate for
+covering the class without noting that the unit suite was structurally unable
+to: the test double discarded the MutationObserver callback it was handed, so
+no test among 620 could deliver a mutation, and **that branch was unreachable
+by construction** until the double was fixed.
+
+**The ratio is the transferable number.** Four false accusations to one real
+defect, from an author with the product's own source, its journals, and a
+standing rule about verifying the failure is in the product first. This study's
+own series ran five changed of nine. Neither number is a story about
+competence; together they are the base rate for measuring a system from a
+position of partial knowledge.
 
 ### The pattern across the first three
 
