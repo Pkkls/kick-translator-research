@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 39 of 39 holding at the commit this was last checked against, and 4
+It reports 43 of 43 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -162,8 +162,10 @@ sixth pass on 2026-08-30 found the same mute gesture in three live harnesses,
 two of them beside a comment describing the trap, and diagnosed it in one line:
 the gesture was copied instead of shared. It moved into one module, and the
 sweep that found the dead selectors became a gate **[yours]**. Both are there:
-`kick-actions.mjs` is imported by all three harnesses, and `audit-selecteurs`
-is an entry in the runner **[re-run]**. Seven hours later your twenty-sixth
+`kick-actions.mjs` is imported by all three harnesses, and by a fourth, the
+offline translation gate written that evening, which reused the module rather
+than copy the gesture again; `audit-selecteurs` is an entry in the runner
+**[re-run]**. Seven hours later your twenty-sixth
 pass found the same mechanism in a different pair of files: the fixture
 screenshot harness had drifted to a scale factor its sibling's comment warned
 against **[yours]**. That one was repaired with a check that reads the

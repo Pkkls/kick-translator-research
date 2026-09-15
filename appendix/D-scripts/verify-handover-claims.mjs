@@ -181,6 +181,13 @@ if (!existsSync(harness)) {
   claim('3.3 files no runner entry launches', 34, notLaunched.length, launched.size + ' launched');
   claim('3.3 of those, runners or modules a gate imports', 5, notLaunched.length - orphans.length);
   claim('3.3 orphans', 29, orphans.length);
+
+  // 2.1: the cure the corpus applied, one instance at a time.
+  // 4, not the 3 the journal names: first written as 3 from those three files,
+  // and this claim's first run found the offline translation gate as well.
+  claim('2.1 harnesses importing the shared gesture module', 4, files.filter((f) => /from\s+'\.\/kick-actions\.mjs'/.test(readFileSync(join(harness, f), 'utf8'))).length);
+  claim('2.1 the dead-selector sweep is a runner entry', true, /\[\s*'audit-selecteurs'/.test(block));
+  claim('2.1 screenshot harnesses asserting PNG dimensions', 2, files.filter((f) => /^store-shots/.test(f) && /readUInt32BE\(16\)/.test(readFileSync(join(harness, f), 'utf8'))).length);
   const etatPath = join(root, '.agent', 'ETAT.json');
   if (existsSync(etatPath)) {
     const etat = JSON.parse(readFileSync(etatPath, 'utf8')).portes?.orphelins ?? [];
@@ -266,6 +273,9 @@ claim('3.6 commits ever touching Playwright in a manifest', 0, git('log --format
 const infra = ['scratchpad/harness/playwright.mjs', 'scratchpad/harness/run-gates.mjs', '.agent/state.mjs'].filter((p) => existsSync(join(root, p)));
 // "0 of 3", not 0: with the files missing, a bare zero would hold over nothing.
 claim('3.6 no gate infrastructure records the browser version', '0 of 3', infra.filter((p) => /\.version\(\)|browserVersion/.test(read(p))).length + ' of ' + infra.length);
+
+// 5: the frequency the listing already publishes.
+claim('5 the listing sells a hover usage ratio', true, /point at a message, which cuts usage by roughly 10x/.test(read('store-listing.md')));
 
 // Claims that need what this account did not have ---------------------------
 

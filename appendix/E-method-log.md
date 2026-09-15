@@ -1109,6 +1109,15 @@ harnesses, and was repaired there too, by a check. The corpus does apply the
 cure; what it skips is enumerating the other copies once a diagnosis names the
 mechanism. Section 2.1 now says that instead of implying the cure was unknown.
 
+**The credit's first check was scoped to the journal's own list.** It confirmed
+the module was imported by the three harnesses the journal names. When the
+claim went into the verifier, which counts importers across the directory, its
+first run said four: the offline translation gate, written that evening,
+imports the module too. The sentence as first published was true and
+incomplete, and incomplete in the direction that mattered, because a later
+harness reusing the shared module is the cure working, which three named files
+could never show.
+
 ### 4.33 A recipe that counted labels, and a generator that agreed with it
 
 **What happened.** The older journal's third pass classifies the project's
