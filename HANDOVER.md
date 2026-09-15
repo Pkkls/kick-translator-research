@@ -934,7 +934,8 @@ Stated so the boundary is visible rather than implied.
 
 - **Nothing in a browser.** Every `[read]` claim is about call sites, not about
   what renders.
-- **Nothing about real traffic**, which is section 5.
+- **Nothing about multilingual traffic.** One single-channel capture's figures
+  exist in your handoff, section 5; nothing says which languages appear.
 - **Nothing about translation quality**, which is the first question a user
   would ask and is out of scope for everything here.
 - **Nothing you never noticed.** A self-reported corpus cannot show its own
@@ -973,10 +974,12 @@ own machine. A matrix over fresh profiles with flags varied. Until it is
 understood, no single latency number describes your product, because the fast
 path serves an unknown fraction. Section 5.
 
-**One evening, and it is the highest-value thing on this list.** The chat
-capture. Two of your own decisions still end on its absence, section 5 says
-which, and so does every priority in this file. It needs a person on a real page, which is why it has not
-happened, and no amount of engineering substitutes for it. Section 5.
+**One evening, and it is the highest-value thing on this list.** A
+multilingual chat capture; the single Spanish channel you captured in August
+measured length and case, not languages. Two of your own decisions still end
+on its absence, section 5 says which, and so does every priority in this file.
+It needs a person on a real page, which is why it has not happened, and no
+amount of engineering substitutes for it. Section 5.
 
 **Two hours for the first four, and it closes a question rather than opening
 one.** Decide the page-queryable signals in section 3.2: each is required with

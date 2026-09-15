@@ -12,8 +12,10 @@ currently-blocked decisions does the answer unblock.
 and converts every mechanism finding in this study into a prioritised one.
 
 A few thousand lines from two or three channels of different languages. The
-collector exists. Nothing else in this list comes close in value, and the
-reason it has not happened is that it needs a person on a real page rather than
+collector exists. Nothing else in this list comes close in value. One capture
+of a single Spanish channel was taken in August and survives as summary figures
+([14.1](14-limits.md#141-the-binding-limitation-no-observed-input-distribution));
+the multilingual one has not happened, because it needs a person on a real page rather than
 a machine.
 
 The measurements it would produce, in the order they matter:

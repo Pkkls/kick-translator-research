@@ -1,6 +1,7 @@
 # 14. Limits and threats to validity
 
-> Every frequency claim in this study is unsupported. The project knows it,
+> Every frequency claim about languages in this study is unsupported, and the
+> one live capture in the corpus is a single Spanish channel. The project knows it,
 > records it as its own outstanding request, and has taken decisions by
 > refusing to move. Refusing to move is not the absence of a guess: at least
 > one revert was argued on a frequency nobody measured
@@ -24,7 +25,8 @@ The four decisions named there:
 3. whether a source allowlist should let an unidentified line through;
 4. what share of a real chat is code-switched.
 
-A collector exists and has not been run against live traffic.
+The collector now in the repository has not been run against live traffic; an
+earlier one was, once.
 
 **A correction to this chapter's premise: one capture was taken, in August, and
 the queue lost track of it.** **[reported]** The handoff of 2026-08-16, which

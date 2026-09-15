@@ -102,7 +102,8 @@ was never observed**.
 request: every corpus used for its benches is hand-written, and its queue lists
 decisions blocked on the absence of a real chat capture, each taken by refusing
 to move. Not all of them still are; [14.1](14-limits.md#141-the-binding-limitation-no-observed-input-distribution)
-says which. A collector script exists and has not been run
+says which, and records that one single-channel capture was taken in August. The
+collector script now in the repository has not been run
 against live traffic.
 
 The consequence is that this corpus supports strong claims about **mechanisms**
