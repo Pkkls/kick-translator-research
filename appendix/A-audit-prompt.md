@@ -862,8 +862,8 @@ symmetric, but the direction depends on what the probe is looking for, and
 getting this backwards costs you the wrong half of the discipline.
 
 **A probe searching for a guard** reports it missing wherever the probe failed
-to look properly, so its errors surface as accusations. Here an unreplicated
-finding should be discounted and an unreplicated absence is comparatively safe.
+to look properly, so its errors surface as accusations. Discount an
+unreplicated finding; an unreplicated absence is comparatively safe.
 
 **A probe enumerating instances** misses whatever lies outside its scope, so
 its errors surface as under-counts. Here the polarity inverts: a short list is
@@ -873,9 +873,9 @@ rather than an obvious blank.
 
 Both failures were observed in the pass that wrote this axis: three guard
 probes over-accused, and one enumeration under-counted by a factor of two and a
-half. So the rule is not "discount findings". It is **discount whichever
-outcome a scope error would have produced**, and to know that you have to say
-what the probe was looking for before you read its number.
+half. So the rule is not "discount findings". It is **discount the outcome that
+a narrow scope produces for that kind of probe**, and to apply it you have to
+say what the probe was looking for before you read its number.
 
 ---
 
