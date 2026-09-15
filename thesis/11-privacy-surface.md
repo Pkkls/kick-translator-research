@@ -108,6 +108,20 @@ the real extension against a local fixture served at the host's own URL, asserts
 the manifest exposes nothing, and carries two witnesses: pointing the content
 script at a missing file, and re-exposing one chunk.
 
+**A correction to that paragraph, from the very next pass.** As first built,
+the gate did not serve the fixture. **[reported]** Its route pattern was the glob
+`*.kick.com`, which in Playwright requires at least one character before the
+dot and so does not match `kick.com`. The page navigation went to the real site
+while its subresources were intercepted, and the gate printed 70 interceptions,
+which read as the mechanism working. A local page asks for nothing: with the
+fixture actually served, the count is zero. The commit that added the gate said
+nothing leaves the machine, and the author's verdict is that this *was false
+when it was written*. **[replicated]** The route is a regular expression now,
+with the reason in a comment beside it. The manifest assertion and both
+witnesses never depended on the pattern and stand. This study had quoted the
+gate from its own pass and not read the pass after it
+([4.36](../appendix/E-method-log.md#436-the-pass-after-the-one-quoted-corrected-it)).
+
 So the manifest half of this question is instrumented and guarded. The eleven
 signals above are the other half, they are DOM identifiers, and nothing asserts
 anything about them. **The door was closed, and gated, on one side; the other

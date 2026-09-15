@@ -497,7 +497,10 @@ host the manifest declares.
 
 **Witness** add a request to a host not in the manifest; the capture gate names
 it. Remove a sentence from the privacy text that covers a real field; the
-comparison goes red.
+comparison goes red. Do not witness a permission by removing it under an
+offline capture: interception answers the request before the permission is
+consulted, so the gate stays green. Permissions are held by the comparison
+against the capture, not by a gate going red.
 
 ### A11. Supply chain and the shipped bundle
 

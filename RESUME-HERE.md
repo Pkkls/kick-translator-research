@@ -42,7 +42,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 8 to 12, 14, 15, 16, 20, 22 to 28 and "Left behind",
+Read so far: passes 3, 6, 8 to 16, 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -52,7 +52,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L569 | Pass thirteen: the thing the product is for |
 | L719 | Pass seventeen: the number the listing sells |
 | L751 | Pass eighteen: the language a reader picks |
 | L779 | Pass nineteen: somebody else's DOM |
@@ -77,6 +76,10 @@ returns statements ranked by relevance, and in a chronological corpus the most
 relevant passage is often the one that was later superseded. That mistake is
 [entry 4.22](appendix/E-method-log.md) in the method log, and it cost this study
 a section asserting a question was open when a later pass had closed it.
+
+Before publishing anything from a section, open the section after it. A
+correction lands in the next entry at the earliest, and
+[4.36](appendix/E-method-log.md) is what skipping that cost.
 
 ## Candidates with one instrument, waiting for a second
 

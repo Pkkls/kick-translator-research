@@ -1202,6 +1202,28 @@ no commit ever touching Playwright in a manifest, witnessed by the same search
 finding `vitest`; and no infrastructure file recording a version, counted as
 "0 of 3" so that missing files cannot make it pass.
 
+### 4.36 The pass after the one quoted corrected it
+
+**What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth
+pass with a gate that loads the extension against a local fixture served at the
+host's own URL. The thirteenth pass, which begins on the next line of the
+journal, says it did not: the route glob missed the bare domain, the page came
+from the real site, and the 70 interceptions the gate printed were a symptom
+read as success. The pattern was fixed that day, so the gate as it stands today
+matches the description; the gate as quoted did not.
+
+**Cost.** A chapter and a log entry that described a guarantee as holding at a
+point in the history where the author had recorded it as false, in the
+section this study used to correct its own unfairness to the corpus.
+
+**Why it happened.** It is [4.22](#422-read-an-early-entry-missed-the-later-one-that-settled-it)
+again, at the shortest possible distance. That entry was about topic search
+returning an early passage. This time the journal was read by position, and
+the reading still stopped at the end of the section that answered the question
+being asked. A correction in a chronological record lands in the next entry at
+the earliest, so a section read for a claim has not been read until the one
+after it has.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

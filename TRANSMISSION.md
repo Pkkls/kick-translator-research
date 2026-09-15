@@ -115,7 +115,9 @@ fail, and nothing guarantees it reached the artefact the assertion reads. A
 constant folded by a bundler, a patch whose pattern never matched: each produces
 a break that never arrived and a green that means nothing. The corpus's
 sentence: *a witness that does not break the thing it claims to break proves
-nothing.*
+nothing.* And a witness that other tests also catch proves the gate works, not
+that it covers anything new: an end-to-end gate went red on a broken selector
+that four unit tests also caught. Look for a break only that gate can see.
 
 **Read why a witness went red, not merely that it did.** A witness can produce
 the expected failure through an unintended path: a layout fix removed, the panel
@@ -133,6 +135,10 @@ probe must make the things it distinguishes differ.**
 count can mean the cache worked, or that something upstream discarded the input
 before any cache was consulted. Vary the input so only the mechanism under test
 can produce the result, and write in the probe why that variation is there.
+**And know what the correct state prints before reading what you got.** A
+network gate printed 70 interceptions, which looked like interception working.
+Its route pattern missed the page itself, the page came from the real site, and
+the correct count for a local page is zero.
 
 **A test over a constant is a test of the declaration, not of the behaviour.**
 A test asserting a provider list has three entries does not test that the second
@@ -185,7 +191,10 @@ in no runner is worse than none**, because its presence reads as coverage.
 
 **Read a chronological corpus by position, not by topic.** A theme query returns
 statements ranked by relevance; the best-matching passage is often the one a
-later pass superseded.
+later pass superseded. **And a section read for a claim is not read until the
+next one is.** This study quoted a gate from the pass that built it; the pass
+beginning on the following line says the gate had not done what its commit
+claimed.
 
 **Establish severity at the output, never at the failing component.** In a
 pipeline with defaults and fallbacks, a broken component does not imply a
