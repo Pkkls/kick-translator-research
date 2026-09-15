@@ -821,6 +821,11 @@ anywhere:
   pattern is replicated by a count over structure; a source reading is
   replicated by the built artefact; a line search is replicated by tracing the
   callers.
+- **Do both instruments see the whole population the claim is about?** Two
+  probes agreeing about one file, when the claim is about a chain of five, is
+  not replication: they share a blind spot and confirm each other inside it.
+  State the population before replicating, then check the scope of each
+  instrument against it.
 - **Was every count taken over the structure, or over text near it?** Anything
   with a built, generated or parseable form is counted in that form.
 - **Was every exit code read without a pipe?** A pipeline reports its last
@@ -839,7 +844,8 @@ anywhere:
   under whichever neighbouring category is nearest.
 
 **Bar** every finding published carries a second, differently-shaped
-confirmation, or is published as unreplicated and explicitly discounted. Zero
+confirmation whose scope covers the whole population the claim is about, or is
+published as unreplicated and explicitly discounted. Zero
 counts taken over text where a structured form exists. Zero exit codes read
 through a pipe. Zero quotations that are translations. Zero verifier sharing
 its technique with its subject. The pass reports its own false-positive count

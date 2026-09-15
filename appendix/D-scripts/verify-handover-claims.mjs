@@ -205,6 +205,19 @@ claim('3.5c the metrics module merges, on the same lifecycle', true, /counts\[k\
 claim('3.5d the day key is UTC', true, /toISOString\(\)\.slice\(0, 10\)/.test(statsSrc));
 claim('3.5d the rollover archives before resetting', true, /archiveDay\(/.test(statsSrc));
 
+// 3.5 Languages with no marker anywhere in the detection chain --------------
+// Counted across the chain, not over langDetect.ts alone. Counting one file
+// gave 18 of 42 and a conclusion of 24 unmarked, which was wrong by seven.
+
+const chainFiles = ['content/langDetect.ts', 'shared/laughter.ts', 'shared/romanised.ts', 'shared/transliterationGuard.ts', 'content/filters.ts']
+  .filter((f) => existsSync(join(root, 'src', f)));
+const chain = chainFiles.map((f) => read('src/' + f).replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')).join('');
+const chainLiterals = new Set([...chain.matchAll(/['"]([a-z]{2}(?:-[A-Za-z]+)?)['"]/g)].map((m) => m[1]));
+const offered = [...read('src/shared/languages.ts').matchAll(/code:\s*['"]([a-z]{2}(?:-[A-Za-z]+)?)['"]/g)].map((m) => m[1]);
+const unmarked = offered.filter((c) => !chainLiterals.has(c));
+claim('3.5 languages offered', 42, offered.length);
+claim('3.5 languages with no marker anywhere in the chain', 17, unmarked.length, chainFiles.length + ' files in the chain');
+
 // 3.6 What a clone gets -----------------------------------------------------
 // Checkable without cloning: what git tracks is what a clone receives.
 

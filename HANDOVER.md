@@ -361,15 +361,30 @@ worth saying out loud, and it is why the handover has no debt section.
 
 ### 3.5 One number worth having before the capture arrives
 
-**[re-run]** Of the 42 languages the product offers, 18 are named anywhere in
-`langDetect.ts`. The other 24 rest entirely on the statistical identifier.
+**[re-run]** 18 of your 42 languages are named in `langDetect.ts`. An earlier
+version of this section concluded that the other 24 rest entirely on the
+statistical identifier. **That conclusion was wrong: the figure is 17.** Seven
+more are marked elsewhere in the detection chain, in the laughter lexicon, the
+romanisation table and the filters, which a count over one file could not see.
+Counting across the chain gives 25 of 42 with a marker somewhere.
 
-**[mine]** That is not a defect, it is a map. Every failure in section 2.1 was
-a language whose script was shared and whose separation needed an explicit
-marker. The 24 are where another one can still be hiding, and the list is a
-cheap way to prioritise the bench work in section 5: a language with no marker
-and a script it shares with a bigger neighbour is the exact shape that produced
-Persian, Mongolian and Bulgarian.
+The seventeen with no marker anywhere:
+
+```
+pt-br  nl  pl  cs  sk  ro  vi  fi  hu  ca  sl  et  lt  lv  bn  ta  tl
+```
+
+**[mine]** That list is a map rather than a defect, and it is sharper than the
+wrong one was. Every failure in section 2.1 was a language sharing a script
+with a larger neighbour and needing an explicit marker to separate from it.
+Read the list with that in mind and it sorts itself: `pt-br` against `pt`,
+`cs` against `sk`, `lt` against `lv`, `ca` against `es`, and a block of
+Latin-script European languages against each other. Those are the shapes that
+produced Persian, Mongolian and Bulgarian, and they are where the next one is.
+
+It is also the cheapest way to prioritise the capture in section 5: the capture
+says which of the seventeen actually appear in your chat, and a list becomes a
+queue.
 
 ### 3.5b Two axes measured from a build, both clean
 

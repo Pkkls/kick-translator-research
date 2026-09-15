@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Seventeen. Listed in full because a method log that omits them is an
+Eighteen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -494,6 +494,36 @@ measurement happened, never that it was competent, and nothing in the scheme
 distinguishes a careful measurement from a careless one. That gap has no fix
 here beyond A22's replication bar, which is precisely why that bar exists and
 why it is the one thing in the specification with a cost attached.
+
+### 4.18 Measured one file and concluded about a chain
+
+**What happened.** Counted how many of the product's 42 languages are named in
+`langDetect.ts`: 18. Robust, and confirmed by a second instrument that strips
+comments first, which agreed exactly. Then published the conclusion that the
+other 24 rest entirely on the statistical identifier.
+
+**The count was right and the conclusion was wrong.** Detection is a chain of
+five files. Widening the same count across it gives 25 of 42 marked somewhere:
+seven languages carry their markers in the laughter lexicon, the romanisation
+table or the filters. The number with no marker anywhere is **17**, not 24.
+
+**Cost.** A wrong denominator in a handover section whose purpose is to tell
+someone where to look next. The list it produced was 40 percent too long, which
+is the kind of error that wastes the reader's time rather than damaging them.
+
+**Why it is distinct from the counting errors.** 4.11, 4.12, 4.16 and 4.17
+measured the wrong way. This one measured correctly and then generalised from
+the part to the whole. Two instruments agreed, which felt like replication and
+was not: **they agreed about the same file.** Replication requires a different
+instrument, and it also requires the instrument to be pointed at the right
+scope. Agreement between two probes with the same blind spot is worth nothing.
+
+That refines A22's replication bar, which as written asks for an instrument of
+a different shape and says nothing about scope:
+
+> Two instruments agreeing on the wrong subject is not replication. Before
+> replicating a measurement, state what population the claim is about, and
+> check that the instrument sees all of it.
 
 ### The pattern across the first three
 
