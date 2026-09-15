@@ -120,7 +120,7 @@ Next, in the order most likely to correct something published here:
 
 | File | Lines | Why first |
 |---|---|---|
-| `.agent/PLAN.md` | 1287 | **L1 to L430 read**, and the whole file counted; L430 onward unread |
+| `.agent/PLAN.md` | 1287 | **L1 to L530 read**, and the whole file counted; L530 onward unread. Stopping short of L486 cost 4.65 |
 | `CHANGELOG.md` | 900 | what each version told readers it changed |
 
 The queue is counted rather than described: **114 entries under seven

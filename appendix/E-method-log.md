@@ -2421,6 +2421,43 @@ two of which now exist because this session made them. **Meeting a stop
 condition is not the same as being done, and the specification is careful enough
 to say so: it requires all three.**
 
+### 4.65 Measured a thing whose answer was fifty-six lines further down the file I had stopped reading
+
+**What happened.** [4.53](#453-a-probe-built-for-one-finding-refuted-the-finding-before-it-was-published)
+measured the three localised READMEs and reported that their what-new sections
+head at 2.8.1 while the product is at 2.10.0, that all three link that heading
+to `releases/latest` so the heading and its destination disagree, and that none
+carries the version line the bar allows instead. Every one of those is correct.
+
+The corpus's queue holds an open item saying the first of them, at
+`.agent/PLAN.md:486`: *their release-note sections stop at 2.8.1 while the
+product is at 2.10.0.* The reading position recorded at the time was L430. **The
+answer was fifty-six lines past where the reading had stopped.**
+
+And the entry carries a second defect that was not found by measuring: *the alt
+strings written for the new images were written without a native reader, in es,
+pt-BR and ja*. That is an accessibility fault in three languages, it is already
+known, already open, and nothing in this study mentioned it until now.
+
+**Cost.** A finding published as this study's own that the corpus had already
+recorded, and a second one beside it missed entirely. Nothing false was
+published: the numbers agree, which is a small mercy and also the reason it
+went unnoticed for six passes.
+
+**Why it happened, and it is not [4.22](#422-read-an-early-entry-missed-the-later-one-that-settled-it).**
+That entry is about searching by topic and landing on a superseded passage. This
+reading was by position, which is the correct method, and it was interrupted:
+the pass stopped at L430 to go and measure, and the measurement was about
+exactly the subject the next page of the file discusses. The method was right
+and the sequencing was wrong.
+
+**The rule, and it is cheap.** A reading and a measurement of the same subject
+compete, and the reading is the one that can tell you the measurement is
+unnecessary. **Finish the file before measuring what the file is about**, or
+accept that every measurement taken mid-read is a coin flip between a discovery
+and a rediscovery. This study has now spent one pass on the wrong side of that
+flip, and the flip was avoidable by reading fifty-six more lines.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
