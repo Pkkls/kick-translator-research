@@ -117,7 +117,9 @@ a break that never arrived and a green that means nothing. The corpus's
 sentence: *a witness that does not break the thing it claims to break proves
 nothing.* And a witness that other tests also catch proves the gate works, not
 that it covers anything new: an end-to-end gate went red on a broken selector
-that four unit tests also caught. Look for a break only that gate can see.
+that four unit tests also caught. Look for a break only that gate can see, as
+the corpus's next gate did: short-circuiting hover arming left 621 of 621 unit
+tests green and turned that gate red.
 
 **Read why a witness went red, not merely that it did.** A witness can produce
 the expected failure through an unintended path: a layout fix removed, the panel
@@ -178,7 +180,14 @@ because the inlined stylesheet's selectors matched too.
 non-deterministic" is terminal: it explains the observation, requires no work,
 and closes the investigation. In the one case recorded here it covered three
 separate defects, two of them the author's own probes. Account for each varying
-run before blaming the environment.
+run before blaming the environment. **The same terminal move has a second
+form: filing an anomaly as a quirk of your own apparatus.** A translation
+printed glued to a username sat in output the author read and quoted, taken for
+a rendering quirk of the probe; the fixture lacked the wrappers the product
+looks for, and every translation in every mode had been injected inside the
+username. A mock "missing an entry" turned out, eight passes later, to be two
+words deleted before anything left the page. The comfortable explanation is the
+one that ends the investigation.
 
 **A number without its unit or parameter is not a measurement.** Both accounts
 produced one: a character count read against a byte reference, and a gzipped

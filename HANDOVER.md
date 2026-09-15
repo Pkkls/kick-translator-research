@@ -726,6 +726,17 @@ where real chat has fragments and pastes), **selectionally** wrong (written by
 someone who knew which phenomenon they targeted), and **adversarially** thin
 (they contain what their author thought of). A capture fixes all three at once.
 
+**Your listing already publishes one of these frequencies.** The Chrome text
+says hover mode *fetches nothing until you point at a message, which cuts usage
+by roughly 10x*, and the Firefox text says "ten times" **[read]**. Your seventeenth pass measured the first half
+properly, zero engine calls before the hover and one after, with a witness that
+only that gate catches **[yours]**. The second half is a claim about how many
+lines a reader points at on a fast chat. **[mine]** No capture measures that,
+because it is reader behaviour rather than chat content, and your product
+deliberately ships no telemetry that could. Stating the mechanism without the
+ratio, or the ratio with the share of hovered lines it assumes, costs one
+sentence in eleven languages.
+
 Second, smaller, and answerable without users: the on-device engine is absent
 on one Chrome build and present on another of the same version on your own
 machine **[yours]**. Until that is understood, the fastest path serves an
