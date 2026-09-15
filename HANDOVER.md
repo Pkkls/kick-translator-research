@@ -273,6 +273,31 @@ instrumented build and your release check keeps it out.
 The vector you removed required a network fetch. These require one synchronous
 call.
 
+**Credit where this section was unfair.** An earlier draft implied you had
+closed one vector and left the rest unexamined. You did more than close it: the
+journal's pass twelve establishes that the content script fetches nothing at
+runtime, zero `getURL`, zero dynamic import, all 22 stylesheet `url()` inline
+as `data:` SVG, then removes six reachable resources, then **builds a gate**,
+`extension-load`, which asserts the manifest exposes nothing, with two witnesses:
+pointing `content_scripts` at a missing file, and re-exposing one chunk.
+
+So the manifest half of this question has a mechanism and is guarded. The
+eleven signals above are the other half: they are DOM identifiers, and nothing
+asserts anything about them. That is the honest shape of the finding, and it is
+smaller than the earlier draft implied.
+
+**Your own note raises the stakes above privacy, and it is the reason to care.**
+Pass twelve says detectability is worth more here than in most extensions,
+*since this site already walls off what it detects*. That reframes it: an
+identifier a page can query is not primarily a privacy matter for the reader,
+it is a **product-survival** matter for you. A stable name is what a
+countermeasure keys on, and it costs one line for them to write and a release
+cycle for you to answer.
+
+That argues for treating the eleven as the manifest was treated: enumerate,
+remove what is not required, and put a gate behind the result so the count
+cannot creep back.
+
 **A correction this section owes you.** It first listed four signals, from a
 probe that read three files. Reading all nineteen content-script files gives
 the eleven above. The published number was low by a factor of two and a half,

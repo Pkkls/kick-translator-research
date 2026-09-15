@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Twenty-five. Listed in full because a method log that omits them is an
+Twenty-six. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -814,6 +814,47 @@ rate the whole thesis rests on had a measured value in the corpus all along.
 1.7 percent, all at non-English targets. Ten chapters asserted that this failure
 class is the worst one here without ever stating its size, because a theme query
 had never surfaced the entry that measured it.
+
+### 4.26 The journal this study never opened, and the gate it did not credit
+
+**What happened.** The older of the two daily journals, 1101 lines and
+twenty-eight numbered passes, had never been read at all. Two sections in it
+bear directly on things this study published.
+
+**The detectability finding was reported unfairly.** Pass twelve of that journal
+does not merely remove the reachable resources. It establishes that the content
+script fetches nothing at runtime, removes six resources, and **builds a gate**
+that loads the real extension against a local fixture at the host's own URL,
+asserts the manifest exposes nothing, and carries two witnesses. This study's
+handover and chapter 11 both implied an unexamined question where there is an
+instrumented one. Corrected in both, with the finding narrowed to what is
+actually unguarded: the DOM identifiers.
+
+**And the corpus frames the stake better than this study did.** Its note: this
+matters more here than in most extensions *because the site already walls off
+what it detects*. This study had argued the axis on reader privacy. The real
+exposure is product survival, and it is the stronger argument by a distance.
+
+**Their typology of self-inflicted probe failures is better than this log's.**
+A section titled "four ways I broke my own probes this pass" opens with the base
+rate stated plainly:
+
+> Most red is mine before it is the product's.
+
+The four are each a distinct mechanism, and two are not in this log at all: a
+probe that **crashed on a null instead of measuring**, where a crashed probe
+reads as a red gate and so as a product defect; and a runner whose exit code 2
+meant two different prerequisites while its label named only one, so the
+diagnosis was confidently wrong about why. The other two are familiar: a bulk
+rewrite producing a self-referential constant, and a heredoc eating an escape
+**an hour after the author had written down that heredocs do this**.
+
+**One more unit error, theirs, matching one of this study's.** A first reading
+reported the content script at 200874 bytes and called it a 12 percent drop.
+It was a character count against a byte reference; the file holds multi-byte
+UTF-8 and was 228406 bytes. Same class as this study's gzip figure published
+without its compression level: **a number whose unit or parameter is unstated
+is not a measurement**, and both accounts produced one.
 
 ### The pattern across the first three
 

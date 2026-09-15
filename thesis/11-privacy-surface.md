@@ -97,8 +97,28 @@ hard-code any of them. The first pass of this measurement reported four, from a
 probe whose scope was three files.
 
 The removed vector required a network fetch. The remaining vectors require a
-single synchronous DOM call. **The door was closed on the expensive side and
-left open on the cheap one.**
+single synchronous DOM call.
+
+**The project went further than the removal, and this study first reported it
+as though it had not.** The corpus records that the content script fetches
+nothing at runtime, zero `getURL`, zero dynamic import, all 22 stylesheet
+`url()` inline as `data:` SVG; that six resources reachable from any page were
+removed; and that a **gate** was built to hold the line **[reported]**. It loads
+the real extension against a local fixture served at the host's own URL, asserts
+the manifest exposes nothing, and carries two witnesses: pointing the content
+script at a missing file, and re-exposing one chunk.
+
+So the manifest half of this question is instrumented and guarded. The eleven
+signals above are the other half, they are DOM identifiers, and nothing asserts
+anything about them. **The door was closed, and gated, on one side; the other
+side was never framed as part of the same question.**
+
+**The corpus also states the stake better than this study had.** Its note is
+that detectability matters more here than in most extensions *because the host
+site already walls off what it detects*. That moves the axis out of privacy and
+into product survival: a stable queryable name is what a countermeasure keys
+on, costing the site one line and the extension a release cycle. The reader's
+privacy is the secondary consideration.
 
 ### The correct formulation of the bar [new]
 
