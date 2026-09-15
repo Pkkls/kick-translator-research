@@ -273,8 +273,10 @@ here". It was executed. It was wrong.
 - **Nothing was observed in a browser.** Every source-derived claim is about
   call sites, not about what a reader sees.
 - **No real chat traffic.** Every frequency claim in the thesis is unsupported,
-  which the corpus itself records as its own binding limitation: four of its
-  decisions are blocked on a single chat capture that has never been taken.
+  which the corpus itself records as its own binding limitation: its queue
+  lists decisions blocked on a single chat capture that has never been taken.
+  Read its later entries before counting them: one was closed in detection,
+  and one depends on reader settings a capture does not record (thesis 14.1).
 - **No store figures taken here**, which need accounts. The corpus holds one
   reading: 85 installs to 210 first visits over eight months, and listing views
   by localised page. Both measure the listing, not the product in use. This

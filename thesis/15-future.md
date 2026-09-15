@@ -7,7 +7,7 @@ currently-blocked decisions does the answer unblock.
 
 ## 15.1 One real chat capture
 
-**Unblocks four decisions**, listed in
+**Unblocks the decisions still waiting on it**, listed in
 [chapter 14](14-limits.md#141-the-binding-limitation-no-observed-input-distribution),
 and converts every mechanism finding in this study into a prioritised one.
 

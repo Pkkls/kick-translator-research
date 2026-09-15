@@ -1254,7 +1254,34 @@ the checks were green, and the commit message said the rule was "now in
 TRANSMISSION.md". It was not, until the following commit. The helper did its
 job; the message was written from the plan of the batch rather than from its
 results, which is the witness rule again: a green run says nothing about an
-edit that never reached the file.
+edit that never reached the file. The mechanism was specific: the commit ran in
+the same parallel batch as the edits, so it could not see their results. The
+practice since is that a commit never shares a batch with the edits it records.
+
+### 4.38 Four decisions, counted from the item the same file had overtaken
+
+**What happened.** The thesis, the handover and TRANSMISSION.md all said four
+decisions were blocked on a chat capture, quoting the queue's waiting item. The
+newer journal and two done entries in that same queue say otherwise. The
+allowlist question was measured from both sides, found to be the same lines
+lost by one reader and paid for by the other, and repaired in detection, with
+the entry saying reopening it needs a case detection cannot reach. The trimming
+question became an accuracy trade that changes sign with the readers' target
+languages, which the collector does not record. Two remain.
+
+**Cost.** Nine restatements of the count across six files, and the handover's
+top item argued the capture's value on four decisions where the corpus supports
+two. The capture's value survives the correction, since every priority rests on
+a frequency. Its stated case does not.
+
+**Why it happened.** An open item reads as current because it is open. The
+waiting item was never updated when the done items closed half of it, and this
+study took the count from the item rather than from the entries after it:
+[4.22](#422-read-an-early-entry-missed-the-later-one-that-settled-it) inside a
+single file, and [4.30](#430-corrections-that-stayed-in-the-section-they-were-made-in)
+in the count's nine restatements. The correction now lives in chapter 14.1, the
+other mentions point there, and three verifier claims hold the facts it rests
+on, including that the waiting item still says four.
 
 ### 4.36 The pass after the one quoted corrected it
 

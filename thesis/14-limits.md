@@ -1,7 +1,7 @@
 # 14. Limits and threats to validity
 
 > Every frequency claim in this study is unsupported. The project knows it,
-> records it as its own outstanding request, and has taken four decisions by
+> records it as its own outstanding request, and has taken decisions by
 > refusing to move rather than by guessing. This chapter states what fails if
 > the frequency assumptions are wrong.
 
@@ -35,8 +35,25 @@ translates into. A chat capture records what is written, not what readers have
 chosen, so it cannot say which target set is the real one; that is reader
 behaviour, and the product ships no telemetry that could record it. The only
 proxy in the corpus is the listing's views by localised page (HANDOVER.md 3.5).
-Three of the four decisions wait on the capture; the fourth waits on something
-the capture does not contain.
+**[replicated]** The collector exports a channel name and timestamped message
+text, and nothing about the reader.
+
+**And a second was closed without the capture.** **[reported]** The allowlist
+question was measured from both sides: what a reader whose allowlist matches
+the chat would lose, and what a reader whose allowlist does not would newly pay
+for, are the same lines, message for message. No rule serves both and the
+option's wording licenses both readings, so the repair moved into detection,
+where it serves both: Portuguese losses 3 of 6 to 1, Turkish 2 of 4 to 1, the
+bench 11 to 8. The queue's own entry closes it: *reopening the allowlist itself
+needs a case detection cannot reach*. The rate the question was first argued
+on, one short message in five, turned out to be a Latin rate; the full bench
+gave 11 of 176.
+
+**So two of the four still wait on a capture**: whether the short-text losses
+are worth more provider calls, and what share of a real chat is code-switched.
+The queue's waiting item still lists all four, beside the two entries that
+overtook it. Every other mention of these decisions in this study points here
+rather than restating a count.
 
 ### What this invalidates
 
@@ -239,7 +256,7 @@ be wrong, and the tags exist so that a reader can go back to the source.
 In order of value per unit of effort:
 
 1. **One real chat capture**, a few thousand lines from two or three channels
-   of different languages. It unblocks the four decisions named in 14.1 and
+   of different languages. It unblocks the decisions in 14.1 still waiting on it and
    converts every mechanism finding in this study into a prioritised one. It is
    by a wide margin the highest-value missing measurement.
 2. **The availability rate of the on-device engine** across real installs. It

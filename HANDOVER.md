@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 46 of 46 holding at the commit this was last checked against, and 4
+It reports 49 of 49 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -730,6 +730,17 @@ thousand lines from two or three channels of different languages, the collector
 pastes into a console. Four decisions end on the same sentence, that the damage
 is measured and the frequency is not **[yours]**.
 
+**Two of the four are no longer the capture's, by your own later entries.** The
+allowlist question was closed in detection, because what one reader loses is
+exactly what the other would pay for, and your entry says reopening it *needs a
+case detection cannot reach* **[yours]**. The trimming question turned into an
+accuracy trade that changes sign with the target set, and a target is a reader
+setting; your collector exports a channel and message text and nothing about
+the reader **[re-run]**. That leaves the short-text losses and the code-switch
+share. The waiting item still says four. **[mine]** The capture stays the most
+valuable thing here, because every priority in this file rests on a frequency,
+but its case is two decisions and every ordering, not four decisions.
+
 This account's contribution is to say how far the consequence reaches.
 **[mine]** Every mechanism in your notebooks is well established and every
 priority in them is unsupported, including the priorities in this file. You can
@@ -863,8 +874,8 @@ understood, no single latency number describes your product, because the fast
 path serves an unknown fraction. Section 5.
 
 **One evening, and it is the highest-value thing on this list.** The chat
-capture. Four of your own decisions end on its absence, every priority in this
-file included. It needs a person on a real page, which is why it has not
+capture. Two of your own decisions still end on its absence, section 5 says
+which, and so does every priority in this file. It needs a person on a real page, which is why it has not
 happened, and no amount of engineering substitutes for it. Section 5.
 
 **Two hours for the first four, and it closes a question rather than opening

@@ -285,6 +285,14 @@ if (existsSync(join(root, poidsPath))) {
   claim('3.5b its header still says the identifier comparison has not run', true, /Elle n'a pas encore tourne/.test(poids));
 } else uncheckable('3.5b weight gate direction', poidsPath + ' absent');
 
+// 5: which decisions still wait on a capture. The queue's waiting item says four;
+// two later entries of the same file overtook it.
+const plan = existsSync(join(root, '.agent/PLAN.md')) ? read('.agent/PLAN.md') : '';
+claim('5 the queue still says four decisions wait on the capture', true, /Four decisions\s+are waiting on that number/.test(plan));
+claim('5 the queue closes the allowlist question in detection', true, /Reopening the allowlist itself\s+needs a case detection cannot reach/.test(plan));
+const collector = existsSync(join(root, 'scripts/kick-chat-collector.js')) ? read('scripts/kick-chat-collector.js') : '';
+claim('5 the collector exports channel and messages, nothing about the reader', 'channel+messages, no setting', (/channel:/.test(collector) && /messages:/.test(collector) ? 'channel+messages' : 'fields not found') + (/targetLang|settings|chrome\.storage/.test(collector) ? ', reads a setting' : ', no setting'));
+
 // 5: the frequency the listing already publishes.
 claim('5 the listing sells a hover usage ratio', true, /point at a message, which cuts usage by roughly 10x/.test(read('store-listing.md')));
 

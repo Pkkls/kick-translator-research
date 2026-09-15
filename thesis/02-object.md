@@ -99,9 +99,10 @@ this study, and of the project it examines, is that **the input distribution
 was never observed**.
 
 **[reported]** The project's work queue records this as its own outstanding
-request: every corpus used for its benches is hand-written, and four separate
-decisions are blocked on the absence of a real chat capture, each currently
-taken by refusing to move. A collector script exists and has not been run
+request: every corpus used for its benches is hand-written, and its queue lists
+decisions blocked on the absence of a real chat capture, each taken by refusing
+to move. Not all of them still are; [14.1](14-limits.md#141-the-binding-limitation-no-observed-input-distribution)
+says which. A collector script exists and has not been run
 against live traffic.
 
 The consequence is that this corpus supports strong claims about **mechanisms**
