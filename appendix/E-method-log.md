@@ -1485,6 +1485,33 @@ that must all hold before stopping, and the second is that the queue holds
 nothing but items blocked on kil. Seven entries carry `- [ ]`. That condition
 has been an impression for the length of this study and is now a number.
 
+### 4.45 A chapter published a constant that another chapter of the same study had already recorded as reverted
+
+**What happened.** Chapter 7.5 opened with "the short-word table was given a
+thirty-character reach" and said nothing more about the number. The shipped
+bound is twenty: `d261ca1` let the table reach thirty under a veto from franc,
+`3cf87f5` took it back, and `src/content/langDetect.ts:131` reads
+`SHORT_TEXT_MAX = 20`. Chapter 15.1 already carried the reversal, correctly and
+with the deciding case, as the second of the quantities a real capture would
+settle. The study held the correction and the error at the same time, in two
+chapters, for as long as both have existed.
+
+**Cost.** The chapter that owns the brevity bound described a state that had
+been undone, and it is the chapter a reader goes to for that bound. Chapter 15
+was not going to reach that reader, because its subject is what is unmeasured
+rather than what shipped.
+
+**Why it happened.** Not [4.22](#422-read-an-early-entry-missed-the-later-one-that-settled-it),
+and not [4.36](#436-the-pass-after-the-one-quoted-corrected-it): the later
+entry was read, and it was published. It was filed under the argument that
+needed it. In 15.1 the reverted bound is an illustration of an assumption no
+measurement supports, which is that chapter's subject, so it entered there and
+nothing walked it back to the chapter whose subject is the bound itself. A fact
+arrives in a document through the argument that wanted it, and the place that
+wanted it is rarely the place that owns it. The check that follows is cheap and
+was not being run: for any fact used as an example, open the chapter that owns
+the object and confirm it says the same thing.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

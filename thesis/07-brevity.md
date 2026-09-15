@@ -162,11 +162,42 @@ mostly X while its name and header say Y will be maintained as Y: someone will
 weigh its accuracy contribution, find it modest, and remove weight that was
 actually buying request avoidance. A name is a maintenance instruction.
 
-## 7.5 The reach of the short-word table
+## 7.5 The reach of the short-word table, given and taken back
 
 **[reported]** The short-word table was given a thirty-character reach, and the
 notebooks record that it was "built from greetings, and a chat message is not a
 greeting", which is the kind of self-correction that makes this corpus usable.
+
+**The reach did not survive, and the shipped bound is twenty.** `d261ca1` let
+the table reach thirty under a veto from franc, and `3cf87f5` took it back;
+`src/content/langDetect.ts:131` reads `SHORT_TEXT_MAX = 20` today. The reason is
+the strongest kind available, a case the bench that justified the extension
+could not contain: a message that changes language mid-sentence. Over eight
+mixed lines, raising the bound takes the lines killed before the provider call
+from three to six, and the lines leaving with a source language declared on the
+strength of one half from zero to four. "merci bro that was insane" is one
+French word in an English sentence, and at thirty it leaves as `sl=fr` and
+disappears for a French reader, which is the silent-loss path of
+[chapter 4](04-script-vs-language.md) reached by a different route. The franc
+veto that paid for the extension rescues none of them, because franc answers
+`eng` on none of the eight: the vote it casts cannot see a language that is not
+in the table, and English is not.
+
+The witness is in the test suite rather than in this sentence, under
+`la portee de la table de mots courts s arrete a 20 caracteres`, and it asserts
+the source language rather than the bound, so raising the constant turns it red
+on the half of the damage that reaches the engine.
+
+**What generalises is not the number.** The reach shipped on a measurement and
+was reverted on the next one, and the two measurements disagreed because the
+second was taken on a population the first did not hold. A bound fitted on a
+bench is fitted to what the bench contains, so the question to ask of any such
+constant is not how it was tuned but which case was absent while it was being
+tuned. The absent case here is the code-switching rate, which nothing in this
+study measures: [chapter 15](15-future.md) lists it second among the quantities
+a real capture would settle, and states there what the corpus concedes, that
+twenty stays on this measurement rather than because twenty was ever measured
+as optimal.
 
 The underlying tension is real: a table built on one register (formulaic
 openings) is being applied to another (running conversation). The
