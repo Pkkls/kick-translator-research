@@ -33,11 +33,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `cold-start.mjs` | Time from navigation to the first visible translation, on a profile that has never run the extension, with a second message on the same page as the control. Sets A18's budget row | [appendix E 4.95](../E-method-log.md#495-the-cold-start-number-and-the-control-that-replicated-another-harness) |
 
-**Sixteen scripts.** That count is here because two documents stated it from
+| `worker-eviction.mjs` | Added latency of the first message after the MV3 service worker is killed, with the kill verified as a 1-0-1 transition in the CDP target list. Runs A5's witness and sets its budget row | [appendix E 4.96](../E-method-log.md#496-the-witness-nobody-had-run-and-the-identifier-that-proved-nothing) |
+
+**Seventeen scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All sixteen take a path argument and print to standard output; `probe-quotes.mjs`,
+All seventeen take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

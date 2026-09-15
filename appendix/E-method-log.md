@@ -4150,6 +4150,70 @@ the disk cache, so a genuine first run after a store install is slower by an
 unmeasured amount. And nothing here is the reader's whole wait, only the
 product's share of it.
 
+### 4.96 The witness nobody had run, and the identifier that proved nothing
+
+**What happened.** A5's witness is *kill the worker by hand between two
+messages*. [4.56](#456-a-keepalive-that-asks-for-less-than-the-platform-will-give)
+recorded that it had never been run, by this study or by the corpus, and A5's
+budget row was the last empty one. Playwright has no API for stopping an
+extension service worker; CDP does, and `cold-start.mjs` already had the rest of
+the rig.
+
+Five runs, fresh profile each, two warm messages then a kill then a third:
+
+| | median |
+|---|---|
+| warm message, ten samples | **46 ms** |
+| first message after the eviction, five samples | **81 ms** |
+| **added latency of the wake** | **35 ms** |
+
+**Five of five translated.** That is the clause of the bar that actually
+matters. A5's *breaks as* is *the service worker is evicted mid-session and the
+next message is never translated*, which is a silent loss: no error on the line,
+nothing for the reader to report. The thirty-five milliseconds are the
+interesting number only because the zero losses came first.
+
+**The check I wrote went red on every run, and the check was wrong.** Its
+criterion was that the restarted worker must carry a **different `targetId`**,
+on the reasoning that a reused id would mean the worker never stopped. All five
+runs reported the same id, so the gate refused to print a latency.
+
+The refusal was right to exist and wrong in substance. The evidence that the
+kill landed was already there and in two independent signals: the CDP target
+count went **1 to 0**, polled and asserted with a throw if the zero never
+arrived, and the post-eviction message cost 79 to 85 ms against a warm 46, a
+gap that appeared in every run and in no warm one. **Chrome reuses the target id
+across a stop and a start.** So the criterion was testing an assumption about
+the browser, not testing the eviction, and it is the failure mode of a
+*validated* witness rather than an unvalidated one: I checked that the thing I
+broke was broken, using a property I had assumed rather than measured.
+
+The repaired criterion is the transition, 1 then 0 then 1, each step polled. The
+run now prints *same targetId reused: true* so the next reader meets the fact
+instead of the assumption.
+
+**A third instrument disagreed and was set aside on purpose.**
+`ctx.serviceWorkers()` reported one worker after the target was gone. Playwright
+caches that list; CDP had just performed the close. When two instruments
+disagree the answer is not to pick the convenient one, and here the tiebreak is
+not taste: the one that performed the action is the one whose view is causally
+downstream of it. That is written into the script's header rather than left as a
+judgement call.
+
+**What the number does not cover**, since it will be quoted. A forced close is
+not the browser evicting under memory pressure, and Chrome's own eviction may
+free state a close does not. The engine is local, so a provider round trip is on
+top. And this is recovery *latency*, not what the restart forgot: the
+per-channel token bucket that 4.56 found resets full on a restart is a
+correctness consequence and is untouched here.
+
+**With this row the budget file is full**, eight of eight, from two of eight
+when it was built. Five of the six rows that were empty named an instrument that
+did not exist and one named a live harness nobody here would run. **In every
+case the work was writing the instrument, not taking the measurement**, which is
+the same sentence as 4.83 and 4.90 and 4.95, four axes apart. The specification
+asked for numbers and what was missing was never the numbers.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

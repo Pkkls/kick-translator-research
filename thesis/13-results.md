@@ -231,6 +231,8 @@ Cloned from the public repository, at the commit the study measured against.
 | The control, a second message on the same page | **p50 47 ms** | [new] |
 | The part paid once: extension load, content script, observer, MV3 worker | **231 ms** | [new] |
 | That control against `metrics-offline`'s counter-derived `e2e.cloud` p50 | 47 ms against **44 ms**, a different instrument | [replicated] |
+| **First message after the worker is killed, against a warm message** | **81 ms against 46**, added latency **35 ms** | [new] |
+| Messages lost to the eviction | **0 of 5 runs**; every one translated | [new] |
 | The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
 | What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
