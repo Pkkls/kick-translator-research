@@ -21,8 +21,8 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 ```
 
-Last known: **32/32 checkable claims, 12/12 spec conditions, 220 internal
-links and 0 broken**, 29 entries in the method log. The link count used to be a
+Last known: **33/33 checkable claims, 12/12 spec conditions, 220 internal
+links and 0 broken**, 30 entries in the method log. The link count used to be a
 sentence, "all internal links resolve", and nine of them did not.
 
 ## What is done
@@ -30,7 +30,7 @@ sentence, "all internal links resolve", and nine of them did not.
 - **15 thesis chapters**, `thesis/`
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
-- **The method log**, `appendix/E-method-log.md`, 29 recorded mistakes
+- **The method log**, `appendix/E-method-log.md`, 30 recorded mistakes
 - **Five runnable scripts**, `appendix/D-scripts/`
 
 ## The reading that is still unfinished, and it is the productive one

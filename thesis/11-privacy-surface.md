@@ -135,12 +135,15 @@ The defensible bar is a cost bar:
 > either required by the product, with the requirement written down next to it,
 > or removed.
 
-Under that bar the four signals above divide cleanly. Class names are required:
-styling needs selectors. The processed marker is arguably required: the
-observer needs idempotence, though a non-enumerable property or a WeakSet would
-serve. The fixed stylesheet id and the document-element attribute are
-conveniences, and both are replaceable by mechanisms that leave no queryable
-name.
+Under that bar the four signals this section first listed divide cleanly. Class
+names are required: styling needs selectors. The processed marker is arguably
+required: the observer needs idempotence, though a non-enumerable property or a
+WeakSet would serve. The fixed stylesheet id and the document-element attribute
+are conveniences, and both are replaceable by mechanisms that leave no queryable
+name. The seven added when all nineteen files were read, six ids on the
+extension's own elements and a class on the document element, were not sorted
+against the bar **[new]**: this paragraph was written for four and kept saying
+four after the list above became eleven.
 
 ### Why it recurs
 

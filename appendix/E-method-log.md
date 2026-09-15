@@ -1024,6 +1024,46 @@ not a second instrument, and the witness that would settle it needs a browser
 and a build. It is in the resume file as a candidate, not in the handover as a
 finding.
 
+### 4.30 Corrections that stayed in the section they were made in
+
+**What happened.** Reading the handover top to bottom at the start of this
+session, which is how it is meant to be read, found corrections that had
+reached the section where the error was caught and nowhere else:
+
+- Section 3.5 corrected the unmarked languages from twenty-four to seventeen.
+  Section 8 said twenty-four, twice.
+- Section 3.2 corrected the page-queryable signals from four to eleven. The
+  paragraph sorting them against the bar, in the same section, still sorted
+  "the four", and so did section 8 and the matching paragraph of chapter 11.
+- Section 2.1 numbered the worker race the sixth instance of its pattern.
+  Section 3.5c called it the fifth.
+- Section 1 said the verifier reported seventeen of seventeen, and that any
+  other result means the file is stale. The verifier reported thirty-two.
+- Section 11, chapter 12 and the specification's own preamble said twenty-one
+  axes. The specification has twenty-two, counted by `audit-spec.mjs` and by
+  its headings, A1 to A22.
+
+And one defect of form: the four commands in section 1 had been joined into a
+single wrapped paragraph, which pastes as one broken command.
+
+**Cost.** Five numbers wrong in the document written for the one reader who
+would act on it, and a sentence that told that reader, correctly by its own
+rule, that the whole file was stale.
+
+**Why it happened.** It is [4.14](#414-the-same-diagnosis-applied-locally-three-times-by-this-account)
+again, on this study's own prose. The diagnosis "this number is wrong" covers
+every place the number is restated. The remedy was a diff to the place it was
+noticed. Nothing enumerated the restatements, so each correction was a guard
+applied to one surface of several.
+
+**What changed.** Section 8 no longer restates counts; it points at the
+sections that hold them. The one restatement that has to stay, the verifier's
+own total in section 1, is now a claim the verifier checks, and the check has a
+witness: a copy of the handover stating 32 turns it red.
+
+> State a number once and point at it. Where it must be restated, make the
+> restatement something a script reads.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

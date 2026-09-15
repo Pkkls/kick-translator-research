@@ -246,6 +246,16 @@ uncheckable('5 frequency of any phenomenon in real chat', 'needs a live capture'
 uncheckable('5 on-device engine availability', 'needs multiple real browser profiles');
 uncheckable('every [yours] number', 'taken on another machine at commits that have moved');
 
+// The handover's own statement of these totals -------------------------------
+// Section 1 still said seventeen of seventeen after this script had grown to
+// thirty-two, and its next sentence says any other result means the file is
+// stale. Last, so both totals are complete; the +1 is this claim.
+
+const handover = readFileSync(new URL('../../HANDOVER.md', import.meta.url), 'utf8');
+const stated = handover.match(/It reports (\d+) of (\d+) holding[\s\S]*?and (\d+)\s+claims as unverifiable/);
+const totals = (results.filter((r) => !r.uncheckable).length + 1) + ' checkable, ' + results.filter((r) => r.uncheckable).length + ' not';
+claim('1 the totals the handover states for this script', totals, stated && stated[1] === stated[2] ? stated[1] + ' checkable, ' + stated[3] + ' not' : 'not found');
+
 // Report ---------------------------------------------------------------------
 
 const checked = results.filter((r) => !r.uncheckable);

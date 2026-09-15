@@ -1,6 +1,6 @@
 # Appendix A. The audit specification
 
-*Derived from the corpus studied here. Twenty-one axes, each carrying what
+*Derived from the corpus studied here. Twenty-two axes, each carrying what
 breaks, what to measure, the number that closes it, and what to break to
 prove the number can go red. Its construction, and the three requirements
 its own execution falsified, are recorded in
@@ -159,7 +159,7 @@ a glance:
 ### The index, and how to read this file
 
 Read section 1, section 3 and section 7 in full, every pass. Read an axis when
-you are about to work it. Nobody needs twenty-one axes in context to fix one.
+you are about to work it. Nobody needs twenty-two axes in context to fix one.
 
 The tag on each line is the instrument the axis needs, and it is the thing that
 decides what you can do today rather than what you would like to do:

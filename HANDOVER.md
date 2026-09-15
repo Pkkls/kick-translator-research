@@ -59,15 +59,19 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reported seventeen of seventeen holding at the commit this was written
-against, and four claims as unverifiable from a clone. If it reports anything
-else, this file is stale.
+It reports 33 of 33 holding at the commit this was last checked against, and 4
+claims as unverifiable from a clone. If it reports anything else, this file is
+stale. The script checks that sentence too: it compares the two numbers above
+with its own totals, because the sentence still said seventeen after the script
+had grown to thirty-two.
+
+The four checks by hand, one command per line:
 
 ```bash
-node .agent/state.mjs --texte npx vitest run src/content/langDetect.test.ts
-src/shared/transliterationGuard.test.ts --reporter=basic grep -rn
-"\.dir\s*=\|setAttribute(\s*['\"]dir" src/content --include="*.ts" grep -rn
-"setAttribute(\|\.id = \|dataset\." src/content --include="*.ts" | wc -l
+node .agent/state.mjs --texte
+npx vitest run src/content/langDetect.test.ts src/shared/transliterationGuard.test.ts --reporter=basic
+grep -rn "\.dir\s*=\|setAttribute(\s*['\"]dir" src/content --include="*.ts"
+grep -rn "setAttribute(\|\.id = \|dataset\." src/content --include="*.ts" | wc -l
 ```
 
 The third and fourth commands are the evidence for sections 3.1 and 3.2. They
@@ -315,10 +319,13 @@ The achievable bar is about cost:
 > never a query by name. Every remaining shortcut is either required by the
 > product, with the requirement written next to it, or gone.
 
-Under that bar the four divide cleanly. Class names are required. The
-processed marker is arguably required, though a `WeakSet` or a non-enumerable
-property would serve. The fixed stylesheet id and the document attribute are
-conveniences with queryable names.
+Under that bar the four this section first listed divide cleanly. Class names
+are required. The processed marker is arguably required, though a `WeakSet` or
+a non-enumerable property would serve. The fixed stylesheet id and the document
+attribute are conveniences with queryable names. The seven found later, six ids
+on elements the extension renders itself and a class toggled on the document
+element, have not been sorted against the bar here; that is the same judgement
+applied seven more times, and it is yours to make.
 
 ### 3.3 Smaller, verified, low damage
 
@@ -503,7 +510,7 @@ something you already settled, that is this account's fault for the collision
 of names, not a reason to discard it.
 
 **[read]** Read rather than observed, and the window is narrow. Stated anyway,
-because it is the fifth instance of the pattern in section 2.1 and the first
+because it is the sixth instance of the pattern in section 2.1 and the first
 one this account found in running code rather than in your notebooks.
 
 `background/index.ts` line 183 starts initialisation without awaiting it, and
@@ -766,17 +773,19 @@ capture. Four of your own decisions end on its absence, every priority in this
 file included. It needs a person on a real page, which is why it has not
 happened, and no amount of engineering substitutes for it. Section 5.
 
-**Two hours, and it closes a question rather than opening one.** Decide the
-four detectability signals in section 3.2: each is required with the
-requirement written next to it, or it goes. Two of the four are conveniences
-with queryable names. You already made this call once for a more expensive
-vector; this is the same call on the cheap side of the same door.
+**Two hours for the first four, and it closes a question rather than opening
+one.** Decide the page-queryable signals in section 3.2: each is required with
+the requirement written next to it, or it goes. The count and the sorting live
+in that section and are not repeated here, because an earlier version of this
+paragraph repeated them and kept the old count after the section was corrected.
+You already made this call once for a more expensive vector; this is the same
+call on the cheap side of the same door.
 
-**Half a day, whenever the capture arrives.** The twenty-four languages with no
-marker in `langDetect.ts`, section 3.5. A language with no marker, sharing a
-script with a larger neighbour, is the exact shape that produced Persian,
-Mongolian and Bulgarian. The capture says which of the twenty-four actually
-appear, and that turns a list into a queue.
+**Half a day, whenever the capture arrives.** The languages with no marker
+anywhere in the detection chain, listed in section 3.5. A language with no
+marker, sharing a script with a larger neighbour, is the exact shape that
+produced Persian, Mongolian and Bulgarian. The capture says which of them
+actually appear, and that turns a list into a queue.
 
 **Twenty minutes, and it repairs an instrument rather than a product.** Fix
 `i18n-check.mjs`, which reports 150 missing keys per locale on files that are
@@ -839,14 +848,14 @@ work went into it.
 
 **[appendix E, the method log](appendix/E-method-log.md)** is the one to read
 next if you intend to run a pass like this yourself. It carries the commands
-that extracted your notebooks without reading them whole, all eight mistakes
-this account made with what each cost, what was efficient against what was
+that extracted your notebooks without reading them whole, every mistake this
+account made with what each cost, what was efficient against what was
 waste, and what the harness refused. The section on writing a probe as a
 publishable script is the practice that caught two of the three probe errors,
 and it is not obvious.
 
 **[appendix A, the audit specification](appendix/A-audit-prompt.md)** is
-twenty-one axes, each with what breaks, what to measure, the number that closes
+twenty-two axes, each with what breaks, what to measure, the number that closes
 it and what to break to prove the number can go red. It is written against your
 repository and refers to your files. Three of its requirements were wrong until
 they were executed, which is recorded in

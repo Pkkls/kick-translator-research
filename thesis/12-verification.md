@@ -342,7 +342,7 @@ general rule this study adopted afterwards:
 ## 12.8 The derived specification
 
 [Appendix A](../appendix/A-audit-prompt.md) contains an audit specification
-built from this corpus: twenty-one axes, each with what breaks, what to
+built from this corpus: twenty-two axes, each with what breaks, what to
 measure, the number that closes it, and what to break to prove the number can
 go red.
 
