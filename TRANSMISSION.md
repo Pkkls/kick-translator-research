@@ -53,7 +53,10 @@ files a negative covers, and prefer the direct reading to the mapped one.
 rendering 489 pixels below where its inline style put it: *I speculated twice
 about why before instrumenting, and stopped on the second.* Asking the DOM
 which ancestor had taken the containing block took one probe; reasoning about
-the offset was never going to converge.
+the offset was never going to converge. The same limit holds for fixtures: after
+two invented row shapes failed to reproduce a bug another extension causes, the
+author stopped, because *a third invented shape would only prove my
+imagination*, and wrote in the gate's header which part needs a real page.
 
 **When two instruments disagree, the probability that one is right is not one.**
 Settle with a third that shares technique with neither. In the worst case here,

@@ -42,7 +42,7 @@ to something published here or a rule worth keeping. That is where to continue.
 
 ### Journal of 2026-08-30 (1101 lines, 28 numbered passes)
 
-Read so far: passes 3, 6, 8 to 18, 20, 22 to 28 and "Left behind",
+Read so far: passes 3, 6, 8 to 20, 22 to 28 and "Left behind",
 the gate-suite section at L63, and the probe typology at L202. Each one
 produced either a correction to something published here or a rule now in
 TRANSMISSION.md. Passes 25 to 28 produced both: they corrected chapter 8.3 and
@@ -52,7 +52,6 @@ most of an uncommitted draft built on them (4.29).
 
 | Line | Section |
 |---|---|
-| L779 | Pass nineteen: somebody else's DOM |
 | L830 | Pass twenty-one: the version nobody would hear about |
 
 ### Journal of 2026-08-31 (61 sections)

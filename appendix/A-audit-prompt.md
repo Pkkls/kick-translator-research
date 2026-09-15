@@ -356,6 +356,13 @@ route change, channel switch without a page load, back and forward, theatre
 mode, popout chat, a chat that fails to load, a logged-out session, a modal
 over the page, row recycling in the virtualised list.
 
+Then the DOM that other extensions write. A widely installed chat re-renderer
+replaces the host's message text with its own token elements, which is a second
+complete contract the selectors must read, and it changes on its own release
+schedule. Enumerate the ones the product already reads for. Where the real
+shape of a bug in one of them cannot be obtained, the gate says so in its
+header; it does not assert against a shape someone invented.
+
 **Bar** every selector has at least one fallback or a named reason it cannot.
 Every navigation shape ends with the observer attached and a row translated,
 proven by a count and not by the absence of an error. The status the reader
