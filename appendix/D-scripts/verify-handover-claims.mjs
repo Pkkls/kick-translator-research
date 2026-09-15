@@ -187,6 +187,9 @@ if (!existsSync(harness)) {
   // and this claim's first run found the offline translation gate as well.
   claim('2.1 harnesses importing the shared gesture module', 4, files.filter((f) => /from\s+'\.\/kick-actions\.mjs'/.test(readFileSync(join(harness, f), 'utf8'))).length);
   claim('2.1 the dead-selector sweep is a runner entry', true, /\[\s*'audit-selecteurs'/.test(block));
+  const liveTwo = ['live-kick.mjs', 'compose-kick-live.mjs'].filter((f) => existsSync(join(harness, f)));
+  claim('3.6 live harnesses passing channel chrome in code', '0 of 2', liveTwo.filter((f) => readFileSync(join(harness, f), 'utf8').split('\n').some((l) => !/^\s*(\/\/|\*)/.test(l) && /channel:\s*['"]chrome['"]/.test(l))).length + ' of ' + liveTwo.length);
+  claim('3.6 the shim still names them as channel exceptions', true, /une option `channel` veut le Chrome de la machine, donc `live-kick` et/.test(readFileSync(join(harness, 'playwright.mjs'), 'utf8')));
   claim('3.6 the runner pools by default', true, /flag\('--jobs',\s*Math\.max\(2,\s*cpus\(\)\.length\)\)/.test(runner));
   claim('3.6 the runner keeps no record of a replayed red', false, /retry|rejou|replay|attempt/i.test(runner));
   claim('2.1 screenshot harnesses asserting PNG dimensions', 2, files.filter((f) => /^store-shots/.test(f) && /readUInt32BE\(16\)/.test(readFileSync(join(harness, f), 'utf8'))).length);

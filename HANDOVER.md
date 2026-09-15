@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 60 of 60 holding at the commit this was last checked against, and 4
+It reports 62 of 62 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -700,6 +700,16 @@ nothing keeps a replayed red **[re-run]**. **[mine]** Keep the red anyway: one
 line appended per replayed failure, with its error. The explanation may be
 right, and a second identical line is then the difference between weather and a
 race that only shows under load.
+
+**An exception your shim describes and nothing implements.** The eleventh
+pass kept `live-kick` and `compose-kick-live` on the machine's Chrome, and the
+headless shim's comment names them as the two harnesses its `channel` rule
+leaves alone **[yours]**. Neither passes a channel, from its first tracked
+version, and both headers say why: Chrome 137 and later ignore
+`--load-extension` **[re-run]**. So the rule exempts nobody, and `KT_HEADLESS=1`
+would put both on the real site headless, where your frame warns a session may
+not survive. Low damage while only the offline runner sets it; the comment is
+still a statement about two files that is false of both.
 
 **[mine]** So the pin, if there is one, lives in whatever folder supplies
 Playwright on your machine. A clone that takes the third route the resolver
