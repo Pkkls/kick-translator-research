@@ -4283,6 +4283,80 @@ them; it is delegated to the translation provider.** No new measurement was
 needed for this, only asking which clause of which bar the earlier finding
 lands on, and the answer was two axes away from where it was recorded.
 
+### 4.98 Two figures in one comment, measured against two grounds it does not name
+
+**What happened.** Reading `CHANGELOG.md` forward from L400, the rest of the
+2.8.1 section, which is built almost entirely out of contrast ratios: a `muted`
+token replaced across 180 failures, four pieces of chat text moved from 3.19,
+2.17, 3.78 and 3.78 to 5.53, 5.52, 6.26 and 6.26, borders moved from 1.62 and
+1.42 to 3.04 and 3.11.
+
+Those are the best kind of claim to check and the worst kind to trust.
+**Contrast is a pure function of two colours**, so a stated ratio is right or
+wrong with nothing in between, and the sources state them **in comments**, which
+is what this study's opening rule is about: a colour can be edited and the
+number beside it cannot notice.
+
+**26 ratios are stated across the tracked tree. Five sit beside both colours on
+one line and are therefore checkable; 21 name a ratio whose ground is a sentence
+away and are counted rather than guessed at**, because guessing which ground a
+prose figure meant is how a probe invents a finding.
+
+| where | pair | says | is |
+|---|---|---|---|
+| `inject.css:700` | `#FFFFFF` on `#171A1C` | 17.49 | 17.49 |
+| `inject.css:701` | `#9FA6AD` on `#171A1C` | 7.10 | 7.10 |
+| `inject.css:702` | `#5E5E5F` on `#0B0B0C` | 3.04 | 3.04 |
+| `inject.css:703` | `#358B1A` on `#0B0B0C` | 4.55 | 4.55 |
+| **`inject.css:956`** | `#9FA6AD` on `#F4F4F5` | **2.02** | **2.24** |
+
+Four exact to two decimals is what makes the fifth worth reading. The corpus's
+contrast arithmetic is careful, so the outlier is signal rather than noise.
+
+**The diagnosis is better than a miscalculation.** The same two-line comment
+carries a second figure the probe could not reach, because its ground is on the
+line above: *`#5E5E5F` gives 5.95*. On `#F4F4F5` that is **5.89**. Two figures,
+both slightly off, both against the ground the comment names. Solving for the
+ground each figure would need:
+
+| figure | ground it implies | what that is |
+|---|---|---|
+| `#9FA6AD` at 2.02 | `#e8e8e9` gives **2.01** | the light chip's **hover** background, two rules above |
+| `#5E5E5F` at 5.95 | `#F5F5F5` gives **5.94** | one hex digit from the resting ground |
+
+So the two numbers in one comment were taken against **two different grounds,
+and the comment names a third**. The rejected colour was measured on the hover
+state; its replacement on a ground a digit away from the resting one. Neither
+was measured on the `#F4F4F5` both are attributed to.
+
+**The decision the comment supports is right, and both numbers supporting it are
+wrong.** Its argument is that 2.02 is under the 3:1 WCAG 1.4.11 asks of a
+control's graphics. On the resting ground it is 2.24, still under 3:1, and the
+replacement gives 5.89, still comfortably over. **A correct conclusion resting
+on numbers nobody re-derived** is the shape worth naming, because nothing about
+the outcome would have prompted anybody to check.
+
+**Blast radius, measured rather than assumed.** `git grep` finds 2.02 and 5.95
+on those two lines and nowhere else: not in the changelog, not in a listing, not
+in a release body. One comment, two figures, no copies.
+
+**The exit code asserts the finding, not the health of the clone.** A gate that
+stayed red on a defect this study cannot fix would be the thing A13 is about, so
+`probe-contrast.mjs` exits 0 while the one known mismatch is the one at
+`inject.css:956` and exits 1 when the population moves in either direction.
+Witnessed both ways in a throwaway repository holding a copy of the file, never
+in the clone: correcting the known figure prints *4.98 is fixed and this study
+is stale*, and planting a new mismatch at line 700 prints *a mismatch this study
+has not recorded*.
+
+**The first attempt at that witness planted into the clone itself** and was
+wrong twice over: it edited `src/`, which the standing constraints forbid, and
+the edit silently failed because the script was handed a Git Bash path Python
+cannot open, so the run reported the expected green having changed nothing. It
+was caught because the traceback was printed beside the exit code. **The
+repaired witness needs no copy of the clone at all**, only a copy of the one
+file in a repository of its own, which is both allowed and simpler.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

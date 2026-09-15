@@ -35,11 +35,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `worker-eviction.mjs` | Added latency of the first message after the MV3 service worker is killed, with the kill verified as a 1-0-1 transition in the CDP target list. Runs A5's witness and sets its budget row | [appendix E 4.96](../E-method-log.md#496-the-witness-nobody-had-run-and-the-identifier-that-proved-nothing) |
 
-**Seventeen scripts.** That count is here because two documents stated it from
+| `probe-contrast.mjs` | Every contrast ratio the product states beside the pair it states it for, recomputed by the WCAG formula, with the ones whose ground is a sentence away counted rather than guessed at. Exits 1 when the known mismatch is fixed or a new one appears | [appendix E 4.98](../E-method-log.md#498-two-figures-in-one-comment-measured-against-two-grounds-it-does-not-name) |
+
+**Eighteen scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All seventeen take a path argument and print to standard output; `probe-quotes.mjs`,
+All eighteen take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

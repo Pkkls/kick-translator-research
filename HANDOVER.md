@@ -994,6 +994,26 @@ to think about; qualifying the sentences is a text change you can make today**,
 and until one of them happens the store listing claims something the code does
 not do.
 
+**Two minutes, and it is the smallest thing in this file.** `inject.css:956`
+says `#9FA6AD` on `#F4F4F5` measures 2.02:1. It measures **2.24:1**, and the
+second figure in the same comment, *`#5E5E5F` gives 5.95*, is **5.89** on that
+ground **[re-run]**. Solving for the ground each number implies: 2.02 is
+`#9FA6AD` on `#e8e8e9`, your chip's **hover** background two rules above, and
+5.95 is `#5E5E5F` on `#F5F5F5`, a hex digit from the resting one. Two figures,
+two grounds, and the comment names a third.
+
+Your decision is right either way, which is why nobody would have looked: 2.24
+is still under the 3:1 that 1.4.11 asks and 5.89 is still well over it. Neither
+number appears anywhere else, so this is one comment and no copies.
+
+The general point is worth more than the fix. Four other ratios stated beside
+their own pair are exact to two decimal places, so your contrast arithmetic is
+careful and the one outlier is a transcription rather than a method problem.
+`node appendix/D-scripts/probe-contrast.mjs <your repo>` recomputes all of them
+in a second and would have caught it the day it was written. 21 more ratios in
+your sources name a ground a sentence away and cannot be checked mechanically at
+all; putting the pair on the line is what makes a comment checkable.
+
 **Ten minutes, and it stops a wrong belief at the top of every pass.** Delete
 the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked
