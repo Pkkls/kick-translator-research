@@ -2131,6 +2131,51 @@ verdict instead of a silence, which is worse than having no file at all.
 `axis-ledger.mjs` now fails when a bar names the budget file and appendix G has
 no row for it, so the two cannot drift apart again without something going red.
 
+### 4.59 A bar that is satisfied while the failure its own axis names is reachable
+
+**What happened.** A3's bar reads *what is sent is exactly what the preview
+showed*, and the outgoing path meets it. `handleInsert` inserts
+`this.lastTranslation`, which is the same value `updateComposePreview` rendered,
+so the two cannot disagree. Handles and URLs are stronger still: `maskProtected`
+swaps them for `⟦n⟧` sentinels before the request, the engine never sees them,
+and `unmaskProtected` puts the originals back before the text becomes
+`lastTranslation`. Character-identical by construction rather than by assertion.
+
+The same axis opens with *breaks as the reader ... sends the preview text rather
+than their own*, and that is reachable. When the composer's own limiter refuses,
+`compose.ts` returns with the comment *keep last preview; next pause will retry
+as the window slides*, and calls `setComposeThrottle(true)`, which writes
+`panel.dataset.throttled` and nothing else. The panel is a styling hook away
+from unchanged: it stays mounted, `isComposePreviewVisible()` stays true,
+`Ctrl+Enter` still routes to `handleInsert`, and `handleInsert` guards on
+nothing but the composer and the translation existing. So a reader who types,
+gets a preview, types more, is throttled, and presses the shortcut inserts the
+translation of what they had typed a moment ago.
+
+**Both sentences are true at once**, and that is the entry. What is sent is
+exactly what the preview showed. The preview is not what the reader is looking
+at in their own composer. The bar guarantees preview-to-insert agreement and the
+risk lives in preview-to-composer agreement, which no clause in the axis names,
+though the axis's first paragraph describes its consequence.
+
+**Why it is worth recording as a defect in the specification rather than in the
+product.** A bar is a sentence someone writes while looking at a mechanism, and
+the mechanism it was written against here is the insertion. Nothing about the
+wording is careless: it names an invariant, the invariant holds, and a gate
+built on it would be green forever. The distance between *the thing the bar
+says* and *the thing the axis is afraid of* is one hop, and a single hop is
+exactly the distance a specification cannot see across, because whoever wrote
+both sentences believed they were about the same event.
+
+The generalisable form, and this study has now met it three times from three
+directions: [4.49](#449-a-gate-that-cannot-measure-reports-the-same-exit-code-as-one-that-measured)
+found a branch that reads as intentional until placed beside its sibling,
+[4.56](#456-a-keepalive-that-asks-for-less-than-the-platform-will-give) found a
+constant that reads as a margin until placed beside a platform limit, and this
+one finds a bar that reads as a guarantee until placed beside the failure its own
+axis describes. **Each is a statement that is locally true and wrong about what
+it is for, and none of the three is findable by checking the statement.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
