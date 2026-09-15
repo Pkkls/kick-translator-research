@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 37 of 37 holding at the commit this was last checked against, and 4
+It reports 39 of 39 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -636,6 +636,25 @@ runs them. Run one without it and the runner **exits non-zero**, names the
 cause and offers three ways to supply it **[re-run]**. The failure this axis
 exists to catch, a newcomer seeing a green that is empty, does not happen here.
 The suite refuses rather than pretending, which is rarer than it sounds.
+
+**One thing that pass did not check, and your eleventh pass is why it matters.**
+That pass moved the offline gates from the system Chrome to the bundled
+Chromium, and gave reproducibility rather than speed as the reason: the gates
+assert pixels, two browsers are two version streams, and *the bundled one is
+pinned by `package.json` and is the same everywhere* **[yours]**. No tracked
+file pins it. Playwright has never appeared in `package.json` or in the
+lockfile in the repository's history, and the resolver's own message says it is
+not a dependency: it loads whichever `node_modules/playwright` an environment
+variable, a local kit path or a local install supplies **[re-run]**. Nothing
+records which version a run used, not the runner, not the resolver, not
+`ETAT.json` **[re-run]**.
+
+**[mine]** So the pin, if there is one, lives in whatever folder supplies
+Playwright on your machine. A clone that takes the third route the resolver
+offers, `npm i -D playwright`, gets the version npm resolves that day, and its
+pixel assertions are measured on a browser nobody wrote down. The cheap half is
+to write the browser version into `ETAT.json` and print it at the top of each
+run, so a pixel that moved can be told apart from a browser that did.
 
 **Two smaller things from the same run, both in the README.** It states 1032
 unit tests; the clone runs **1034**. It states 39 offline gates; the runner

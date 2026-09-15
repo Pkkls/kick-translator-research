@@ -72,7 +72,10 @@ release notes for the change being measured, quoting words it destroyed. On two
 of the rules every word of the disagreement came from those lines; the third
 was the instrument's own error and was never traced. At the right revision, with
 the product's own module instead of retyped expressions, the project's figures
-held to within one.
+held to within one. **Pin the instrument too, and write its version beside the
+number.** The corpus moved its pixel gates to a bundled browser because it was
+"pinned by `package.json` and is the same everywhere". It was in no tracked
+manifest, ever, and no run recorded which version it measured with.
 
 **The direction of a probe's error follows what it was looking for.** Hunting
 a guard, a blind spot becomes a false accusation, so discount findings.

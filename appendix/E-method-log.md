@@ -1178,6 +1178,30 @@ pass earlier and corrected it in a sentence this study now carries as a rule:
 *a claim about four files stated as a claim about the subject.* An absence is a
 statement about what was opened.
 
+### 4.35 An axis called clean without asking for its instrument's version
+
+**What happened.** The handover's section 3.6 closed the apparatus axis as a
+clean pass: the gates refuse to run without a browser driver and say how to
+supply one. The older journal's eleventh pass moved those gates to a bundled
+browser for reproducibility, saying it was pinned by `package.json`. The
+repository's history has no commit touching Playwright in `package.json` or
+the lockfile, the resolver says it is not a dependency, and nothing records the
+browser version a run used.
+
+**Cost.** A clean bill on an axis whose measurements are pixels taken on an
+unrecorded browser. This study had already published a size without its
+compression level ([4.21](#421-a-number-whose-parameter-was-not-stated-and-a-hash-taken-without));
+it did not ask the same question of the corpus's gates.
+
+**Why it happened.** The check was whether the apparatus refuses to run empty,
+which it does. Whether what it measures carries its parameter is a different
+question, and a clean answer to the first reads as a clean axis.
+
+**What changed.** Section 3.6 now carries it, and two verifier claims hold it:
+no commit ever touching Playwright in a manifest, witnessed by the same search
+finding `vitest`; and no infrastructure file recording a version, counted as
+"0 of 3" so that missing files cannot make it pass.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

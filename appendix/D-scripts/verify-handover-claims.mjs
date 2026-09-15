@@ -259,6 +259,14 @@ claim('3.6 .gitignore tracks them by exception', true, /!scratchpad\/harness\/\*
 const readmeCount = (read('README.md').match(/(\d{3,5}) unit tests/) || [])[1];
 claim('3.6 README states a unit-test count that is now stale', '1032', readmeCount, 'the suite runs 1034');
 
+// Pass eleven chose the bundled browser as "pinned by package.json". Checked in
+// history, not in the current file, so a pin added and removed would show.
+// Witness for the search itself: the same command finds vitest in that history.
+claim('3.6 commits ever touching Playwright in a manifest', 0, git('log --format=%h -S playwright -- package.json package-lock.json').split('\n').filter(Boolean).length);
+const infra = ['scratchpad/harness/playwright.mjs', 'scratchpad/harness/run-gates.mjs', '.agent/state.mjs'].filter((p) => existsSync(join(root, p)));
+// "0 of 3", not 0: with the files missing, a bare zero would hold over nothing.
+claim('3.6 no gate infrastructure records the browser version', '0 of 3', infra.filter((p) => /\.version\(\)|browserVersion/.test(read(p))).length + ' of ' + infra.length);
+
 // Claims that need what this account did not have ---------------------------
 
 uncheckable('3.1 what a reader sees on an override', 'needs a browser and a built artefact');
