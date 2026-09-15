@@ -290,6 +290,13 @@ Cloned from the public repository, at the commit the study measured against.
 | Shown `lang_not_allowed` rather than `lang_unknown` | **4 of 4** | [new] |
 | The 21 refusals that survive, for contrast | `lang_unknown`, **21 of 21** | [new] |
 | Lines making the overwrite count 0 of 25 on a copy | **3** | [new] |
+| **Returns of `undefined` in the detection path, from the AST** | **11**: 5 refusals, 4 *nothing yet*, 2 fall-through | [new] |
+| The first classification of the same eleven | 9 refusals, wrong by four, withdrawn | [new] |
+| Refusals that want to stand, and those that want to be overruled | **2 and 1**, ten lines apart, same value | [new] |
+| Pure Han, which asks franc to answer | refusal survives **0 of 10**, as it wants | [new] |
+| Urdu, which asks to stand | **10 of 10**, but only because `francToIso2` cannot map `urd` | [new] |
+| Mongolian, which asks to stand | **6 of 10** | [new] |
+| Lines added to `FRANC_MAP` to take Urdu from 10 of 10 to 1 of 10 | **1**, in another file | [new] |
 
 ## 13.8 The three bars execution falsified
 

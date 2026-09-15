@@ -5131,6 +5131,95 @@ does not depend on the rate: it depends on franc answering at all, and franc
 answers whenever it feels like it. The flag path is not driven; the two filter
 calls are.
 
+### 4.110 One value, three intentions, and the vocabulary of another library decides
+
+**Why a census.** 4.109 found a refusal erased by its own caller. An example
+found by hand is found where someone looked, so the next question is not *is
+there another* but *how many are there and what happens to each*. That needs an
+enumeration, and the enumeration was done on the **TypeScript AST**, using the
+compiler the clone already depends on rather than a regex over source text.
+
+**Eleven returns of `undefined` in the detection path**, split three ways by a
+rule stated before the split was run:
+
+| | |
+|---|---|
+| **a refusal** — the guard tests a positive property of the content | **5** |
+| **nothing yet** — the guard tests that there is nothing to work with | 4 |
+| the fall-through at the end of a function | 2 |
+
+The second category is the one that stops this being a scare number. An empty
+string, a one-character CJK message, franc itself answering `und`: those are not
+decisions about the text, they are the absence of one. **The first version of
+that line called all nine guarded returns refusals and was wrong by four**, which
+is the third time in four passes that a classifier has been the weakest part of a
+probe, and the third time the fix was to state the rule and print every input to
+it.
+
+**The five refusals are not one thing, and that is the finding.**
+
+| refusal | what it wants |
+|---|---|
+| `LETTRES_OURDOUES.test(text)` | to stand; Urdu is not among the 42 and must not be called Arabic |
+| `LETTRES_MONGOLES \|\| MOTS_MONGOLS` | to stand; *franc-min ne porte pas le mongol du tout* |
+| `pct(han)` | **to be overruled**; *defer to franc so Chinese isn't mislabelled as Japanese* |
+| `vote && vote !== lang` | unmeasured here |
+| `vote && vote !== fort` | unmeasured here |
+
+**The Han branch and the Mongolian branch are ten lines apart, return the same
+value, and want opposite things.** One asks to be overruled by franc and the
+other says franc cannot help. Nothing in the value, the type, or the call
+separates them.
+
+**What happens to each, measured on benches written for this pass:**
+
+| | the lookup refuses | the refusal survives | |
+|---|---|---|---|
+| pure Han | 10 of 10 | **0 of 10** | as it wants |
+| Urdu | 10 of 10 | **10 of 10** | as it wants |
+| Mongolian | 10 of 10 | **6 of 10** | not what it wants |
+
+**Urdu standing is not the mechanism working.** It stands because franc answers
+`urd` or `skr` about those lines and `francToIso2` maps neither, so the guess is
+dropped one function later by a table that knows nothing about the refusal.
+Mongolian falls because franc answers `rus` and `bul`, which the table maps
+cleanly. Franc is **wrong about Mongolian and right about Urdu**, and the one it
+is wrong about is the one that breaks.
+
+So the rule is: **a refusal survives exactly when franc's answer is unmappable,
+and is erased exactly when franc is wrong in a direction the product can name.**
+That is not a mechanism. It is the intersection of two libraries' vocabularies,
+and neither library knows a refusal happened.
+
+**The witness proves the coupling rather than a harm.** On a copy, adding one
+line to `FRANC_MAP`, `urd: 'ur'`, takes Urdu's refusal from **10 of 10 standing
+to 1 of 10**. That change is not a bug and would not introduce the Arabic
+misreading the guard was built against: it announces Urdu as Urdu. It is
+routine, it is in a different file, it is the kind of edit made while adding a
+language, and it silently changes what a refusal in another module is worth.
+**That is the cost of the overload, and it is payable by someone who never reads
+`langDetect.ts`.** The second witness plants 4.109's fix and takes Mongolian to
+10 of 10, red for the opposite reason.
+
+**A small thing found on the way.** `RTL_LANGS` already contains `ur`, so the
+product knows Urdu well enough to lay it out right-to-left and not well enough
+to name it. That is consistent rather than wrong, and it is the sort of detail
+that says the 42-language list is a product decision and not an oversight.
+
+**What changes in the recommendation.** 4.109 said *stop overloading
+`undefined`*. The census says something narrower and more useful: **two of the
+five refusals want to stand and one wants to be overruled, so a single sentinel
+cannot serve all three.** The distinction the code needs is not refusal versus
+absence, it is *refusal that binds* versus *refusal that defers*, and the Han
+comment is proof the author already holds that distinction in their head. It is
+in the comments and not in the values.
+
+**Scope.** One shape, `return undefined`, in four named files. A refusal thrown
+as an error or returned as an empty string is not counted and the header says so.
+Two of the five refusals need an input where two markers disagree, which this
+bench does not construct; they are listed and left unmeasured rather than counted
+clean.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

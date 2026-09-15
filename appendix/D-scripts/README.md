@@ -53,11 +53,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-refusal-overwritten.mjs` | The corpus's Cyrillic and Arabic-script separations re-taken on a bench written for this study and printed in full, and what `detectLanguage` does with the Mongolian guard's deliberate refusal. Drives the product's own filters with the values it returns, so the consequence is measured rather than argued | [appendix E 4.109](../E-method-log.md#4109-the-refusal-does-not-survive-its-own-caller-and-a1s-bar-named-this) |
 
-**Twenty-six scripts.** That count is here because two documents stated it from
+| `probe-refusal-census.mjs` | Every `return undefined` in the detection path, enumerated from the TypeScript AST and split into a refusal, a *nothing yet*, and the fall-through, then each constructible refusal driven to see whether it survives `detectLanguage`. Reports what `francToIso2` does with franc's answer, which is what actually decides | [appendix E 4.110](../E-method-log.md#4110-one-value-three-intentions-and-the-vocabulary-of-another-library-decides) |
+
+**Twenty-seven scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-six take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-seven take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only
