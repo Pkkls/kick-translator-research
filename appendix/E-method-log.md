@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Nineteen. Listed in full because a method log that omits them is an
+Twenty. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -558,6 +558,42 @@ So the asymmetry is real and its sign is not fixed:
 A22 now carries both directions. The version written one pass earlier carried
 only one, and would have told a reader to trust exactly the result that was
 wrong here.
+
+### 4.20 Two replications that confirmed, and a probe colliding with the
+product's own languages
+
+**What happened.** Two more published measurements went through A22's
+replication bar. Both held, which is worth recording because the four before
+them did not, and a log that only lists failures misrepresents the rate.
+
+**Marked debt: zero, confirmed.** The published claim was no `TODO`, `FIXME`,
+`HACK` or `XXX` in the sources. The replication widened both the vocabulary
+(`@todo`, `NOTE:`, "for now", "temporary", "workaround", "unfixed", and French
+and Spanish equivalents) and the scope (scripts and the agent directory, not
+just `src`). Twelve lines matched and **none is a debt marker**: a log message
+saying "skipping network for now", a doc comment describing a temporary toast,
+prose explaining a workaround that had been removed, and a French idiom.
+
+**The twelfth is the finding.** `src/shared/i18n/es.ts` contains
+`'Translate everything to': 'Traducir todo a'`. The Spanish word *todo*, "all",
+matched the debt-marker pattern `TODO`.
+
+That is exactly the failure [chapter 8](../thesis/08-noise.md#a-suffix-rule-against-turkish-morphology)
+documents in the product, where an English gaming interjection in a suffix list
+deleted a Turkish grammatical morpheme. **The same defect, one level up: an
+audit probe is a substring rule, and it over-generates into the same languages
+the product handles.** In a codebase carrying forty-two languages, every
+textual probe collides with some of them.
+
+**Unit tests: 1034, confirmed.** The runner reports 1034 with exit code zero.
+A static count of `it()` and `test()` calls gives 600, plus 44 parameterised
+tables that generate the remainder. The two agree once generation is accounted
+for, and the static count alone would have under-stated by forty percent, which
+is the counting-the-source failure of 4.12 in its mildest form.
+
+**The replication rate so far.** Five published measurements put through the
+bar: three changed, two held. A bar that never fails is not a bar, and one that
+always fails would mean the pass produced nothing worth keeping.
 
 ### The pattern across the first three
 

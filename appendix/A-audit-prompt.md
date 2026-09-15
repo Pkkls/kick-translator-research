@@ -838,6 +838,14 @@ anywhere:
   an expiry date. Check the thing.
 - **Does the verifier share a technique with what it verifies?** If it does, it
   measures stability, not truth, and it will confirm the error it inherited.
+- **Does the probe's own pattern collide with the product's languages?** A
+  textual probe over a codebase that contains forty-two languages will match
+  words in some of them. A debt-marker search for `TODO` matches the Spanish
+  word *todo*, "all", which appears in a shipped translation string. This is
+  the same defect the product's own emote stripper had when an English suffix
+  deleted a Turkish grammatical morpheme, appearing one level up: **an audit
+  probe is a substring rule, and it over-generates into the same languages the
+  product handles.** Read the hits before counting them.
 - **Is every borrowed fact tagged as borrowed?** An etymology, a claim about
   how a class of system behaves, a linguistic universal: none of these are
   measurements, and a provenance scheme with no slot for them will file them
