@@ -128,6 +128,17 @@ incoming path deletes mentions, your outgoing path masks and restores them.
 Two opposite theories of the same object, each satisfying its own tests
 **[yours]**.
 
+And a sixth, this one in running code rather than in your notes: the worker
+lifecycle hazard was diagnosed and fixed for the metrics module, which merges
+rather than overwrites, and for the content script, which survives a cold
+worker. The usage-statistics tracker is the third consumer of that same
+lifecycle and got neither treatment. Section 3.5c.
+
+Six instances, on six unrelated subjects, over three months. At that count it
+stops being a series of oversights and becomes a property of the workflow: the
+diagnosis is written in prose, the remedy is written in a diff, and nothing
+holds the two together afterwards.
+
 ### 2.2 You have made the same reasoning error three times, and measurement
 caught it every time
 
@@ -340,6 +351,71 @@ much smaller surface than it looks from outside.
 The gzipped figure is offered as a datum rather than as a regression: this
 account does not know the periphery your own weight gate measures, so it is a
 number to compare against your gate, not a verdict from mine.
+
+### 3.5d The day boundary is UTC, which is a decision you may not have taken
+
+**[read]** `stats.ts` keys the day with `new Date().toISOString().slice(0, 10)`.
+That is UTC. The popup shows the day's request counts and a seven-day trend, so
+"today" resets at 09:00 for a reader in Tokyo and at 16:00 for one in Los
+Angeles.
+
+It is stated here as a fact rather than a defect, because UTC is a defensible
+choice: it has no daylight-saving discontinuity and no ambiguity about which
+zone a shared counter belongs to. The reason it is worth raising at all is that
+`toISOString` is also the shortest path to a `YYYY-MM-DD` key, so the choice
+and the convenience are indistinguishable from the outside, and only you know
+which one it was.
+
+Two things follow whichever way you decide. If UTC is intended, the popup
+should not call it "today" without qualification. If local was intended, the
+rollover in `load()` and `rollover()` both compare against the same UTC key
+and would need to change together.
+
+One thing is genuinely good here and was clearly deliberate: `load()` handles
+the day changing while the worker was dead, archiving the outgoing day before
+resetting, with a comment saying so. That is the hard half of a day boundary
+and it is done.
+
+### 3.5c The worker's startup race, on its third consumer
+
+**[read]** Read rather than observed, and the window is narrow. Stated anyway,
+because it is the fifth instance of the pattern in section 2.1 and the first
+one this account found in running code rather than in your notebooks.
+
+`background/index.ts` line 183 starts initialisation without awaiting it, and
+line 186 registers the message listener synchronously on the next statement.
+So on a worker wake the listener is live while `init()` is still inside its two
+storage reads. A `translate` or `stats.local` arriving in that window reaches
+`recordRequest`, which increments a `state` still holding `empty()`, and arms
+a 1500 ms flush.
+
+Two outcomes, and only the second loses anything:
+
+- `stats.load()` resolves first, replaces `state` with what was stored, and the
+  increment taken in the window is lost. One or two counts. Nobody notices and
+  nobody should.
+- The flush fires first and `persist()` writes `empty()` plus that increment
+  over the stored day. **The day's counters go back to near zero.**
+
+The window is two storage reads against 1500 ms, so the second outcome should
+be rare. It is also invisible: a counter that regressed looks exactly like a
+quiet day, which puts it at the top of your own silence scale.
+
+**Why it is worth more than its severity.** You have already solved this
+problem twice. `shared/metrics.ts` merges into stored state instead of
+overwriting, with a comment explaining that summaries cannot be folded. Your
+item 109 made the content script survive a cold worker. `stats.ts` is the third
+consumer of the same lifecycle and did not get the same treatment: it
+overwrites, and its load is not awaited before the listener goes live.
+
+The remedy is the one your metrics module already implements. Either merge on
+write the way metrics does, or hold a readiness promise the listener awaits
+before touching state. The second is smaller and also fixes the settings read
+on the same line.
+
+**What would settle it**, and this account could not: wake the worker
+artificially between two messages and read the stored counters. Your gates run
+a browser; this reading does not.
 
 ### 3.6 Your frame tells every new session something false
 

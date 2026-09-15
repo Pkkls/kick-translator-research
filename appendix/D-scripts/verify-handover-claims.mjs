@@ -160,6 +160,21 @@ if (existsSync(join(root, 'dist', 'manifest.json'))) {
 claim('3.5b host permissions', 8, hostCount, hostSource);
 claim('3.5b no web-accessible resources', true, !/web_accessible_resources\s*:/.test(read('manifest.config.ts')));
 
+// 3.5c and 3.5d Worker lifecycle -------------------------------------------
+
+const bg = read('src/background/index.ts');
+const bgLines = bg.split('\n');
+const initCall = bgLines.findIndex((l) => /^void init\(\);/.test(l)) + 1;
+const listener = bgLines.findIndex((l) => /^onMessage\(/.test(l)) + 1;
+claim('3.5c init is started without being awaited', true, initCall > 0, 'line ' + initCall);
+claim('3.5c the listener registers after it, synchronously', true, listener > initCall, 'line ' + listener);
+
+const statsSrc = read('src/background/stats.ts');
+claim('3.5c the stats tracker overwrites rather than merges', true, /storage\.local\.set\(\{\s*\[STORAGE_KEY_STATS\]:\s*this\.state/.test(statsSrc));
+claim('3.5c the metrics module merges, on the same lifecycle', true, /counts\[k\] = \(counts\[k\] \?\? 0\) \+ v/.test(read('src/shared/metrics.ts')));
+claim('3.5d the day key is UTC', true, /toISOString\(\)\.slice\(0, 10\)/.test(statsSrc));
+claim('3.5d the rollover archives before resetting', true, /archiveDay\(/.test(statsSrc));
+
 // 3.6 What a clone gets -----------------------------------------------------
 // Checkable without cloning: what git tracks is what a clone receives.
 

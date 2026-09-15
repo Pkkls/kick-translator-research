@@ -120,6 +120,21 @@ The corpus also records the startup race in the other direction: a content
 script that begins before the worker has settings. Both directions of the same
 lifecycle asymmetry, each needing its own fix.
 
+**And a third consumer that received neither fix [new].** The worker starts its
+initialisation without awaiting it and registers the message listener on the
+next statement, so a message can reach the usage-statistics tracker while its
+load is still in flight. That tracker overwrites stored state rather than
+merging into it, unlike the metrics module beside it, which merges and explains
+why in a comment.
+
+The severity is low and the window is narrow, two storage reads against a
+1500 ms flush timer. The interest is structural: **the same lifecycle hazard
+was diagnosed and fixed twice in this codebase, and the third consumer of the
+same lifecycle was not revisited.** It is the architectural instance of the
+generality failure that [chapter 4](04-script-vs-language.md#45-the-finding-about-findings)
+describes on writing systems, and it supports the claim there that the pattern
+is a property of how fixes are applied rather than of any one subject matter.
+
 ## 9.6 The fallback chain, and what a witness proved
 
 The system tries engines in order, so that a reader is not stranded when the
