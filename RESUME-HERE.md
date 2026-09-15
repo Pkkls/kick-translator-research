@@ -25,6 +25,13 @@ node appendix/D-scripts/audit-spec.mjs appendix/A-audit-prompt.md
 node appendix/D-scripts/axis-ledger.mjs .
 ```
 
+And one more that is not a gate on this repository but the count the goal asks
+for, run at the start of every pass:
+
+```bash
+node appendix/D-scripts/stop-conditions.mjs . /path/to/kick-chat-translator
+```
+
 Last known: **63/63 checkable claims, 12/12 spec conditions, no broken internal
 link**, and the axis ledger naming exactly the 22 axes the specification
 defines. The link line used to be a sentence, "all internal links resolve", and
@@ -67,7 +74,10 @@ fails the moment a second one drifts, which is what 4.45 did undetected.
 - **The handover** for the developing account, `HANDOVER.md`
 - **A 22-axis audit specification**, `appendix/A-audit-prompt.md`
 - **The method log**, `appendix/E-method-log.md`, every recorded mistake
-- **Nine runnable scripts**, `appendix/D-scripts/`
+- **The runnable scripts**, `appendix/D-scripts/`, one row each in
+  [their README](appendix/D-scripts/README.md), which is where the count lives.
+  It was stated as nine here and ten a hundred lines below, and both were
+  written on the same day (4.81)
 
 ## The reading, by position
 
@@ -180,8 +190,9 @@ the axis ledger with a verdict and an instrument per axis, and
 measurement that would set it. Run `axis-ledger.mjs` for the set count rather
 than reading it here (4.30, 4.80).
 
-**Ten scripts**, three written here. Two gates were added, `axis-ledger.mjs`
-and the checking halves of `probe-consistency.mjs`, and both exit non-zero.
+**Three scripts were written in that session**, and two of them are gates:
+`axis-ledger.mjs` and the checking halves of `probe-consistency.mjs`, both of
+which exit non-zero. The total is in the D-scripts README rather than here.
 
 **Three findings that reach a reader**, in the order they would cost something:
 

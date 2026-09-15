@@ -19,8 +19,15 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `axis-ledger.mjs` | Whether [appendix F](../F-axis-ledger.md) still names exactly the axes the specification defines, and how many of them carry a verdict, which is the first of the three stop conditions | [appendix F](../F-axis-ledger.md), [appendix E 4.51](../E-method-log.md#451-a-stop-condition-with-a-term-nobody-could-evaluate) |
 
-All nine take a path argument and print to standard output; `probe-quotes.mjs`
-`probe-consistency.mjs` take two, this repository and the extension's. Only
+| `stop-conditions.mjs` | All three of the specification's stop conditions, counted in one command: the axis verdicts through `axis-ledger.mjs`, the clone's queue by its own `[ ]` `[k]` `[x]` markers, and whether the last two commits here declared no measurement. A gate on the third only, which is the one about this account's conduct | [appendix E 4.81](../E-method-log.md#481-the-goal-said-to-count-the-three-stop-conditions-and-two-of-them-had-no-instrument) |
+
+**Ten scripts.** That count is here because two documents stated it from memory
+and disagreed with each other on the same day, one saying nine and one ten while
+there were nine (4.81). Everything else cites this table.
+
+All ten take a path argument and print to standard output; `probe-quotes.mjs`,
+`probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
+the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs
 Node 22.18 or later.

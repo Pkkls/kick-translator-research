@@ -57,7 +57,23 @@ Its constant and duplication halves cannot produce a false positive, so it
 exits 1 on either (4.76).
 
 If any of the seven disagrees with what `RESUME-HERE.md` records, the
-repository is stale and reconciling it is the first task.
+repository is stale and reconciling it is the first task. It did on 2026-09-15:
+`axis-ledger` printed a budget count four documents contradicted, and
+reconciling it was the first pass (4.80).
+
+**Then open every pass with the count the goal asks for**, which is an eighth
+command and not one of the seven:
+
+```bash
+node appendix/D-scripts/stop-conditions.mjs . /path/to/kick-chat-translator
+```
+
+It prints all three conditions with the number behind each. It exits 0 normally,
+2 when it cannot count, and 1 only when the last two commits here both declared
+`No measurement:`, which is the one condition that is about this account rather
+than about the clone. **A pass that measures nothing says so in its commit
+message in that exact form**, because that declaration is what condition 3 is
+counted from and a silent stall reads here as work (4.81).
 
 ## Where the work is, now that the journals are read
 
@@ -86,9 +102,11 @@ All 22 axes carry a verdict and **none is closed**, so the specification's first
 stop condition is met and the other two are not. The two artefacts it asks for
 by name exist: [appendix F](appendix/F-axis-ledger.md), the ledger, and
 [appendix G](appendix/G-budget.md), the budget, whose set count `axis-ledger.mjs`
-prints and checks rather than this file restating it (4.80). Ten
-scripts, five of which exit non-zero on a failure. `RESUME-HERE.md` carries the
-three findings that reach a reader and the two one-line items that are kil's.
+prints and checks rather than this file restating it (4.80). The scripts and how
+many of them there are live in
+[their own README](appendix/D-scripts/README.md), for the same reason (4.81).
+`RESUME-HERE.md` carries the three findings that reach a reader and the two
+one-line items that are kil's.
 
 **The productive work, in order.** Finish `.agent/PLAN.md` from L760, the four
 Done sections. Read the 15 unread `CHANGELOG.md` sections against the source,

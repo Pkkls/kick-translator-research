@@ -3121,6 +3121,71 @@ push and a session because it sits mid-paragraph in a file that is read for its
 lists. An edit helper that refuses to write when its search string is absent
 cannot catch this: the search string was present, and it was the wrong one.
 
+### 4.81 The goal said to count the three stop conditions, and two of them had no instrument
+
+**What happened.** Every session here opens on a goal whose last clause is *les
+compter a chaque passe plutot que les estimer*, count them at each pass rather
+than estimate them. The first condition had `axis-ledger.mjs` behind it, which
+is why the previous session could say it was met. The second was restated from
+memory in two documents. The third had never been evaluated by anybody, in any
+pass, because nothing recorded whether a pass had measured anything. **A goal
+that says to count and leaves two thirds of the count to an impression is the
+same defect as a rule with nothing behind it**, and it survived because the one
+third with an instrument printed a number and the sentence read as if all three
+had.
+
+**Condition 2 is not in this account's power, and that is the finding.** It
+asks that the clone's `PLAN.md` hold nothing but items blocked on kil. That file
+is in the extension's repository, and the first of the four standing constraints
+here is *do not modify the extension*. So the condition closes when the
+developing account closes it and not before, whatever this study does. The
+previous session replaced a stop condition that was already satisfied, the
+journal reading list, with one taken from the specification because it *can be
+counted*, which is true and is not the same as being reachable. **A stop
+condition outside your reach is a decision to continue, not a measurement**, and
+`stop-conditions.mjs` prints that sentence rather than leaving the next session
+to rediscover it.
+
+**The queue, counted over the whole file.** 114 entries: **7 open, 6 blocked on
+kil, 101 done**, which is what `RESUME-HERE.md` already said and is now read by
+something. Counting the blocked ones under the `## Waiting on kil` heading gives
+**four**, because two `[k]` items sit under `## Open`, and that was this pass's
+first count. It was too low, which is the first time in seven that a first count
+here has erred in that direction: the rule recorded in 4.55 and carried into
+TRANSMISSION is *the first count is too high*, six times out of six. The common
+factor is not the direction. It is that a first count is taken over the
+population that was convenient, and a heading is exactly that.
+
+**Condition 3 needed a convention before it could need an instrument.** The
+specification says a pass that changed nothing says so in one line rather than
+describing the reading as work. That line is now a marker: a commit message here
+that produced no measurement carries `No measurement:` and its reason, and the
+script exits 1 when the last two commits both carry it. Nothing enforces the
+honesty, and the script says so in its own header. What is enforced is that two
+declarations in a row go red rather than accumulating quietly, which is the
+failure mode the goal exists to prevent.
+
+**A witness went red for the wrong reason and was caught by reading it.** The
+first attempt at condition 3's witness made a worktree at the current commit,
+committed two declared-silent passes into it, and ran the script from there. It
+exited 1, the expected code. It exited 1 because the script is untracked and the
+worktree did not have it: `MODULE_NOT_FOUND`, printed above the exit code and
+read only because the output was printed beside it rather than the code alone.
+The repaired witness copies the script in, and adds the control that the first
+one lacked: **one** declared-silent commit, which must stay green. It prints
+`last two: none, measured` and exits 0; the second one turns it red. A probe
+must make the things it distinguishes differ, and the first version could not
+tell one from two because it could not tell anything from anything.
+
+**Found on the way, the same class as 4.80 and in the same file.**
+`RESUME-HERE.md` said **Nine runnable scripts** in its inventory and **Ten
+scripts** a hundred lines further down, and there were nine. Both sentences were
+written on the same day by the same session. The count now lives once, in the
+D-scripts README, which is the table that would have to be edited anyway for the
+number to change; the two state documents cite it. This is 4.30 and 4.80's
+convention applied a second time, and it is worth noting that the convention
+existed, in writing, in the file that broke it.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
