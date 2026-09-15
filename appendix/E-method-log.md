@@ -2877,6 +2877,49 @@ that had to go back. The pattern across the three is the same as the pattern
 across the findings: the edit was reasoned about, and the run was what settled
 it.
 
+### 4.76 Two of the three checks this session wrote could not fail
+
+**What happened.** [4.72](#472-running-the-quotation-probe-on-this-sessions-own-entries)
+ended on the observation that a check which cannot fail is read once, by the
+session that wrote it. The suite's exit behaviour was then mapped, which nobody
+had done:
+
+| script | exit |
+|---|---|
+| `check-links.mjs` | `links === 0 ? 2 : broken.length ? 1 : 0` |
+| `audit-spec.mjs` | `fail.length === 0 ? 0 : 1` |
+| `verify-handover-claims.mjs` | `failed.length === 0 ? 0 : 1` |
+| `axis-ledger.mjs` | 2, 1 or 0 |
+| `probe-quotes.mjs` | `checked === 0 ? 2 : 0`, a report by design |
+| `probe-orphan-assets.mjs` | 2 only, a report by design |
+| `probe-consistency.mjs` | **no `process.exit` at all** |
+
+`check-links` is the model and its three states say why: **2 when it measured
+nothing, 1 when it found something, 0 when it looked and the answer was clean.**
+It also walks the directory tree rather than naming files, so it has no list to
+forget, which is the defect [4.74](#474-a-correction-pass-is-bounded-by-its-instrument-and-this-one-had-three-blind-spots)
+and [4.75](#475-the-same-defect-in-the-instrument-written-to-catch-that-class)
+found in the two that do. Proved by planting a broken link in each of the two
+appendices: both named, exit 1.
+
+**Of the three scripts written this session, two could not fail.**
+`probe-orphan-assets` is defensible: its own header says an orphan is not
+necessarily wrong and the output is a list to read. `probe-consistency` was not.
+It is two reports and two checks in one file, and the two checks cannot produce
+a false positive: a constant that disagrees with the clone is wrong, and a
+bullet that appears twice in one document is wrong. Both exit 1 now, the ratio
+half stays a report and is excluded from the exit code, and each was proved by a
+planted control: a duplicated bullet and a constant drifted from 20 to 31.
+
+**The first version of that exit threw.** `bad` was block-scoped inside the
+branch that runs when a clone is given, so the exit condition at the bottom of
+the file could not see it and the clean run died with a ReferenceError instead
+of passing. That is the right way round for a mistake in a check: **a check
+whose bug makes it throw is safe, and a check whose bug makes it pass is worse
+than no check**, because the second one is indistinguishable from good news. The
+only reason this one was noticed in the same minute is that the clean run was
+run, and a clean run is the case nobody thinks to try.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

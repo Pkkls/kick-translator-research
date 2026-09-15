@@ -92,13 +92,16 @@ for (const doc of docs) {
       asserted.set(m[1], { value: m[2], where: doc + ':' + (i + 1) });
   });
 }
+// Declared out here because the exit code at the bottom reads it. It was
+// block-scoped when the exit was added, so the first run threw a ReferenceError
+// rather than passing, which is the right way round for a mistake in a check.
+let bad = 0;
 if (!asserted.size) {
   console.log('none asserted');
 } else if (!corpus) {
   for (const [name, a] of asserted)
     console.log('  ' + name + ' = ' + a.value + '   ' + a.where + '   (pass the clone to check)');
 } else {
-  let bad = 0;
   let skipped = 0;
   for (const [name, a] of asserted) {
     const hits = [];
@@ -147,3 +150,16 @@ for (const doc of docs) {
   }
 }
 console.log(dup ? '  -> ' + dup + ' duplicated bullet(s)' : '  none');
+
+// This file is two reports and two checks, and until now it exited 0 on every
+// one of them, which 4.72 says makes it a thing that gets read once. The ratio
+// half stays a report: it lists false positives beside real ones and only a
+// reader can tell them apart. The other two cannot produce a false positive. A
+// constant that disagrees with the clone is wrong, and a bullet that appears
+// twice in one document is wrong, so both now fail (4.76).
+if (bad > 0 || dup > 0) {
+  console.log(`\nECHECS:\n  ${bad} constant(s) disagreeing with the clone, ${dup} duplicated bullet(s)`);
+  console.log('  The ratio half above is a report and is not counted here.');
+  process.exit(1);
+}
+process.exit(0);

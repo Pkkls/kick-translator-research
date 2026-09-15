@@ -54,7 +54,9 @@ parentheticals lost (4.72). Nothing about the meaning moved, which is why
 nothing else would have caught it. A report that nothing fails on is a report
 nobody runs, and this one had been read once, by the session that wrote it.
 
-The second one's constant half is not a report but a check, and it is the
+**`probe-consistency` exits 1 now** on a constant that disagrees with the clone
+or a bullet that appears twice, and 0 otherwise; only its ratio half is a report
+(4.76). Its constant half is the
 narrowest thing in this repository: it compares every value the study writes as
 `NAME = n` against the clone. Today that is one value. Its worth is that it
 fails the moment a second one drifts, which is what 4.45 did undetected.

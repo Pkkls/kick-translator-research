@@ -45,8 +45,8 @@ node appendix/D-scripts/probe-consistency.mjs . /path/to/kick-chat-translator
 ```
 
 The first five must be green. The last two are reports that list false
-positives beside real ones, so they are read, not kept green, except
-`probe-consistency`'s constant and duplication halves, which are checks. If any
+positives beside real ones, so they are read, not kept green, except `probe-consistency`, which exits 1 on its constant and duplication
+halves and is therefore a gate on those two (4.76). If any
 of them disagrees with what `RESUME-HERE.md` records, the repository is stale
 and reconciling it is the first task.
 
