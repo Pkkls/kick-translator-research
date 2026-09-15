@@ -2920,6 +2920,47 @@ than no check**, because the second one is indistinguishable from good news. The
 only reason this one was noticed in the same minute is that the clean run was
 run, and a clean run is the case nobody thinks to try.
 
+### 4.77 The privacy policy describes version 2.0.0, and two things leave that it does not name
+
+**What happened.** A10's bar is *nothing leaves that the privacy text does not
+name*, and `PRIVACY.md` had never been opened by this study. Sixty-one lines. Its
+table names four translation providers and one Lingva host, and the sentence
+above it says that is what gets sent off-device.
+
+Every `https://` host in the source, enumerated: ten, of which one is an SVG
+namespace and one is the host page. Eight are real destinations. **Two of them
+are not in the policy.**
+
+- **`api.github.com`.** `GITHUB_LATEST_RELEASE_API`, called by
+  `updateChecker.ts` behind `UPDATE_CHECK_TTL_MS`, six hours. It carries no chat
+  content. What it does carry is the reader's address and the fact that they run
+  this extension, to a third party, on a schedule, and no reader-facing document
+  says so. The policy's parenthetical about *your IP, beyond what the browser
+  sends to any HTTP endpoint* arguably covers the address; it does not cover an
+  endpoint the table omits.
+- **`lingva.ml`**, and this is the serious one. `LINGVA_POOL` holds two hosts,
+  `lingva.lunar.icu` and `lingva.ml`, *rotated round-robin to spread load*. The
+  policy names the first and offers *or your instance*. So a reader who selects
+  Lingva has their **chat message text** sent to a host the privacy policy does
+  not mention, half the time, by design. `PROVIDER_ENDPOINTS` lists only
+  `lingvaDefault`, so the pool is a separate constant and the policy was written
+  against the first list.
+
+**And the frame for both.** `PRIVACY.md` was written in `d09b25c`, 2026-05-28,
+whose subject is *feat: complete v2 rewrite*. That is the 2.0.0 commit, and the
+file has not been edited since. **The product is at 2.10.0.** Sixteen releases,
+including every provider change, have shipped over a policy that describes the
+first of them. Its own header says *Last updated: 2026-05-28*, which is honest
+and is the only reason this was quick to establish.
+
+**Why it is the finding this session was least likely to reach.** It required
+opening a document no axis pointed at directly: A10's evidence column said
+*13.7 counts the observable surface*, which is a count of render sinks, and
+counting sinks is about what a page script can see rather than about what leaves
+the machine. The two questions live under one axis and use different
+instruments, and the ledger's own row had the first and not the second until
+now. **A row that carries one instrument reads as a row that is covered.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
