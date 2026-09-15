@@ -301,7 +301,11 @@ stripper figures, the one-declaration box model and the 22 axes held.
 
 **Never measured here, and each needs something this account did not have:**
 
-- Anything observed in a browser. Every source-derived claim is about call
+- Anything observed in a browser, **though this is now one environment variable
+  and one build away** (4.87): a Playwright install exists on this machine, the
+  shim reads `$UX_KIT` before the clone's own `node_modules`, and `snapshot` has
+  run green in a real Chromium. Nothing has been re-taken through one yet.
+  Every source-derived claim is about call
   sites, not about what renders. **What was missing is now named rather than
   assumed** (4.47): the corpus's queue contradicts itself on the blocker, one
   paragraph reading the registry and concluding the key is present so the

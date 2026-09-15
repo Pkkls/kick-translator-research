@@ -416,7 +416,15 @@ outcome luck rather than method.
 ## 5. What was never measured, and why
 
 - **Nothing was observed in a browser.** Every source-derived claim is about
-  call sites, not about what a reader sees.
+  call sites, not about what a reader sees. **This is liftable and the reason it
+  stands has changed** (4.87). The gates need a driver that is deliberately not
+  a dependency, and the shim reads `$UX_KIT` before the repository's own
+  `node_modules`, which is an environment variable rather than a change to the
+  extension. A Playwright install exists on the machine this study runs on. With
+  `UX_KIT` pointed at it, `snapshot` ran green in a real Chromium in 14.6
+  seconds. So the sentence used to mean *this account had no browser* and now
+  means *this account has not yet re-taken anything through one*. Nothing in
+  this study is tagged as observed, and nothing should be until it is.
 - **No multilingual chat traffic.** One single-channel capture exists: the
   corpus's handoff of 2026-08-16 reports 804 messages from a live Spanish
   channel, with their length distribution, and its lines are not in the

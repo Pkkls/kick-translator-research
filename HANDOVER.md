@@ -980,6 +980,24 @@ met. **It is deliberately not moved for you**: that is a change to your
 repository. While it sits in this one it is an instrument in no runner, which is
 the thing your own handoff and this account's chapter 12 both warn about.
 
+**An afternoon, and it is the one that makes a green mean something.** Four of
+your offline gates read a file a fifth one writes, and the runner pools them on
+the stated premise that none does. `snapshot.mjs:143` writes `popup.html` into
+the harness directory; `boundaries.mjs`, `da-surfaces.mjs`, `names.mjs` and
+`rtl-surfaces.mjs` all read `path.join(HERE, 'popup.html')`; and `git ls-files`
+does not know that file, so a fresh clone has none of it. Observed here with a
+driver supplied through `UX_KIT`: `--only snapshot,boundaries` gives `snapshot`
+ok at 14.6s and `boundaries` ECHEC at 0.9s, `net::ERR_FILE_NOT_FOUND`. **The
+first run after a clone fails and the second passes**, which reads as a flake
+and is an ordering dependency. Your runner's own header is what would have
+stopped anyone looking: *They are independent: no gate reads what another
+writes*. Either make the four produce their own dump, or give `snapshot` a phase
+of its own the way `run-live.mjs` gives one to `latency`.
+
+This is worth putting beside your own entry that the live suite was not
+non-deterministic and that three probes were broken. That instinct was right and
+it was applied to the other suite.
+
 **Three lines, and it is the first thing anyone cloning you will see.**
 `run-gates.mjs` reports a missing prerequisite as a failed gate. On a machine
 with no browser driver it prints **32 `ECHEC` of 40 and exits 1**, where those

@@ -3537,6 +3537,69 @@ in `verify-handover-claims.mjs` now asserts the defect rather than the repair,
 so **fixing `run-gates.mjs` turns this study red**, which is the intended way
 for a session here to learn that it was fixed.
 
+### 4.87 Four gates read what one gate writes, in a runner whose header says none does
+
+**What happened.** 4.86 established that 32 of the 40 offline gates cannot start
+without a browser driver. The obvious next question is whether this machine has
+one anywhere, since the shim reads `$UX_KIT` before the repository's own
+`node_modules` and that is an environment variable rather than a change to the
+extension. It does: `playwright` is installed under an unrelated project on the
+same disk, and the browser cache is in place.
+
+With `UX_KIT` pointed at it, `run-gates.mjs --no-build --headless --only
+snapshot,boundaries`:
+
+| gate | result | time |
+|---|---|---|
+| `snapshot` | **ok** | 14.6s |
+| `boundaries` | ECHEC, `net::ERR_FILE_NOT_FOUND` on `popup.html` | 0.9s |
+
+**The failure is a race, and the runner's header denies that one is possible.**
+Its opening comment reads *They are independent: no gate reads what another
+writes, and the five that bundle with esbuild each own their own output file.*
+Measured:
+
+- `snapshot.mjs:143` **writes** `popup.html` into the harness directory.
+- `boundaries.mjs`, `da-surfaces.mjs`, `names.mjs` and `rtl-surfaces.mjs` each
+  **read** `path.join(HERE, 'popup.html')`.
+- `git ls-files` does not know the file. It is untracked output, so a fresh
+  clone does not have it at all.
+
+Four gates read what one gate writes. The runner pools twelve wide on the
+premise that none does, so `boundaries` reached the file 0.9 seconds in, while
+`snapshot` was still fourteen seconds from producing it. Running the two in the
+other order, or with `--jobs 1`, or a second time on a machine where the file
+survives from a previous run, all give a different answer. **The first run after
+a clone is the one that fails, and the second run passes**, which is the worst
+possible shape: it looks fixed by being run again.
+
+**This is a fourth source of the variance the corpus once filed as
+environmental.** Its own entry, *The live suite was not non-deterministic; three
+probes were broken*, is the right instinct applied to the other suite and
+correctly resolved there into three named defects. The offline suite has a real
+ordering dependency, it is in the runner rather than in a probe, and the header
+that would have warned a reader asserts the opposite. **Never file variance as
+an environmental property** is the rule, and its corollary is that a documented
+invariant is not evidence for itself.
+
+**What this study can now claim about browsers, stated narrowly.** The standing
+limitation in TRANSMISSION and chapter 14 is *nothing was observed in a browser*.
+One gate has now run green in a real Chromium from this account, which makes
+that limitation **liftable on this machine rather than lifted**: a driver
+resolves, a browser launches, and 32 gates become reachable behind a build. No
+claim in this study about what a reader sees has been re-taken, and none should
+be recorded as observed until it is. What changes today is the reason the
+limitation stands: it was *this account did not have a browser*, and it is now
+*this account has not yet run the suite that needs one*. Measuring a limit to
+its boundary rather than declaring it, for the third time (4.47, 4.83).
+
+**What was not done, deliberately.** The suite was not run in full. It needs
+`npm run build` first, the run rewrites `dist/`, and the corpus's own trap list
+records that leaving a non-Chrome build there makes the extension silently
+absent. Building is allowed by the standing constraints and is measurement; doing
+it at the end of a pass, with no time to restore the tree and verify it, is how
+that trap gets sprung. The clone was clean before this pass and is clean after.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
