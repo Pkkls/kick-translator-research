@@ -2721,9 +2721,9 @@ were added this session**. Three were real.
 
 | entry | what was written | what the source says |
 |---|---|---|
-| 4.47 | *it is neither the registry nor the install, the extension simply is not CONNECTED* | *So it is neither the registry nor the install**:** the extension simply is not CONNECTED* |
-| 4.60 | *the feature simply doesn't mount, graceful no-op* | *the feature simply doesn't mount **(**graceful no-op**)*** |
-| 4.64 | *FF 121+ : ES-module background scripts and storage.session both require it* | *FF 121+ : ES-module background scripts **(`background.type: module`)** and storage.session both require it* |
+| 4.47 | `it is neither the registry nor the install, the extension simply is not CONNECTED` | *So it is neither the registry nor the install**:** the extension simply is not CONNECTED* |
+| 4.60 | `the feature simply doesn't mount, graceful no-op` | *the feature simply doesn't mount **(**graceful no-op**)*** |
+| 4.64 | `FF 121+ : ES-module background scripts and storage.session both require it` | *FF 121+ : ES-module background scripts **(`background.type: module`)** and storage.session both require it* |
 
 A colon turned into a comma, parentheses turned into a comma, and a
 parenthetical dropped. None changes the meaning, and that is the point: the
@@ -2751,6 +2751,52 @@ and a report that nothing fails on is a report nobody runs. The two gates added
 this session both **exit non-zero**, which is why they were run on every pass
 since. **A check that cannot fail is read once**, and this one had been read
 once, by the session that wrote it.
+
+### 4.73 Removed a guard whose reason was not written down, and measured what it was for
+
+**What happened.** [4.72](#472-running-the-quotation-probe-on-this-sessions-own-entries)
+left a loose end: the probe's italic pattern excludes backticks, so any
+quotation reproducing inline code is never checked at all. Counted: **3 of the
+53 italic spans in the method log**, and they are the most exact ones, because
+reproducing code precisely is what requires the backticks. The exclusion looked
+redundant, since `norm` strips backticks before the comparison anyway.
+
+It was lifted, and the effect measured rather than assumed: **77 checked becomes
+81, and 15 reported becomes 16.** Three of the four newly visible quotations
+pass. The fourth is not a quotation:
+
+> `` `scratchpad/*` ``, and the exceptions beneath it un-ignore `` `scratchpad/harness/*.mjs` ``
+
+That is this log's own prose from 4.63, and the literal asterisks inside those
+two glob patterns become italic delimiters the moment a backtick no longer ends
+the span. **The guard is against code spans, not against backticks**, and
+nothing beside it said so.
+
+Reverted. The three quotations stay unchecked, which is now a recorded
+limitation with a number rather than an invisible one, and the comment beside
+the pattern says what the guard is for and what the repair would be: mask inline
+code to a placeholder before scanning, unmask before comparing.
+
+**The shape, for the fourth time.** A line reads as redundant, and is doing
+something its wording does not mention.
+[4.49](#449-a-gate-that-cannot-measure-reports-the-same-exit-code-as-one-that-measured)
+had an exit code that looked like a decision about its own branch.
+[4.56](#456-a-keepalive-that-asks-for-less-than-the-platform-will-give) had a
+constant that looked like a margin. [4.59](#459-a-bar-that-is-satisfied-while-the-failure-its-own-axis-names-is-reachable)
+had a bar that looked like a guarantee. This one had a character class that
+looked like a formatting detail. **In all four, reading the line was not enough
+and reading it beside the thing it interacts with was**, which is an argument
+for changing a guard only after measuring what happens without it, and this is
+the first of the four where that measurement was actually taken before the
+conclusion was written.
+
+**And a correction inside this pass.** Before measuring, 4.72's table of three
+wrong quotations was re-marked from italics to code, on the theory that the
+probe was flagging the specimens. It was not: the count did not move by a single
+entry. The specimens sit in a table row and the paragraph they belong to carries
+none of the attribution words the probe requires, so they were never checked.
+The re-marking is right in principle, a specimen of an error is not a quotation,
+and it fixed nothing.
 
 ### The pattern across the first three
 

@@ -79,6 +79,14 @@ for (const d of docs) {
   }
   for (const para of lines.join('\n').split(/\n\s*\n/)) {
     if (!ATTRIBUTED.test(para) || TRANSLATED.test(para) || /^[>|]/.test(para)) continue;
+    // The backtick exclusion looks redundant, since `norm` strips backticks
+    // before the comparison anyway. It is not. Lifting it was measured: four
+    // more quotations get checked, and prose containing two inline code spans
+    // with a glob in them, `scratchpad/*` and `scratchpad/harness/*.mjs`, starts
+    // matching as a quotation, because those asterisks are italic delimiters
+    // once a backtick no longer ends the span. The guard is against code spans,
+    // not against backticks. Repair, if the four are ever worth it: mask inline
+    // code to a placeholder before scanning, and unmask before comparing (4.73).
     for (const m of para.matchAll(/(?<![*\w`])\*([^*\n`][^*`]{30,}?)\*(?!\*)/g)) {
       checked++;
       const q = norm(m[1]).replace(/[.;:,]$/, '');
