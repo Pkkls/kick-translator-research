@@ -214,8 +214,17 @@ than reading it here (4.30, 4.80).
 `axis-ledger.mjs` and the checking halves of `probe-consistency.mjs`, both of
 which exit non-zero. The total is in the D-scripts README rather than here.
 
-**Three findings that reach a reader**, in the order they would cost something:
+**Four findings that reach a reader**, in the order they would cost something:
 
+0. **Both link guards require a scheme, and the privacy text does not say so**
+   (4.91). `PRIVACY.md` and all eleven localised store listings say links are
+   stripped before anything is sent. Outgoing `PROTECT_RE` and incoming
+   `URL_RE` are both anchored on `https?://`, so `kick.com/somechannel`,
+   `twitch.tv/somebody`, `bit.ly/aBcDeF`, `www.example.com/secret` and a bare
+   `example.com/secret` reach the configured provider verbatim: **6 of 8
+   constructed shapes**, measured by `probe-link-guards.mjs`. A10's own words
+   for a claim that disagrees with the traffic are *a store removal, not a bug
+   report*. Two guards, written separately, one blind spot.
 1. `PRIVACY.md` names four endpoints and the extension contacts six.
    `lingva.ml` receives **chat message text** and is not in the policy, and
    `api.github.com` is contacted every six hours. The file was written in the

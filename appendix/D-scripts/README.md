@@ -25,14 +25,16 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `compose-calls.mjs` | Engine calls per typed character on the outgoing path, counted by walking a message's prefixes through the clone's own `decideComposeAction`. Sets A3's budget row without a browser, and prints which prefixes of a link or an emote run reach a provider | [appendix E 4.90](../E-method-log.md#490-the-half-typed-link-goes-to-the-provider-and-the-debounce-is-the-only-thing-stopping-it) |
 
-**Twelve scripts.** That count is here because two documents stated it from
+| `probe-link-guards.mjs` | Which URL shapes the product's two link guards recognise, outgoing `maskProtected` and the incoming `URL_RE`, against the privacy text's claim that links are stripped. Exits 1 if the defect is ever fixed, so this study learns it is stale | [appendix E 4.91](../E-method-log.md#491-both-link-guards-require-a-scheme-and-the-privacy-text-does-not) |
+
+**Thirteen scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twelve take a path argument and print to standard output; `probe-quotes.mjs`,
+All thirteen take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
-the extension's, and `version-agreement.mjs` and `compose-calls.mjs` take only
-the extension's. Only
+the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
+take only the extension's. Only
 `probe-emote-stripper.mjs` writes anything: a temporary copy of the modules it
 imports, under the system temp directory, removed before it exits. It needs
 Node 22.18 or later.

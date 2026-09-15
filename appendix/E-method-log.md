@@ -3806,6 +3806,75 @@ permits, not what the socket sees, which is the safe direction for a ceiling and
 the wrong direction for a claim about traffic. **No claim about traffic is made
 here.**
 
+### 4.91 Both link guards require a scheme, and the privacy text does not
+
+**What happened.** 4.90 found that typing a URL costs seven engine calls before
+the link guard fires, and the prefixes that escape are `ht` through `https://`,
+which carry nothing. That looked like a cost finding and it was, and the
+question it left is the one worth asking of any guard: **what does the input
+have to look like before this thing considers it a link?**
+
+Two guards, one per direction, written separately:
+
+| | pattern | file |
+|---|---|---|
+| outgoing | `/(?:https?:\/\/\S+\|@[\w.]+)/g` | `composeLogic.ts`, via `maskProtected` |
+| incoming | `/\bhttps?:\/\/[^\s<>"']+/gi` | `emoteParser.ts`, as `URL_RE` |
+
+**Both are anchored on `https?://`.** Measured with `probe-link-guards.mjs`,
+which masks through the product's own function and reads the incoming pattern
+out of its own source:
+
+| shape | held back | |
+|---|---|---|
+| `https://example.com/secret` | yes | control |
+| `http://example.com/secret` | yes | control |
+| `www.example.com/secret` | **no** | |
+| `example.com/secret` | **no** | |
+| `kick.com/somechannel` | **no** | the host this product runs on |
+| `twitch.tv/somebody` | **no** | |
+| `bit.ly/aBcDeF` | **no** | the path is the whole payload |
+| `regarde example.com/mon-truc` | **no** | inside a sentence, so no skip applies |
+
+**Six of eight constructed shapes reach the configured translation provider
+verbatim**, on both directions, masked by neither guard and skipped by
+`isLinkOrMentionOnly` in none of the six.
+
+**What the product tells its readers.** `PRIVACY.md`: *To translate a chat
+message, its text content (after we strip emotes, URLs, and `@mentions`) is sent
+to the translation provider you configure.* All eleven localised store listings:
+*Emotes, mentions, links and emoji spam are stripped before anything is sent.*
+Neither sentence is qualified by a scheme, and a reader has no way to know one
+is meant. A10's own *breaks as* is *the product's privacy claims and its network
+traffic disagree*, and its own assessment of that is **a store removal, not a
+bug report**.
+
+**Two guards, written separately, with one blind spot.** This is not the
+guard-fraction rule, where a diagnosis reaches some surfaces and not others.
+Both surfaces have a guard and both guards are correct about what they match.
+They share an assumption instead, and the assumption is that a link is written
+the way a link is written in a document rather than the way it is written in a
+chat message. TRANSMISSION's rule about two instruments agreeing is the same
+shape in a different place: *two probes agreeing about the same file share a
+blind spot and confirm each other inside it*. Two guards can do it too, and here
+the agreement is what makes the claim in the privacy text feel safe to write.
+
+**The exit code asserts the defect, deliberately.** The probe exits 0 while at
+least one shape is sent raw and **1 when every shape is held back**, which is
+the day the product is fixed and this study is out of date. A check that goes
+red on good news is unusual and is right here: nothing else would tell a later
+session that the finding had expired, and the alternative is a study that keeps
+publishing a repaired defect. The two scheme-bearing controls must stay masked,
+and the probe exits 2 if they are not, because a run where the import broke
+would otherwise print eight confident SENT RAW lines and mean nothing.
+
+**What is not claimed.** Not that a scheme-less URL ought to be masked; that is
+the product's decision. Not anything about which provider receives it, which is
+4.77's subject. Not that the incoming and outgoing paths are equally exposed:
+the outgoing path sends what one reader types, the incoming path sends what a
+whole channel says, and this probe does not weigh them. What is claimed is the
+gap between two sentences the product publishes and what its code does.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -962,6 +962,38 @@ Stated so the boundary is visible rather than implied.
 Ordered by value over cost, with the cost stated. Nothing here needs a
 decision from anyone else.
 
+**Read this one first. Your privacy text and your traffic disagree, and both
+link guards have the same blind spot.** `PRIVACY.md` says a chat message's text
+is sent *after we strip emotes, URLs, and `@mentions`*. All eleven localised
+store listings say *Emotes, mentions, links and emoji spam are stripped before
+anything is sent*. Neither sentence mentions a scheme, and both of your guards
+require one **[re-run]**:
+
+- outgoing, `composeLogic.ts`: `PROTECT_RE = /(?:https?:\/\/\S+|@[\w.]+)/g`
+- incoming, `emoteParser.ts`: `URL_RE = /\bhttps?:\/\/[^\s<>"']+/gi`
+
+Measured through your own functions, 6 of 8 constructed shapes reach the
+configured provider verbatim: `www.example.com/secret`, `example.com/secret`,
+`kick.com/somechannel`, `twitch.tv/somebody`, `bit.ly/aBcDeF`, and a bare
+`example.com/mon-truc` inside a sentence. The two scheme-bearing controls are
+masked correctly, so the guards work and the question is what they consider a
+link. A scheme-less link is how a link is normally written in a chat message,
+and with a shortener the path is the whole payload.
+
+`node appendix/D-scripts/probe-link-guards.mjs <your repo>` reproduces it. It
+exits 1 the day every shape is held back, which is how a later reading of this
+file learns the finding expired.
+
+Two guards written separately with one shared assumption is not the
+guard-fraction pattern in section 2.1: both surfaces are covered and each
+pattern is correct about what it matches. That two independent patterns agree is
+probably part of why the sentence felt safe to write. The cheapest honest fix is
+one of two, and they are different decisions: widen the patterns, or qualify the
+two sentences. **Widening the pattern is a product change with false positives
+to think about; qualifying the sentences is a text change you can make today**,
+and until one of them happens the store listing claims something the code does
+not do.
+
 **Ten minutes, and it stops a wrong belief at the top of every pass.** Delete
 the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked

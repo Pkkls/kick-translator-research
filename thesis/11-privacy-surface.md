@@ -14,6 +14,44 @@ destinations, declared in the manifest: the host site, a release-metadata
 endpoint for update checks, and the translation providers. On-device
 translation adds none.
 
+### What the product says is held back, and what is
+
+**[new]** `PRIVACY.md` says a chat message's text content is sent to the
+provider *after we strip emotes, URLs, and `@mentions`*. All eleven localised
+store listings say *Emotes, mentions, links and emoji spam are stripped before
+anything is sent*. Both sentences are unqualified.
+
+There are two guards, one per direction, written separately: `PROTECT_RE` in
+`composeLogic.ts`, which `maskProtected` uses to replace a URL with an inert
+placeholder before the outgoing request, and `URL_RE` in `emoteParser.ts` on the
+incoming path. **Both are anchored on `https?://`.** Measured through the
+product's own functions:
+
+| shape | held back |
+|---|---|
+| `https://example.com/secret`, `http://example.com/secret` | yes, both guards |
+| `www.example.com/secret` | no |
+| `example.com/secret` | no |
+| `kick.com/somechannel` | no |
+| `twitch.tv/somebody` | no |
+| `bit.ly/aBcDeF` | no |
+| `regarde example.com/mon-truc` | no |
+
+**Six of eight constructed shapes reach the configured provider verbatim**,
+masked by neither guard and caught by the link-only skip in none of them
+([4.91](../appendix/E-method-log.md#491-both-link-guards-require-a-scheme-and-the-privacy-text-does-not)).
+A scheme-less link is the ordinary way a link is written in a chat message, and
+`bit.ly/aBcDeF` is the case where the path is the entire payload.
+
+This is not the guard-fraction failure that runs through the rest of this
+corpus, where a diagnosis reaches some surfaces and not others. Both surfaces
+have a guard and each is correct about what it matches. They share an
+assumption, that a link looks the way a link looks in a document, and the fact
+that two independently written patterns agree is part of why the sentence in the
+privacy text would feel safe to write. **Two instruments agreeing is evidence
+about their technique before it is evidence about their subject**, and this
+study learned that rule about its own probes.
+
 Two decisions in the corpus are worth preserving.
 
 ### The key moved from synced storage to local storage
