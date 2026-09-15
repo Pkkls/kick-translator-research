@@ -1562,8 +1562,8 @@ left to trust one.
 something this account did not have. That sentence was never tested. The
 corpus's queue says what the missing thing is, twice, and the two statements
 contradict each other inside one entry: one paragraph reads the registry and
-concludes *it is neither the registry nor the install, the extension simply is
-not CONNECTED, which is a click in its own UI*, and the paragraph after it
+concludes *So it is neither the registry nor the install: the extension simply
+is not CONNECTED, which is a click in its own UI*, and the paragraph after it
 restates the version that reading had just retracted, *the unblock is a
 native-messaging registry key copied from Chrome to Brave*, and hands it to kil
 as worth more than the bug it was blocking.
@@ -2184,7 +2184,7 @@ of them are better than the bar asks. `containers` lists six candidates and
 labels three of them *Legacy fallbacks*. `COMPOSE_SELECTORS` lists seven, says
 they are ordered most-specific first, records that the live shape was verified
 in 2026, and names what happens if all seven miss: *the feature simply doesn't
-mount, graceful no-op*. `extractUsername` tries four in sequence, each with a
+mount (graceful no-op)*. `extractUsername` tries four in sequence, each with a
 comment saying which Kick variant it is for, one of them dated to a live check
 in August. `pickInjectionTarget` falls back to the row's first child and then to
 the row itself, so it cannot return nothing.
@@ -2386,8 +2386,8 @@ shape as [4.46](#446-the-rule-about-stale-numbers-had-nothing-behind-it), a rule
 with nothing behind it, arriving from the other end.
 
 One of the two branches carries the version comment the bar asks for, and it is
-exact: `strict_min_version: '121.0'` with *FF 121+ : ES-module background
-scripts and storage.session both require it*. The `background` branch carries
+exact: `strict_min_version: '121.0'` with *FF 121+ : ES-module background scripts
+(`background.type: module`) and storage.session both require it*. The `background` branch carries
 none, although that sentence is its reason too. The knowledge exists and sits
 beside the other branch.
 
@@ -2707,6 +2707,50 @@ five when it was not checked, and this is the sixth. The check was one grep for
 a sentence from the section, in the source. **A claim that quotes its own
 mechanism is cheap to verify**, and this changelog quotes its mechanisms
 everywhere, which is why the check took one command.
+
+### 4.72 Running the quotation probe on this session's own entries
+
+**What happened.** Twenty-eight entries were added to this log in one session,
+most of them quoting the corpus, and `probe-quotes.mjs` had not been run once.
+It exists for exactly this: [4.42](#442-quotations-that-were-not-the-corpuss-words-found-by-something-that-runs)
+built it after [4.39](#439-a-translation-in-italics-three-times-in-one-session-after-45-was-in-the-log)
+found a translation set in italics as though it were verbatim.
+
+Run: 78 attributed quotations checked, **18 not found verbatim, and 8 of them
+were added this session**. Three were real.
+
+| entry | what was written | what the source says |
+|---|---|---|
+| 4.47 | *it is neither the registry nor the install, the extension simply is not CONNECTED* | *So it is neither the registry nor the install**:** the extension simply is not CONNECTED* |
+| 4.60 | *the feature simply doesn't mount, graceful no-op* | *the feature simply doesn't mount **(**graceful no-op**)*** |
+| 4.64 | *FF 121+ : ES-module background scripts and storage.session both require it* | *FF 121+ : ES-module background scripts **(`background.type: module`)** and storage.session both require it* |
+
+A colon turned into a comma, parentheses turned into a comma, and a
+parenthetical dropped. None changes the meaning, and that is the point: the
+italics say *these are the corpus's words* and in three places they were not
+quite. All three are corrected and the probe now reports 15.
+
+**The five of mine that remain are not errors, and each names a real blind
+spot.** Three quote `scratchpad/PROMPT-PERFECTION.md`, the specification, which
+[4.63](#463-the-specification-survives-only-in-this-study-and-the-frame-never-mentions-it)
+found is gitignored and therefore not among the 234 tracked files the probe
+reads. One quotes a commit message, which is not a file. One quotes this study's
+own chapter 14, which is not a corpus attribution at all.
+
+**And the first of those is the finding.** A quotation can only be verified
+against a source the verifier can open. The specification is not in the
+repository, so **every sentence this study quotes from it is unverifiable by
+construction**, and will stay unverifiable however carefully it is transcribed.
+4.63 recorded that the file is unpublished; this is what unpublished costs
+downstream, arriving from a direction nobody was watching. The repair is the
+same one: one exception line, or a pointer to the published appendix.
+
+**Why it took twenty-eight entries to run it.** The probe is listed in
+`RESUME-HERE.md` as one of two reports to read rather than gates to keep green,
+and a report that nothing fails on is a report nobody runs. The two gates added
+this session both **exit non-zero**, which is why they were run on every pass
+since. **A check that cannot fail is read once**, and this one had been read
+once, by the session that wrote it.
 
 ### The pattern across the first three
 
