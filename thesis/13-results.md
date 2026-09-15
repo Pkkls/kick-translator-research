@@ -268,6 +268,10 @@ Cloned from the public repository, at the commit the study measured against.
 | Chat catalogue: keys, locales, coverage assertions | **48 keys, 9 locales, 43 assertions**, run and passing | [replicated] |
 | **Reader-facing sentences that never reach that catalogue** | **1**, `pipeline.ts:169`, English in every locale | [new] |
 | Skip reasons naming something the reader controls | **8 of 16** | [new] |
+| **Instrumentation and source-map markers in the published archive** | **0**, across 28 text files of 36 | [new] |
+| Web-accessible resources in the shipped manifest | **none** | [new] |
+| Licence or notice files in the shipped artifact | **0**, against 4 runtime deps (3 MIT, 1 Apache-2.0) | [new] |
+| Icons shipped twice, byte-identical, with only one pair in the manifest | **4 files, 3520 bytes** | [new] |
 
 ## 13.8 The three bars execution falsified
 

@@ -45,11 +45,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-untranslated.mjs` | Sentences the reader is shown that never reach the chat catalogue, scanned the opposite way round from the product's own coverage test, which matches call sites and therefore cannot see a string that is not one | [appendix E 4.105](../E-method-log.md#4105-one-sentence-of-sixteen-never-reaches-the-catalogue-and-the-guard-cannot-see-it) |
 
-**Twenty-two scripts.** That count is here because two documents stated it from
+| `probe-archive.mjs` | A11's archive clauses read from an unpacked published archive rather than from a build: instrumentation and source-map markers, web-accessible resources, and whether any licence text ships | [appendix E 4.106](../E-method-log.md#4106-the-archive-read-as-an-archive-and-a-check-withdrawn-for-being-mostly-wrong) |
+
+**Twenty-three scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-two take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-three take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs` and `stop-conditions.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

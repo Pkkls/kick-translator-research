@@ -4795,6 +4795,69 @@ sentence**. It names its four files as the population so a clean run's scope is
 visible, refuses if it finds too few lookups to be reading what it thinks, and
 exits 1 when the population moves in either direction.
 
+### 4.106 The archive read as an archive, and a check withdrawn for being mostly wrong
+
+**What happened.** A11's bar names the archive three times: *zero
+instrumentation in a release bundle, **proven from the archive***, *zero
+web-accessible resource*, and *every bundled licence satisfied in the shipped
+artifact*. The ledger recorded that `check-strip` proves the first **from the
+build**, which is a different artefact: the build is what a machine produced,
+the archive is what a store serves.
+
+So the published zip was downloaded and unpacked. Its sha256 begins `8c8d7eca262b`,
+which is the digest [4.52](#452-the-reproducibility-claim-nobody-had-run-and-it-holds-exactly) verified against the forge, so this is the
+artefact that study rebuilt. **36 files.**
+
+| clause | measured in the artifact |
+|---|---|
+| zero instrumentation | **0 markers**: no `__KT_METRICS__`, `KT_METRICS`, `metricsBridge`, and no source map or `sourceURL` in any of 28 text files |
+| zero web-accessible resources | **none**; the field is absent from the shipped manifest |
+| every bundled licence satisfied | **no licence or notice file of any kind is in the artifact** |
+
+The first two clauses are met and were previously only inferred from the build.
+That is the whole value of reading the shipped thing.
+
+**The licence clause is reported and not judged.** Four runtime dependencies,
+and their licences are not uniform: `franc-min`, `preact` and `zod` are MIT,
+**`idb-keyval` is Apache-2.0**, whose section 4 asks more of a redistributor than
+MIT does. All four ship a licence file in `node_modules` and none of that text is
+in the archive. Whether a minified bundle in a browser extension satisfies those
+terms is a legal question this account will not answer; what the bar asks is
+whether the artifact carries the text, and it does not.
+
+**Presence could not be proven by name, and saying so is part of the result.**
+The bundle is minified and package names do not survive minification, so
+searching for `preact` or `franc` returns nothing and proves nothing in either
+direction. Presence rests on the corpus's own byte accounting, franc's trigram
+data at 100394 bytes of `content.js`, and on the imports in source. **An absence
+is a claim about what you opened**, applied to this account's own search.
+
+**Four icons are shipped twice.** `icons/icon{16,32,48,128}.png` are
+byte-identical to `public/icons/icon{16,32,48,128}.png`, and the shipped manifest
+references **only** the `public/` pair. 3520 bytes carried for nothing, in the
+file a store serves. Both copies are in `dist/` too, so the archive contains what
+the build produced and the duplication is the build's.
+
+**The revision was nearly not pinned.** A comparison of the archive against
+`dist/` showed nine differing asset names and four differing files, which looks
+like an archive that does not match its build. `git rev-list --count
+v2.10.0..HEAD` is **17**: `dist/` is a build of a tree seventeen commits past the
+tag, so every difference is expected and the comparison measures the commits in
+between. *A file name is not a population; pin the revision* caught this before
+it was written down, and 4.52 had already done the correct comparison.
+
+**And a check was withdrawn for being mostly wrong.** The probe carried a
+fourth question, which files nothing references, and it returned **thirteen**
+results. Eleven were wrong: the `_locales/*/messages.json` files are loaded by
+Chrome by convention rather than named anywhere, and two hashed chunks are
+imported by other hashed chunks. Worse, its substring match let
+`icons/icon16.png` count as referenced because the manifest names
+`public/icons/icon16.png`, so it **hid the one real instance it existed to
+find**. A check that returns thirteen results of which eleven are wrong is worse
+than no check, because the next reader pays to triage it, and one whose error
+conceals the true positive is worse again. It is gone, and the duplicate icons
+are a measurement in this entry instead.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

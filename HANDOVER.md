@@ -1118,6 +1118,31 @@ The fix is one call and nine entries: the catalogue already does placeholders,
 `node appendix/D-scripts/probe-untranslated.mjs <your repo>` finds it, and goes
 red the day it is fixed so this file stops claiming it.
 
+**Two things in your published archive, read from the archive rather than from
+your build [re-run].** `gh release download v2.10.0`, unpack, 36 files, sha256
+`8c8d7eca262b…`, the digest this account verified in 4.52.
+
+The good half first, because it was previously only inferred: **zero
+instrumentation or source-map markers** across all 28 text files, and **no
+`web_accessible_resources`** in the shipped manifest. `check-strip` proves that
+from `dist/`; this proves it from the thing a store serves, which is a different
+artefact.
+
+**No licence or notice file of any kind is in the artifact.** Your four runtime
+dependencies do not share a licence: `franc-min`, `preact` and `zod` are MIT,
+and **`idb-keyval` is Apache-2.0**, whose section 4 asks more of a redistributor.
+All four ship a licence file in `node_modules`; none of that text reaches the
+zip. This account is not going to tell you what the licences require of a
+minified browser bundle, and both stores will have an opinion. The bar you wrote
+says *every bundled licence satisfied in the shipped artifact*, and the fact is
+that the artifact carries no licence text.
+
+**And four icons ship twice.** `icons/icon{16,32,48,128}.png` are byte-identical
+to `public/icons/icon{16,32,48,128}.png`, and your manifest references only the
+`public/` pair. 3520 bytes, in `dist/` as well as the zip, so it is the build
+rather than the pack. `node appendix/D-scripts/probe-archive.mjs <unpacked zip>`
+re-runs the first three checks.
+
 **Ten minutes, and it stops a wrong belief at the top of every pass.** Delete
 the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked
