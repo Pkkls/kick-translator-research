@@ -2319,6 +2319,55 @@ both read before either writes will each merge onto the same stale `current`,
 and the second write wins on every field the first one changed. The bar says no
 setting loses a write under concurrent tabs, and this one can.
 
+### 4.63 The specification survives only in this study, and the frame never mentions it
+
+**What happened.** A9's bar asks that no value fall outside *the declared set*.
+Counted from `inject.css`: 13 custom properties, all `--kt-lp-*` and scoped to
+one surface, against 135 distinct literal colours, 5 radii and 22 transition
+declarations. No document in either repository declares a palette. So the
+clause refers to a set nobody wrote, which is the third artefact in that
+position after the budget file and the ledger.
+
+Looking for that set turned up something larger. The only occurrences of the
+phrase *declared set* anywhere in the corpus are in
+`scratchpad/PROMPT-PERFECTION.md`, which is the audit specification itself,
+living in the repository under study.
+
+**Two copies exist and they are not the same.** The corpus's is 967 lines and
+**21 axes**. This study's [appendix A](A-audit-prompt.md) is 1153 lines and
+**22**, the extra one being A22, the auditor, which
+[4.15](#415-the-specification-had-no-axis-for-the-thing-producing-its-findings)
+records adding. Compared section by section, nothing was removed: the study's
+copy is a superset, the same 21 axes plus A22 and about 11,800 characters of
+refinement.
+
+**And the corpus's copy is not in the repository.** `.gitignore` line 25 is
+`scratchpad/*`, and the exceptions beneath it un-ignore `scratchpad/harness/*.mjs`
+and `scratchpad/audit_*.py`. `PROMPT-PERFECTION.md` is neither, so it is
+untracked: it exists on one machine, and a fresh clone gets nothing. Worse for
+its chances of being found, `.agent/PROMPT.md`, the frame every session is
+handed, **never mentions the specification at all**.
+
+So the finding is the opposite of the one being drafted. The study did not fail
+to return its improvements to the corpus. **This study's appendix A is the only
+published copy of the specification that exists**, and it is also the better
+one.
+
+**The parallel is exact and it is already in the handover.** The first item
+there says the frame tells every session a fresh clone has no harnesses when it
+has 56, and the reason 56 survive is that someone added two exception lines to
+`.gitignore` so that tracked scripts would survive a machine. The file that
+tells a session what to audit did not get those lines. The repair is one more
+exception, or a pointer in `.agent/PROMPT.md` to the published appendix, and the
+second is better because the published copy is the one with A22 in it.
+
+**Why the first draft of this entry was wrong, which is the fifth time.** It
+read "two copies, the corpus's is the one sessions use, the study's improvements
+never went back" and that is a coherent story built on one unchecked assumption:
+that a file sitting in a working tree is in the repository. `git ls-files` is
+one command and it inverted the conclusion. **A file you can open is not
+evidence that anyone else can.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
