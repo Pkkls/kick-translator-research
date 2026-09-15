@@ -47,6 +47,13 @@ node appendix/D-scripts/probe-quotes.mjs . /path/to/kick-chat-translator
 node appendix/D-scripts/probe-consistency.mjs . /path/to/kick-chat-translator
 ```
 
+**Run `probe-quotes` against anything you add, in the pass that adds it.** One
+session put 28 entries in the method log before running it once, and it found
+three of its own quotations reshaped: a colon become a comma, and two
+parentheticals lost (4.72). Nothing about the meaning moved, which is why
+nothing else would have caught it. A report that nothing fails on is a report
+nobody runs, and this one had been read once, by the session that wrote it.
+
 The second one's constant half is not a report but a check, and it is the
 narrowest thing in this repository: it compares every value the study writes as
 `NAME = n` against the clone. Today that is one value. Its worth is that it
