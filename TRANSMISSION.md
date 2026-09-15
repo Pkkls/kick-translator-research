@@ -149,6 +149,12 @@ network gate printed 70 interceptions, which looked like interception working.
 Its route pattern missed the page itself, the page came from the real site, and
 the correct count for a local page is zero.
 
+**A gate's name is a claim about coverage. Count the effects it asserts against
+the effects its name covers.** A navigation gate stayed green on a product whose
+route re-attachment had never worked, because it asserted one effect of a
+channel switch out of four and a safety net elsewhere kept that one alive. The
+harness asserting all four existed and was in no runner.
+
 **A test over a constant is a test of the declaration, not of the behaviour.**
 A test asserting a provider list has three entries does not test that the second
 is ever reached. It reports green on any change that keeps the shape.

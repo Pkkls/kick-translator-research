@@ -365,8 +365,12 @@ header; it does not assert against a shape someone invented.
 
 **Bar** every selector has at least one fallback or a named reason it cannot.
 Every navigation shape ends with the observer attached and a row translated,
-proven by a count and not by the absence of an error. The status the reader
-sees never says live when no observer is attached.
+proven by a count and not by the absence of an error, and with every other
+effect a route change carries asserted too: the new channel's language looked
+up, the outgoing target moved, per-channel state applied. A gate named for
+navigation that asserts only the translated row stays green while the rest is
+broken, because the observer's own safety net keeps that one row alive. The
+status the reader sees never says live when no observer is attached.
 
 **Witness** break one selector at a time and confirm the fallback carries, then
 break the whole chain and confirm the reader is told rather than left with a

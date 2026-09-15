@@ -287,6 +287,16 @@ if (existsSync(join(root, poidsPath))) {
   claim('3.5b its header still says the identifier comparison has not run', true, /Elle n'a pas encore tourne/.test(poids));
 } else uncheckable('3.5b weight gate direction', poidsPath + ' absent');
 
+// 3.7: the pause in the released build, and where its fix lives. `git grep`
+// exits 1 on no match, which execSync turns into a throw; that is an answer here.
+const gitAnswer = (cmd) => { try { return git(cmd); } catch { return ''; } };
+const BRANCH = 'origin/feat/nav-monde-isole';
+claim('3.7 the released pause writes the global switch', true, /onToggle:\s*\(enabled\)\s*=>\s*void patchSettings\(\{\s*enabled\s*\}\)/.test(gitAnswer('show v2.10.0:src/content/index.ts')));
+claim('3.7 settings are written to synced storage', true, /chrome\.storage\.sync\.set\(\{\s*\[STORAGE_KEY_SETTINGS\]/.test(read('src/shared/settings.ts')));
+claim('3.7 per-channel pause on master / on the branch', 'no / yes', (gitAnswer('grep -l pausedChannels master -- src') ? 'yes' : 'no') + ' / ' + (gitAnswer(`grep -l pausedChannels ${BRANCH} -- src`) ? 'yes' : 'no'));
+claim('3.7 the branch is not merged', true, gitAnswer('branch -r --no-merged master').includes('feat/nav-monde-isole'));
+claim('3.7 the four-effect navigation harness is in no runner', 0, (existsSync(join(root, 'scratchpad/harness/run-gates.mjs')) ? read('scratchpad/harness/run-gates.mjs') : 'nav-monde').split('nav-monde').length - 1);
+
 // 5: which decisions still wait on a capture. The queue's waiting item says four;
 // two later entries of the same file overtook it.
 const plan = existsSync(join(root, '.agent/PLAN.md')) ? read('.agent/PLAN.md') : '';

@@ -1300,6 +1300,32 @@ switch of language between source and prose is exactly where a paraphrase
 slips into quotation marks without a decision being taken. The read-back
 caught both; nothing structural would have.
 
+### 4.40 Branches counted, and the unmerged two never opened
+
+**What happened.** The handover counted nine remote branches, seven merged,
+and closed the subject with a recommendation against work. The newer journal's
+live-debugging sequence, the last unread stretch of it, ends with a reader's
+report on their own build: pausing one stream turned translation off on the
+next. The fix was written and deliberately left on one of the two unmerged
+branches, because one case of four fails. The released build and master still
+write the global, synced switch.
+
+**Cost.** The most visible defect in the corpus's final state was absent from
+the document written for the account that would fix it, in a section that told
+that account the branches needed nothing.
+
+**Why it happened.** The branch count was a population measured as a number
+and never enumerated; the rule in TRANSMISSION.md about a guard being a
+fraction says to open the members, and the two that differed from the rest
+were exactly the two worth opening. It was also reachable only by reading the
+journal to its end, which is why the resume file listed that stretch last and
+called it the whole live-debugging sequence.
+
+**What changed.** Section 3.7 of the handover states it with its evidence,
+section 8 ranks it second, and five verifier claims hold it, including that
+the per-channel pause exists on the branch and not on master, so the claim
+goes red the day it is merged.
+
 ### 4.36 The pass after the one quoted corrected it
 
 **What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth

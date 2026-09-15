@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 51 of 51 holding at the commit this was last checked against, and 4
+It reports 56 of 56 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -691,6 +691,38 @@ watching them, which is the same class of defect as 3.6 and has the same cheap
 remedy: a gate that reads the numbers out of the thing rather than out of a
 sentence.
 
+### 3.7 The pause in your released build is still a global switch
+
+**[yours]** Reported on your own build: pausing translation on one stream
+turned it off on the next. Your newer journal diagnosed it as the bar's pause
+writing `settings.enabled`, global and synced, confirmed it in Brave on master,
+and wrote the fix: a per-channel pause read through one derived view. The fix
+sits on `feat/nav-monde-isole`, kept off master deliberately, because one case
+of four fails: returning to a channel that is still paused reactivates it, and
+the cause was not located.
+
+**[re-run]** Both halves are where the journal left them. In `v2.10.0` and on
+master the handler is `onToggle: (enabled) => void patchSettings({ enabled })`,
+and settings are written to `chrome.storage.sync`. A pause on one stream is a
+pause on every stream, in every tab, on every browser the reader syncs.
+`pausedChannels` exists only on the branch, which is unmerged.
+
+**[mine]** Holding a fix that fails one case of four is a defensible call, and
+it is yours to make. What this file can add is the comparison: the branch's
+failing case is a paused channel that comes back on when revisited; the
+shipped behaviour is every channel going off, which is the report. Section 8
+recommends against work on your branches, and was written about the seven that
+are merged. This is one of the two that are not.
+
+**The gate that let the other half of that report through.** The navigation
+mode of `translate-offline` stayed green while route re-attachment was dead,
+because it asserts one effect of a channel switch, that the next message is
+translated, and the observer's own safety net kept that one alive **[yours]**.
+On master it still asserts only that **[re-run]**. The harness that asserts all
+four effects, `nav-monde.mjs`, is in no runner, on master or on the branch
+**[re-run]**. Your journal says it plainly: a gate that asserts one effect among
+four stays green while the other three break, and its name says the opposite.
+
 ---
 
 ## 4. Six rules, each with the measurement that produced it
@@ -870,6 +902,13 @@ the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked
 harness count to `state.mjs` so the claim cannot rot again. Section 3.6.
 
+**The most visible defect in this file, and its remaining cost is one unlocated
+cause.** The pause in your released build turns translation off on every
+stream and every synced browser. The per-channel fix exists, on a branch, and
+fails when a reader returns to a channel still paused. Section 3.7. While
+there, the navigation gate needs the other three assertions, which already
+exist in a harness no runner launches.
+
 **One line, ten minutes.** Give `showError` a direction attribute. Your
 interface ships an Arabic locale and that surface renders localised strings
 with the page's base direction. Section 3.1. The witness is a localised
@@ -908,7 +947,9 @@ a wrong answer, and a wrong answer from a checker is worse than no checker.
 
 **Not now, and this is a recommendation against work.** The seven remote
 branches already merged into master. Real, cheap, and it costs a reader
-nothing. Listed in section 3.3 so it is not rediscovered, not so it is done.
+nothing. Listed in section 3.3 so it is not rediscovered, not so it is done. The
+two that are not merged are not covered by this recommendation, and one of
+them is section 3.7.
 
 ## 9. One habit from your own journal, for the blocked items
 
