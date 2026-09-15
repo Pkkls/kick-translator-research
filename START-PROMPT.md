@@ -80,11 +80,18 @@ counted from and a silent stall reads here as work (4.81).
 Both journals are read end to end. Three things are productive, in this order.
 
 **The corpus files never read by position.** `RESUME-HERE.md` holds the table
-with the current line. `.agent/PLAN.md` is read to L430 of 1287; `CHANGELOG.md`
-has never been opened. Open by line number, read forward, write down what it
-changes. Do not search by topic: in a chronological corpus the most relevant
-passage is usually the one a later entry superseded, and that mistake has its
-own entry.
+with the current line. `.agent/PLAN.md` is **read end to end**, its four Done
+sections finished on 2026-09-15, and that reading is what found the orphan count
+wrong by ten (4.82). `CHANGELOG.md` has 15 of its 17 sections unread. Open by
+line number, read forward, write down what it changes. Do not search by topic:
+in a chronological corpus the most relevant passage is usually the one a later
+entry superseded, and that mistake has its own entry.
+
+This paragraph said *read to L430 of 1287* while `RESUME-HERE.md` said L760 on
+the same day, and commit `1aa9009` settles which was right. Two documents
+holding two reading positions for one file is the same defect as two documents
+holding two counts (4.80), and reading positions are worse, because the cheap
+response to not knowing where you are is to start over.
 
 **The candidates, when one appears.** The section in `RESUME-HERE.md` that
 held two is empty of waiting ones: both were executed rather than re-read, and
@@ -108,12 +115,13 @@ many of them there are live in
 `RESUME-HERE.md` carries the three findings that reach a reader and the two
 one-line items that are kil's.
 
-**The productive work, in order.** Finish `.agent/PLAN.md` from L760, the four
-Done sections. Read the 15 unread `CHANGELOG.md` sections against the source,
-which is how 4.70 corrected this study's own laughter count and 4.71 settled
-whether a version that was never tagged had shipped. Then close an axis: none of
-the 22 is closed and A15 came nearest, its reproducibility half closed against a
-published digest.
+**The productive work, in order.** Read the 15 unread `CHANGELOG.md` sections
+against the source, which is how 4.70 corrected this study's own laughter count
+and 4.71 settled whether a version that was never tagged had shipped. Then close
+an axis: none of the 22 is closed, and A15 is now open on one clause with an
+instrument written for it and sitting in the wrong repository (4.83), which is
+the narrowest any axis has been. `.agent/PLAN.md` is finished and three things
+it turned up are listed in `RESUME-HERE.md` unpursued.
 
 ## What the last passes learned, so they are not learned again
 

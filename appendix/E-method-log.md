@@ -3357,6 +3357,45 @@ number and a named reason; *the reason* has been the interesting field both
 times. An axis open for want of an afternoon and an axis open for want of a
 browser are the same word in the ledger and not the same state at all.
 
+### 4.84 Two documents held two reading positions for one file
+
+**What happened.** `START-PROMPT.md` said `.agent/PLAN.md` was read to L430 of
+1287. `RESUME-HERE.md` said L1 to L760. Both were written by the same session on
+the same day, and commit `1aa9009`, *Finish Open and Waiting*, settles it at
+L760. The file is read end to end now, so the disagreement is closed by the
+reading rather than by the arbitration, which is the cheaper of the two.
+
+**It is worse than a disagreeing count, and the reason is behavioural.** A
+count that disagrees with itself costs a correction. A reading position that
+disagrees with itself costs a re-read, because the cheap response to not knowing
+where you are in a chronological corpus is to start at the top, and the rule
+against reading by topic makes starting over the only alternative. Two numbers
+three hundred and thirty lines apart is most of a file.
+
+**Three things the finished reading turned up are now in `RESUME-HERE.md`
+rather than in a session.** A bullet whose arithmetic does not close, the
+corpus's seven-category impurity grid, and three store-listing field counts. The
+grid is the one worth naming here: **23 of 41 cases behaving as intended, with
+transliteration at 0 of 5**, and a later section of the same file closes
+transliteration to 5 of 5, which makes it 28 of 41. This study publishes no grid
+at all. Chapter 8 argues those exact seven categories and does it without the
+corpus's own measurement of them, which is a gap and not an error, and it is
+the sort of gap that only a finished reading can see: the grid is in the third
+Done section and the correction to it is in the first.
+
+Those two sentences are a false positive in `probe-consistency`, named in the
+pass that made it: its ratio half now reports *denominator 5, "transliteration"*
+with numerators 0 and 5 on adjacent lines. They are the before and after of one
+measurement, which is the shape a correction always has, and a report that
+flagged nothing here would be failing to notice a real 4.45 written the same
+way. `probe-quotes` also gains one, this pass quoting a commit message.
+
+**Cost of the handover item written this pass, measured rather than estimated.**
+`version-agreement.mjs` is 117 lines, 34 of them the header comment, three node
+builtins, no dependency, and `gh` only behind `--with-network`. That is what
+moving it into the clone's runner costs, and it is in the handover as half an
+hour rather than as *some work*.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

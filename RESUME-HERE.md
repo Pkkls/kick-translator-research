@@ -139,8 +139,28 @@ Next, in the order most likely to correct something published here:
 
 | File | Lines | Why first |
 |---|---|---|
-| `.agent/PLAN.md` | 1287 | **L1 to L760 read**, the whole Open and Waiting sections; the four Done sections from L760 unread |
-| `CHANGELOG.md` | 901 | **opened**: 17 sections compared against tags and releases (4.69), the 2.10.0 and 2.8.1 sections read (4.70, 4.71). The other 15 unread |
+| `.agent/PLAN.md` | 1287 | **read end to end.** The four Done sections, L760 to the end, were read on 2026-09-15 and produced 4.82 |
+| `CHANGELOG.md` | 901 | **opened**: 17 sections compared against tags and releases (4.69), the 2.10.0 and 2.8.1 sections read (4.70, 4.71). The other 15 unread, and they are the next reading |
+
+### Three things `PLAN.md` turned up that nobody has pursued
+
+Recorded here rather than left in a session, because the reading that found them
+is finished and nothing else will pass that way:
+
+1. **`Runner coverage: 31 harnesses of 33`** (L1015) names six files left out
+   with a stated reason. Thirty-one plus six is thirty-seven. One of the three
+   numbers is wrong and the bullet cannot say which. Chasing it is what found
+   4.82, and the bullet itself is still unexplained.
+2. **The seven-category impurity grid**, 41 constructed cases through the real
+   pipeline, 23 behaving as intended, per category: platform text 3/8, identity
+   3/5, input artefacts 5/7, code-switching 1/3, transliteration **0/5**,
+   no-language 5/6, gaming slang 6/7. A later section closes transliteration to
+   5 of 5, so the grid is 28 of 41 and nothing says so. **This study publishes
+   no grid at all**, which is a gap rather than an error: chapter 8 is about
+   exactly these categories and argues them without the corpus's own numbers.
+3. **Three field counts for the store listings**, 31, 34 and 44, across three
+   dates, with the language count going ten, eleven, eleven. They are probably
+   three populations rather than a drift, and nothing here says which.
 
 The queue is counted rather than described: **114 entries under seven
 headings, 7 open, 6 blocked on kil, 101 done**, and the section titled `## Open`

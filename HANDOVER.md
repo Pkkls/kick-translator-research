@@ -967,6 +967,26 @@ the claim in your frame's gates section that a fresh clone has no harnesses,
 and replace it with a pointer to the generated state file. Add the tracked
 harness count to `state.mjs` so the claim cannot rot again. Section 3.6.
 
+**Half an hour, and it closes an axis.** `appendix/D-scripts/version-agreement.mjs`
+in this account's repository checks that your version is one answer across the
+package, the derived manifest, the built manifest, the newest tag, the tag
+reachable from HEAD and, behind `--with-network`, the published release and its
+asset names. It reports 6 of 6 on 2.10.0 today, and it has four witnesses, each
+red on a row only it can see. 117 lines, 34 of them a header comment, three node
+builtins and no dependency; `gh` is needed only for the network rows. Copy it
+into `scratchpad/harness/`, add one entry to `run-gates.mjs`, and A15's last
+open clause, *one version everywhere, checked by a gate rather than by eye*, is
+met. **It is deliberately not moved for you**: that is a change to your
+repository. While it sits in this one it is an instrument in no runner, which is
+the thing your own handoff and this account's chapter 12 both warn about.
+
+**And fix the count your generator writes.** `state.mjs` lists 32 orphan
+harnesses and 13 of them are launched or imported: all nine of `run-live.mjs`'s
+gates, the `latency` phase it spawns, and `a11y`, `kick-actions` and
+`store-shots-fixture`. It reads `run-gates.mjs` and not the second runner. This
+account's own verifier had the identical defect and published 29 orphans where
+there are 19; the diagnosis and the arithmetic are in section 3.3.
+
 **The most visible defect in this file, and its remaining cost is one unlocated
 cause.** The pause in your released build turns translation off on every
 stream and every synced browser. The per-channel fix exists, on a branch, and
