@@ -66,7 +66,11 @@ walk found both wrong.
 **Replicate with a different instrument, of sufficient scope.** Two probes
 agreeing about the same file, when the claim is about a chain of five, is not
 replication: they share a blind spot and confirm each other inside it. Declare
-the population before replicating.
+the population before replicating. The corpus published a trimming cost of two
+more lost messages, counted against fourteen target languages, six of which the
+product does not speak; against the ten it does, the cost was zero. Its list of
+languages to keep had been built from what three sample sentences could return,
+which left out Chinese, Japanese and Korean, and the run measured that hole.
 
 **A file name is not a population. Pin the revision.** A replication read the
 same path the project had measured and disagreed with it on all three rules.

@@ -1246,6 +1246,16 @@ the duel, 13.1's italic quotation looked like a paraphrase of the journal. It is
 verbatim, from the work queue's entry on the same experiment. The comparison had
 been made against the wrong file.
 
+**And a commit message that described an edit which had not happened.** The
+next pass added a rule to TRANSMISSION.md in the same batch as two other edits.
+The edit helper refused it, because the search string began "the replication:"
+where the file says "replication:", and printed so. The other two succeeded,
+the checks were green, and the commit message said the rule was "now in
+TRANSMISSION.md". It was not, until the following commit. The helper did its
+job; the message was written from the plan of the batch rather than from its
+results, which is the witness rule again: a green run says nothing about an
+edit that never reached the file.
+
 ### 4.36 The pass after the one quoted corrected it
 
 **What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth
