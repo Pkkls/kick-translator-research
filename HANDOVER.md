@@ -255,7 +255,7 @@ SVG element **[read]**.
 |---|---|
 | A `<style>` element with a fixed id on the document element | one `getElementById` |
 | A fixed attribute on the document element | one attribute read |
-| 99 class names sharing a fixed prefix | one class selector |
+| 98 class names sharing a fixed prefix | one class selector |
 | A processed-marker attribute on the host's own chat rows | one attribute selector |
 
 The vector you removed required a network fetch. These require one synchronous

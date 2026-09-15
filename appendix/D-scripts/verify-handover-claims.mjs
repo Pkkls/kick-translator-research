@@ -83,9 +83,14 @@ claim('3.1 files with a markup sink', 1, markup, 'the one is an internal icon ta
 
 // 3.2 Detectability ----------------------------------------------------------
 
-const css = read('src/content/inject.css');
-const classNames = new Set([...css.matchAll(/\.(kt-[a-zA-Z0-9_-]+)/g)].map((m) => m[1]));
-claim('3.2 prefixed class names', 99, classNames.size);
+// Counted over selectors with comments stripped. The first published figure
+// was 99, taken by matching the whole file, and one of those was a placeholder
+// inside a comment about CSS specificity. A22 exists because of this class of
+// error and caught this instance on its first run.
+const css = read('src/content/inject.css').replace(/\/\*[\s\S]*?\*\//g, '');
+const selectors = css.split('}').map((block) => block.split('{')[0]).join(' ');
+const classNames = new Set([...selectors.matchAll(/\.(kt-[a-zA-Z0-9_-]+)/g)].map((m) => m[1]));
+claim('3.2 prefixed class names', 98, classNames.size, 'selectors only, comments stripped');
 
 const injector = read('src/content/injector.ts');
 claim('3.2 fixed id on an injected element', true, /\.id\s*=\s*STYLE_ID|\.id\s*=\s*['"][\w-]+['"]/.test(injector));

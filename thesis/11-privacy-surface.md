@@ -82,7 +82,7 @@ Findings, against the repository as it stood during this study:
 |---|---|---|
 | A `<style>` element with a fixed id, appended to the document element | content injector | `document.getElementById(...)` |
 | A fixed attribute set on the document element | content injector | an attribute read on `<html>` |
-| 99 distinct class names sharing a fixed prefix | injected stylesheet | a class selector |
+| 98 distinct class names sharing a fixed prefix | injected stylesheet | a class selector |
 | A processed-marker attribute written onto the host's own chat rows | observer | an attribute selector on the host's nodes |
 
 The removed vector required a network fetch. The remaining vectors require a

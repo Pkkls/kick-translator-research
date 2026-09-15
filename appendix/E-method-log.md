@@ -125,7 +125,7 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Fifteen. Listed in full because a method log that omits them is an
+Sixteen. Listed in full because a method log that omits them is an
 advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
@@ -414,6 +414,44 @@ mechanical audit, because its first word was not in the checker's verb list.
 Widening a gate so it admits your own case is how gates stop guarding, so the
 widening is recorded in a comment inside the checker, with the rule that a
 second entry in that comment means the check has become a formality.
+
+### 4.16 A22 caught a published error on its first run
+
+**What happened.** The new auditor axis was applied retroactively to findings
+already published, starting with its replication bar: every accusation must be
+confirmed by an instrument of a different shape.
+
+Two were re-run. Both results were worth having.
+
+**The class-name count was wrong.** The published figure, 98 in the current
+text and 99 as first published, came from matching a pattern across the whole
+stylesheet. Counting over selectors with comments stripped gives 98. The extra
+one, `kt-flag-xx`, exists only inside a comment discussing CSS specificity,
+where it stands for "each kt-flag-something rule". It is a placeholder, not a
+class.
+
+That is the sixteenth mistake here and the third of its exact kind, after the
+gate array and the manifest. **It is also the first error caught by a check
+rather than by luck or by surprise**, which is the whole argument of
+[4.14](#414-the-same-diagnosis-applied-locally-three-times-by-this-account): a
+diagnosis propagates when something runs, not when it is written down. The
+sentence had been written three times and failed three times. The axis caught
+it on its first execution.
+
+**The startup-race finding survived, with its limit sharpened.** The
+replication used the most independent instrument available, the project's own
+test suite: if a test already covered a message arriving before the tracker
+loads, the finding would be void. `stats.test.ts` holds eight cases, one of
+which is adjacent, "archives the stored day when it loads on a later date".
+That tests the rollover, not the race. No case covers a record arriving before
+the load resolves.
+
+The honest reading of that, and it is weaker than it looks: **an absent test
+does not prove a defect exists, it proves the defect would not be caught.**
+The finding stands as unreplicated in the sense that matters, since no
+instrument observed the behaviour, and the handover says so. What the
+replication added is that the project's own strongest instrument is silent on
+the case.
 
 ### The pattern across the first three
 
