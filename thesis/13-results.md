@@ -297,6 +297,13 @@ Cloned from the public repository, at the commit the study measured against.
 | Urdu, which asks to stand | **10 of 10**, but only because `francToIso2` cannot map `urd` | [new] |
 | Mongolian, which asks to stand | **6 of 10** | [new] |
 | Lines added to `FRANC_MAP` to take Urdu from 10 of 10 to 1 of 10 | **1**, in another file | [new] |
+| **The five refusals, all measured** | one wants overruling and gets it; **three of the other four leak at 4 of 10 each** | [new] |
+| Short words voting against each other | refusal survives **6 of 10** | [new] |
+| Romanisation markers voting against each other | refusal survives **6 of 10** | [new] |
+| Where the leaked code sends a Spanish-target reader | `gracias merci` skipped as *already in your language*, **3 of 4** overwrites | [new] |
+| **Unanimous short words: the product against franc alone** | **5 of 5** against 2 of 5 | [replicated] |
+| **Unanimous romanisation markers: the same** | **5 of 5** against **0 of 5**, the corpus's own published figure | [replicated] |
+| Repeated keys in `SHORT_WORD_LANG`, where the last silently wins | **0** of 136 pairs | [new] |
 
 ## 13.8 The three bars execution falsified
 

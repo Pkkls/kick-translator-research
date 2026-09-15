@@ -53,7 +53,7 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-refusal-overwritten.mjs` | The corpus's Cyrillic and Arabic-script separations re-taken on a bench written for this study and printed in full, and what `detectLanguage` does with the Mongolian guard's deliberate refusal. Drives the product's own filters with the values it returns, so the consequence is measured rather than argued | [appendix E 4.109](../E-method-log.md#4109-the-refusal-does-not-survive-its-own-caller-and-a1s-bar-named-this) |
 
-| `probe-refusal-census.mjs` | Every `return undefined` in the detection path, enumerated from the TypeScript AST and split into a refusal, a *nothing yet*, and the fall-through, then each constructible refusal driven to see whether it survives `detectLanguage`. Reports what `francToIso2` does with franc's answer, which is what actually decides | [appendix E 4.110](../E-method-log.md#4110-one-value-three-intentions-and-the-vocabulary-of-another-library-decides) |
+| `probe-refusal-census.mjs` | Every `return undefined` in the detection path, enumerated from the TypeScript AST and split into a refusal, a *nothing yet*, and the fall-through, then all five driven to see whether each survives `detectLanguage`, with a unanimous control beside the two vote conflicts. Reports what `francToIso2` does with franc's answer, which is what actually decides | [appendix E 4.110](../E-method-log.md#4110-one-value-three-intentions-and-the-vocabulary-of-another-library-decides), [4.111](../E-method-log.md#4111-all-five-refusals-measured-and-three-leak-at-the-same-rate) |
 
 **Twenty-seven scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one

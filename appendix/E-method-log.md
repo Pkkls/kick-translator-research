@@ -5220,6 +5220,97 @@ Two of the five refusals need an input where two markers disagree, which this
 bench does not construct; they are listed and left unmeasured rather than counted
 clean.
 
+### 4.111 All five refusals measured, and three leak at the same rate
+
+**What was left.** 4.110's census found five refusals in the detection path and
+measured three, leaving the two vote conflicts unmeasured because the bench did
+not construct an input where two markers disagree. Listing them as unmeasured
+rather than counting them clean was the right call, and this pass builds those
+inputs.
+
+**A mixed chat line is not exotic.** `detectByShortWords` refuses when two words
+from the lexicon vote for different languages, and `romanisedLanguage` refuses
+on the same rule for romanisation markers. Both refusals mean *this message is
+not one language*, which is a fact about the text and a good reason to say
+nothing. Ten lines each, written for this pass:
+
+| | the lookup refuses | the refusal survives |
+|---|---|---|
+| short words disagreeing | 10 of 10 | **6 of 10** |
+| romanisation markers disagreeing | 10 of 10 | **6 of 10** |
+
+**Four of ten, a third time.** Mongolian leaks 4 of 10, the short-word conflict
+4 of 10, the romanisation conflict 4 of 10. The rate is not a property of any
+guard: it is how often franc lands on one of the 42 languages, and franc does
+that about two fifths of the time on short chat text whatever the text is.
+
+**The class is now complete.**
+
+| refusal | wants | what happens |
+|---|---|---|
+| `pct(han)` | to be overruled | overruled, 10 of 10 |
+| `LETTRES_OURDOUES` | to stand | stands 10 of 10, by accident of vocabulary |
+| `LETTRES_MONGOLES` | to stand | leaks 4 of 10 |
+| short-word vote conflict | to stand | leaks 4 of 10 |
+| romanisation vote conflict | to stand | leaks 4 of 10 |
+
+**The harm is sharper here than for Mongolian**, because the overwritten answer
+is not wrong about an absent language, it is right about half a present one.
+`gracias merci` is declared **es**, and a reader whose target is Spanish loses
+it to *already in your language* while the French half is what they could not
+read. `valeu gracias` goes the same way with a Portuguese half, `grazie gracias`
+with an Italian half. Three of the four overwrites do this at a Spanish target,
+one at a French one.
+
+**The source already measured this harm through a different door.** The comment
+above `SHORT_TEXT_MAX` records that raising the bound from 20 to 30 took mixed
+lines killed before the call from 3 to 6, and that *"merci bro that was insane"
+part alors au moteur en `sl=fr` et disparait pour un lecteur francophone*. The
+bound was set at 20 for exactly this reason. **The same loss arrives through the
+vote conflict, under the bound, where the guard fires correctly and the caller
+undoes it.** A threshold tuned against a harm does not protect against the same
+harm reached another way.
+
+**The controls replicate two published figures and are worth more than the
+leak.** A vote that refuses on disagreement is only worth anything if it answers
+on agreement, so each bench carries a unanimous control:
+
+| | the product | franc alone |
+|---|---|---|
+| unanimous short words | **5 of 5** | 2 of 5 |
+| unanimous romanisation markers | **5 of 5** | **0 of 5** |
+
+The corpus publishes *romanised Russian, Greek, Japanese: 0 of 5 → 5 of 5*. On
+five lines written here, sharing nothing with theirs, it is **0 of 5 → 5 of 5**.
+franc calls `merci bonjour` Kurdish, `danke sehr` Malay, `grazie mille` Turkish,
+`privet spasibo` Czech and `arigatou gozaimasu` Uzbek. The lookup tables are
+carrying the product at chat length, exactly as their comments claim, and that
+is the more important thing on this page.
+
+**A negative result, cheap and worth having.** `SHORT_WORD_LANG` is built from
+136 array pairs into a `Map`, where a repeated key silently keeps the last
+language written. **There are no repeated keys**, across six languages. The
+check took one command and would have been a real defect had it failed.
+
+**Two witnesses, both red, and each says something the other cannot.**
+
+Silencing franc inside `detectLanguage` makes all four standing refusals stand,
+and the probe exits 2 on the **Han control**: *the Han branch no longer defers to
+franc*. **You cannot fix this by removing the fall-through**, because one refusal
+depends on it and Chinese would break. That is what the control is for, and it
+caught the obvious wrong fix on the first attempt.
+
+Propagating a refusal properly, a flag set by the guards and read once by
+`detectLanguage`, fixes Mongolian and the short-word conflict and the probe exits
+1 naming the one still leaking. The romanisation conflict needs the same
+treatment inside its own function, because a regex at the call site is a second
+place to get it wrong, which is 4.110's point restated by a failed plant.
+
+**Scope.** Ten lines per conflict, written here and printed by the probe. A
+mixed message longer than `SHORT_TEXT_MAX` never reaches the short-word vote,
+by design and by a documented decision; that is a different door into the same
+room and is not measured here.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

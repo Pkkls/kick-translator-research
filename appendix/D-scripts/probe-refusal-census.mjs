@@ -45,9 +45,9 @@
  *   succeeded; whether the author meant to establish a fact is read from the
  *   comment beside it, by hand, in 4.110. This script reports the guard text so
  *   that reading can be checked rather than trusted.
- * - Two of the five refusals. The short-word and romanised vote conflicts need
- *   an input where two markers disagree, which this bench does not construct;
- *   they are listed by the census and left unmeasured rather than counted clean.
+ * - Whether a mixed message longer than `SHORT_TEXT_MAX` reaches the short-word
+ *   vote at all. It does not, by design, and the source says so. The harm the
+ *   author measured at that boundary is a different door into the same room.
  *
  *   node appendix/D-scripts/probe-refusal-census.mjs /path/to/kick-chat-translator
  */
@@ -194,6 +194,28 @@ const BENCH = {
       '我们再试一次吧', '他总是这样做'],
     stand: false,
   },
+  'short words that disagree': {
+    want: 'to stand; a line carrying a French word and a Portuguese one is neither',
+    lines: ['merci mano', 'hola mano', 'gracias merci', 'valeu gracias', 'salut valeu',
+      'oui vale', 'danke merci', 'grazie gracias', 'obrigado merci', 'mdr jajaja'],
+    stand: true,
+    control: {
+      lines: ['hola gracias', 'merci bonjour', 'valeu mano', 'danke sehr', 'grazie mille'],
+      want: ['es', 'fr', 'pt', 'de', 'it'],
+    },
+  },
+  'romanisation markers that disagree': {
+    want: 'to stand; Russian and Japanese in Latin letters is not one or the other',
+    lines: ['privet kalimera', 'spasibo arigatou', 'kalimera konnichiwa', 'ochen efharisto',
+      'pravda tipota', 'konechno ginetai', 'ohayou spasibo', 'paidia privet',
+      'arigatou kalispera', 'bolshoe efharisto'],
+    stand: true,
+    control: {
+      lines: ['privet spasibo', 'kalimera paidia', 'arigatou gozaimasu', 'ochen khorosho',
+        'konnichiwa yoroshiku'],
+      want: ['ru', 'el', 'ja', 'ru', 'ja'],
+    },
+  },
   'Mongolian, the letters and particles test': {
     want: 'the refusal to stand; franc-min does not carry Mongolian at all',
     lines: ['өнөөдөр шинэ тоглоом тоглоно', 'өнөө орой чөлөөтэй юу', 'та нар юу хийж байна',
@@ -221,6 +243,22 @@ for (const [name, b] of Object.entries(BENCH)) {
     '  →  ' + codes.map((c) => francToIso2(c) ?? 'unmappable').join(' '));
 }
 
+// Two benches carry a unanimous control, because a vote that refuses on
+// disagreement is only worth measuring if it answers on agreement. The control
+// doubles as a replication: it is the corpus's claim that a lookup table beats
+// franc at chat length, re-taken on lines written here.
+console.log('\nThe unanimous controls, and what franc alone would have said:\n');
+for (const [name, b] of Object.entries(BENCH)) {
+  if (!b.control) continue;
+  const got = b.control.lines.map((l) => detectLanguage(l) ?? '-');
+  const fr = b.control.lines.map((l) => francToIso2(franc(l, { minLength: 3 })) ?? '-');
+  const right = got.filter((g, i) => g === b.control.want[i]).length;
+  const francRight = fr.filter((g, i) => g === b.control.want[i]).length;
+  console.log('  ' + name);
+  console.log('      the product   ' + right + ' of ' + b.control.lines.length + '    ' + got.join(' '));
+  console.log('      franc alone   ' + francRight + ' of ' + b.control.lines.length + '    ' + fr.join(' '));
+}
+
 console.log('\nThe mechanism, so the rates above are not mistaken for one:');
 console.log('  a refusal survives exactly when francToIso2 cannot map what franc said.');
 for (const c of ['urd', 'skr', 'khk', 'mon', 'cmn', 'rus', 'bul', 'ara', 'pes']) {
@@ -246,22 +284,26 @@ if (results['pure Han, the ambiguity test'].stood !== 0) {
   process.exit(2);
 }
 
-// The exit code asserts the finding.
+// The exit code asserts the whole class rather than one member of it, so that
+// fixing any one of the three leaks, or losing the one that holds, says so.
+const LEAKING = ['Mongolian, the letters and particles test', 'romanisation markers that disagree',
+  'short words that disagree'];
+const leaking = Object.entries(results)
+  .filter(([name, r]) => BENCH[name].stand && r.stood !== r.refused).map(([n]) => n).sort();
+if (JSON.stringify(leaking) !== JSON.stringify(LEAKING)) {
+  console.log('\nECHEC: the set of refusals that leak has changed.');
+  console.log('  4.111 recorded: ' + LEAKING.join(' | '));
+  console.log('  this run finds: ' + (leaking.join(' | ') || 'none'));
+  process.exit(1);
+}
 const urdu = results['Urdu, the letters test'];
-const mongol = results['Mongolian, the letters and particles test'];
 if (urdu.stood !== urdu.refused) {
   console.log('\nECHEC: an Urdu refusal was overwritten, which 4.110 recorded as not happening');
   console.log('today only because francToIso2 cannot map urd. That accident has ended.');
   process.exit(1);
 }
-if (mongol.stood === mongol.refused) {
-  console.log('\nECHEC: every Mongolian refusal survived, so 4.109 is fixed or franc changed');
-  console.log('its answers, and this study is stale either way.');
-  process.exit(1);
-}
-console.log('\nThree refusals, one value, three fates. Han wants the fall-through and gets it.');
-console.log('Urdu wants to stand and stands, but only because francToIso2 cannot map what');
-console.log('franc says about Urdu. Mongolian wants to stand and does not, because franc is');
-console.log('wrong about it in a direction the product can name. Nothing in the value, the');
-console.log('type, or the call separates the three: only the vocabulary of another library.');
+console.log('\nFive refusals, one value. One wants the fall-through and gets it. Four want to');
+console.log('stand: three leak at 4 of 10 each, and the fourth holds only because francToIso2');
+console.log('cannot map what franc says about Urdu. Nothing in the value, the type, or the');
+console.log('call separates them. The vocabulary of another library decides.');
 process.exit(0);
