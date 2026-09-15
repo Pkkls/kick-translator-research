@@ -29,7 +29,7 @@ nine of them did not. Counts that no script reads, such as the number of
 entries in the method log, are deliberately not restated here (4.30).
 
 The specification's own first stop condition is countable now rather than an
-impression: **15 of the 22 axes carry a verdict and 7 do not**, and none is
+impression: **16 of the 22 axes carry a verdict and 6 do not**, and none is
 closed outright, though A15's reproducibility half is: both published archives
 rebuild byte-identical from the tag (4.52).
 [Appendix F](appendix/F-axis-ledger.md) is the row-per-axis index that

@@ -1979,6 +1979,57 @@ figures that only an instrumented build can produce as describing the product
 they installed. The figures are `[reported]` and there is no reason to doubt
 them; what is missing is the build they describe.
 
+### 4.56 A keepalive that asks for less than the platform will give
+
+**What happened.** A5's bar opens with *no state lives only in worker memory*.
+Seven pieces of mutable module-level state exist in the service worker and six
+of them live only there. Four are round-robin indices and quota caches whose
+loss costs a refetch and nothing else, and `settings` is the exception: it is
+reloaded with `loadSettings()` when the worker starts, so it is not
+memory-only at all.
+
+The one that matters is `channelBuckets`, a `TokenBucket` per channel, sized
+from `perChannelBudgetPerMin` and consulted before every request. `bucketFor`
+recreates a missing bucket **full**, both capacity and initial tokens set to the
+budget, so a worker restart hands every channel a fresh minute's allowance
+regardless of how much of it was spent a second earlier. The default budget is
+200 a minute. Under MV3 the worker is evicted after about thirty seconds idle,
+so a per-minute limit that resets on eviction is not a per-minute limit; it
+under-limits, which is the opposite of the direction the axis's *breaks as*
+sentence describes and is the more interesting one, because the endpoints this
+product calls are the kind that soft-ban per IP.
+
+**The part worth the entry.** A keepalive exists and is wired in, an alarm that
+touches `storage.session` with the comment *to keep the MV3 service worker alive
+across burst-idle periods*. It asks for `KEEPALIVE_INTERVAL_SEC = 25`, which
+reaches `chrome.alarms.create` as `periodInMinutes` 0.4167. **[outside]** The
+minimum `chrome.alarms` documents is 0.5, thirty seconds, and a smaller period
+is raised rather than honoured. The number 25 was almost certainly chosen to sit
+just under the thirty-second eviction timeout, which is exactly the reasoning
+the clamp defeats: the one value that would have worked is the one value the
+platform will not accept.
+
+Nothing in the repository records the clamp. Not a comment beside the constant,
+not a note in the queue, not a line in the journals. A constant chosen against a
+platform limit, with the limit unwritten, reads as a deliberate margin to
+everyone who comes after, and there is no way to tell from the code whether the
+author knew.
+
+**What this is not.** It is not a measurement of eviction. A busy chat keeps the
+worker alive on traffic alone, so how often this happens in use is unknown, and
+the axis asks for the witness that would settle it: kill the worker by hand
+between two messages and see whether the first one after the wake translates.
+That witness has never been run, here or in the corpus. The finding is that the
+protection asks for something it cannot get, not that the protection is known to
+fail.
+
+**And the third clause cannot be read.** The bar asks that the added latency
+after eviction be under *the ceiling in the budget file*. There is no budget
+file, which [4.54](#454-seventeen-advisories-none-of-which-ship) established
+against a different axis. Two of the 22 bars now refer to that same missing
+document, so it is not a local omission in one axis's wording: the
+specification was written expecting a file that was never created.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
