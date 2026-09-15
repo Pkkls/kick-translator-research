@@ -845,6 +845,11 @@ anywhere:
   from?** In an extension runtime, requests may leave the background worker
   rather than the page. Interception at the wrong layer reports zero traffic,
   which is indistinguishable from a product that made no requests.
+- **Could the number the probe reads have two causes?** A zero request count
+  can mean the cache worked or that something upstream discarded the input
+  before any cache was consulted. Vary the input so that only the mechanism
+  under test can produce the result, and say in the probe why that variation is
+  there.
 - **Can the probe actually perform the action it tests?** A probe that sets a
   value on a control that stopped being an input, or dispatches an event nothing
   listens for, runs clean and measures the default. Read back the state the

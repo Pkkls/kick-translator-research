@@ -121,6 +121,35 @@ dimension in turn, and assert the answers differ. Reading a key structure
 proves nothing, because the defect is an omission, and omissions are invisible
 in the artefact that contains them.
 
+## 9.4b The cache that answers without applying
+
+**[reported]** Two caches exist to stop a repeated line costing anything, and
+neither had been checked end to end although the cost is direct: money at one
+provider, soft bans at another.
+
+The gate posts a line, waits for its translation, then posts the same text under
+a **different username**. That detail is the design, not a detail: the per-user
+skip upstream would drop an identical repeat from the same user without ever
+consulting a cache, so the gate would read a zero that proved nothing. **Two
+mechanisms produce the same zero, and only changing the username separates
+them.**
+
+Result: two calls for the first line, zero for the repeat, and the repeat still
+shows its translation.
+
+**The second witness is the one worth having.** Blinding both caches makes the
+repeat cost one call, which proves the cost assertion bites. Then a cache hit
+that returns *without applying*: 621 of 621 unit tests stay green and the gate
+goes red.
+
+That second failure is the nastier one, and its profile is worth naming.
+Nothing errors and nothing is slow. Every second occurrence of any repeated line
+would simply show nothing, so the reader sees translations appear and not
+appear with no visible pattern, and the pattern that does exist, repetition,
+is invisible to them. **A defect correlated with a property the reader cannot
+observe is indistinguishable from randomness**, which puts it at the top of the
+silence scale and makes it almost unreportable.
+
 ## 9.5 The ephemeral worker
 
 The extension's background worker is terminated whenever the platform decides
