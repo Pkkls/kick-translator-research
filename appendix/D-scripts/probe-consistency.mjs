@@ -122,3 +122,24 @@ if (!asserted.size) {
   console.log('  -> ' + (checked - bad) + '/' + checked + ' agree with the clone, '
     + skipped + ' not in src/ and therefore not checked');
 }
+
+// Every other gate here counts something that must exist, so none of them sees
+// a paragraph that exists twice. That is what an editing mistake produces most
+// often: a replacement whose new text carries the following bullet along while
+// the text it replaced stopped short of it. 4.50 is the instance, pushed.
+console.log('\n--- bullets appearing more than once in one document ---');
+let dup = 0;
+for (const doc of docs) {
+  const counts = new Map();
+  for (const line of readFileSync(join(root, doc), 'utf8').split('\n')) {
+    const t = line.trim();
+    if (!t.startsWith('- **')) continue;
+    counts.set(t, (counts.get(t) ?? 0) + 1);
+  }
+  for (const [text, n] of counts) {
+    if (n < 2) continue;
+    dup++;
+    console.log('  ' + doc + '  x' + n + '   ' + text.slice(0, 72));
+  }
+}
+console.log(dup ? '  -> ' + dup + ' duplicated bullet(s)' : '  none');

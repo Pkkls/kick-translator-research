@@ -1644,6 +1644,77 @@ not interchangeable in a command line, and the difference does not appear until
 someone tries to type it. **An experiment is not specified until its inputs
 are, and a witness nobody has run is a plan, not a witness.**
 
+### 4.49 A gate that cannot measure reports the same exit code as one that measured
+
+**What happened.** The second candidate said `audit_poids.py` exits 0 with a
+message when `dist/` holds the instrumented build. Run against both builds with
+one command, it does: on the release build it prints `228.1 Ko, ecart +0.4 Ko,
++0.16 %` and exits 0, and on the instrumented build it prints *poids non
+compare* and exits 0 as well. Nothing downstream that reads an exit code can
+tell those apart.
+
+The file already owns the distinction it needs. Eight lines above the metrics
+check, a missing `dist/` exits **2**, with the comment that says to build
+first. An instrumented build is the same class of event, a measurement that
+cannot be taken rather than one that failed, and it is the one case given the
+code that means success.
+
+**The unread question, answered, and narrower than the candidate assumed.** The
+runner cannot reach it. There are 40 gates and `audit-poids` is the 38th, and
+none of the three harnesses that run `build:metrics`, `metrics-offline.mjs`,
+`latency.mjs` and `run-live.mjs`, appears in the gate list at all. The default
+path runs a release build whose own `check-strip` step verifies that no
+measurement key survives. So the gate suite never puts an instrumented build
+under the weight gate. What is open is the hand path, and it is the ordinary
+one: those three harnesses exist to be run by a person, and a person who reads
+the counters with `metrics-offline.mjs` and then runs the gates with
+`--no-build` gets a weight gate that is green without looking.
+
+**What was not concealed, stated because a demonstration invites the opposite
+reading.** The instrumented build measured 231.4 Ko, +1.62 percent against the
+reference, inside the 2 percent margin. Had the gate measured it, it would have
+passed. This shows the mechanism and not a regression it hid.
+
+**Why it is worth the entry.** The candidate was a reading and it was right,
+which is the less interesting half. What running it added was the exit code
+next to the other exit code in the same file. That comparison is not available
+to a reader of one branch: you see `sys.exit(0)` and it looks like a decision
+about this case, and only the run puts it beside the `sys.exit(2)` eight lines
+up and makes it an inconsistency. **A branch reads as intentional until it is
+placed beside its sibling.**
+
+### 4.50 An edit that duplicated the paragraph after it, pushed, found by reading the file for something else
+
+**What happened.** Rewriting the first candidate in the resume file
+([4.48](#448-the-witness-could-not-be-run-as-written-and-running-half-of-it-beat-the-prediction))
+was done with a replacement whose new text carried the following bullet along
+with it, while the text being replaced stopped short of that bullet. The result
+was the weight-gate entry printed twice, identically, and committed and pushed
+that way. It was found one pass later, by opening the file to edit that same
+bullet for [4.49](#449-a-gate-that-cannot-measure-reports-the-same-exit-code-as-one-that-measured).
+
+**Cost.** One pushed commit of a public repository carrying a paragraph twice.
+Nothing downstream broke: the link gate counts links and the spec gate counts
+conditions, and a repeated paragraph is neither.
+
+**A second reach in the same pass, worth one sentence.** The check above was
+proved by planting a duplicate and reverting it with `git checkout --` on the
+file, which also discarded an uncommitted edit to that same file made minutes
+earlier, and the edit had to be written twice. Both slips are one shape: an
+operation whose blast radius was read as the thing it was aimed at. A probe is
+planted in the file you are editing, so the revert has to be as narrow as the
+plant, and it was not.
+
+**Why it happened, and why nothing caught it.** Every gate in this repository
+counts things that must exist. None counts things that must not exist twice,
+and duplication is what an editing mistake produces most often, because the
+common failure of a replacement is including context in the new text that was
+not included in the old. The check is four lines and now runs in
+`probe-consistency.mjs`, which already had the shape for it. **A suite built
+entirely of existence checks is blind to duplication**, and the entry is here
+rather than being quietly fixed because the same slip is available to anyone
+editing these files the same way.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

@@ -159,16 +159,25 @@ candidate: the differently shaped thing ran. The second is still waiting.
   **The `bar-live.mjs` half is still one instrument**, now for a stated reason
   rather than for want of trying: reaching it means editing `src/`, which is the
   working tree the witness forbids touching.
-- **The weight gate passes without measuring on an instrumented build**
-  **[read]**. `audit_poids.py` exits 0 with a message when `dist/` holds the
-  metrics build, so a run of the gates with `--no-build` after that build
-  counts it green. Whether the runner's default build makes this unreachable
-  in practice was not read.
-- **The weight gate passes without measuring on an instrumented build**
-  **[read]**. `audit_poids.py` exits 0 with a message when `dist/` holds the
-  metrics build, so a run of the gates with `--no-build` after that build
-  counts it green. Whether the runner's default build makes this unreachable
-  in practice was not read.
+- **The weight gate passes without measuring on an instrumented build. Run,
+  not read** (4.49). Demonstrated with one command against two builds: on the
+  release build it reports `228.1 Ko, ecart +0.4 Ko, +0.16 %` and exits 0, and
+  on the instrumented build it prints *poids non compare* and **also exits 0**.
+  A caller reading the exit code cannot tell a measurement inside the margin
+  from no measurement at all. The file already owns the distinction it needs:
+  eight lines earlier, a missing `dist/` exits **2**, and an unmeasurable build
+  is the same class of impossibility.
+  **The question left unread is answered, and the answer is narrow.** The
+  runner cannot reach it. There are 40 gates, `audit-poids` is the 38th, and
+  none of the three harnesses that run `build:metrics`, `metrics-offline.mjs`,
+  `latency.mjs` and `run-live.mjs`, is in the gate list at all; the default path
+  builds a release and `check-strip` verifies no marker survives it. Those three
+  are run by hand, which is the path that is open: read the counters with
+  `metrics-offline.mjs`, then run the gates with `--no-build`, and the weight
+  gate is green without looking.
+  **What was not concealed.** The instrumented build measured 231.4 Ko, +1.62
+  percent against the reference and inside the 2 percent margin, so this run
+  hid nothing. What is demonstrated is the mechanism, not a caught regression.
 
 ## What is measured and what is not
 
