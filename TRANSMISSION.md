@@ -279,6 +279,13 @@ here". It was executed. It was wrong.
   `/usr/bin/grep` when the output feeds another command. The corpus hit the
   same hook with `diff`, which answered "Files are identical" on two files six
   lines apart, and it rewrites `npx` to `npm`. Compare with a second tool.
+- **Paths here contain spaces.** The corpus's `for g in $(find ...)` split on
+  one and reported a single repository forty-four times. Quote, or read with
+  `while IFS= read -r`.
+- **Confirm which repository you are in before `git add -A`.** A parent
+  directory on a working machine can itself be a repository nobody meant to
+  create, and staging everything there takes whatever the directory holds.
+  `git rev-parse --show-toplevel` answers it in one line.
 - **`git checkout -- .` is not a way to ask a question about history.** The
   corpus ran it after applying a stash, then dropped the stash, and lost two
   modified harnesses. To look at the last commit without touching the tree,

@@ -114,9 +114,11 @@ public.
 | Mongolian by letters plus particles | | 17 of 20 | [reported] |
 | Mongolian rule, false positives against 12 ru + 8 uk + 8 bg | | 0 | [reported] |
 | Ukrainian lines declared Russian | 8 of 8 | 6 of 8 take their own code | [reported] |
-| Bulgarian in Cyrillic | 8 of 8, and 12 of 12, declared Russian | stated limit, unresolved | [reported] |
+| Bulgarian in Cyrillic | 8 of 8, and 12 of 12, declared Russian | separated in the next pass: letters Russian writes and Bulgarian does not, ъ as a vowel, the copula | [reported] |
 | **Bulgarian markers, fitted bench** | | **20 of 20** | [reported] |
-| **Bulgarian markers, held-out bench** | | **4 of 12** | [reported] |
+| **Bulgarian markers, held-out bench, first list** | | **4 of 12** | [reported] |
+| **Bulgarian markers, held-out, list completed by paradigm, not by misses** | | **7 of 12**, the figure the corpus publishes | [reported] |
+| Bulgarian rule, false positives on 28 ru + 10 uk + 6 mn, none used to build it | | 0 | [reported] |
 | Script check with emoji, "да" + 2 emoji | no majority, falls through | holds to 6 emoji | [reported] |
 | Malay, Hebrew identified | never | identified | [reported] |
 

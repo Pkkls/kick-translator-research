@@ -1340,6 +1340,27 @@ section 8 ranks it second, and five verifier claims hold it, including that
 the per-channel pause exists on the branch and not on master, so the claim
 goes red the day it is merged.
 
+### 4.41 The method chapter's number stopped where the corpus kept going
+
+**What happened.** Chapter 3 opens on the corpus's most important number, a
+marker list at 20 of 20 on its own bench and 4 of 12 on lines written after,
+and the results chapter lists Cyrillic Bulgarian as a stated limit, unresolved.
+Both come from one section of the newer journal. The section immediately after
+it resolves the limit, and completes the list by grammatical paradigm, never
+from the missed lines, to 7 of 12 held out, which is the figure the corpus
+publishes. Neither section was ever listed for reading.
+
+**Cost.** A shipped rule's held-out recall understated by three lines in
+twelve, a resolved limit reported as open, and a method chapter that never set
+its sharpest contrast beside itself: the same paradigm repair that lifted the
+Cyrillic set took nothing of the Latin one.
+
+**Why it happened.** [4.36](#436-the-pass-after-the-one-quoted-corrected-it)
+exactly, again. The number was taken from the section that produced it, and
+the correction sat in the next one. The earlier reading list had named topics
+rather than line numbers for this journal, so the section after was not even
+visible as unread.
+
 ### 4.36 The pass after the one quoted corrected it
 
 **What happened.** Chapter 11 and entry 4.26 credit the older journal's twelfth

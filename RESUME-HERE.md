@@ -75,8 +75,8 @@ read beside L263 for the same reason.
 **Still unopened: none of the listed sections.** L1205 to the end, the
 live-debugging sequence, is read; it produced handover section 3.7 (4.40).
 
-Never listed and not recorded as read either (L3 to L136 and L284 to L517
-read after the list closed): L598 to L706, L744 to L886, and L970 to L1204.
+Never listed and not recorded as read either (L3 to L136, L284 to L517 and
+L598 to L743 read after the list closed): L744 to L886, and L970 to L1204.
 The earlier sessions' reading list names topics rather than line numbers for
 some of these, so part of that range may have been read without being
 recorded.

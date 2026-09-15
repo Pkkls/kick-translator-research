@@ -235,6 +235,16 @@ Zero of four. The first instance, 20 of 20 against 4 of 12, could be read as a
 rule that generalised poorly. This one did not generalise at all: every line it
 caught was a line that had shaped it.
 
+**[reported]** And the first instance did not end at 4 of 12. The corpus then
+completed that list by paradigm, the whole copula and the whole set of
+interrogatives, and explicitly never from the lines it had missed, and the
+held-out set rose to 7 of 12, which is the figure it publishes. **[new]** So the
+same repair, words chosen by grammatical paradigm, raised the Cyrillic held-out
+set and took nothing of the Latin one. Both held-out sets are hand-written by
+the author, so these benches cannot say whether the difference is the script,
+the register a person types in each, or twelve lines against four; they only
+say that "built by paradigm" is not a property that transfers on its own.
+
 The diagnosis in the notebooks is linguistic rather than statistical, and it is
 the better explanation: *a paradigm gives the words of a textbook; a chat writes
 "mnogo dobre igra" and "az sam tuk", which carry none of them.* Interrogatives,
