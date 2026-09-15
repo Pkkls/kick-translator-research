@@ -310,6 +310,13 @@ Cloned from the public repository, at the commit the study measured against.
 | English reader with *skip English* on: line not skipped, sent to a provider | **10 of 10** | [new] |
 | A word-final-digit rule, planted and measured | false positives **10 of 16 → 1 of 16**, control unchanged | [new] |
 | The probe's first assertion, which that rule passed while fixing nine lines | `count > 0`; replaced by set membership | [new] |
+| **Words of the product's own shipped interface classified as keyboard smash** | **77 of 3438**, nine locales | [new] |
+| Among them | `Traduire`, the extension's own French label for Translate, and `porque` in two languages | [new] |
+| Flagged in every locale, so untranslated English everywhere | **6**: `repository` `stripped` `supported` `European` `optional` `Shorter` | [new] |
+| Above that floor | fr **+9**, pt **+7**, es **+6**, tr **+1**, every non-Latin script **+0** | [new] |
+| What rescues a word | any punctuation or a second word; the rule needs pure `a-z` | [new] |
+| Candidate fix, adjacent keys not just one row | false positives **0**, but mashes caught **10 of 10 → 0 of 10** | [new] |
+| Candidate fix, a vowel-ratio floor | false positives **27**, but walks caught **10 of 10 → 7 of 10** | [new] |
 
 ## 13.8 The three bars execution falsified
 

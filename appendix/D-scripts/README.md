@@ -57,11 +57,13 @@ The probes as they were actually run, not cleaned-up versions of them.
 
 | `probe-arabizi-traps.mjs` | The corpus's *zero false positives* for the arabizi detector, attacked with ordinary English gaming chat, which is the register this product runs in. Runs the pipeline's own order so reachability is checked rather than assumed, and carries a positive control of real arabizi because the feature repaired a measured harm | [appendix E 4.112](../E-method-log.md#4112-the-arabizi-detector-calls-ten-of-sixteen-english-gaming-lines-arabic) |
 
-**Twenty-eight scripts.** That count is here because two documents stated it from
+| `probe-smash-traps.mjs` | The corpus's *zero false positives* for the keyboard-smash filter, attacked with the product's own shipped interface text in nine locales. Carries both mash shapes as its control, walks along a row and hands mashing one out of order, because a fix that passed only the walks looked perfect and was not | [appendix E 4.113](../E-method-log.md#4113-the-looseness-that-catches-a-mash-is-the-looseness-that-eats-porque) |
+
+**Twenty-nine scripts.** That count is here because two documents stated it from
 memory and disagreed with each other on the same day, one saying nine and one
 ten while there were nine (4.81). Everything else cites this table.
 
-All twenty-eight take a path argument and print to standard output; `probe-quotes.mjs`,
+All twenty-nine take a path argument and print to standard output; `probe-quotes.mjs`,
 `probe-consistency.mjs`, `stop-conditions.mjs` and `probe-shortcut-warrant.mjs` take two, this repository and
 the extension's, and `version-agreement.mjs`, `compose-calls.mjs` and `probe-link-guards.mjs`
 take only the extension's. Only

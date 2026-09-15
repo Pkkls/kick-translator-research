@@ -5394,6 +5394,81 @@ multilingual chat capture, which chapter 14 already lists as a standing limit.
 What is measured is that the words are ordinary, on a platform for watching
 games.
 
+### 4.113 The looseness that catches a mash is the looseness that eats `porque`
+
+**The claim under attack.** The corpus reports the keyboard-smash filter at
+**15 of 15 caught, 0 false positives**, with the threshold chosen by
+measurement: 0.6 gave 2 false positives, 0.65 and 0.7 gave none, and 0.7
+shipped. Careful work, and the zero is true of the lines it was measured on.
+
+**A false positive here is the most expensive kind in this product.** The
+message is dropped by `isNoise` before any detection runs, and the reason shown
+is *it is only emoji, symbols or laughter*. The message is not mistranslated. It
+is gone, and the explanation given is false.
+
+**The population came from the repository rather than from me.** The product
+ships its own interface in nine locales: real sentences in nine languages,
+written by the people who wrote the filter, indisputably not keyboard smash.
+**77 of 3438 words of six letters or more are classified as keyboard smash.**
+
+| locale | words | flagged | above the shared floor |
+|---|---|---|---|
+| fr | 451 | 15 | `Traduire` `Retraduire` `traduire` `sauter` `Politique` `copier` `Exporter` `Importer` `Pourquoi` |
+| pt | 452 | 13 | `bloqueio` `falhou` `Reportar` `primeiro` `porque` `europeus` `direito` |
+| es | 465 | 12 | `Repositorio` `Reportar` `porque` `etiqueta` `superior` `europeos` |
+| tr | 531 | 7 | `kalite` |
+| ar, ja, ko, ru, zh | | 6 each | none |
+
+Six words are flagged in every locale — `repository`, `stripped`, `supported`,
+`European`, `optional`, `Shorter` — because they are English left untranslated
+everywhere. Above that floor the rate is entirely Latin-script: the rule requires
+the message to be nothing but `a-z`, so Arabic, Russian, Japanese, Korean and
+Chinese **cannot reach it at all**. Among the languages that can, the QWERTY top
+row carries `e u i o r t p`, which is most of what French, Portuguese and Spanish
+are built from.
+
+**`Traduire` is this extension's own French label for Translate, and the
+extension classifies it as keyboard smash.** So is `Pourquoi`, and `porque` in
+both Spanish and Portuguese, which is among the commonest words either language
+has. A bare one-word message is lost; `porque?` survives, and so does
+`no porque`, because punctuation and spaces both break the pure-`a-z` condition.
+
+**Then the pass tried to fix it, twice, and both fixes failed in opposite
+directions.** Each was planted on a copy and measured, not proposed.
+
+| | false positives | walks caught | mashes caught |
+|---|---|---|---|
+| shipped | 77 of 3438 | 10 of 10 | 10 of 10 |
+| require **adjacent keys**, not just one row | **0** | 10 of 10 | **0 of 10** |
+| require **fewer than 34 percent vowels** | 27 | **7 of 10** | 10 of 10 |
+
+**The adjacency rule looked like the answer for one command.** Zero false
+positives, control 10 of 10, a two-line change. It looked that way because the
+control I had written was ten *walks* along a row, and walking is exactly what
+adjacency tests. Adding ten hands mashing a row **out of order** — which is how
+most people actually mash — took it to 0 of 10. **A control the plant happens to
+pass is not a control**, and the only reason this one was caught is that the
+plant's mechanism was obvious enough to suggest what it would miss.
+
+The vowel rule fails the other way: the top row is vowel-rich, so
+`qwertyuiop`, `poiuytrewq` and `werrtyuio` stop being smash.
+
+**So the conclusion is not a patch.** The two properties the filter uses, one row
+and six distinct letters, are the only pair that covers both mash shapes, and
+they are exactly the properties `porque` has. **The looseness is load-bearing.**
+Tightening the geometry loses the mashes; tightening the phonotactics loses the
+walks. Anyone changing this needs both shapes in front of them, and the remaining
+options are to accept the false positives or to add a different *kind* of signal
+rather than a stricter version of the same one.
+
+**Both controls are now in the probe**, walks and mashes, which is the part of
+this pass most likely to matter later.
+
+**Scope.** Words of six letters or more from the product's own shipped strings,
+nine locales, 3438 distinct. How often a bare one-word message is sent is not
+measured and cannot be here: this study has no chat capture. What is measured is
+which words are lost when one is.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
