@@ -2368,6 +2368,59 @@ that a file sitting in a working tree is in the repository. `git ls-files` is
 one command and it inverted the conclusion. **A file you can open is not
 evidence that anyone else can.**
 
+### 4.64 The first stop condition is met, and none of the 22 axes is closed
+
+**What happened.** A12 was the last axis without a verdict and was recorded as
+blocked, because 4.47 had named the missing value that would let this account
+see a signed-in browser. Reading the bar rather than the note showed the block
+covers one clause of three. *Cross-browser reality* is about engines claimed in
+the README, and two of its three clauses are answerable from a build.
+
+Both engines were built and their manifests compared key by key. They differ in
+**exactly two of fourteen**, `background` and `browser_specific_settings`, and
+those are exactly the two branches in `manifest.config.ts`. Nothing else
+diverges. So the property the bar's missing gate would protect is **true today**,
+and no gate protects it: none of the 40 in the runner matches firefox, gecko,
+drift or parity. A measured invariant with nothing watching it is the same
+shape as [4.46](#446-the-rule-about-stale-numbers-had-nothing-behind-it), a rule
+with nothing behind it, arriving from the other end.
+
+One of the two branches carries the version comment the bar asks for, and it is
+exact: `strict_min_version: '121.0'` with *FF 121+ : ES-module background
+scripts and storage.session both require it*. The `background` branch carries
+none, although that sentence is its reason too. The knowledge exists and sits
+beside the other branch.
+
+And the README claims four engines, Chrome, Brave, Edge and Firefox. Chromium's
+end-to-end path passes. Brave was measured identical to Chromium on one path by
+the corpus, anonymously. **Edge has never been measured and Gecko has never
+been run end to end**, the second because Playwright has no extension-loading
+equivalent for Firefox, which is a limit of the instrument and not of the
+product.
+
+**Where that leaves the specification's own three conditions.**
+
+| | |
+|---|---|
+| Every axis closed, or open with a number and a named reason | **MET**, 22 of 22 |
+| `PLAN.md` holds nothing but items blocked on kil | not met, 7 open, 6 blocked, 101 done |
+| Two consecutive passes produced no new measurement | not met, every pass produced one |
+
+The first is met for the first time, and it took building the file that records
+it ([4.51](#451-a-stop-condition-with-a-term-nobody-could-evaluate)), finding
+that the specification had asked for that file by name
+([4.57](#457-the-specification-asked-for-this-file-by-name-and-for-one-more-nobody-made)),
+and then measuring the twelve axes that had never been compared to their bars.
+
+**And the number that matters is the other one: zero axes are closed.** Every
+one of the 22 is *open with a number*, which the specification accepts as a
+resting state and which is the honest description of an audit that measured a
+great deal and finished nothing. A15 came closest, with its reproducibility half
+closed against a published digest. Three bars refer to artefacts nobody made,
+two of which now exist because this session made them. **Meeting a stop
+condition is not the same as being done, and the specification is careful enough
+to say so: it requires all three.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

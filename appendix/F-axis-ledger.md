@@ -46,7 +46,7 @@ work rather than an index of it.
 | A9 | No value outside the declared set; no surface overflowing its frame at any width; the box model does not depend on the host page's reset | open, and **its first clause names a set that does not exist** | Counted from `inject.css`, 1568 lines: **13 declared custom properties**, every one of them `--kt-lp-*` and scoped to the language panel, against **135 distinct literal colours** (96 hex, 39 rgb or rgba), 5 radii, 22 transition and animation declarations and 2 box-shadows, both of them `inset 0 0 0 1px` hairlines rather than decoration. **No document in either repository declares a palette**, so "the declared set" is a third artefact the specification names and nobody made, after the budget file and the ledger ([4.63](E-method-log.md)). The other two clauses hold: `bar-widths.mjs` reports no overflow at any of ten widths, verified by running it in [4.48](E-method-log.md), and the one-declaration box model is among the corpus figures that survived the replication bar |
 | A10 | Nothing leaves that the privacy text does not name | open, with a number | [13.7](../thesis/13-results.md) counts the observable surface. The count is of call sites, not of what renders, which is the limit stated wherever such a claim appears |
 | A11 | Zero advisories above the floor in the budget file; zero instrumentation in a release bundle proven from the archive; every detection shortcut required-and-written-down or gone, so finding the extension costs a page script a read of rendered content and never a query by name | open, with a number | Advisories: **17 in the full tree, 3 critical and 9 high, and 0 of them in production**. The four runtime dependencies are `franc-min`, `idb-keyval`, `preact` and `zod`, and `npm audit --omit=dev` is zero at every severity, so nothing reaches the bundle. **There is no budget file**, no audit script and no audit config, so the bar's own term is undefined and the floor it refers to does not exist. Instrumentation: `check-strip` proves it from the build rather than the archive, and [4.52](E-method-log.md) closes that gap by other means, since the archive rebuilds byte-identical from the tag. Detection: **at least four shortcuts on the host page**, each one query by name, covering four of the eight categories the axis itself enumerates: `#kt-floating-bar` (`injector.ts:338`), `data-kt-id` written onto Kick's own chat rows (`observer.ts:29`), `data-kt-scheme` set on the document element (`injector.ts:152`), and a class toggled on the document element (`injector.ts:189`), beside 79 distinct `kt-` class names. **No document in either repository counts them**, which is the trap this axis names in its own words ([4.54](E-method-log.md)) |
-| A12 | The end-to-end path passes on every engine claimed | no verdict recorded | Brave was measured identical to Chromium on one path (the corpus), and the signed-in case is unreachable from this account. The reason is now named to the value ([4.47](E-method-log.md)) |
+| A12 | The end-to-end path passes on every engine claimed in the README and the listings; every engine-specific divergence is a named branch with a comment saying which versions need it; a gate fails when the two builds drift apart in anything else | open, with a number | **The drift property holds, measured.** Both engines were built and their manifests compared key by key: they differ in **exactly 2 of 14**, `background` and `browser_specific_settings`, which are exactly the two branches in `manifest.config.ts`. Nothing else diverges. **No gate protects it**: none of the 40 in the runner matches firefox, gecko, drift or parity, so the property is true and unguarded ([4.64](E-method-log.md)). Comments: **1 of the 2 branches** carries the version reason the bar asks for, and it is a good one, `strict_min_version: '121.0'` with *FF 121+ : ES-module background scripts and storage.session both require it*. The `background` branch has none, although that same sentence is its reason too. Engines: the README claims **four**, Chrome, Brave, Edge and Firefox. Chromium's end-to-end path passes ([4.61](E-method-log.md)); Brave was measured identical to Chromium on one path by the corpus, anonymously, and the signed-in case needs a value 4.47 named; **Edge has never been measured and Gecko has never been run end to end**, because Playwright offers no extension-loading equivalent for Firefox and that is the instrument this account has |
 | A13 | Every gate is in a runner or has a written reason it is launched by hand | open, with a number | 40 gates in the runner. **Three harnesses that build metrics are outside it**, `metrics-offline.mjs`, `latency.mjs` and `run-live.mjs`, and no written reason accompanies their absence ([4.49](E-method-log.md)) |
 | A14 | A fresh clone can run the full public verification and get a truthful answer | open, with a number | [13.6b](../thesis/13-results.md). The frame tells every session a fresh clone has no harnesses; it has 56 ([HANDOVER.md](../HANDOVER.md)) |
 | A15 | One version everywhere, checked by a gate rather than by eye; a rebuild of the tagged commit matches the digest the forge publishes; store state read from the store | open, with a number, and **its reproducibility half closed** | Rebuilt `v2.10.0` in a detached worktree and packed both archives: sha256 `8c8d7eca262b…` and `4f8450494d7e…`, **2 of 2 byte-identical to the digests GitHub publishes**, on Node 22 where CI builds on the 20 that `.nvmrc` pins ([4.52](E-method-log.md)). Version agreement is not closed: six places, **three answers**, 2.10.0 in `package.json`, the built manifest, the tag and the release assets, 2.9.2 on the Chrome Web Store, 2.7.0 on AMO, both read from the stores. The store lag is a pending submission blocked on kil rather than a disagreement. **No gate checks any of it**: none of the 40 in the runner matches version, release, manifest or tag, and `state.mjs` is a generated report, not a gate |
@@ -110,19 +110,18 @@ numbers and remains the cheapest unbuilt thing in this study (4.57).
 
 ## What this table says about the stop condition
 
-Twelve axes carry a verdict and ten do not. The first stop condition is
-therefore **not met**, and now it is not met by a count rather than by an
-impression. No axis is closed outright. A15 came closest and is the shape to
-aim at: its reproducibility half is closed by an exact match against a
-published digest, and the two halves that are not closed each carry a number
-instead of a silence. That is what *open with a number* is supposed to look
-like, and the specification accepts it as a resting state.
+**All 22 axes carry a verdict, and the first stop condition is met.** It is the
+first of the specification's three to be satisfied, and it was unreadable until
+this file existed. The number that matters more sits beside it: **none of the 22
+is closed.** Every one is *open with a number*, which the specification accepts
+as a resting state and which is the honest description of an audit that measured
+a great deal and finished nothing. A15 came closest, its reproducibility half
+closed against a published digest.
 
-The ten unrecorded are not ten pieces of missing work. A15 was one of them one
-pass ago and took four minutes of measurement that had been available for two
-releases, which is the argument for writing the rows before doing the work:
-the table is what told anyone the measurement was missing. A16 is likely the
-same shape. The point of the row is that until someone writes the
+The other two conditions are not met: `PLAN.md` holds 7 open items beside its 6
+blocked on kil, and every pass in this session produced a new measurement. All
+three are required, so meeting one changes what is countable rather than whether
+the work is done. The point of the row is that until someone writes the
 number down beside the Bar, nobody can tell an unmeasured axis from a measured
 one, and the stop condition cannot be read at all.
 
