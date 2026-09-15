@@ -4552,6 +4552,56 @@ to record it is the denominator: this study's replication rate is *nine
 re-taken, five changed*, and a rate is only worth quoting if the confirmations
 are counted as carefully as the corrections.
 
+### 4.102 A guard-fraction hunt over a population of one
+
+**What happened.** A21's bar ends on a clause nothing here had measured:
+*nothing that resets on a day boundary resets twice or skips a day in any zone*.
+2.6.0's stats-retention entry is exactly that mechanism, so the pass went
+looking, and the shape it went looking for was the guard-fraction failure: a
+clause that says *nothing* names a population, and this corpus has been wrong
+about such populations seven times.
+
+**The population is one.** Enumerated across every tracked source file, the only
+day key in the product is `stats.ts:7`, `new Date().toISOString().slice(0, 10)`.
+`metrics.ts` rolls nothing daily. MyMemory's *daily cap* is the provider's
+boundary, read off a 200 body, not a boundary the extension keeps. The DeepL
+budget is monthly and the count comes from DeepL's own usage endpoint rather
+than from a local counter. One surface, so the fraction is one of one.
+
+**The instrument already existed, and that is the whole finding about method.**
+`archiveDay` and the loader carry **8 tests**, covering the cases this pass would
+have written a probe for: appends newest last, drops a day with no traffic
+rather than storing it as 0 percent, tolerates a record stored before history
+existed, keeps only the most recent days, and does not duplicate a day already
+present. Run here: `vitest run src/background/stats.test.ts`, **8 passed**.
+
+Writing a probe would have been the dead end TRANSMISSION records under its own
+heading, a locale coverage figure reimplemented when the project's own script
+already computed it. *Look for the instrument before building one* is cheap to
+say and it only counts when it stops you building something.
+
+**The "in any zone" half does not need a measurement and saying so is the
+point.** The key is `toISOString()`, which is UTC by the language's definition,
+so the boundary cannot move with the reader's zone. Running the same code under
+several `TZ` values would produce identical keys and would look like evidence.
+It would be evidence about `toISOString`, not about this product. **A clause
+that is true by construction is answered by naming the construction**, and a
+probe that confirms a language guarantee is a probe that measured nothing while
+printing something.
+
+What the reader in UTC+13 actually gets is a counter that resets at one in the
+afternoon. That is not what the clause forbids, and it is not nothing either; it
+is a separate observation and is recorded as one rather than folded into a
+verdict about the bar.
+
+**`HISTORY_DAYS = 7`**, which is what 2.6.0's *retain the last 7 days* says.
+
+**And the count of those tests was wrong before it was run.** Reading the
+`describe` and `it` headings gave nine; the run says eight. **The first count is
+too high**, for the seventh time in this study, and this instance is the
+cheapest of the seven: the correct number was one command away and the wrong one
+was already written into a draft of this entry.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

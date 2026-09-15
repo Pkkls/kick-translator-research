@@ -240,6 +240,9 @@ Cloned from the public repository, at the commit the study measured against.
 | The 2.6.0 claim of 140 covered strings | **holds at its own revision** | [replicated] |
 | Tracked files containing a NUL byte | **9, all images**; no source file | [replicated] |
 | The 2.6.0 duplicate-panel fix reaching all four bar updaters | **4 of 4**, all via `findBar()` | [replicated] |
+| Things in the product that reset on a day boundary | **1**, `stats.ts`; enumerated over every tracked source file | [new] |
+| Tests covering it, run here | **8 passed** | [replicated] |
+| `HISTORY_DAYS` against 2.6.0's "last 7 days" | **7** | [replicated] |
 | The same suite serially, `--jobs 1`, same starting condition | **38 of 40 every time**, 278.4s | [new] |
 | What the control shows | the `GATES` array is ordered producer-first; pooling discards it | [new] |
 | The frame's claim that a clone has none of these | **false at the same commit** | [replicated] |
