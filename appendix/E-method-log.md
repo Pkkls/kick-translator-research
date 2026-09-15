@@ -1451,6 +1451,40 @@ being asked. A correction in a chronological record lands in the next entry at
 the earliest, so a section read for a claim has not been read until the one
 after it has.
 
+### 4.44 Three structural findings in the file the reading list named next, and two of them died on contact
+
+**What happened.** `.agent/PLAN.md` was opened by line number for the first
+time, the first of the two files [4.22](#422-read-an-early-entry-missed-the-later-one-that-settled-it)
+names as searched but never read. It holds **114 entries under seven headings:
+7 open, 6 blocked on kil, 101 done**, and the section titled `## Open` holds
+40 of them, of which 31 are done and 2 are blocked. Three defects followed from
+that shape and two of them did not survive being checked. The heading looked
+like it must corrupt the count `state.mjs` publishes: it does not, the script
+counts marks rather than sections, and `ETAT.json` reads 7, 6 and 101 against
+an independent count of the same file. The handover's sentence about reading
+"the first open item in `PLAN.md`" looked like it reproduced the defect its own
+paragraph documents, that item being `[x]`: it does not, the sentence quotes
+the frame, and the paragraph around it is the accusation rather than the
+instruction. Three chapters cite `"Done, kept for the record"`, a heading that
+occurs four times in the file: each citation names its subject, and each subject
+resolves to exactly one of the four.
+
+**Cost.** None published, which is the point of recording it. Three corrections
+against sound work were drafted and dropped, one of them against the section of
+the handover whose subject is that exact error.
+
+**Why it happened.** It is [the pattern across the first three](#the-pattern-across-the-first-three)
+one level up, applied to a document instead of a probe. Reading a structural
+file by position produces structure-shaped suspicions, and a heading that has
+drifted from its contents is the cheapest possible thing to be wrong about,
+because the drift is real and visible while the consequence has to be traced.
+Each of the three was killed by the rule in [4.36](#436-the-pass-after-the-one-quoted-corrected-it):
+open what surrounds the thing quoted before trusting the quotation. The
+survivor is not a defect at all. `A-audit-prompt.md` names three conditions
+that must all hold before stopping, and the second is that the queue holds
+nothing but items blocked on kil. Seven entries carry `- [ ]`. That condition
+has been an impression for the length of this study and is now a number.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

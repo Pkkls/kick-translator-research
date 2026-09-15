@@ -101,8 +101,16 @@ Next, in the order most likely to correct something published here:
 
 | File | Lines | Why first |
 |---|---|---|
-| `.agent/PLAN.md` | 1287 | Open L46, Waiting L676, Done from L760; the work queue many [reported] tags cite |
+| `.agent/PLAN.md` | 1287 | **L1 to L120 read**, and the whole file counted; L120 onward unread |
 | `CHANGELOG.md` | 900 | what each version told readers it changed |
+
+The queue is counted rather than described: **114 entries under seven
+headings, 7 open, 6 blocked on kil, 101 done**, and the section titled `## Open`
+holds 40 of them, only 7 of which carry `- [ ]`. The three defects that shape
+suggested are in [4.44](appendix/E-method-log.md); two were wrong. The one that
+held is the stop condition in `appendix/A-audit-prompt.md`, which asks that the
+queue hold nothing but items blocked on kil, and which seven entries now say is
+not met.
 
 ### How to read them
 
