@@ -1,0 +1,178 @@
+# 14. Limits and threats to validity
+
+> Every frequency claim in this study is unsupported. The project knows it,
+> records it as its own outstanding request, and has taken four decisions by
+> refusing to move rather than by guessing. This chapter states what fails if
+> the frequency assumptions are wrong.
+
+---
+
+## 14.1 The binding limitation: no observed input distribution
+
+**[reported]** The project's work queue carries, as a blocked item, a request
+for a single real chat capture. Its own wording is that four decisions all end
+on the same sentence: *the damage is measured and the frequency is not, because
+every corpus here is hand-written.*
+
+The four decisions named there:
+
+1. whether the short-text losses are worth more provider calls;
+2. whether trimming the identifier's unmapped languages is a gain or a
+   regression;
+3. whether a source allowlist should let an unidentified line through;
+4. what share of a real chat is code-switched.
+
+A collector exists and has not been run against live traffic.
+
+### What this invalidates
+
+**Nothing about mechanisms.** That a homoglyph defeats a one-character floor,
+that a keyboard-row criterion separates smash from Czech syllabic sonorants,
+that grouping by target inherits the wrong source, that `dir="auto"` covers one
+surface of three: these are demonstrations, and they hold regardless of how
+often the triggering inputs occur.
+
+**Everything about priorities.** Every statement in this study of the form
+*this matters more than that* rests on an unmeasured frequency. The damage
+scale used throughout ([appendix A](../appendix/A-audit-prompt.md)) multiplies
+a population estimate by a silence estimate, and the population estimates are
+judgements.
+
+**Every benchmark's representativeness.** The benches are hand-written
+sentences. They were written by people who knew what they were testing. Section
+14.3 develops why that is worse than it sounds.
+
+### Why the hand-written corpus is not merely small
+
+Three distinct problems, which are easy to collapse into one:
+
+- **Distributional.** Hand-written sentences are well formed. Real chat
+  contains fragments, repetitions, mid-word cut-offs, pastes, and lines that
+  are three emotes and a full stop. A bench of well-formed sentences measures
+  the easy tail of the distribution.
+- **Selectional.** A bench is written by someone who knows which phenomenon it
+  targets, so it contains that phenomenon at a rate unrelated to its natural
+  frequency, and usually in its clearest form.
+- **Adversarial coverage.** Real chat contains deliberate evasion, spam, and
+  copy-paste floods. A hand-written bench contains what its author thought of.
+
+## 14.2 Threats specific to individual findings
+
+### The transliteration marker tables
+
+The five-letter floor is a proxy for "not yet borrowed by global internet
+slang" ([ch. 5](05-transliteration.md#54-romanised-russian-greek-and-japanese-the-unambiguity-rule)).
+It is a good proxy today. It is not a mechanism, and it will fail for the next
+six-letter word that goes global. The table therefore has a decay rate that
+nothing in the system measures, and no alarm exists for a marker becoming
+ambiguous.
+
+### The keyboard-smash rule
+
+The row-adjacency criterion assumes a QWERTY-family layout
+([ch. 8](08-noise.md#the-criterion-that-shipped)). Nothing in the corpus
+measures it against AZERTY, QWERTZ, non-Latin layouts, or phone keyboards,
+whose adjacency differs. The rule's stated strength, that it models the
+generating mechanism, is exactly what makes it layout-specific: a different
+device generates a different signature.
+
+The threshold at 0.7 with a six-letter floor was chosen with margin on both
+sides of a measured boundary at 0.65, against 33 adversarially chosen real
+words. That is a sound procedure on that set, and the set is small.
+
+### The laughter lexicon
+
+43 forms, of which 22 mark a language
+([ch. 6](06-laughter.md)). Written laughter is a live convention that changes
+faster than orthography: forms appear, spread, and are borrowed. `lol` is
+already excluded for exactly this reason. The lexicon needs periodic
+re-attestation, and nothing schedules it.
+
+The 3 to 10 improvement was measured on ten messages, all of the same shape
+("laughter form + short clause"). That shape is favourable to the mechanism.
+
+### The latency comparison
+
+Fully developed in [ch. 10](10-latency-weight.md#103-why-the-comparison-is-not-valid-as-stated):
+the two series differ on language pair, the local series has n=8, and its p95
+is a maximum. The mechanism claim survives; the ratio does not.
+
+### The cache measurement
+
+One 29-minute session cannot evaluate a cache designed for inter-session
+locality ([ch. 10](10-latency-weight.md#105-cache-a-number-that-cannot-be-read-from-one-session)).
+The project's disposition, keep it because its read cost is zero, is correct
+and is not evidence that it works.
+
+### This study's own replications
+
+The measurements tagged **[new]** and **[replicated]** were taken against one
+checkout at one moment, by reading source rather than by observing a running
+build in a browser. For the direction-handling finding in
+[ch. 11](11-privacy-surface.md#replication-bidirectional-text), this means the
+count of surfaces is a count of call sites in the content script sources: a
+surface rendered by a path this study did not identify would be missed, and the
+rendered consequence was not observed in a browser. The finding is that a
+guard covers one call site of three, which is weaker than a finding about what
+a reader sees.
+
+## 14.3 Threats to the method itself
+
+### The corpus is self-reported
+
+The notebooks were written by the people doing the work, with no external
+review. They are unusually candid, and the corpus contains multiple
+self-corrections of previously published claims
+([ch. 8](08-noise.md#the-prior-claim-and-its-correction),
+[ch. 5](05-transliteration.md#53-the-damage-that-the-evaluation-grid-could-not-see),
+[ch. 9](09-architecture.md#97-coverage-gaps-that-were-not-what-they-looked-like)),
+which is evidence of genuine method rather than of self-presentation.
+
+But a self-reported corpus cannot show what was never noticed. The defects in
+this study are the ones the project found or this study found. The distribution
+of defects that neither found is unknown and unknowable from this material.
+
+### Selection by survival
+
+The work queue records completed items. Abandoned lines of investigation that
+were never written up leave no trace, so the corpus over-represents
+investigations that reached a conclusion.
+
+### Single case
+
+One system, one platform, one team, one three-month period. Every generalisation
+here is a proposal with its reasoning exposed, not an established result. The
+linguistic findings transfer more readily than the architectural ones, because
+scripts and borrowing behave the same everywhere while extension runtimes and
+host pages do not.
+
+### The analyst is not the experimenter
+
+This study reorganises and analyses measurements it did not witness
+([Provenance](../README.md#provenance-stated-once-and-honestly)). Where a
+notebook entry is ambiguous, this study has interpreted it. Interpretation can
+be wrong, and the tags exist so that a reader can go back to the source.
+
+## 14.4 What would settle the open questions
+
+In order of value per unit of effort:
+
+1. **One real chat capture**, a few thousand lines from two or three channels
+   of different languages. It unblocks the four decisions named in 14.1 and
+   converts every mechanism finding in this study into a prioritised one. It is
+   by a wide margin the highest-value missing measurement.
+2. **The availability rate of the on-device engine** across real installs. It
+   converts a known 70x mechanism advantage into a statement about users
+   ([ch. 10](10-latency-weight.md#104-the-gate-on-availability)).
+3. **Cache counters read across several days** rather than one session.
+4. **A held-out bench per language**, written after each rule, applied
+   uniformly. The project adopted this discipline partway through; the earlier
+   figures do not have it.
+
+## 14.5 The honest summary
+
+This study establishes a set of mechanisms with clarity, and establishes almost
+nothing about their relative importance. That asymmetry is not a flaw in the
+writing; it is a faithful reflection of a corpus whose authors repeatedly chose
+to state a limit rather than guess a frequency, which is the harder and better
+choice, and which leaves exactly this gap.
