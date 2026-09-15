@@ -2798,6 +2798,47 @@ none of the attribution words the probe requires, so they were never checked.
 The re-marking is right in principle, a specimen of an error is not a quotation,
 and it fixed nothing.
 
+### 4.74 A correction pass is bounded by its instrument, and this one had three blind spots
+
+**What happened.** [4.72](#472-running-the-quotation-probe-on-this-sessions-own-entries)
+ran `probe-quotes.mjs`, found three quotations reshaped, and fixed all three.
+The same two errors were still sitting in appendix F, uncorrected, and the probe
+had no way to say so. Three separate reasons, each a different shape.
+
+**One, the document list was written by hand.** `docs` named three files and the
+thesis directory. Appendix F and appendix G were written after that line was
+typed, so neither was ever read. It enumerates every tracked Markdown file now.
+**A hardcoded list of what to check is a promise to remember**, and it was kept
+for exactly as long as nobody added a document.
+
+**Two, table rows were exempt.** The italic loop skipped any paragraph matching
+`/^[>|]/`. The `>` is right, because block quotations are checked by the loop
+above and would count twice. The `|` is a Markdown table row, and nothing else
+checks those.
+
+**Three, and this is the one that decided it.** Paragraphs are split on blank
+lines, and a Markdown table has none between its rows. Appendix F's ledger is
+therefore **one paragraph of 24 rows and 20386 characters**, and somewhere in it
+is the word *translat*, which is all the `TRANSLATED` rule needs to exempt every
+quotation in all 24. A rule written to skip a sentence that says "this is
+translated from the French", applied to a twenty-kilobyte table, in a study of a
+translator.
+
+Rows are split out individually now. Measured across the three repairs: **77
+quotations checked becomes 84, and 15 reported becomes 20.** Two of the five new
+reports were the real errors, fixed; the other three are the classes 4.72
+already named, a commit message and the untracked specification. Nothing
+spurious appeared, which was the risk.
+
+**The lesson is not about this probe.** A correction pass fixes what its
+instrument reports and stops, and it feels complete while it does that, because
+the report is empty at the end. **The report being empty is a statement about
+the instrument's reach, not about the document**, and there is no way to tell
+the two apart from inside the pass. What separated them here was going back to
+ask what the instrument could not see, which is the adversarial step the
+specification asks for after every probe and which this study had been applying
+to the corpus's instruments and not to its own.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

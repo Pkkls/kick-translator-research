@@ -55,7 +55,16 @@ const corpus = norm(
     .join('\n'),
 );
 
-const docs = ['HANDOVER.md', 'TRANSMISSION.md', 'appendix/E-method-log.md', ...readdirSync(join(study, 'thesis')).map((f) => 'thesis/' + f)];
+// Every Markdown file this study publishes, not a list someone remembers to
+// extend. The list used to name three files and the thesis directory, so the
+// two appendices written after it was typed were never read, and a correction
+// pass that fixed every quotation the probe reported left the same two wrong in
+// the file it could not see (4.74). A hardcoded list of what to check is a
+// promise to remember, and this one was kept for exactly as long as nobody
+// added a document.
+const docs = execFileSync('git', ['-C', study, 'ls-files'], { encoding: 'utf8' })
+  .split('\n')
+  .filter((f) => /\.md$/.test(f) && !f.startsWith('appendix/D-scripts/'));
 const ATTRIBUTED = /(project|corpus|notebook|journal|author|their|your|queue|comment)/i;
 const TRANSLATED = /(translat|rendered here from|in its french|from its french|from the journal's french)/i;
 
@@ -77,8 +86,22 @@ for (const d of docs) {
       report.push(`${d}:${i + 1}  block  ${q.slice(0, 90)}`);
     }
   }
-  for (const para of lines.join('\n').split(/\n\s*\n/)) {
-    if (!ATTRIBUTED.test(para) || TRANSLATED.test(para) || /^[>|]/.test(para)) continue;
+  // A Markdown table has no blank line between its rows, so a blank-line split
+  // hands the whole table over as one paragraph. Appendix F's ledger is 24 rows
+  // and 20386 characters in a single one, and it contains the word "translat",
+  // which is enough for the TRANSLATED rule to exempt every quotation in all 24.
+  // A row is a self-contained unit and is split out as one (4.74).
+  const paragraphs = lines
+    .join('\n')
+    .split(/\n\s*\n/)
+    .flatMap((p) => (/^\|/.test(p) ? p.split('\n').filter((r) => /^\|/.test(r)) : [p]));
+  for (const para of paragraphs) {
+    // `>` belongs here: block quotations are checked by the loop above and would
+    // be counted twice. `|` did not. It starts a Markdown table row, and nothing
+    // else checks those, so every quotation inside a table was exempt: four of
+    // them in appendix F, two carrying an error already corrected elsewhere in
+    // the same pass, because the pass fixed what the probe could report (4.74).
+    if (!ATTRIBUTED.test(para) || TRANSLATED.test(para) || /^>/.test(para)) continue;
     // The backtick exclusion looks redundant, since `norm` strips backticks
     // before the comparison anyway. It is not. Lifting it was measured: four
     // more quotations get checked, and prose containing two inline code spans
