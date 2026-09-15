@@ -2961,6 +2961,60 @@ the machine. The two questions live under one axis and use different
 instruments, and the ledger's own row had the first and not the second until
 now. **A row that carries one instrument reads as a row that is covered.**
 
+### 4.78 The axis about the auditor is the second least evidenced, and its clauses name this session's mistakes
+
+**What happened.** [4.77](#477-the-privacy-policy-describes-version-200-and-two-things-leave-that-it-does-not-name)
+ended on the observation that a ledger row carrying one instrument reads as a
+row that is covered. Measured across all 22: each bar split into clauses, each
+row's evidence counted in characters, and the ratio taken.
+
+| axis | clauses | evidence | per clause |
+|---|---|---|---|
+| A1 | 6 | 219 | **37** |
+| A22 | 6 | 286 | **48** |
+| A20 | 4 | 204 | 51 |
+| … | | | |
+| A16 | 4 | 2170 | 543 |
+| A12 | 2 | 1201 | 601 |
+
+A1 is thinnest and that is unsurprising: its six clauses are about an accounting
+identity nothing measures. **A22 is second**, and A22 is the axis about the
+auditor, added by this study, to itself.
+
+**Its clauses name what this session did wrong.** Read one at a time:
+
+- *Zero exit codes read through a pipe.* Done once, in
+  [4.76](#476-two-of-the-three-checks-this-session-wrote-could-not-fail): an
+  `$?` after a pipe reported `tail`'s status rather than the gate's, and the
+  gate was then re-run without the pipe.
+- *Zero quotations that are translations.* Three found among 78 in
+  [4.72](#472-running-the-quotation-probe-on-this-sessions-own-entries), and
+  three blind spots in the checker that hid two more.
+- *Zero counts taken over text where a structured form exists.* That is exactly
+  how the laughter table was first counted here, by regular expressions against
+  a file whose table is named `FORMES` and whose key is `langue`, returning 0
+  three times, while chapter 6 had counted the same table **by importing the
+  module**.
+- *The pass reports its own false-positive count beside its findings.* It has
+  not been. It is now: **about nine findings were drafted and withdrawn before
+  publication across 34 passes.**
+
+**And the measurement above was itself the ninth.** The first version of it
+reported 0 evidence characters for all 22 axes. The pattern was built by string
+concatenation inside a `node -e` command, where `\|` collapsed to `|` on its
+way through the shell, turning `^\|\s*A1\s*\|` into an alternation with an empty
+left branch, which matches every line of every file. It reported *136 matching
+rows* for an axis that has one. **A matcher that matches everything returns
+zero for every question you ask it**, and a table of zeros reads like a finding
+about the subject rather than a failure of the instrument. It was caught by the
+uniformity: real measurements are not all exactly zero.
+
+Third time this session that shell-to-JavaScript escaping has produced a
+confident wrong instrument. The rule that follows is environmental rather than
+methodological, and it is written here because this log is where the
+environment traps go: **build no pattern by concatenation inside `node -e`;
+write the script to a file.**
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A
