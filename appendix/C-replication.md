@@ -101,16 +101,24 @@ node appendix/D-scripts/verify-handover-claims.mjs /path/to/kick-chat-translator
 ```
 
 Its 3.3 claims count by the file each runner entry launches, inside the gate
-array with comments stripped, and set aside runners and modules a gate imports.
-The pipeline that used to stand here compared gate names with file names and
-gave 35 where the answer is 29 orphans: a module counts as a harness, and a
-harness that runs under another gate name counts as an orphan. It also breaks
-silently in an environment that rewrites `ls` for display, where it once
-returned 91 lines for 56 files.
+array of **both** runners with comments stripped, plus `run-live.mjs`'s metrics
+phase, which is a spawn and not an array entry. Runners and modules a gate
+imports are set aside.
+
+Two counts have stood here and both were too high. The pipeline that used to
+stand here compared gate names with file names and gave 35: a module counts as a
+harness, and a harness that runs under another gate name counts as an orphan. It
+also breaks silently in an environment that rewrites `ls` for display, where it
+once returned 91 lines for 56 files. The verifier that replaced it gave 29,
+because it read `run-gates.mjs` and named `run-live.mjs` only in its exclusion
+list, so nine live gates and the `latency` phase were counted as launched by
+nothing. **The answer is 19** (4.82). Note what the two errors have in common:
+both were a population read off the artefact that was convenient to parse.
 
 **Do not report that count alone.** Read each entry and separate the documented
 exclusions, which are live probes, image shooters and the runner itself, from
-genuine orphans. Report both numbers.
+genuine orphans. Report both numbers. The cheap structural split is whether the
+file contains a failing exit at all: seven of the nineteen do.
 
 ## C.4 Interface localisation coverage
 

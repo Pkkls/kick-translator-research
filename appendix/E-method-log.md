@@ -3186,6 +3186,113 @@ number to change; the two state documents cite it. This is 4.30 and 4.80's
 convention applied a second time, and it is worth noting that the convention
 existed, in writing, in the file that broke it.
 
+### 4.82 A replicated count that was wrong by the whole of the second runner
+
+**What happened.** Reading `.agent/PLAN.md` by position from L760, the four
+`Done` sections, turned up a bullet whose own arithmetic does not close:
+*Runner coverage: 31 harnesses of 33*, followed by six named files left out with
+a stated reason. Thirty-one plus six is thirty-seven. Chasing which of the three
+numbers was wrong led to this study's own count of the same quantity, and that
+is where the finding is.
+
+**The study published 29 orphans, and 29 is wrong by exactly ten.** The number
+is in five places, tagged `[new]` in three of them, and green in
+`verify-handover-claims.mjs` on every run this session and the last. The
+verifier builds its set of launched files from `run-gates.mjs`'s `GATES` array.
+`run-live.mjs` appears in the same function, one line below, in a constant named
+`RUNNERS`, used only to keep the two runners out of the orphan list. It carries
+nine live gates of its own and spawns `latency.mjs` as a phase that is not a
+`GATES` row at all. Nine plus one is the ten.
+
+| | files |
+|---|---|
+| harness `.mjs` on disk | 56 |
+| launched, reading one runner | 22 |
+| launched, reading both and the metrics phase | 32 |
+| no entry launches | 34, then **24** |
+| of those, runners and imported modules | 5 |
+| orphans | 29, then **19** |
+
+**The gate could not go red, because the gate is where the error lives.** This
+is A22's clause about a verifier sharing its technique with its subject, in its
+purest form: the claim and the instrument that checks it are the same parse, so
+the check restates the claim rather than testing it. The study's own rule says
+two probes agreeing about the same file share a blind spot and confirm each
+other inside it. Here there were not two probes. There was one, counted twice.
+
+**It propagated to a second claim on the same run.** With both runners read,
+`3.3 state.mjs orphans that are launched or imported` went from 3 to **13**: the
+project's own `ETAT.json` generator has the identical blind spot, and its list of
+32 orphans contains every live gate and the latency phase. That is a finding for
+the developing account rather than for this study, and it is now in the
+handover. Two independent implementations made the same mistake, which says the
+mistake is in the shape of the artefact: one runner is obvious and the second one
+is a file like any other.
+
+**The line that caused it was sitting beside the line that knew better.**
+`RUNNERS` names `run-live.mjs`. A reader of that function has the second
+runner's name in front of them while writing a count that omits it. This is the
+fifth instance of *a line reads as redundant until it is placed beside what it
+interacts with*, and the first where the two lines are adjacent.
+
+**This study reproduced the trap it had already documented, on the way in.** The
+first count taken this pass matched gate rows by their first cell, the gate's
+**name**, against file names. That is precisely 4.33's finding, written into
+TRANSMISSION.md as *orphan harnesses by the gate's name instead of the file the
+gate runs*, and it produced the same two errors 4.33 records:
+`store-shots-fixture.mjs`, which runs on every pass as `captures-readme`, counted
+as an orphan, and `latency.mjs` counted as reached because the string `'latency'`
+appears in a phase constant. **Knowing a trap and holding it are different
+skills**, which 4.9 said about a different trap in a different pass. The
+correction came from the arithmetic, not from the rule: 34 minus 24 is exactly
+the ten entries of the second runner, and a difference that lands on a round
+structural boundary is a stronger signal than either count.
+
+**A question the study twice called unanswerable has a structural answer.**
+Chapter 12.7, chapter 15.8 and the handover all say the useful number is
+*orphans with no written reason*, that producing it means reading each
+exclusion, and that classifying by content fails because offline gates serve
+kick.com URLs from fixtures. True of *what a harness is for*. Not true of
+*whether it can report anything*: a file with no `process.exit(1)` cannot go
+red, so its absence from a runner costs nothing whatever its author meant.
+**7 of the 19 carry a failing exit**, `headless-probe`, `live-profile`,
+`metrics-offline`, `nav-monde`, `readme-rendu`, `shlyokavitsa-bout-en-bout` and
+`store-shots`, and `metrics-offline` is reachable through `npm run metrics`. The
+open question is six files wide rather than nineteen. Measuring a limit to its
+boundary rather than declaring it (4.47), for the second time.
+
+**The witnesses reconstruct the old number exactly, which is the proof.** Each
+addition was disabled in turn, in a copy restored from a backup rather than with
+`git checkout`, and the counts move by the amount the diagnosis predicts:
+
+| Planted | launched | no entry launches | orphans | `ETAT.json` wrong |
+|---|---|---|---|---|
+| nothing | 32 | 24 | **19** | 13 |
+| the latency phase not read | 31 | 25 | 20 | 12 |
+| run-live's `GATES` empty | 23 | 33 | 28 | 4 |
+| both | **22** | **34** | **29** | 3 |
+
+The last row is the published measurement, to the file: 22 launched, 34 not, 29
+orphans. A diagnosis that reproduces the wrong answer on demand is settled, and
+this is the difference between finding a discrepancy and explaining one.
+
+**One of these witnesses first went red for the wrong reason, again.** The
+first attempt at the run-live witness rewrote the loop header with a comma
+operator, which still evaluated the original expression, so the plant changed
+nothing; the script exited 1 from a syntax error elsewhere in the same edit and
+the grep that read the output filtered the error away, leaving a bare `rc=1`
+that looked like the expected result. It was caught by the same habit that
+caught the one in 4.81: printing what the run said, not only what it returned.
+Twice in two passes. **The rule is not "read the exit code carefully", it is
+that a witness's output is the evidence and its exit code is a summary of it.**
+
+**What is not claimed.** That 19 is final. It is a third count of a quantity
+whose first two were both too high, taken by an account that has now made the
+label-versus-file error once itself, and the rule says publish no first count.
+What is different about this one is that it is pinned: the clone at `226a176`,
+both runners read, the arithmetic closing at 56 on four disjoint buckets, and a
+verifier that now fails if any of the four moves.
+
 ### The pattern across the first three
 
 All three accused working code, and all three erred in the same direction. A

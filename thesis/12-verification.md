@@ -356,18 +356,27 @@ an empty directory, because no amount of reading can substitute for it.
 
 ## 12.7 Orphans, and the count that indicts too much
 
-**[replicated]** 56 harness files on disk and 40 entries in the gate runner.
-**[new]** Counted by the file each entry launches, 34 files no entry runs: two
-runners, three modules that gates import, and **29 orphans**.
+**[replicated]** 56 harness files on disk and 40 entries in the offline gate
+runner. **[new]** Counted by the file each entry of both runners launches, 24
+files no entry runs: two runners, three modules that gates import, and **19
+orphans**.
 
-This section first said 35, and that was wrong twice over. The recipe in
+This section has now been wrong three times, and the third correction is the
+one worth reading. It first said 35: the recipe in
 [appendix C.3](../appendix/C-replication.md#c3-gate-coverage-and-orphans)
 compared gate *names* with file *names*, so it counted imported modules as
-harnesses and missed a harness that runs under another gate name. The project's
-own state generator makes the same comparison and reports 32. The file-based
-count, the name-based recipe and the generator reconcile to the same 29, item
-by item, and the verifier now checks all three
+harnesses and missed a harness that runs under another gate name
 ([4.33](../appendix/E-method-log.md#433-a-recipe-that-counted-labels-and-a-generator-that-agreed-with-it)).
+It then said 29 for the life of the study, tagged **[new]** and green in the
+verifier on every run, and 29 was wrong by exactly ten. The repaired count read
+`run-gates.mjs` and treated `run-live.mjs` as a file to exclude from the orphan
+list rather than as a runner to read, so the project's nine live gates and the
+`latency` phase were all counted as launched by nothing. The verifier and the
+claim shared that blind spot, which is why no run of it ever went red
+([4.82](../appendix/E-method-log.md#482-a-replicated-count-that-was-wrong-by-the-whole-of-the-second-runner)).
+
+The project's own state generator has the same defect and writes 32 orphans
+into `ETAT.json`, of which **13 are launched or imported**.
 
 That number still overstates the problem, and this study published the first
 version before qualifying it, which is the error the corpus's own method warns
@@ -383,9 +392,18 @@ exclusions are documented and principled:
   would buy runtime and no verdict;
 - the runner itself is in the directory.
 
-The useful measurement is therefore **orphans with no written reason**, and
-producing it requires reading each exclusion rather than counting files. The
-general rule this study adopted afterwards:
+The useful measurement is therefore **orphans with no written reason**, and this
+study said twice that producing it requires reading each exclusion rather than
+counting files. That was true of the question as posed, which was what each
+harness is *for*, and it is not the only way to pose it. **[new]** A harness
+with no failing exit cannot report anything, so its absence from a runner costs
+nothing whatever its author intended, and that is structural: **7 of the 19
+orphans contain a `process.exit(1)` and twelve do not**. One of the seven,
+`metrics-offline`, is reachable through an npm script. The remaining six are the
+population the axis is about, and they were reachable by counting after all,
+once the count was of exits rather than of intentions.
+
+The general rule this study adopted afterwards:
 
 > When a population contains documented exceptions, report the
 > exception-adjusted count, and report the raw count beside it so nobody has to

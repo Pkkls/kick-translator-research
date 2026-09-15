@@ -166,20 +166,29 @@ public.
 | Fallback chain truncated to one engine | all unit tests green, one probe red | [reported] |
 | Detection test files re-run for this study | 81 tests green, 723 ms | [replicated] |
 | Harness files on disk | 56 | [replicated] |
-| Entries in the gate runner | 40 | [replicated] |
-| Harness files no runner entry launches | 34 | [new] |
+| Entries in the offline gate runner | 40 | [replicated] |
+| Entries in the live runner, plus its metrics phase | 9 + 1 | [new] |
+| Harness files no runner entry launches | 24 | [new] |
 | of which runners, or modules a gate imports | 5 | [new] |
-| Orphans | 29 | [new] |
-| of which deliberately hand-launched | not separated by this study; see below | |
+| Orphans | 19 | [new] |
+| of which able to exit 1 | 7 | [new] |
+| of those seven, reachable through an npm script | 1, `metrics-offline` | [new] |
 
-The orphan rows are the measurement this study got wrong twice. First it
-published a raw count as though it were a finding, which indicts a project that
-documented its exclusions; that correction is in
-[appendix B](../appendix/B-prompt-construction.md). Then the raw count itself,
-35, turned out to compare gate names with file names
+The orphan rows are the measurement this study got wrong three times, and every
+correction lowered it. First it published a raw count as though it were a
+finding, which indicts a project that documented its exclusions; that correction
+is in [appendix B](../appendix/B-prompt-construction.md). Then the raw count
+itself, 35, turned out to compare gate names with file names. Then 29, which
+replaced it and stood for the life of the study under the tag meaning executed
+here, turned out to read one of the two runners: `run-live.mjs`'s nine gates and
+its `latency` phase were counted as launched by nothing
 ([12.7](12-verification.md#127-orphans-and-the-count-that-indicts-too-much)).
-The number that would be a finding is *orphans with no written reason*, and
-producing it requires reading each exclusion. It is still an open item.
+
+The number that would be a finding is *orphans with no written reason*, and this
+study twice said producing it requires reading each exclusion. The row above it
+is the cheaper substitute: an orphan with no failing exit cannot report
+anything, so **seven** is the population worth an afternoon, and six of those
+seven are reachable by nothing at all.
 
 ## 13.6 Release and repository state
 

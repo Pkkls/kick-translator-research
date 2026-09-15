@@ -171,16 +171,35 @@ if (!existsSync(harness)) {
   // Orphans by the file each entry launches, not by its name. The first count
   // here compared gate names with file names and published 35: it missed a gate
   // whose name is not its file and counted imported modules as harnesses. The
-  // project's own state.mjs makes the same comparison and reports 32. All three
-  // reconcile to the same 29, item by item.
+  // project's own state.mjs makes the same comparison and reports 32.
+  //
+  // The second count published 29 and was also wrong, by exactly ten, for a
+  // reason that was sitting on the next line: it read run-gates.mjs and named
+  // run-live.mjs only to exclude it from the orphan list. run-live carries its
+  // own nine live gates and launches latency.mjs as a phase of its own, and
+  // none of those ten was ever counted as launched (4.82). Both runners are
+  // read now.
+  const liveSrc = readFileSync(join(harness, 'run-live.mjs'), 'utf8');
+  const liveBlock = liveSrc.slice(liveSrc.indexOf('const GATES = ['), liveSrc.indexOf('\n];', liveSrc.indexOf('const GATES = [')));
   const launched = new Set([...block.replace(/\/\/.*$/gm, '').matchAll(/scratchpad\/harness\/([\w.-]+\.mjs)/g)].map((m) => m[1]));
+  // run-live names its gates bare and spawns `scratchpad/harness/${nom}.mjs`,
+  // so the file is the name plus an extension rather than a path in the entry.
+  for (const m of liveBlock.replace(/\/\/.*$/gm, '').matchAll(/^\s{2}\[\s*'([\w.-]+)'/gm)) launched.add(m[1] + '.mjs');
+  // The metrics phase is a spawn and not a GATES row, which is why reading the
+  // array alone still leaves latency.mjs looking unlaunched.
+  const phase = liveSrc.match(/const PHASE_METRIQUES\s*=\s*'([\w.-]+)'/);
+  if (phase) launched.add(phase[1] + '.mjs');
   const imported = new Set(files.flatMap((f) => [...readFileSync(join(harness, f), 'utf8').matchAll(/from\s+'\.\/([\w.-]+\.mjs)'/g)].map((m) => m[1])));
   const RUNNERS = ['run-gates.mjs', 'run-live.mjs']; // ponytail: by name; a third runner needs adding here
   const notLaunched = files.filter((f) => !launched.has(f));
   const orphans = notLaunched.filter((f) => !imported.has(f) && !RUNNERS.includes(f));
-  claim('3.3 files no runner entry launches', 34, notLaunched.length, launched.size + ' launched');
+  claim('3.3 files no runner entry launches', 24, notLaunched.length, launched.size + ' launched');
   claim('3.3 of those, runners or modules a gate imports', 5, notLaunched.length - orphans.length);
-  claim('3.3 orphans', 29, orphans.length);
+  claim('3.3 orphans', 19, orphans.length);
+  // An orphan that cannot exit 1 is a printer and its absence from a runner
+  // costs nothing. The two populations were never separated, and the rule in
+  // C.3 to report both numbers was about documented exclusions, not this.
+  claim('3.3 orphans able to exit 1', 7, orphans.filter((f) => /process\.exit\(\s*1\s*\)/.test(readFileSync(join(harness, f), 'utf8'))).length);
 
   // 2.1: the cure the corpus applied, one instance at a time.
   // 4, not the 3 the journal names: first written as 3 from those three files,
@@ -197,7 +216,10 @@ if (!existsSync(harness)) {
   if (existsSync(etatPath)) {
     const etat = JSON.parse(readFileSync(etatPath, 'utf8')).portes?.orphelins ?? [];
     const wrong = etat.filter((n) => launched.has(n + '.mjs') || imported.has(n + '.mjs'));
-    claim('3.3 state.mjs orphans that are launched or imported', 3, wrong.length, wrong.join(', ') + ' of ' + etat.length);
+    // 3 until both runners were read. The generator has the same blind spot as
+    // this script did: its list carries all nine of run-live's gates and the
+    // latency phase, which are launched (4.82).
+    claim('3.3 state.mjs orphans that are launched or imported', 13, wrong.length, wrong.join(', ') + ' of ' + etat.length);
   } else uncheckable('3.3 state.mjs orphan list', '.agent/ETAT.json absent');
 }
 

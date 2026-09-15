@@ -123,14 +123,22 @@ and it is cheap to close.
 
 ## 15.8 Orphan probes with no written reason
 
-**[new]** 29 orphans, harness files that no runner entry launches and no gate
-imports, an unknown subset of them deliberately excluded. An earlier count of
-35 compared gate names with file names
+**[new]** 19 orphans, harness files that no runner entry launches and no gate
+imports, an unknown subset of them deliberately excluded. Two earlier counts
+stood here: 35, which compared gate names with file names, and 29, which read
+one of the two runners
 ([12.7](12-verification.md#127-orphans-and-the-count-that-indicts-too-much)).
 Classifying them by content does not work here: offline gates serve the host's
 URLs from fixtures, so a URL in a harness does not say where it runs.
 
-The useful number requires reading each exclusion
+**[new]** Classifying them by whether they can fail does work, and narrows this
+question from nineteen files to seven: that many contain a `process.exit(1)`,
+and one of the seven, `metrics-offline`, is reachable through an npm script.
+**The open question is six files wide, not nineteen**, which is small enough to
+close by reading them.
+
+The number that separates deliberate exclusions from oversights still requires
+reading each exclusion
 ([ch. 12](12-verification.md#127-orphans-and-the-count-that-indicts-too-much)).
 Low value per unit of effort, but it is a prerequisite for any claim about the
 project's real coverage.

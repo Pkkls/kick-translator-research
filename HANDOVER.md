@@ -59,7 +59,7 @@ check rather than skipping it:
 node appendix/D-scripts/verify-handover-claims.mjs /path/to/this/repo
 ```
 
-It reports 63 of 63 holding at the commit this was last checked against, and 4
+It reports 64 of 64 holding at the commit this was last checked against, and 4
 claims as unverifiable from a clone. If it reports anything else, this file is
 stale. The script checks that sentence too: it compares the two numbers above
 with its own totals, because the sentence still said seventeen after the script
@@ -392,25 +392,37 @@ consistent. Your release assets carry a per-asset content digest, which is a
 better reproducibility check than two local rebuilds compared to each other:
 it also proves the artefact people download is the one the tag describes.
 
-**[re-run]** 56 `.mjs` files in the harness directory and 40 runner entries.
-Counted by the file each entry launches, 22 files run and 34 do not. Of the 34,
-two are runners and three are modules a gate imports, `playwright`, `a11y` and
-`kick-actions`, which leaves **29 orphans**. **Do not read that as a finding
-either.** Most are your documented exclusions, live probes and shooters. The
-number that would be a finding is *orphans with no written reason*, and
-producing it means reading each exclusion; this account tried to classify them
-by content and could not, because your offline gates serve kick.com URLs from
-fixtures, so a URL does not say which world a harness runs in.
+**[re-run]** 56 `.mjs` files in the harness directory and 40 entries in
+`run-gates.mjs`. Counted by the file each entry of **both** runners launches, 32
+files run and 24 do not. Of the 24, two are runners and three are modules a gate
+imports, `playwright`, `a11y` and `kick-actions`, which leaves **19 orphans**.
+
+**This number was 29 here until 2026-09-15, and 29 was wrong by exactly ten.**
+The count read `run-gates.mjs` and not `run-live.mjs`, which carries its own
+nine live gates and launches `latency.mjs` as a phase of its own. So your entire
+live suite was being counted as unlaunched. The verifier reads both runners now
+(4.82).
+
+**Of the 19, seven can exit 1**: `headless-probe`, `live-profile`,
+`metrics-offline`, `nav-monde`, `readme-rendu`, `shlyokavitsa-bout-en-bout` and
+`store-shots`. The other twelve have no failing exit at all, so they print or
+draw and their absence from a runner costs nothing. This account said the useful
+number needed each exclusion read by hand and could not be produced; that was
+true of classifying them by content, and a failing exit is a different question
+with a structural answer. **Seven is the number to look at.** `metrics-offline`
+is reachable through `npm run metrics` rather than a runner, which leaves six.
 
 **A correction, and it lands on your generator too.** This file said 35. Its
 recipe compared gate names with file names, which counts a module as a harness
 and misses a gate whose name is not its file: `store-shots-fixture.mjs` runs on
 every pass as `captures-readme`. `state.mjs` makes the same comparison and
-writes 32 orphans into `ETAT.json`, three of which are `a11y`, `kick-actions`
-and `store-shots-fixture`. Its exclusion list names three infrastructure files
-by hand and dates from 08:39 on 2026-08-30; `kick-actions` arrived at 15:46 and
-`a11y` at 16:22 the same day, and neither was added **[re-run]**. The three
-counts reconcile to the same 29, item by item **[re-run]**. Ten minutes: compare
+writes 32 orphans into `ETAT.json`, **13 of which are launched or imported**
+**[re-run]**: `a11y`, `kick-actions` and `store-shots-fixture`, plus all nine of
+`run-live.mjs`'s gates and `latency`. Your generator has the same blind spot
+this account's verifier had, and it is the larger half of both errors. Its
+exclusion list names three infrastructure files by hand and dates from 08:39 on
+2026-08-30; `kick-actions` arrived at 15:46 and `a11y` at 16:22 the same day,
+and neither was added **[re-run]**. Ten minutes: compare
 the scripts each entry launches, and derive helper modules from imports rather
 than from a list. Your handoff of 2026-08-16 had already written the rule after
 five bites from hand-kept lists: *Derive lists, never hand-keep them* **[yours]**.

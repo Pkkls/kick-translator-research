@@ -32,7 +32,7 @@ for, run at the start of every pass:
 node appendix/D-scripts/stop-conditions.mjs . /path/to/kick-chat-translator
 ```
 
-Last known: **63/63 checkable claims, 12/12 spec conditions, no broken internal
+Last known: **64/64 checkable claims, 12/12 spec conditions, no broken internal
 link**, and the axis ledger naming exactly the 22 axes the specification
 defines. The link line used to be a sentence, "all internal links resolve", and
 nine of them did not. Counts that no script reads, such as the number of
