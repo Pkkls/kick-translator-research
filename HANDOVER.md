@@ -288,6 +288,12 @@ every one of the other 16 carries a comment saying why the silence is correct,
 in your own words: *invalid selector, ignore*; *storage unavailable, non-fatal*;
 *invalid regex char in user input, skip silently*. The question is closed.
 
+**Declared traffic matches the code: nothing to report.** **[read]** All ten
+host permissions are named in `PRIVACY.md`. Every `https` host reachable from
+the sources is either one of them or a link rendered in the options page: the
+repository, the privacy document, the issue tracker, the provider's developer
+page. No undeclared network destination. The question is closed.
+
 **Marked debt: none.** **[re-run]** Zero `TODO`, `FIXME`, `HACK` or `XXX`
 across 89 source files. Your deferrals live in `PLAN.md` with their
 measurements rather than as comments that rot. That is unusual enough to be
@@ -348,9 +354,13 @@ cause and offers three ways to supply it **[re-run]**. The failure this axis
 exists to catch, a newcomer seeing a green that is empty, does not happen here.
 The suite refuses rather than pretending, which is rarer than it sounds.
 
-**One smaller thing from the same run.** Your README states 1032 unit tests.
-The clone runs 1034 **[re-run]**. A number in a reader-facing document with
-nothing watching it.
+**Two smaller things from the same run, both in the README.** It states 1032
+unit tests; the clone runs **1034**. It states 39 offline gates; the runner
+holds **40** **[re-run]**. Neither is important on its own. What they have in
+common is that they are facts in a reader-facing document with nothing
+watching them, which is the same class of defect as 3.6 and has the same cheap
+remedy: a gate that reads the numbers out of the thing rather than out of a
+sentence.
 
 ---
 

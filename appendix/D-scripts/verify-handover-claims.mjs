@@ -124,8 +124,19 @@ if (!existsSync(harness)) {
 } else {
   const files = readdirSync(harness).filter((f) => f.endsWith('.mjs'));
   claim('3.3 harness files', 56, files.length);
+  // Counted by bracket depth rather than by line shape. A line-anchored regex
+  // gave two different answers on two attempts, because seven entries carry
+  // their arguments across several lines. Repeating a measurement with the
+  // same technique confirms only that the technique is stable.
   const runner = readFileSync(join(harness, 'run-gates.mjs'), 'utf8');
-  claim('3.3 runner entries', 40, (runner.match(/^ {2}\['/gm) || []).length);
+  const block = runner.slice(runner.indexOf('const GATES = ['), runner.indexOf('\n];', runner.indexOf('const GATES = [')));
+  let depth = 0;
+  let gateEntries = 0;
+  for (let i = block.indexOf('[') + 1; i < block.length; i++) {
+    if (block[i] === '[') { if (depth === 0) gateEntries++; depth++; }
+    else if (block[i] === ']') depth--;
+  }
+  claim('3.3 runner entries', 40, gateEntries, 'counted structurally, not by line');
 }
 
 // 3.6 What a clone gets -----------------------------------------------------

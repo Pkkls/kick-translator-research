@@ -125,7 +125,8 @@ first with few queries, then query separately.
 
 ## 4. Every mistake, and what each cost
 
-Ten. Listed in full because a method log that omits them is an advertisement.
+Eleven. Listed in full because a method log that omits them is an
+advertisement.
 
 ### 4.1 Direction handling: accused working code, twice over
 
@@ -244,6 +245,36 @@ settled.
 **What it produced.** The best finding in the study's verification chapter, and
 the most actionable item in the handover. A rotted claim in a file that opens
 by explaining why claims rot is worth more than the ninety minutes it cost.
+
+### 4.11 Two incompatible counts of the same thing, and a verifier that could
+not have caught it
+
+**What happened.** The gate runner's entries were counted twice with two
+line-anchored regular expressions, giving 40 and then 33. Both cannot be true.
+A third count, by bracket depth and therefore independent of line formatting,
+gave **40**: seven entries carry their arguments across several lines and the
+stricter regex missed them. The first number was right and the second was the
+error.
+
+**Cost.** Minutes, because the disagreement was visible.
+
+**What it exposed, which is worth more than the count.** The claim verifier
+written for this study used the *same* regular expression as the original
+measurement. Had that regex been the wrong one, the verifier would have
+confirmed the error and reported it green. **A verifier written by the same
+author with the same technique tests stability, not truth.**
+
+The remedy is not more care. It is to measure the second time by a different
+technique: here, parsing structure instead of matching lines. Where that is
+impossible, the verifier should say so rather than imply independence it does
+not have. The script now counts by bracket depth and carries the reason in a
+comment.
+
+The generalisation, which applies to every self-check in this repository:
+
+> Repeating a measurement with the same instrument confirms the instrument is
+> deterministic. It says nothing about whether the instrument is correct. Only
+> a second instrument of a different kind can do that.
 
 ### The pattern across the first three
 
