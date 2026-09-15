@@ -71,6 +71,22 @@ say why.
 the check rather than the rule*, and it kept finding rules here with nothing
 behind them. When you catch yourself writing a rule down, ask what would run.
 
+## Where the work stands, so the first pass does not re-derive it
+
+All 22 axes carry a verdict and **none is closed**, so the specification's first
+stop condition is met and the other two are not. The two artefacts it asks for
+by name exist: [appendix F](appendix/F-axis-ledger.md), the ledger, and
+[appendix G](appendix/G-budget.md), the budget, 2 of 7 thresholds set. Ten
+scripts, five of which exit non-zero on a failure. `RESUME-HERE.md` carries the
+three findings that reach a reader and the two one-line items that are kil's.
+
+**The productive work, in order.** Finish `.agent/PLAN.md` from L760, the four
+Done sections. Read the 15 unread `CHANGELOG.md` sections against the source,
+which is how 4.70 corrected this study's own laughter count and 4.71 settled
+whether a version that was never tagged had shipped. Then close an axis: none of
+the 22 is closed and A15 came nearest, its reproducibility half closed against a
+published digest.
+
 ## What the last passes learned, so they are not learned again
 
 Each of these cost a pass, and each is in `appendix/E-method-log.md` with what
@@ -94,6 +110,17 @@ it cost:
   above.
 - **A suite built entirely of existence checks is blind to duplication**, which
   is what an editing mistake produces most often. That check exists now.
+- **The first count is too high**, six times out of six in one session, and not
+  from one cause. Publish no first count.
+- **A hardcoded list of what to check is a promise to remember.** The gate that
+  walks the tree is the one that never missed a file.
+- **A check that cannot fail is read once**, by the session that wrote it. And a
+  check whose bug makes it throw is safe; one whose bug makes it pass is worse
+  than no check.
+- **An empty report is a statement about the instrument's reach**, not about the
+  document. Ask what the instrument cannot see in the same pass that runs it.
+- **Nothing carries a correction between documents**, in either direction.
+- **Finish the file before measuring what the file is about.**
 
 ## Four standing constraints
 

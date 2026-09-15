@@ -129,8 +129,8 @@ Next, in the order most likely to correct something published here:
 
 | File | Lines | Why first |
 |---|---|---|
-| `.agent/PLAN.md` | 1287 | **L1 to L760 read**, the whole Open and Waiting sections; the four Done sections from L760 unread. Stopping short of L486 cost 4.65 |
-| `CHANGELOG.md` | 901 | **opened at last**: 17 version sections compared against the tags and the releases (4.69), and the 2.10.0 section read, which corrected the thesis own laughter count (4.70). The 2.8.1 section is read too and its work verified present in the source (4.71). The prose of the other 15 is unread |
+| `.agent/PLAN.md` | 1287 | **L1 to L760 read**, the whole Open and Waiting sections; the four Done sections from L760 unread |
+| `CHANGELOG.md` | 901 | **opened**: 17 sections compared against tags and releases (4.69), the 2.10.0 and 2.8.1 sections read (4.70, 4.71). The other 15 unread |
 
 The queue is counted rather than described: **114 entries under seven
 headings, 7 open, 6 blocked on kil, 101 done**, and the section titled `## Open`
@@ -163,6 +163,42 @@ measurement that would set them (4.58). Before this pass there was no budget
 file, and **7 of the 22 bars**, A3, A5, A6, A11, A13, A18 and A21,
 state their threshold as a ceiling, a floor, a count or a rate in it. Those
 seven cannot be read until it exists, and it is a page of numbers (4.57).
+
+## What the session of 2026-09-15 left
+
+**All 22 axes carry a verdict and none is closed.** The specification's first
+stop condition is met for the first time; the second and third are not, so the
+work does not stop. `PLAN.md` holds 7 open items beside 6 blocked on kil, and
+every pass produced a measurement.
+
+**Two artefacts the specification asked for by name now exist**, and it asked
+for both in one sentence nobody had read: [appendix F](appendix/F-axis-ledger.md),
+the axis ledger with a verdict and an instrument per axis, and
+[appendix G](appendix/G-budget.md), the budget file, **2 of 7 thresholds set**
+and the other five naming the measurement that would set them.
+
+**Ten scripts**, three written here. Two gates were added, `axis-ledger.mjs`
+and the checking halves of `probe-consistency.mjs`, and both exit non-zero.
+
+**Three findings that reach a reader**, in the order they would cost something:
+
+1. `PRIVACY.md` names four endpoints and the extension contacts six.
+   `lingva.ml` receives **chat message text** and is not in the policy, and
+   `api.github.com` is contacted every six hours. The file was written in the
+   2.0.0 commit and never edited; the product is at 2.10.0 (4.77).
+2. The three localised READMEs head their what-new section at **2.8.1**, a
+   version with no tag and no release, under a link to `releases/latest` that
+   serves 2.10.0. The queue holds this and names a second defect nobody here
+   found, alt strings written without a native reader in es, pt-BR and ja
+   (4.65, 4.69, 4.71).
+3. `messageRows: ['div[data-index]']` is the one host-page selector with no
+   fallback and no stated reason, in a file where the other four groups have
+   chains. If Kick renames it the observer still attaches and the status still
+   says live (4.60).
+
+**Two things that are kil's**, both one line: an exception in `.gitignore` or a
+pointer in `.agent/PROMPT.md` so the specification survives a machine (4.63),
+and the Brave native-messaging key named to the value in 4.47.
 
 ## Candidates with one instrument, and the one that got its second
 

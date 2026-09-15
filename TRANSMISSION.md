@@ -267,6 +267,74 @@ one and the raw one, so nobody has to trust your filter.
 competent.** The worst error in this study carried the tag meaning "executed
 here". It was executed. It was wrong.
 
+---
+
+### Rules from the session that measured all 22 axes
+
+Each cost a pass. The entries are 4.44 to 4.79.
+
+**Nothing carries a correction between documents.** A fact reaches the chapter
+whose argument wanted it and not the chapter that owns the subject (4.45), and
+it also reaches the owner and not the chapters that summarise (4.70). Both
+directions fail, so proximity to the subject decides nothing. Assume a
+correction you make in one place is in exactly that place.
+
+**Measure a limit to its boundary rather than declaring it.** "Needs something
+this account did not have" sat in four documents for the length of the study
+and was one read-only query from being named to the registry value (4.47).
+
+**An experiment is not specified until its inputs are.** A fully written witness
+turned out not to be runnable as one gesture, because the two gates it named do
+not read the same artefact (4.48).
+
+**A line reads as redundant until it is placed beside what it interacts with.**
+An exit code that looked like a decision about its own branch (4.49), a constant
+that looked like a margin against a platform limit it could not get (4.56), a
+bar that looked like a guarantee against the failure its own axis names (4.59),
+a character class that looked like a formatting detail and was a guard against
+globs (4.73). Reading the line is never enough.
+
+**The first count is too high.** Six times out of six here, and not from one
+cause: four were a rule applied before the population showed which rule it
+obeyed, one was an off-by-one at a boundary, one was a matcher that matched
+everything. A rate with several causes is not a lesson, it is a reason to check.
+**Publish no first count.**
+
+**A hardcoded list of what to check is a promise to remember.** Two probes named
+their documents by hand and neither read the appendices written in the same
+session as the probe (4.74, 4.75). The gate that walks the tree has no list to
+forget, and it is the one that never missed anything.
+
+**A check that cannot fail is read once**, by the session that wrote it (4.72).
+Of the three written in that session, two had no failing exit. And **a check
+whose bug makes it throw is safe; a check whose bug makes it pass is worse than
+no check**, because it is indistinguishable from good news (4.76).
+
+**An empty report is a statement about the instrument's reach, not about the
+document.** A correction pass fixes what its instrument reports and feels
+complete when the report empties (4.74). Ask what the instrument cannot see, in
+the same pass.
+
+**The cost of a blind spot is a property of what happened to be standing in it.**
+The identical defect hid two real errors in one probe and nothing in another
+(4.75). "It has never caused a problem" is not evidence about a blind spot and
+reads exactly like the presence of it.
+
+**A fallback list is a scar record.** Four of five selector groups have chains
+because each shape changed once and left a candidate behind. The fifth has never
+changed and has no fallback, and it is the load-bearing one (4.60). The stable
+thing is not the safe thing.
+
+**A test written against a key can only test the dimensions the key has.** A
+narrow cache key and its thorough collision test agree perfectly, and the
+agreement proves nothing about what was left out (4.79).
+
+**Finish the file before measuring what the file is about.** Two measurements
+taken mid-read: one was a rediscovery of what the queue already held fifty-six
+lines further on, one was an update because the value had moved (4.65, 4.66).
+The same mistake produced a waste once and a finding once, which makes the
+outcome luck rather than method.
+
 ## 3. Environment traps, all hit at least once
 
 - **Backticks inside JS template literals** break the script. Write long prose
@@ -281,6 +349,30 @@ here". It was executed. It was wrong.
 - **Commits here are anonymised** as `anon <anon@users.noreply.github.com>`,
   matching the upstream project's practice. Do not commit with a personal email
   into a public repository.
+- **Build no pattern by string concatenation inside `node -e`.** Escapes
+  collapse crossing the shell: `"\|"` becomes `|`, which turns an anchored
+  pattern into an alternation with an empty branch that matches every line and
+  answers zero to every question. Three instances in one session. Write the
+  script to a file with a quoted heredoc.
+- **`rm -rf` follows a directory junction and deletes what it points at.** A
+  worktree given the clone's `node_modules` as a junction, then removed this
+  way, emptied the clone's own. `node_modules` is gitignored, so `git status`
+  stayed clean and said nothing for two passes. Copy, or point the tool at the
+  original.
+- **`git checkout --` is the wrong revert for a planted test value.** It also
+  discards uncommitted work in the same file, and restores nothing at all when
+  the file is untracked. Both happened. Plant controls in a copy, or write the
+  restore before the plant.
+- **`python3` is a Microsoft Store stub here and fails; `python` and `py`
+  work.** The gate runner calls `python`.
+- **Playwright is deliberately not a dependency.** `scratchpad/harness/playwright.mjs`
+  looks for `$UX_KIT/node_modules/playwright`, then the repository's own, and
+  exits 2 with instructions when it finds neither. Exit 2 is a missing
+  prerequisite and not a failed gate, and `audit_poids.py` and
+  `metrics-offline.mjs` use the same distinction.
+- **A non-Chrome build left in `dist/` makes the extension silently absent.**
+  `package:all` used to end on the Firefox build and this broke a real browser.
+  Building metrics or Firefox for a measurement means ending on `npm run build`.
 - **`grep` is rewritten to `rg`** in this environment and `rg` may be missing.
   **`ls` is rewritten too**, into a display with sizes, and a pipeline reading
   it as a list of names returned 91 lines for 56 files. Call `/usr/bin/ls` and
