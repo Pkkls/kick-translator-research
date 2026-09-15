@@ -107,7 +107,7 @@ Next, in the order most likely to correct something published here:
 
 | File | Lines | Why first |
 |---|---|---|
-| `.agent/PLAN.md` | 1287 | **L1 to L120 read**, and the whole file counted; L120 onward unread |
+| `.agent/PLAN.md` | 1287 | **L1 to L430 read**, and the whole file counted; L430 onward unread |
 | `CHANGELOG.md` | 900 | what each version told readers it changed |
 
 The queue is counted rather than described: **114 entries under seven
