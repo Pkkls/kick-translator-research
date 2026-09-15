@@ -85,7 +85,14 @@ of Europe and much of everything else.
 
 A script identifies a language only when the mapping happens to be near
 one-to-one in the population being observed. Han script, for instance, gives
-usable evidence because the set of languages written in it is small. Hangul
+usable evidence because the set of languages written in it is small. Usable is
+not decisive, and the product encodes the difference **[reported]**: at the
+time of the extended bench, Arabic, Japanese, Korean and Russian left the script
+check as facts (Cyrillic stopped being one later, below), while a line with
+Han is handed on to the statistical identifier, because pure Han can be
+Japanese. On the extended bench Chinese was identified 24 times of 25 and
+declared as a confident source 0 times of 25, so every Chinese line leaves with
+the engine guessing, deliberately. Hangul
 gives strong evidence. Devanagari gives weaker evidence than it appears to,
 because it writes Hindi, Marathi, Nepali, Sanskrit and others.
 

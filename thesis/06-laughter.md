@@ -105,7 +105,21 @@ markers.
 
 **[reported]** Of 43 forms recorded, 22 mark a language. Forms used everywhere,
 `haha`, `lol`, `xd`, mark nothing, because a wrong answer here is handed to a
-translation engine.
+translation engine. **[replicated]** That count belongs to an earlier revision
+and was published without one. The table held 44 forms at `16c4ce6` and holds
+45 at the current revision, 22 marking a language in both, counted by importing
+the module rather than reading it.
+
+**[reported]** The one form that changed sides is the clearest instance of the
+rule in the whole table. Half-width `www`, three or more, marked Japanese, with
+a note saying the length kept it from matching a bare `www` host. The note
+reasoned about the whole message; the vote runs on tokens split at
+non-letters, so `www.kick.com` voted `ja` on its first token, and three real
+host names of four went out to the engine declared as Japanese. Half-width
+`www` now marks nothing and is still dropped as noise when it is the whole
+message; full-width `ｗｗｗ`, which no host name is written in, took the mark.
+**[replicated]** At `16c4ce6` the table carries `/^w{3,}$/i` with a language,
+and at the current revision it does not.
 
 This is the second appearance in this corpus of the principle that **global
 adoption destroys diagnosticity**, arrived at on a different problem

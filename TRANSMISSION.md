@@ -149,6 +149,12 @@ network gate printed 70 interceptions, which looked like interception working.
 Its route pattern missed the page itself, the page came from the real site, and
 the correct count for a local page is zero.
 
+**State the unit a rule is evaluated on, and argue at that unit.** A laughter
+entry for `www` carried a note saying three letters kept it from matching a
+bare host. True of a whole message. The vote ran on tokens, `www.kick.com`
+split into three, and host names went out declared Japanese. An argument about
+the message is no argument about its pieces.
+
 **A gate's name is a claim about coverage. Count the effects it asserts against
 the effects its name covers.** A navigation gate stayed green on a product whose
 route re-attachment had never worked, because it asserted one effect of a
